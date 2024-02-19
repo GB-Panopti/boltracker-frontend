@@ -15,7 +15,7 @@ export default function Home() {
     setBlur('blur-none');
   }).catch(function (error) {
     if (typeof window !== 'undefined') {
-      window.location.href = '/login';
+      window.location.href = '/boltracker-frontend/login';
     }
   });
 
