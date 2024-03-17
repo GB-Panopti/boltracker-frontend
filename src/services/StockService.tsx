@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const STOCK_ALL_API_URL = "http://localhost:8080/api/stock/getAll";
-const STOCK_ID_API_URL = "http://localhost:8080/api/stock/get?id=";
+const STOCK_ALL_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stock/getAll";
+const STOCK_ID_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stock/get?id=";
 
 class StockService {
 
