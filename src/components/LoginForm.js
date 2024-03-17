@@ -16,20 +16,23 @@ export default function LoginForm() {
         </Card>
     );
 
-    function handleLogin() {
-        var res = false; 
-        LoginService.checkUser(username, password).then(response => {
-            res = response.data === "User logged in successfully!";
-            // Redirect to the home page if the user is authenticated
-            if(res === true) window.location.href = "/";
-            // Show an error message if the user is not authenticated
-            else alert('Invalid username or password');
+    async function handleLogin(event) {
+        event.preventDefault(); // Prevent default form submission behavior
         
-        }).catch(function (error) {
+        try {
+            const response = await LoginService.checkUser(username, password);
+            const res = response.data === "User logged in successfully!";
+            
+            if (res) {
+                window.location.href = "/"; // Redirect to the home page if the user is authenticated
+            } else {
+                console.log("Invalid username or password");
+                alert('Invalid username or password'); // Show an error message if the user is not authenticated
+            }
+        } catch (error) {
             console.log(error);
-        });
-
-
+            alert('Server error. Please try again later.');
+        }
     }
 }
 
