@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
-    basePath: "/boltracker-frontend",
+    basePath: "/",
 };
 
 export default nextConfig;
