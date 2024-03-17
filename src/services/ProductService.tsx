@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const PRODUCT_API_URL = "http://80.114.173.193:8080/api/product/getAll";
-const ADD_PRODUCT_API_URL = "http://80.114.173.193:8080/api/product/add";
-const PRODUCT_NAME_API_URL = "http://80.114.173.193:8080/api/product/getName?id=";
+const PRODUCT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/product/getAll";
+const ADD_PRODUCT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/product/add";
+const PRODUCT_NAME_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/product/getName?id=";
 
 class ProductService {
 

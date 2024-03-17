@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 
-const LOGIN_API_URL = "http://80.114.173.193:8080/api/auth/login";
+const LOGIN_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/login";
 
 class LoginService {
 
