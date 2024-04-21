@@ -6,6 +6,7 @@ import { Card } from '@tremor/react';
 import { RiHomeSmileFill, RiAddLine } from '@remixicon/react';
 import { useState } from 'react';
 import ProductService from '@/services/ProductService';
+import LoginService from '@/services/LoginService';
 
 const Header = () => {
     var [url, setUrl] = useState('');
@@ -17,10 +18,14 @@ const Header = () => {
         var id =  match ? match[0] : null;
 
         ProductService.addProduct({id: id, name: name, url: 'deprecated'}).then(response => {
-            console.log(response);
-        }).catch(function (error) {
-            console.log(error);
+            window.location.reload();
         });
+    }
+
+    function handleLogout() {
+        LoginService.logout().then(response => {
+            window.location.href = '/login';
+        })
     }
 
     return (
@@ -37,7 +42,7 @@ const Header = () => {
                 </div>
 
                 <div className="float-right pr-3">
-                    <Button className="text-tremor-secondary-emphasis" size="lg" variant="light">Logout</Button>
+                    <Button onClick={handleLogout} className="text-tremor-secondary-emphasis" size="lg" variant="light">Logout</Button>
                 </div>
             </div>
         </Card>

@@ -30,6 +30,9 @@ export default function StockChart() {
         yAxisWidth={65}
         categories={['stock']}
         colors={['indigo', 'cyan']}
+        minValue={0}
+        showAnimation={true}
+        maxValue={500}
       />
     </Card>
   );

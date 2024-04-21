@@ -13,8 +13,7 @@ export default function Home() {
 
   ProductService.getProductName(5).then(response => {
     setBlur('blur-none');
-  }).catch(function (error) {
-    console.log(error);
+  }).catch(function () {
     if (typeof window !== 'undefined') {
       window.location.href = '/login';
     }
