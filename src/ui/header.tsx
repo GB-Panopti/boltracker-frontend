@@ -17,7 +17,7 @@ const Header = () => {
         const match = url.match(regex);
         var id =  match ? match[0] : null;
 
-        ProductService.addProduct({id: id, name: name, url: 'deprecated'}).then(response => {
+        ProductService.addProduct({id: id, name: name, url: url, offerId: -1}).then(response => {
             window.location.reload();
         });
     }
@@ -32,13 +32,13 @@ const Header = () => {
         <Card className='h-full m-0 rounded-none bg-tremor-brand-subtle'>
             <div className="flex items-center justify-between ">
                 <div className="float-left">
-                    <Button className="rounded-lg bg-tremor-secondary-emphasis" icon={RiHomeSmileFill} iconPosition="left" size="lg" variant="primary">Gilly Bates</Button>
+                    <Button className="rounded-sm bg-tremor-secondary-emphasis" icon={RiHomeSmileFill} iconPosition="left" size="lg" variant="primary">Panopti</Button>
                 </div>
 
                 <div className="float-center flex">
-                    <TextInput className="text-tremor-brand-subtle rounded-lg" onValueChange={(value) => setName(value)} placeholder="Product naam" />
-                    <TextInput className="text-tremor-brand-subtle rounded-lg" onValueChange={(value) => setUrl(value)} placeholder="Product url" />
-                    <Button onClick={addProduct} className="float-right text-tremor-brand-subtle bg-tremor-secondary-emphasis rounded-lg" icon={RiAddLine}/>
+                    <TextInput className="text-tremor-brand-subtle rounded-sm" onValueChange={(value) => setName(value)} placeholder="Product naam" />
+                    <TextInput className="text-tremor-brand-subtle rounded-sm" onValueChange={(value) => setUrl(value)} placeholder="Product url" />
+                    <Button onClick={addProduct} className="float-right text-tremor-brand-subtle bg-tremor-secondary-emphasis rounded-sm" icon={RiAddLine}/>
                 </div>
 
                 <div className="float-right pr-3">
