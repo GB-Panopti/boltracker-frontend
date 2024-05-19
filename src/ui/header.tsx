@@ -29,7 +29,7 @@ const Header = () => {
     }
 
     return (
-        <Card className='h-full m-0 rounded-none bg-tremor-brand-subtle'>
+        <Card className='h-full m-0 rounded-none ring-none bg-tremor-brand-subtle'>
             <div className="flex items-center justify-between ">
                 <div className="float-left">
                     <Button className="rounded-sm bg-tremor-secondary-emphasis" icon={RiHomeSmileFill} iconPosition="left" size="lg" variant="primary">Panopti</Button>

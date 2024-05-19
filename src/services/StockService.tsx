@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const STOCK_ALL_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stock/getAll";
+const STOCK_ALL_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stock/getAllUser";
 const STOCK_ID_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stock/get?id=";
 
 class StockService {
 
-    getAllStocks() {
+    getAllUserStocks() {
         return axios.get(STOCK_ALL_API_URL, { withCredentials: true });
     }
 

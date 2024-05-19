@@ -19,7 +19,7 @@ export default function StockChart() {
   }, [selectedItem]);
 
   return (
-    <Card className="h-full w-full mx-auto">
+    <Card className="custom-card">
       <h2 className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">{selectedItem.name}</h2>
       <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">{data[data.length -1]?.stock}</p>
       <AreaChart
@@ -29,7 +29,7 @@ export default function StockChart() {
         index="date"
         yAxisWidth={65}
         categories={['stock']}
-        colors={['indigo', 'cyan']}
+        colors={['#aa88b5']}
         minValue={0}
         showAnimation={true}
         maxValue={500}
