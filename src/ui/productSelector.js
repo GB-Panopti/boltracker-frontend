@@ -12,13 +12,12 @@ const ProductSelector = () => {
     const [selectedItem, setSelectedItem] = useContext(SelectedItemContext);
 
     useEffect(() => {
-      console.log('useEffect');
-        ProductService.getProducts().then((response) => {
-            setItems(response.data);
-        }).catch(function (error) {
-            // TODO fix error handling
-        });    
-        
+      ProductService.getProducts().then((response) => {
+        setItems(response.data);
+      }).catch(function (error) {
+          // TODO fix error handling
+      });    
+    
         StockService.getAllUserStocks().then((response) => {
             // Populate map with stock data
             response.data.forEach((stock) => {
@@ -34,7 +33,7 @@ const ProductSelector = () => {
               }  
             })
         });  
-    }, []);
+    }, [selectedItem]);
 
     function handleItemClick(item) {
       setSelectedItem(selectedItem => ({...selectedItem, id: item.id, name: item.name}));

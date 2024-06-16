@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/ui/sidebar.js", "src/components/StockChart.js"  ],
+, "src/ui/sidebar.js", "src/components/StockChart.js", "src/components/RestockTracker.js"  ],
   "exclude": [
     "node_modules"
   ]

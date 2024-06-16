@@ -1,16 +1,12 @@
-import { Card, Tracker, CategoryBar, type Color } from '@tremor/react';
+import { Card, Tracker, CategoryBar, Color } from '@tremor/react';
 import React from 'react';
 import { useContext } from 'react';
 import { SelectedItemContext } from '@/app/contexts/SelectedItemContext';
 import StockService from '@/services/StockService';
 import { gray, green } from 'tailwindcss/colors';
 
-interface Tracker {
-  color: Color;
-  tooltip: string;
-}
 
-const data2: Tracker[] = [
+const data2 = [
   { color: 'emerald', tooltip: 'Operational' },
   { color: 'emerald', tooltip: 'Operational' },
   { color: 'emerald', tooltip: 'Operational' },

@@ -7,7 +7,7 @@ export default function LoginForm() {
     const [password, setPassword] = React.useState('');
     return (
         <Card className="mx-auto max-w-md my-auto top-[50%] rounded-md border-0">
-            <form onSubmit={handleLogin}>
+            <form method="GET" onSubmit={handleLogin}>
                 <h1 className='text-tremor-brand-faint'> Login </h1>
                 <TextInput placeholder='Username' label="Username" onValueChange={(value) => setUsername(value)} className='rounded-md my-5' />
                 <TextInput placeholder='Password' label="Password" onValueChange={(value) => setPassword(value)} type="password" className='rounded-md my-5' />
