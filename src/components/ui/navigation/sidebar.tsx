@@ -6,6 +6,7 @@ import {
   RiLinkM,
   RiListCheck,
   RiSettings5Line,
+  RiFocus3Line,
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -19,12 +20,8 @@ import ProductSelector from "@/ui/productSelector"
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
-  {
-    name: "Settings",
-    href: siteConfig.baseLinks.settings,
-    icon: RiSettings5Line,
-  },
+  { name: "Track product", href: siteConfig.baseLinks.trackNew, icon: RiFocus3Line },
+  { name: "Settings", href: siteConfig.baseLinks.settings, icon: RiSettings5Line },
 ] as const
 
 const shortcuts = [
@@ -58,6 +55,10 @@ export function Sidebar() {
     }
     return pathname === itemHref || pathname.startsWith(itemHref)
   }
+  const isAddProduct = (itemHref: string) => {
+    return (itemHref === siteConfig.baseLinks.trackNew)
+  }
+
   return (
     <>
       {/* sidebar (lg+) */}
@@ -74,10 +75,10 @@ export function Sidebar() {
                   <Link
                     href={item.href}
                     className={cx(
-                      isActive(item.href)
-                        ? "text-indigo-600 dark:text-indigo-400"
-                        : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
                       "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                      isActive(item.href) ? "text-indigo-600 dark:text-indigo-400" : "",
+                      isAddProduct(item.href) ? "bg-emerald-500 text-emerald-50 ring-emerald-600/30 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-emerald-400/20 " : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
+                        // : ,
                       focusRing,
                     )}
                   >

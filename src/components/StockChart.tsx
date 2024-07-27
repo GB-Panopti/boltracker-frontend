@@ -1,28 +1,24 @@
+"use client";
+import StockService from '@/services/StockService';
+import { AreaChart } from '@tremor/react';
+import { Badge } from '@/components/Badge';
+import React, { useEffect, useState } from 'react';
+import { StockDatum } from '@/data/schema';
+import { useContext } from 'react';
+import { SelectedItemContext } from '@/app/contexts/SelectedItemContext';
+import { cx, formatters, percentageFormatter } from '@/lib/utils';
 import { PeriodValue } from "@/app/(main)/overview/page"
-import { Badge } from "@/components/Badge"
-import { LineChart } from "@/components/LineChart"
-import { overviews } from "@/data/overview-data"
-import { cx, formatters, percentageFormatter } from "@/lib/utils"
-import {
-  eachDayOfInterval,
-  formatDate,
-  interval,
-  isWithinInterval,
-} from "date-fns"
 import { DateRange } from "react-day-picker"
-import { getPeriod } from "./DashboardFilterbar"
+import { interval, eachDayOfInterval, formatDate, isWithinInterval } from 'date-fns';
+import { getPeriod } from './ui/overview/DashboardFilterbar';
+import { overviews } from '@/data/overview-data';
+
 
 export type CardProps = {
   title: string
-  type: "currency" | "unit"
+  id: BigInteger
   selectedDates: DateRange | undefined
   selectedPeriod: PeriodValue
-  isThumbnail?: boolean
-}
-
-const formattingMap = {
-  currency: formatters.currency,
-  unit: formatters.unit,
 }
 
 export const getBadgeType = (value: number) => {
@@ -38,14 +34,22 @@ export const getBadgeType = (value: number) => {
   }
 }
 
-export function ChartCard({
+export function StockChart({
   title,
-  type,
+  id,
   selectedDates,
   selectedPeriod,
-  isThumbnail,
 }: CardProps) {
-  const formatter = formattingMap[type]
+  const [stockData, setStockData] = useState<StockDatum[]>([]);
+  
+  useEffect(() => {
+    StockService.getStock(id).then((response) => {
+        setStockData(response.data);
+      });
+  }, [id]);
+
+  const formatter = formatters.unit
+
   const selectedDatesInterval =
     selectedDates?.from && selectedDates?.to
       ? interval(selectedDates.from, selectedDates.to)
@@ -54,46 +58,46 @@ export function ChartCard({
     selectedDates?.from && selectedDates?.to
       ? eachDayOfInterval(interval(selectedDates.from, selectedDates.to))
       : null
-  const prevDates = getPeriod(selectedDates)
-
+  // getPeriod is a function from DashboardFilterbar.tsx that subtracts a year to get a previous year's date range
+  const prevDates = getPeriod(selectedDates) 
   const prevDatesInterval =
     prevDates?.from && prevDates?.to
       ? interval(prevDates.from, prevDates.to)
       : null
 
-  const data = overviews
-    .filter((overview) => {
+  const data = stockData
+    .filter((datum) => {
       if (selectedDatesInterval) {
-        return isWithinInterval(overview.date, selectedDatesInterval)
+        return isWithinInterval(datum.date, selectedDatesInterval)
       }
       return true
     })
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
-  const prevData = overviews
-    .filter((overview) => {
+  const prevData = stockData
+    .filter((datum) => {
       if (prevDatesInterval) {
-        return isWithinInterval(overview.date, prevDatesInterval)
+        return isWithinInterval(datum.date, prevDatesInterval)
       }
       return false
     })
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-
+    
   const chartData = allDatesInInterval
     ?.map((date, index) => {
-      const overview = data[index]
-      const prevOverview = prevData[index]
-      const value = (overview?.[value] as number) || null
-      const previousValue = (prevOverview?.[value] as number) || null
+      const stockDatum = data[index]
+      const prevDatum = prevData[index]
+      const value = stockDatum?.value || null
+      const previousValue = prevDatum?.value || null
 
       return {
         title,
         date: date,
         formattedDate: formatDate(date, "dd/MM/yyyy"),
         value,
-        previousDate: prevOverview?.date,
-        previousFormattedDate: prevOverview
-          ? formatDate(prevOverview.date, "dd/MM/yyyy")
+        previousDate: prevDatum?.date,
+        previousFormattedDate: prevDatum
+          ? formatDate(prevDatum.date, "dd/MM/yyyy")
           : null,
         previousValue:
           selectedPeriod !== "no-comparison" ? previousValue : null,
@@ -115,7 +119,7 @@ export function ChartCard({
     selectedPeriod !== "no-comparison"
       ? (value - previousValue) / previousValue
       : 0
-
+      
   return (
     <div className={cx("transition")}>
       <div className="flex items-center justify-between gap-x-2">
@@ -140,19 +144,24 @@ export function ChartCard({
           </dd>
         )}
       </div>
-      <LineChart
+      <h2 className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">{title}</h2>
+      <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">{chartData[chartData.length -1]?.stock}</p>
+      <AreaChart
         className="mt-6 h-32"
+        noDataText='Select a product to view stock data'
         data={chartData || []}
-        index="formattedDate"
-        colors={["indigo", "gray"]}
+        index="date"
+        yAxisWidth={65}
+        categories={categories}
+        colors={['#aa88b5']}
         startEndOnly={true}
-        valueFormatter={(value) => formatter(value as number)}
+        minValue={0}
         showYAxis={false}
         showLegend={false}
-        categories={categories}
-        showTooltip={isThumbnail ? false : true}
+        showTooltip={true}
         autoMinValue
+        // maxValue={500}
       />
     </div>
-  )
+  );
 }

@@ -1,10 +1,10 @@
 "use client"
+import { StockChart } from "@/components/StockChart"
 import { CategoryBarCard } from "@/components/ui/overview/DashboardCategoryBarCard"
 import { ChartCard } from "@/components/ui/overview/DashboardChartCard"
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
 import { ProgressBarCard } from "@/components/ui/overview/DashboardProgressBarCard"
 import { overviews } from "@/data/overview-data"
-import { OverviewData } from "@/data/schema"
 import { cx } from "@/lib/utils"
 import { subDays, toDate } from "date-fns"
 import React from "react"
@@ -13,32 +13,32 @@ import { DateRange } from "react-day-picker"
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
 const products: {
-  title: keyof OverviewData
-  type: "currency" | "unit"
+  name: string
+  id: string
 }[] = [
   {
-    title: "Rows read",
-    type: "unit",
+    name: "Carcasonne",
+    id: "unit",
   },
   {
-    title: "Rows written",
-    type: "unit",
+    name: "Alchemists",
+    id: "unit",
   },
   {
-    title: "Queries",
-    type: "unit",
+    name: "Blabla",
+    id: "unit",
   },
   {
-    title: "Payments completed",
-    type: "currency",
+    name: "Payments completed",
+    id: "currency",
   },
   {
-    title: "Sign ups",
-    type: "unit",
+    name: "Sign ups",
+    id: "unit",
   },
   {
-    title: "Logins",
-    type: "unit",
+    name: "Logins",
+    id: "unit",
   },
 ]
 
@@ -200,12 +200,12 @@ export default function Overview() {
             "mt-10 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
           )}
         >
-          {products.map((category) => {
+          {products.map((product) => {
             return (
-              <ChartCard
-                key={category.title}
-                title={category.title}
-                type={category.type}
+              <StockChart
+                key={product.name}
+                title={product.name}
+                id={product.id}
                 selectedDates={selectedDates}
                 selectedPeriod={"last-year"}
               />

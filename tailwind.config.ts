@@ -14,6 +14,10 @@ const hsSecondary = gillBatesHouseStyle.english_violet;
 const hsSecondaryLite = gillBatesHouseStyle.periwinkle;
 const hsAccent = gillBatesHouseStyle.dark_cyan;
 
+// a new color based on bol-hs: '#0300a4',
+const boldotcomblue = '#0300a4';
+const amazonyellow = '#ff9913';
+
 const config: Config = {
   darkMode: "selector",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,6 +29,12 @@ const config: Config = {
         hs: gillBatesHouseStyle,
         // light mode
         tremor: {
+          bol: {
+            DEFAULT: boldotcomblue,
+          },
+          amazon: {
+            DEFAULT: amazonyellow,
+          },
           brand: {
             faint: hsPrimary[100],
             muted: hsPrimary[200],

@@ -1,3 +1,6 @@
+// import { PeriodValue } from "@/app/(main)/overview/page"
+
+
 export type Usage = {
   owner: string
   status: string
@@ -7,12 +10,7 @@ export type Usage = {
   lastEdited: string
 }
 
-export type OverviewData = {
+export type StockDatum = {
   date: string
-  "Rows written": number
-  "Rows read": number
-  Queries: number
-  "Payments completed": number
-  "Sign ups": number
-  Logins: number
+  value: number
 }

@@ -73,23 +73,6 @@ const ProductSelector = () => {
   // }
 
     return (
-            // <Card className='h-full rounded-xl w-full p-0 pt-3 ring-0'>
-            //     {products.map((product) =>
-            //             <Button key={product.id} onClick={() => handleItemClick(product)} 
-            //             className="rounded-lg w-full py-5 border-tremor-background-suble shadow-none text-tremor-brand-subtle bg-tremor-brand-inverted">
-            //                 <div className="flex products-center space-x-3 w-full px-2"> 
-            //                     <span>{product.name}</span>
-            //                     <SparkAreaChart 
-            //                     // data={selectedItem.products.get(product.id)} 
-            //                     categories={['amount']} 
-            //                     index={'date'} colors={['#aa88b5']} className="h-4 w-10 sm:h-4 sm:w-15"/>
-            //                     <span className="rounded bg-tremor-secondary-emphasis px-2 py-1 text-tremor-default font-medium text-white">+1.72%</span>
-            //                 </div>
-            //             </Button>
-            //         )
-            //     }
-            // </Card>
-            
             <ul aria-label="shortcuts" role="list" className="space-y-0.5">
             {products.map((product) => (
               <li key={product.name}>
