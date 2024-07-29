@@ -79,8 +79,6 @@ export function StockChart({
     };
   });
 
-  // AFTER USING STOCKDATA FROM THE CONTEXT IT NO LONGER WORKS, FIGURE OUT WHY THE DATA IS NOW BAD
-
   const categories =
     selectedPeriod === "no-comparison" ? ["stock"] : ["stock", "previousStock"];
   
