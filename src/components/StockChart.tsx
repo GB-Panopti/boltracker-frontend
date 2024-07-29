@@ -1,124 +1,97 @@
 "use client";
-import StockService from '@/services/StockService';
 import { AreaChart } from '@tremor/react';
 import { Badge } from '@/components/Badge';
-import React, { useEffect, useState } from 'react';
-import { StockDatum } from '@/data/schema';
-import { useContext } from 'react';
-import { SelectedItemContext } from '@/app/contexts/SelectedItemContext';
+import React from 'react';
+import { useStockData } from '@/app/contexts/StockDataContext';
 import { cx, formatters, percentageFormatter } from '@/lib/utils';
-import { PeriodValue } from "@/app/(main)/overview/page"
-import { DateRange } from "react-day-picker"
-import { interval, eachDayOfInterval, formatDate, isWithinInterval } from 'date-fns';
-import { getPeriod } from './ui/overview/DashboardFilterbar';
-
+import { PeriodValue } from "@/app/(main)/overview/page";
+import { DateRange } from "react-day-picker";
+import { eachHourOfInterval, eachDayOfInterval, eachMinuteOfInterval, format, isWithinInterval, add, Interval } from 'date-fns';
 
 export type CardProps = {
-  title: string
-  id: number
-  selectedDates: DateRange | undefined
-  selectedPeriod: PeriodValue
-}
+  title: string;
+  id: number;
+  selectedDates: DateRange | undefined;
+  selectedPeriod: PeriodValue;
+  granularity: 'hour' | 'day' | 'minute'; // Add granularity parameter
+};
 
 export const getBadgeType = (value: number) => {
   if (value > 0) {
-    return "success"
+    return "success";
   } else if (value < 0) {
     if (value < -50) {
-      return "warning"
+      return "warning";
     }
-    return "error"
+    return "error";
   } else {
-    return "neutral"
+    return "neutral";
   }
-}
+};
+
+const getEachIntervalOfSelectedDates = (selectedDatesInterval: Interval, granularity: string) => {
+  switch (granularity) {
+    case 'hour':
+      return eachHourOfInterval(selectedDatesInterval);
+    case 'minute':
+      return eachMinuteOfInterval(selectedDatesInterval);
+    case 'day':
+    default:
+      return eachDayOfInterval(selectedDatesInterval);
+  }
+};
 
 export function StockChart({
   title,
   id,
   selectedDates,
   selectedPeriod,
+  granularity = 'hour', // Default to day
 }: CardProps) {
-  const [stockData, setStockData] = useState<StockDatum[]>([]);
+  const { stockData } = useStockData(); // Access stockData from the context
   
-  useEffect(() => {
-    StockService.getStock(id).then((response) => {
-        setStockData(response.data);
-      });
-  }, [id]);
 
-  const formatter = formatters.unit
+  const formatter = formatters.unit;
 
   const selectedDatesInterval =
     selectedDates?.from && selectedDates?.to
-      ? interval(selectedDates.from, selectedDates.to)
-      : null
-  const allDatesInInterval =
-    selectedDates?.from && selectedDates?.to
-      ? eachDayOfInterval(interval(selectedDates.from, selectedDates.to))
-      : null
-  // getPeriod is a function from DashboardFilterbar.tsx that subtracts a year to get a previous year's date range
-  const prevDates = getPeriod(selectedDates) 
-  const prevDatesInterval =
-    prevDates?.from && prevDates?.to
-      ? interval(prevDates.from, prevDates.to)
-      : null
+      ? { start: selectedDates.from, end: selectedDates.to }
+      : null;
 
-  const data = stockData
-    .filter((datum) => {
-      if (selectedDatesInterval) {
-        return isWithinInterval(datum.date, selectedDatesInterval)
-      }
-      return true
-    })
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  const filteredStockData = selectedDatesInterval
+    ? stockData.filter((datum) =>
+        isWithinInterval(new Date(datum.date), selectedDatesInterval)
+      ).filter((datum) => datum.id === id)
+    : stockData;
 
-  const prevData = stockData
-    .filter((datum) => {
-      if (prevDatesInterval) {
-        return isWithinInterval(datum.date, prevDatesInterval)
-      }
-      return false
-    })
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    
-  const chartData = allDatesInInterval
-    ?.map((date, index) => {
-      const stockDatum = data[index]
-      const prevDatum = prevData[index]
-      const value = stockDatum?.stock || null
-      const previousValue = prevDatum?.stock || null
+  const allDatesInRange = selectedDatesInterval
+    ? getEachIntervalOfSelectedDates(selectedDatesInterval, granularity)
+    : [];
 
-      return {
-        title,
-        date: date,
-        formattedDate: formatDate(date, "dd/MM/yyyy"),
-        value,
-        previousDate: prevDatum?.date,
-        previousFormattedDate: prevDatum
-          ? formatDate(prevDatum.date, "dd/MM/yyyy")
-          : null,
-        previousValue:
-          selectedPeriod !== "no-comparison" ? previousValue : null,
-        evolution:
-          selectedPeriod !== "no-comparison" && value && previousValue
-            ? (value - previousValue) / previousValue
-            : undefined,
-      }
-    })
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  const chartData = allDatesInRange.map(date => {
+    const matchingDatum = filteredStockData.find(datum =>
+      format(new Date(datum.date), 'yyyy-MM-dd HH:mm') === format(date, 'yyyy-MM-dd HH:mm')
+    );
+    return {
+      date,
+      stock: matchingDatum ? matchingDatum.stock : null,
+      formattedDate: format(date, 'yyyy-MM-dd HH:mm'),
+    };
+  });
+
+  // AFTER USING STOCKDATA FROM THE CONTEXT IT NO LONGER WORKS, FIGURE OUT WHY THE DATA IS NOW BAD
 
   const categories =
-    selectedPeriod === "no-comparison" ? ["value"] : ["value", "previousValue"]
-  const value =
-    chartData?.reduce((acc, item) => acc + (item.value || 0), 0) || 0
-  const previousValue =
-    chartData?.reduce((acc, item) => acc + (item.previousValue || 0), 0) || 0
+    selectedPeriod === "no-comparison" ? ["stock"] : ["stock", "previousStock"];
+  
+  const value = chartData.length > 0 ? (chartData[chartData.length - 1].stock || 0) : 0;
+  const previousValue = chartData.length > 0 ? (chartData[0].stock || 0) : 0;
+
   const evolution =
-    selectedPeriod !== "no-comparison"
+    selectedPeriod !== "no-comparison" && previousValue !== 0
       ? (value - previousValue) / previousValue
-      : 0
-      
+      : 0;
+
   return (
     <div className={cx("transition")}>
       <div className="flex items-center justify-between gap-x-2">
@@ -129,7 +102,6 @@ export function StockChart({
           {selectedPeriod !== "no-comparison" && (
             <Badge variant={getBadgeType(evolution)}>
               {percentageFormatter(evolution)}
-              {console.log(stockData)}{console.log(data)}{console.log(chartData)}
             </Badge>
           )}
         </div>
@@ -144,22 +116,24 @@ export function StockChart({
           </dd>
         )}
       </div>
-      <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">{chartData[chartData.length -1]?.stock}</p>
+      <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
+        {chartData[chartData.length - 1]?.stock}
+      </p>
       <AreaChart
         className="mt-6 h-32"
-        noDataText='Select a product to view stock data'
+        noDataText="Select a product to view stock data"
         data={chartData || []}
         index="formattedDate"
         yAxisWidth={65}
         categories={categories}
-        colors={['tremor.bol', 'tremor.amazon']}
-        // startEndOnly={true}
+        colors={['blue', 'yellow']}
+        startEndOnly={true}
         minValue={0}
-        showYAxis={false}
+        showYAxis={true}
         showLegend={false}
         showTooltip={true}
         autoMinValue
-        // maxValue={500}
+        maxValue={500}
       />
     </div>
   );

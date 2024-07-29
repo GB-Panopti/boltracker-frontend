@@ -11,6 +11,7 @@ export type Usage = {
 }
 
 export type StockDatum = {
-  date: string
+  date: Date
+  id: number
   stock: number
 }

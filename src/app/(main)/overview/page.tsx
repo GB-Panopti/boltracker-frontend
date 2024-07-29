@@ -3,7 +3,6 @@ import { StockChart } from "@/components/StockChart"
 import { CategoryBarCard } from "@/components/ui/overview/DashboardCategoryBarCard"
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
 import { ProgressBarCard } from "@/components/ui/overview/DashboardProgressBarCard"
-import { overviews } from "@/data/overview-data"
 import { cx } from "@/lib/utils"
 import { subDays, toDate } from "date-fns"
 import React from "react"
@@ -20,7 +19,7 @@ const products: {
     id: 1004004006487384,
   },
   {
-    name: "Quixx",
+    name: "Qwixx",
     id: 9200000123933313,
   },
   {
@@ -200,6 +199,7 @@ export default function Overview() {
                 id={product.id}
                 selectedDates={selectedDates}
                 selectedPeriod={"last-year"}
+                granularity="hour"
               />
             )
           })}

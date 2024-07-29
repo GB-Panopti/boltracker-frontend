@@ -11,6 +11,7 @@ const inter = Inter({
 
 import { Sidebar } from "@/components/ui/navigation/sidebar"
 import { siteConfig } from "./siteConfig"
+import { StockDataProvider } from "./contexts/StockDataContext"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://panopti.nl"),
@@ -59,8 +60,10 @@ export default function RootLayout({
       >
         <div className="mx-auto max-w-screen-2xl">
           <ThemeProvider defaultTheme="system" attribute="class">
-            <Sidebar />
-            <main className="lg:pl-72">{children}</main>
+            <StockDataProvider>
+              <Sidebar />
+              <main className="lg:pl-72">{children}</main>
+            </StockDataProvider>
           </ThemeProvider>
         </div>
       </body>
