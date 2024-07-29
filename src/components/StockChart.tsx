@@ -11,12 +11,11 @@ import { PeriodValue } from "@/app/(main)/overview/page"
 import { DateRange } from "react-day-picker"
 import { interval, eachDayOfInterval, formatDate, isWithinInterval } from 'date-fns';
 import { getPeriod } from './ui/overview/DashboardFilterbar';
-import { overviews } from '@/data/overview-data';
 
 
 export type CardProps = {
   title: string
-  id: BigInteger
+  id: number
   selectedDates: DateRange | undefined
   selectedPeriod: PeriodValue
 }
@@ -87,8 +86,8 @@ export function StockChart({
     ?.map((date, index) => {
       const stockDatum = data[index]
       const prevDatum = prevData[index]
-      const value = stockDatum?.value || null
-      const previousValue = prevDatum?.value || null
+      const value = stockDatum?.stock || null
+      const previousValue = prevDatum?.stock || null
 
       return {
         title,
@@ -130,6 +129,7 @@ export function StockChart({
           {selectedPeriod !== "no-comparison" && (
             <Badge variant={getBadgeType(evolution)}>
               {percentageFormatter(evolution)}
+              {console.log(stockData)}{console.log(data)}{console.log(chartData)}
             </Badge>
           )}
         </div>
@@ -140,21 +140,20 @@ export function StockChart({
         </dd>
         {selectedPeriod !== "no-comparison" && (
           <dd className="text-sm text-gray-500">
-            from {formatter(previousValue)}
+            up from {formatter(previousValue)}
           </dd>
         )}
       </div>
-      <h2 className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">{title}</h2>
       <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">{chartData[chartData.length -1]?.stock}</p>
       <AreaChart
         className="mt-6 h-32"
         noDataText='Select a product to view stock data'
         data={chartData || []}
-        index="date"
+        index="formattedDate"
         yAxisWidth={65}
         categories={categories}
-        colors={['#aa88b5']}
-        startEndOnly={true}
+        colors={['tremor.bol', 'tremor.amazon']}
+        // startEndOnly={true}
         minValue={0}
         showYAxis={false}
         showLegend={false}

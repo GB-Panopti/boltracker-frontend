@@ -1,7 +1,6 @@
 "use client"
 import { StockChart } from "@/components/StockChart"
 import { CategoryBarCard } from "@/components/ui/overview/DashboardCategoryBarCard"
-import { ChartCard } from "@/components/ui/overview/DashboardChartCard"
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
 import { ProgressBarCard } from "@/components/ui/overview/DashboardProgressBarCard"
 import { overviews } from "@/data/overview-data"
@@ -14,31 +13,19 @@ export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
 const products: {
   name: string
-  id: string
+  id: number
 }[] = [
   {
-    name: "Carcasonne",
-    id: "unit",
+    name: "Carcassonne",
+    id: 1004004006487384,
   },
   {
-    name: "Alchemists",
-    id: "unit",
+    name: "Quixx",
+    id: 9200000123933313,
   },
   {
-    name: "Blabla",
-    id: "unit",
-  },
-  {
-    name: "Payments completed",
-    id: "currency",
-  },
-  {
-    name: "Sign ups",
-    id: "unit",
-  },
-  {
-    name: "Logins",
-    id: "unit",
+    name: "Schoenhoes",
+    id: 1004004006487390,
   },
 ]
 
@@ -52,7 +39,7 @@ export type KpiEntry = {
 
 const data: KpiEntry[] = [
   {
-    title: "Rows CHONGUS",
+    title: "Rows read",
     percentage: 48.1,
     current: 48.1,
     allowed: 100,
@@ -126,8 +113,13 @@ const data3: KpiEntryExtended[] = [
   },
 ]
 
-const overviewsDates = overviews.map((item) => toDate(item.date).getTime())
-const maxDate = toDate(Math.max(...overviewsDates))
+
+// const { stockData } = useStockData();
+// // Convert dates to timestamps to find the max date
+// const stockDates = stockData.map((datum) => new Date(datum.date).getTime());
+// const maxDate = stockDates.length ? new Date(Math.max(...stockDates)) : new Date();
+
+const maxDate = new Date()
 
 export default function Overview() {
   const [selectedDates, setSelectedDates] = React.useState<
@@ -190,7 +182,7 @@ export default function Overview() {
         <div className="sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white pb-4 pt-4 sm:pt-6 lg:top-0 lg:mx-0 lg:px-0 lg:pt-8 dark:border-gray-800 dark:bg-gray-950">
           <Filterbar
             maxDate={maxDate}
-            minDate={new Date(2024, 0, 1)}
+            minDate={new Date(2022, 0, 1)}
             selectedDates={selectedDates}
             onDatesChange={(dates) => setSelectedDates(dates)}
           />

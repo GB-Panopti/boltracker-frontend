@@ -12,5 +12,5 @@ export type Usage = {
 
 export type StockDatum = {
   date: string
-  value: number
+  stock: number
 }
