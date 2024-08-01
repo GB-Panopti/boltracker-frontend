@@ -1,5 +1,4 @@
 "use client"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,10 +16,15 @@ import {
 import {
   RiArrowRightUpLine,
   RiComputerLine,
+  RiLogoutBoxLine,
   RiMoonLine,
+  RiPaintBrushLine,
+  RiQuestionLine,
+  RiSettings2Line,
   RiSunLine,
 } from "@remixicon/react"
 import { useTheme } from "next-themes"
+import Link from "next/link"
 import * as React from "react"
 
 export type DropdownUserProfileProps = {
@@ -46,10 +50,15 @@ export function DropdownUserProfile({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align={align}>
-          <DropdownMenuLabel>emma.stone@acme.com</DropdownMenuLabel>
+          <DropdownMenuLabel>your.email@acme.com</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuSubMenu>
-              <DropdownMenuSubMenuTrigger>Theme</DropdownMenuSubMenuTrigger>
+              <DropdownMenuSubMenuTrigger>
+                <RiPaintBrushLine
+                  className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                  aria-hidden="true"/>
+                Theme
+                </DropdownMenuSubMenuTrigger>
               <DropdownMenuSubMenuContent>
                 <DropdownMenuRadioGroup
                   value={theme}
@@ -90,34 +99,39 @@ export function DropdownUserProfile({
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
+            
             <DropdownMenuItem>
-              Changelog
-              <RiArrowRightUpLine
-                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
-                aria-hidden="true"
-              />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Documentation
-              <RiArrowRightUpLine
-                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
-                aria-hidden="true"
-              />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              Join Slack community
-              <RiArrowRightUpLine
-                className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
-                aria-hidden="true"
-              />
+              <RiSettings2Line
+                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                aria-hidden="true"/>
+              Settings
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>Sign out</DropdownMenuItem>
+            <Link href="mailto:info@panopti.nl">
+              <DropdownMenuItem>
+                <RiQuestionLine
+                    className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                    aria-hidden="true"
+                  />
+                Get help
+                <RiArrowRightUpLine
+                  className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
+                  aria-hidden="true"
+                />
+              </DropdownMenuItem>
+            </Link>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <RiLogoutBoxLine
+                    className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                  aria-hidden="true"/>
+              Sign out
+              
+            </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -15,3 +15,9 @@ export type StockDatum = {
   id: number
   stock: number
 }
+
+export type Product = {
+  name: string
+  id: number
+  url: string
+}

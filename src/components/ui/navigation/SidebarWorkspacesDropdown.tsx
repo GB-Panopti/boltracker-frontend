@@ -13,6 +13,7 @@ import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
 import { ModalAddWorkspace } from "./ModalAddWorkspace"
+import { useProductData } from "@/app/contexts/StockDataContext"
 
 const workspaces = [
   {
@@ -22,17 +23,18 @@ const workspaces = [
     role: "?? tracked",
     color: "bg-tremor-bol dark:bg-tremor-bol",
   },
-  {
-    value: "amzn-analytics",
-    name: "Amazon analytics",
-    initials: "AZN",
-    role: "?? tracked",
-    color: "bg-tremor-amazon dark:bg-tremor-amazon",
-  },
-  // Add more workspaces...
+  // {
+  //   value: "amzn-analytics",
+  //   name: "Amazon analytics",
+  //   initials: "AZN",
+  //   role: "?? tracked",
+  //   color: "bg-tremor-amazon dark:bg-tremor-amazon",
+  // },
+  // // Add more workspaces...
 ]
 
 export const WorkspacesDropdownDesktop = () => {
+  const { products } = useProductData()
   const [dropdownOpen, setDropdownOpen] = React.useState(false)
   const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
@@ -64,7 +66,7 @@ export const WorkspacesDropdownDesktop = () => {
             )}
           >
             <span
-              className="flex aspect-square size-8 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500"
+              className="flex aspect-square size-8 items-center justify-center rounded bg-tremor-bol dark:bg-tremor-bol p-2 text-xs font-medium text-white dark:bg-indigo-500"
               aria-hidden="true"
             >
               BOL
@@ -75,7 +77,7 @@ export const WorkspacesDropdownDesktop = () => {
                   Panopti Bol.com
                 </p>
                 <p className="whitespace-nowrap text-left text-xs text-gray-700 dark:text-gray-300">
-                  ?? products tracked
+                  {products.length} products tracked
                 </p>
               </div>
               <RiExpandUpDownLine
@@ -127,7 +129,7 @@ export const WorkspacesDropdownDesktop = () => {
           <ModalAddWorkspace
             onSelect={handleDialogItemSelect}
             onOpenChange={handleDialogItemOpenChange}
-            itemName="Add workspace"
+            itemName="Track new product"
           />
         </DropdownMenuContent>
       </DropdownMenu>

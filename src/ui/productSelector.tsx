@@ -10,6 +10,7 @@ import { SelectedItemContext } from '../app/contexts/SelectedItemContext';
 import StockService from '@/services/StockService';
 import { RiLinkM } from '@remixicon/react';
 import { Badge } from "@/components/Badge";
+import { useProductData } from '@/app/contexts/StockDataContext';
 
 // const howProductsShouldBeDefined = [
 //   {
@@ -49,28 +50,8 @@ interface Stock {
 }
 
 const ProductSelector = () => {
-  const [products, setProducts] = useState<Product[]>([]);
   const pathname = usePathname()
-
-  const [selectedItem, setSelectedItem] = useContext(SelectedItemContext);
-
-  useEffect(() => {
-    ProductService.getProducts().then((response) => {
-      setProducts(response.data);
-    }).catch(function (error) {
-        // Error handling
-    });    
-  
-      // StockService.getAllUserStocks().then((response) => {
-      //     response.data.forEach((stock) => {
-      //       // Handle stock data
-      //     })
-      // });  
-  }, [selectedItem]);
-  
-  // function handleProductClick(product: Product) {
-  //   setSelectedItem((selectedItem: Stock) => ({...selectedItem, id: product.id, name: product.name}));
-  // }
+  const { products } = useProductData();
 
     return (
             <ul aria-label="shortcuts" role="list" className="space-y-0.5">
@@ -82,17 +63,14 @@ const ProductSelector = () => {
                     pathname === product.name || pathname.startsWith(product.name)
                       ? "text-indigo-600 dark:text-indigo-400"
                       : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                    "flex products-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                    "products-center gap-x-2.5 rounded-md px-2 py-1.5 text-xs font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                    "mr-3",
                     focusRing,
-                  )}
-                >
-                  {/* <product.icon
-                    className="size-4 shrink-0"
-                    aria-hidden="true"
-                  /> */}
+                  )}>
                   {product.name}
-                  
-                  <Badge variant='default'>?? in stock</Badge>
+                  <div className='float-right ml-3 mr-2'>
+                    <Badge variant='neutral' className='text-xs'>-??% last week</Badge>
+                  </div>
                 </Link>
               </li>
             ))}

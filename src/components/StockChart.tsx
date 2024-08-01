@@ -46,8 +46,9 @@ export function StockChart({
   id,
   selectedDates,
   selectedPeriod,
-  granularity = 'hour', // Default to day
+  granularity = 'hour',
 }: CardProps) {
+
   const { stockData } = useStockData(); // Access stockData from the context
   
 
@@ -64,20 +65,11 @@ export function StockChart({
       ).filter((datum) => datum.id === id)
     : stockData;
 
-  const allDatesInRange = selectedDatesInterval
-    ? getEachIntervalOfSelectedDates(selectedDatesInterval, granularity)
-    : [];
-
-  const chartData = allDatesInRange.map(date => {
-    const matchingDatum = filteredStockData.find(datum =>
-      format(new Date(datum.date), 'yyyy-MM-dd HH:mm') === format(date, 'yyyy-MM-dd HH:mm')
-    );
-    return {
-      date,
-      stock: matchingDatum ? matchingDatum.stock : null,
-      formattedDate: format(date, 'yyyy-MM-dd HH:mm'),
-    };
-  });
+  const chartData = filteredStockData.map((datum) => ({
+    date: new Date(datum.date),
+    stock: datum.stock,
+    formattedDate: format(new Date(datum.date), 'yyyy-MM-dd HH:mm'),
+  }));
 
   const categories =
     selectedPeriod === "no-comparison" ? ["stock"] : ["stock", "previousStock"];
@@ -110,16 +102,13 @@ export function StockChart({
         </dd>
         {selectedPeriod !== "no-comparison" && (
           <dd className="text-sm text-gray-500">
-            up from {formatter(previousValue)}
+            {value > previousValue ? 'up' : 'down'} from {formatter(previousValue)}
           </dd>
         )}
       </div>
-      <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
-        {chartData[chartData.length - 1]?.stock}
-      </p>
       <AreaChart
         className="mt-6 h-32"
-        noDataText="Select a product to view stock data"
+        noDataText="No data, is product still for sale?"
         data={chartData || []}
         index="formattedDate"
         yAxisWidth={65}

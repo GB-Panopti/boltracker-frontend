@@ -11,7 +11,7 @@ const inter = Inter({
 
 import { Sidebar } from "@/components/ui/navigation/sidebar"
 import { siteConfig } from "./siteConfig"
-import { StockDataProvider } from "./contexts/StockDataContext"
+import { AppProvider, StockDataProvider } from "./contexts/StockDataContext"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://panopti.nl"),
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Marijn Craenen",
-      url: "",
+      url: "info@panopti.nl",
     },
     {
       name: "Gregor Figueira Comojo",
-      url: "",
+      url: "info@panopti.nl",
     },
   ],
   creator: "Marijn Craenen",
@@ -60,10 +60,10 @@ export default function RootLayout({
       >
         <div className="mx-auto max-w-screen-2xl">
           <ThemeProvider defaultTheme="system" attribute="class">
-            <StockDataProvider>
+            <AppProvider>
               <Sidebar />
               <main className="lg:pl-72">{children}</main>
-            </StockDataProvider>
+            </AppProvider>
           </ThemeProvider>
         </div>
       </body>
