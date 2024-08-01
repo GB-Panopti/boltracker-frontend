@@ -14,6 +14,8 @@ import { DropdownMenuItem } from "@/components/Dropdown";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { RiRadarLine } from "@remixicon/react";
+import ProductService from "@/services/ProductService";
+import { Product } from "@/data/schema";
 
 export type ModalProps = {
   itemName: string;
@@ -21,7 +23,7 @@ export type ModalProps = {
   onOpenChange: (open: boolean) => void;
 };
 
-export function ModalAddWorkspace({
+export function ModalAddProduct({
   itemName,
   onSelect,
   onOpenChange,
@@ -29,11 +31,21 @@ export function ModalAddWorkspace({
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
 
-  function handleProductAdd(event: React.FormEvent<HTMLFormElement>) {
+  async function handleProductAdd(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("Product added", name, url);
-    onOpenChange(false);
+    try {
+      const product: Product = { name, url};
+      const response = await ProductService.addProduct(product);
+  
+      // Handle success (you mentioned "blabla do something with response here")
+      console.log('Product added successfully:', response.data);
+      onOpenChange(false);
+    } catch (error) {
+      console.error('Failed to add product:', error);
+      // show a user-friendly error message here
+    }
   }
+  
 
   return (
     <>
@@ -54,7 +66,7 @@ export function ModalAddWorkspace({
               <DialogTitle>
                 <RiRadarLine
                   aria-hidden="true"
-                  className="mb-1 ml-1 mr-1 size-6 shrink-0 inline-block text-gray-800"
+                  className="mb-1 ml-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
                 />
                 Track new product
               </DialogTitle>
@@ -69,6 +81,7 @@ export function ModalAddWorkspace({
                   <Input
                     id="product-name"
                     name="product-name"
+                    value={name}
                     placeholder="Turtles, Termites, Traffic Jams"
                     className="mt-2"
                     onChange={(event) => setName(event.target.value)}
@@ -81,6 +94,7 @@ export function ModalAddWorkspace({
                   <Input
                     id="product-url"
                     name="product-url"
+                    value={url}
                     placeholder="https://www.bol.com/nl/nl/f/turtles-termites-traffic-jams-explorations-in-massively-parallel-microworlds/38232707/"
                     className="mt-2"
                     onChange={(event) => setUrl(event.target.value)}
@@ -97,11 +111,9 @@ export function ModalAddWorkspace({
                   Go back
                 </Button>
               </DialogClose>
-              <DialogClose asChild>
-                <Button type="submit" className="w-full sm:w-fit">
-                  Add product
-                </Button>
-              </DialogClose>
+              <Button type="submit" className="w-full sm:w-fit">
+                Add product
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>

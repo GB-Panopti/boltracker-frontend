@@ -11,7 +11,7 @@ const inter = Inter({
 
 import { Sidebar } from "@/components/ui/navigation/sidebar"
 import { siteConfig } from "./siteConfig"
-import { AppProvider, StockDataProvider } from "./contexts/StockDataContext"
+import { AppProvider } from "./contexts/StockDataContext"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://panopti.nl"),

@@ -121,7 +121,9 @@ export function StockChart({
         showTooltip={true}
         autoMinValue
         maxValue={500}
-      />
+      >
+        {/*figure out how to add scatter points and stuff by checking the rechart docs*/}
+      </AreaChart>
     </div>
   );
 }

@@ -12,7 +12,7 @@ import {
 import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
-import { ModalAddWorkspace } from "./ModalAddWorkspace"
+import { ModalAddProduct } from "./ModalAddProduct"
 import { useProductData } from "@/app/contexts/StockDataContext"
 
 const workspaces = [
@@ -126,7 +126,7 @@ export const WorkspacesDropdownDesktop = () => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <ModalAddWorkspace
+          <ModalAddProduct
             onSelect={handleDialogItemSelect}
             onOpenChange={handleDialogItemOpenChange}
             itemName="Track new product"
@@ -226,7 +226,7 @@ export const WorkspacesDropdownMobile = () => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <ModalAddWorkspace
+          <ModalAddProduct
             onSelect={handleDialogItemSelect}
             onOpenChange={handleDialogItemOpenChange}
             itemName="Add workspace"

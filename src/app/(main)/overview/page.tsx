@@ -1,11 +1,9 @@
 "use client"
 import { useProductData } from "@/app/contexts/StockDataContext"
 import { StockChart } from "@/components/StockChart"
-import { CategoryBarCard } from "@/components/ui/overview/DashboardCategoryBarCard"
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
-import { ProgressBarCard } from "@/components/ui/overview/DashboardProgressBarCard"
 import { cx } from "@/lib/utils"
-import { subDays, toDate } from "date-fns"
+import { subDays } from "date-fns"
 import React from "react"
 import { DateRange } from "react-day-picker"
 
