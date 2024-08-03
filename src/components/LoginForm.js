@@ -1,6 +1,8 @@
 import LoginService from '@/services/LoginService';
 import { Button, Card, TextInput, Divider } from '@tremor/react';
 import React from 'react';
+import { Input } from "@/components/Input";
+import { Label } from "@/components/Label";
 
 const GoogleIcon = (props) => (
   <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -16,14 +18,14 @@ export default function LoginForm() {
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h3 className="text-center text-tremor-title font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
+                <h3 className="text-center text-gb-title font-semibold text-gb-primary-400 dark:text-gb-primary-300">
                 Log in or create account
                 </h3>
                 <form action="#" method="post"  onSubmit={handleLogin} className="mt-6 space-y-4">
                 <div>
                     <label
                     htmlFor="email"
-                    className="text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong"
+                    className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
                     >
                     Email
                     </label>
@@ -33,14 +35,14 @@ export default function LoginForm() {
                     name="email"
                     autoComplete="email"
                     placeholder="john@company.com"
-                    className="mt-2"
+                    className="mt-2 rounded-md"
                     onValueChange={(value) => setUsername(value)}
                     />
                 </div>
                 <div>
                     <label
                     htmlFor="password"
-                    className="text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong"
+                    className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
                     >
                     Password
                     </label>
@@ -50,13 +52,13 @@ export default function LoginForm() {
                     name="password"
                     autoComplete="password"
                     placeholder="password"
-                    className="mt-2"
+                    className="mt-2 rounded-md"
                     onValueChange={(value) => setPassword(value)}
                     />
                 </div>
                 <button
                     type="submit"
-                    className="mt-4 w-full whitespace-nowrap rounded-tremor-default bg-tremor-brand py-2 text-center text-tremor-default font-medium text-tremor-brand-inverted shadow-tremor-input hover:bg-tremor-brand-emphasis dark:bg-dark-tremor-brand dark:text-dark-tremor-brand-inverted dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-brand-emphasis"
+                    className="mt-4 w-full whitespace-nowrap rounded-gb-default py-2 text-center text-gb-default font-medium text-gb-primary-100 rounded-sm hover:text-gb-secondary-100 shadow-gb-input bg-gb-primary hover:bg-gb-secondary-600 dark:hover:bg-gb-secondary-700 dark:bg-gb-primary dark:text-gb-primary-100 dark:hover:text-gb-secondary-100"
                 >
                     Sign in
                 </button>
@@ -64,14 +66,14 @@ export default function LoginForm() {
                 {/* <Divider>or with</Divider>
                 <a
                 href="#"
-                className="flex w-full items-center justify-center space-x-2 rounded-tremor-default border border-tremor-border bg-tremor-background py-2 text-tremor-content-strong shadow-tremor-input hover:bg-tremor-background-subtle dark:border-dark-tremor-border dark:bg-dark-tremor-background dark:text-dark-tremor-content-strong dark:shadow-dark-tremor-input dark:hover:bg-dark-tremor-background-subtle"
+                className="flex w-full items-center justify-center space-x-2 rounded-gb-default border border-gb-border bg-gb-background py-2 text-gb-content-strong shadow-gb-input hover:bg-gb-background-subtle dark:border-dark-gb-border dark:bg-dark-gb-background dark:text-gray-300" dark:shadow-dark-gb-input dark:hover:bg-dark-gb-background-subtle"
                 >
                 <GoogleIcon className="size-5" aria-hidden={true} />
-                <span className="text-tremor-default font-medium">
+                <span className="text-gb-default font-medium">
                     Sign in with Google
                 </span>
                 </a> */}
-                <p className="mt-4 text-tremor-label text-tremor-content dark:text-dark-tremor-content">
+                <p className="mt-4 text-gb-label text-gb-content dark:text-dark-gb-content">
                 By signing in, you agree to our{' '}
                 <a href="#" className="underline underline-offset-4">
                     terms of service
@@ -89,7 +91,7 @@ export default function LoginForm() {
     // return (
     //     <Card className="mx-auto max-w-md my-auto top-[50%] rounded-md border-0">
     //         <form method="GET" onSubmit={handleLogin}>
-    //             <h1 className='text-tremor-brand-faint'> Login </h1>
+    //             <h1 className='text-gb-brand-faint'> Login </h1>
     //             <TextInput placeholder='Username' label="Username" onValueChange={(value) => setUsername(value)} className='rounded-md my-5' />
     //             <TextInput placeholder='Password' label="Password" onValueChange={(value) => setPassword(value)} type="password" className='rounded-md my-5' />
     //             <Button type='submit' className=''>Login</Button>

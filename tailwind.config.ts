@@ -1,23 +1,6 @@
 import type { Config } from "tailwindcss"
 import colors from "tailwindcss/colors"
 
-const gillBatesHouseStyle = {
-  dark_green: { DEFAULT: '#16302b', 100: '#040a09', 200: '#091411', 300: '#0d1d1a', 400: '#122723', 500: '#16302b', 600: '#326d61', 700: '#4ea997', 800: '#87c8bb', 900: '#c3e3dd' }, 
-  english_violet: { DEFAULT: '#694873', 100: '#150f17', 200: '#2a1d2e', 300: '#402c46', 400: '#553a5d', 500: '#694873', 600: '#8e619c', 700: '#aa88b5', 800: '#c7b0ce', 900: '#e3d7e6' }, 
-  periwinkle: { DEFAULT: '#dcd6f7', 100: '#1a0f4d', 200: '#351e99', 300: '#583bd8', 400: '#9988e7', 500: '#dcd6f7', 600: '#e2ddf8', 700: '#e9e5fa', 800: '#f0eefc', 900: '#f8f6fd' }, 
-  cambridge_blue: { DEFAULT: '#85b79d', 100: '#17281f', 200: '#2f503f', 300: '#46785e', 400: '#5e9f7d', 500: '#85b79d', 600: '#9dc6b1', 700: '#b6d4c4', 800: '#cee2d8', 900: '#e7f1eb' }, 
-  dark_cyan: { DEFAULT: '#119da4', 100: '#031f20', 200: '#073e41', 300: '#0a5d61', 400: '#0e7b81', 500: '#119da4', 600: '#17d4de', 700: '#4be4ec', 800: '#87edf2', 900: '#c3f6f9' }, 
-};
-const hsPrimary = gillBatesHouseStyle.dark_green;
-const hsPrimaryLite = gillBatesHouseStyle.cambridge_blue;
-const hsSecondary = gillBatesHouseStyle.english_violet;
-const hsSecondaryLite = gillBatesHouseStyle.periwinkle;
-const hsAccent = gillBatesHouseStyle.dark_cyan;
-
-// a new color based on bol-hs: '#0300a4',
-const boldotcomblue = '#0300a4';
-const amazonyellow = '#ff9913';
-
 const config: Config = {
   darkMode: "selector",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -26,46 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // hs: gillBatesHouseStyle,
         // light mode
         gb: {
-          bol: {
-            DEFAULT: boldotcomblue,
-          },
-          amazon: {
-            DEFAULT: amazonyellow,
-          },
-          brand: {
-            faint: hsPrimary[100],
-            muted: hsPrimary[200],
-            subtle: hsPrimary[400],
-            DEFAULT: hsPrimary[500],
-            emphasis: hsPrimary[700],
-            inverted: colors.white,
-          },
-          brandvariant: {
-            faint: hsPrimaryLite[100],
-            muted: hsPrimaryLite[200],
-            subtle: hsPrimaryLite[400],
-            DEFAULT: hsPrimaryLite[500],
-            emphasis: hsPrimaryLite[700],
-            inverted: colors.white,
-          },
-          secondary: {
-            faint: hsSecondary[100],
-            muted: hsSecondary[200],
-            subtle: hsSecondary[400],
-            DEFAULT: hsSecondary[500],
-            emphasis: hsSecondary[700],
-            inverted: colors.white,
-          },
-          secondaryvariant: {
-            faint: hsSecondaryLite[100],
-            muted: hsSecondaryLite[200],
-            subtle: hsSecondaryLite[400],
-            DEFAULT: hsSecondaryLite[500],
-            emphasis: hsSecondaryLite[700],
-            inverted: colors.white,
+          primary: // 'dark green'
+            { DEFAULT: '#16302b', 900: '#040a09', 800: '#091411', 700: '#0d1d1a', 600: '#122723', 500: '#16302b', 400: '#326d61', 300: '#4ea997', 200: '#87c8bb', 100: '#c3e3dd', 50: '#c3e3dd' }, 
+          primarylite: // 'cambridge blue'
+            { DEFAULT: '#85b79d', 900: '#17281f', 800: '#2f503f', 700: '#46785e', 600: '#5e9f7d', 500: '#85b79d', 400: '#9dc6b1', 300: '#b6d4c4', 200: '#cee2d8', 100: '#e7f1eb', 50: '#e7f1eb' }, 
+          secondary: // 'english violet'
+            { DEFAULT: '#694873', 900: '#150f17', 800: '#2a1d2e', 700: '#402c46', 600: '#553a5d', 500: '#694873', 400: '#8e619c', 300: '#aa88b5', 200: '#c7b0ce', 100: '#e3d7e6', 50: '#e3d7e6' }, 
+          secondarylite: // 'periwinkle'
+            { DEFAULT: '#dcd6f7', 900: '#1a0f4d', 800: '#351e99', 700: '#583bd8', 600: '#9988e7', 500: '#dcd6f7', 400: '#e2ddf8', 300: '#e9e5fa', 200: '#f0eefc', 100: '#f8f6fd', 50: '#f8f6fd' }, 
+          accent: // 'dark cyan'
+            { DEFAULT: '#119da4', 900: '#031f20', 800: '#073e41', 700: '#0a5d61', 600: '#0e7b81', 500: '#119da4', 400: '#17d4de', 300: '#4be4ec', 200: '#87edf2', 100: '#c3f6f9', 50: '#c3f6f9' }, 
+          brands: {
+            bol: '#0300a4',
+            amazon: '#ff9913',
           },
           background: {
             muted: colors.gray[50],
@@ -74,10 +32,10 @@ const config: Config = {
             emphasis: colors.gray[700],
           },
           border: {
-            DEFAULT: hsSecondary[200],
+            DEFAULT: '#2a1d2e', // = gb.secondary[200]
           },
           ring: {
-            DEFAULT: hsSecondary[200],
+            DEFAULT: '#2a1d2e', // = gb.secondary[200]
           },
           content: {
             subtle: colors.gray[400],

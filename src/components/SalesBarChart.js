@@ -80,8 +80,8 @@ export default function SalesBarChart() {
 
   return (
     <Card className="custom-card">
-      <h2 className="text-tremor-default text-tremor-content dark:text-dark-tremor-content">{selectedItem.name}</h2>
-      <p className="text-tremor-metric text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">{data[data.length -1]?.stock}</p>
+      <h2 className="text-gb-default text-gb-content dark:text-dark-gb-content">{selectedItem.name}</h2>
+      <p className="text-gb-metric text-gb-content-strong dark:text-dark-gb-content-strong font-semibold">{data[data.length -1]?.stock}</p>
       <BarChart
         className="h-[90%] px-8"
         noDataText='Select a product to view stock data'

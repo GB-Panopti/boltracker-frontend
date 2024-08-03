@@ -78,13 +78,13 @@ export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 //     title: "Base tier",
 //     percentage: 68.1,
 //     value: "$200",
-//     color: "bg-indigo-600 dark:bg-indigo-500",
+//     color: "bg-gb-secondary-600 dark:bg-gb-secondary-500",
 //   },
 //   {
 //     title: "On-demand charges",
 //     percentage: 20.8,
 //     value: "$61.1",
-//     color: "bg-purple-600 dark:bg-indigo-500",
+//     color: "bg-purple-600 dark:bg-gb-secondary-500",
 //   },
 //   {
 //     title: "Caching",

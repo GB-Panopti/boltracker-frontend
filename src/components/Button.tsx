@@ -24,12 +24,12 @@ const buttonVariants = tv({
         // text color
         "text-white dark:text-gray-50",
         // background color
-        "bg-indigo-600 dark:bg-indigo-500",
+        "bg-gb-secondary-600 dark:bg-gb-secondary-500",
         // hover color
-        "hover:bg-indigo-500 dark:hover:bg-indigo-600",
+        "hover:bg-gb-secondary-500 dark:hover:bg-gb-secondary-600",
         // disabled
-        "disabled:bg-indigo-100 disabled:text-gray-400",
-        "disabled:dark:bg-indigo-800 disabled:dark:text-indigo-400",
+        "disabled:bg-gb-secondary-100 disabled:text-gray-400",
+        "disabled:dark:bg-gb-secondary-800 disabled:dark:text-gb-secondary-400",
       ],
       secondary: [
         // border

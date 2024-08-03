@@ -21,14 +21,14 @@ const workspaces = [
     name: "Bol.com analytics",
     initials: "BOL",
     role: "",
-    color: "bg-tremor-bol dark:bg-tremor-bol",
+    color: "bg-gb-brands-bol dark:bg-gb-brands-bol",
   },
   // {
   //   value: "amzn-analytics",
   //   name: "Amazon analytics",
   //   initials: "AZN",
   //   role: "?? tracked",
-  //   color: "bg-tremor-amazon dark:bg-tremor-amazon",
+  //   color: "bg-gb-amazon dark:bg-gb-amazon",
   // },
   // // Add more workspaces...
 ]
@@ -61,22 +61,22 @@ export const WorkspacesDropdownDesktop = () => {
         <DropdownMenuTrigger asChild>
           <button
             className={cx(
-              "flex w-full items-center gap-x-2.5 rounded-md border border-gray-300 bg-white p-2 text-sm shadow-sm transition-all hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-950 hover:dark:bg-gray-900",
+              "flex w-full items-center gap-x-2.5 rounded-md bg-gb-secondary-600 p-2 text-sm shadow-sm transition-all hover:bg-gb-secondary-800 dark:border-gray-800  hover:dark:bg-gray-900",
               focusInput,
             )}
           >
             <span
-              className="flex aspect-square size-8 items-center justify-center rounded bg-tremor-bol dark:bg-tremor-bol p-2 text-xs font-medium text-white dark:bg-indigo-500"
+              className="flex aspect-square size-8 items-center justify-center rounded bg-gb-brands-bol dark:bg-gb-brands-bol p-2 text-xs font-medium text-white "
               aria-hidden="true"
             >
               BOL
             </span>
             <div className="flex w-full items-center justify-between gap-x-4 truncate">
               <div className="truncate">
-                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                  Panopti Bol.com
+                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-200 dark:text-gray-50">
+                  PANOPTI Bol.com
                 </p>
-                <p className="whitespace-nowrap text-left text-xs text-gray-700 dark:text-gray-300">
+                <p className="whitespace-nowrap text-left text-xs text-gray-300 dark:text-gray-300">
                   {products.length} products tracked
                 </p>
               </div>
@@ -125,12 +125,12 @@ export const WorkspacesDropdownDesktop = () => {
               </DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
-          <DropdownMenuSeparator />
+          {/* <DropdownMenuSeparator />
           <ModalAddProduct
             onSelect={handleDialogItemSelect}
             onOpenChange={handleDialogItemOpenChange}
             itemName="Track new product"
-          />
+          /> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </>
@@ -165,7 +165,7 @@ export const WorkspacesDropdownMobile = () => {
           <button className="flex items-center gap-x-1.5 rounded-md p-2 hover:bg-gray-100 focus:outline-none hover:dark:bg-gray-900">
             <span
               className={cx(
-                "flex aspect-square size-7 items-center justify-center rounded bg-indigo-600 p-2 text-xs font-medium text-white dark:bg-indigo-500",
+                "flex aspect-square size-7 items-center justify-center rounded bg-gb-secondary p-2 text-xs font-medium text-white dark:bg-gb-secondary-500",
               )}
               aria-hidden="true"
             >

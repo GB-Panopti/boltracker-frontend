@@ -29,20 +29,20 @@ const Header = () => {
     }
 
     return (
-        <Card className='h-full m-0 rounded-none ring-none bg-tremor-brand-subtle'>
+        <Card className='h-full m-0 rounded-none ring-none bg-gb-brand-subtle'>
             <div className="flex items-center justify-between ">
                 <div className="float-left">
-                    <Button className="rounded-sm bg-tremor-secondary-emphasis" icon={RiHomeSmileFill} iconPosition="left" size="lg" variant="primary">Panopti</Button>
+                    <Button className="rounded-sm bg-gb-secondary-emphasis" icon={RiHomeSmileFill} iconPosition="left" size="lg" variant="primary">Panopti</Button>
                 </div>
 
                 <div className="float-center flex">
-                    <TextInput className="text-tremor-brand-subtle rounded-sm" onValueChange={(value) => setName(value)} placeholder="Product naam" />
-                    <TextInput className="text-tremor-brand-subtle rounded-sm" onValueChange={(value) => setUrl(value)} placeholder="Product url" />
-                    <Button onClick={addProduct} className="float-right text-tremor-brand-subtle bg-tremor-secondary-emphasis rounded-sm" icon={RiAddLine}/>
+                    <TextInput className="text-gb-brand-subtle rounded-sm" onValueChange={(value) => setName(value)} placeholder="Product naam" />
+                    <TextInput className="text-gb-brand-subtle rounded-sm" onValueChange={(value) => setUrl(value)} placeholder="Product url" />
+                    <Button onClick={addProduct} className="float-right text-gb-brand-subtle bg-gb-secondary-emphasis rounded-sm" icon={RiAddLine}/>
                 </div>
 
                 <div className="float-right pr-3">
-                    <Button onClick={handleLogout} className="text-tremor-secondary-emphasis" size="lg" variant="light">Logout</Button>
+                    <Button onClick={handleLogout} className="text-gb-secondary-emphasis" size="lg" variant="light">Logout</Button>
                 </div>
             </div>
         </Card>

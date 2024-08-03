@@ -54,16 +54,16 @@ const ProductSelector = () => {
   const { products } = useProductData();
 
     return (
-            <ul aria-label="shortcuts" role="list" className="space-y-0.5">
+            <ul aria-label="shortcuts" role="list" className="space-y-0.5 border-l-2 border-gray-300 dark:border-gb-primary-400">
             {products.map((product) => (
-              <li key={product.name}>
+              <li key={product.name} className='ml-1 p-1 rounded-md hover:bg-gray-100 hover:dark:bg-gb-primary-900 text-gb-primarylite-50 hover:text-gray-900 dark:text-gb-primarylite-100 hover:dark:text-gray-50'>
                 <Link
                   href='#'
                   className={cx(
                     pathname === product.name || pathname.startsWith(product.name)
-                      ? "text-indigo-600 dark:text-indigo-400"
-                      : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                    "products-center gap-x-2.5 rounded-md px-2 py-1.5 text-xs font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
+                      ? "text-gb-secondary-600 dark:text-gb-secondary-400"
+                      : "",
+                    "products-center gap-x-2.5 px-2 py-1.5 text-xs font-medium transition ",
                     "mr-3",
                     focusRing,
                   )}>

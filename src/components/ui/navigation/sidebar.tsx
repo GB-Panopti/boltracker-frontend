@@ -8,6 +8,7 @@ import {
   RiSettings5Line,
   RiFocus3Line,
   RiRadarLine,
+  RiBox1Line,
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -78,23 +79,24 @@ export function Sidebar() {
     <>
       {/* sidebar (lg+) */}
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-        <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-gray-950">
+        <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-gb-primary p-4  dark:border-gray-800 dark:bg-gb-primary-800">
           <WorkspacesDropdownDesktop />
           <nav
             aria-label="core navigation links"
             className="flex flex-1 flex-col space-y-10"
           >
-            <ul role="list" className="space-y-0.5">
+            <ul role="list" className="space-y-0.5 ">
               <li key="Overview">
                 <Link
                   href={siteConfig.baseLinks.overview}
                   className={cx(
-                    "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-200 hover:dark:bg-gray-900 text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                    isActive(siteConfig.baseLinks.overview) ? "text-indigo-600 dark:text-indigo-400" : "",
+                    "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:bg-gray-200 hover:dark:bg-gray-900 text-gb-primarylite-50 hover:text-gray-900 dark:text-gb-primarylite-300 hover:dark:text-gray-50",
+                    // below commented out cuz it's nice if you have multiple nav options but with only Overview it just looks goofy bro
+                    // isActive(siteConfig.baseLinks.overview) ? "text-gb-secondary-600 dark:text-gb-secondary-400" : "", 
                     focusRing,
                   )}
                 >
-                  <RiHome2Line className="size-4 shrink-0" aria-hidden="true" />
+                  <RiHome2Line className="size-5 shrink-0" aria-hidden="true" />
                   <span>Overview</span>
                 </Link>
               </li>
@@ -103,13 +105,13 @@ export function Sidebar() {
                   <Link
                     href="#"
                     className={cx(
-                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:dark:bg-gray-900 bg-emerald-500 text-emerald-50 ring-emerald-600/30 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-emerald-400/20 hover:bg-emerald-600 ",
-                      isActive(siteConfig.baseLinks.trackNew) ? "text-indigo-600 dark:text-indigo-400" : "",
+                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:dark:bg-gray-900 bg-gb-primarylite-600 text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:bg-gb-primarylite-400/20 dark:text-gb-primarylite-400 dark:ring-gb-primarylite-400/20 hover:bg-gb-primarylite-500 ",
+                      // isActive(siteConfig.baseLinks.trackNew) ? "text-gb-secondary-600 dark:text-gb-secondary-400" : "",
                       
                       focusRing,
                     )}
                   >
-                    <RiRadarLine className="size-4 shrink-0" aria-hidden="true" />
+                    <RiRadarLine className="size-5 shrink-0" aria-hidden="true" />
                     <ModalAddProduct
                       onSelect={handleDialogItemSelect}
                       onOpenChange={handleDialogItemOpenChange}
@@ -119,9 +121,16 @@ export function Sidebar() {
                 </li>
             </ul>
             <div>
-              <span className="text-xs font-medium leading-6 text-gray-500">
-                Products
-              </span>
+              <div
+                    className={cx(
+                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium text-gb-primarylite-50 ring-gb-primarylite-600/30  dark:text-gb-primarylite-300 dark:ring-gb-primarylite-400/20 ",
+                      // isActive(siteConfig.baseLinks.trackNew) ? "text-gb-secondary-600 dark:text-gb-secondary-400" : "",
+                      focusRing,
+                    )}
+                  >
+                    <RiBox1Line className="size-5 shrink-0" aria-hidden="true" />
+                    Products
+                  </div>
               <ProductSelector />
             </div>
           </nav>

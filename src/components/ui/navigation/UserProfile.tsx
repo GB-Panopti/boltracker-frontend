@@ -12,10 +12,10 @@ export const UserProfileDesktop = () => {
     <DropdownUserProfile>
       <Button
         aria-label="User settings"
-        variant="ghost"
+        variant="primary"
         className={cx(
           focusRing,
-          "group flex w-full items-center justify-between rounded-md p-2 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
+          "group flex w-full items-center justify-between rounded-md p-2 text-sm font-medium text-gray-200 hover:bg-gb-secondary-800 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
         )}
       >
         <span className="flex items-center gap-3">
@@ -28,7 +28,7 @@ export const UserProfileDesktop = () => {
           <span>Your account</span>
         </span>
         <RiMore2Fill
-          className="size-4 shrink-0 text-gray-500 group-hover:text-gray-700 group-hover:dark:text-gray-400"
+          className="size-4 shrink-0 text-gray-200 group-hover:text-gray-200 group-hover:dark:text-gray-400"
           aria-hidden="true"
         />
       </Button>
