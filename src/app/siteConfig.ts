@@ -7,6 +7,7 @@ export const siteConfig = {
     overview: "/overview",
     trackNew: "/trackNew",
     settings: "/settings",
+    details: "/details",
   },
 }
 

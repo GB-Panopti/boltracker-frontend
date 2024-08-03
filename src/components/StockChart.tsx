@@ -6,7 +6,8 @@ import { useStockData } from '@/app/contexts/StockDataContext';
 import { cx, formatters, percentageFormatter } from '@/lib/utils';
 import { PeriodValue } from "@/app/(main)/overview/page";
 import { DateRange } from "react-day-picker";
-import { eachHourOfInterval, eachDayOfInterval, eachMinuteOfInterval, format, isWithinInterval, add, Interval } from 'date-fns';
+import { eachHourOfInterval, eachDayOfInterval, eachMinuteOfInterval, format, isWithinInterval, Interval } from 'date-fns';
+import { CartesianGrid, XAxis, YAxis, Tooltip, Area } from 'recharts';
 
 export type CardProps = {
   title: string;
@@ -111,19 +112,98 @@ export function StockChart({
         noDataText="No data, is product still for sale?"
         data={chartData || []}
         index="formattedDate"
-        yAxisWidth={65}
+        yAxisWidth={45}
         categories={categories}
-        colors={['blue', 'yellow']}
+        colors={[
+          '#694873',
+        ]}
         startEndOnly={true}
         minValue={0}
         showYAxis={true}
+        showAnimation={true}
         showLegend={false}
         showTooltip={true}
         autoMinValue
         maxValue={500}
+        yAxisLabel="Stock"
       >
         {/*figure out how to add scatter points and stuff by checking the rechart docs*/}
       </AreaChart>
+      {/* <AreaChart
+        categories={[
+          'Sales',
+          'Successful Payments'
+        ]}
+        className="h-72"
+        colors={[
+          '#32a852',
+          'orange-600'
+        ]}
+        data={[
+          {
+            Sales: 4000,
+            'Successful Payments': 3000,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'Jan 21'
+          },
+          {
+            Sales: 3000,
+            'Successful Payments': 2000,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'Feb 21'
+          },
+          {
+            Sales: 2000,
+            'Successful Payments': 1700,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'Mar 21'
+          },
+          {
+            Sales: 2780,
+            'Successful Payments': 2500,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'Apr 21'
+          },
+          {
+            Sales: 1890,
+            'Successful Payments': 1890,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'May 21'
+          },
+          {
+            Sales: 2390,
+            'Successful Payments': 2000,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'Jun 21'
+          },
+          {
+            Sales: 3490,
+            'Successful Payments': 3000,
+            Test: 5000,
+            'This is an edge case': 100000000,
+            month: 'Jul 21'
+          }
+        ]}
+        index="month"
+      />
+      <AreaChart
+        data={chartData}
+        index="formattedDate"
+        categories={categories}
+        className='mt-6 h-32'
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="formattedDate" />
+        <YAxis />
+        <Tooltip />
+        <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
+      </AreaChart> */}
     </div>
   );
 }
