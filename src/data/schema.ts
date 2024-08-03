@@ -17,6 +17,7 @@ export type StockDatum = {
 }
 
 export type Product = {
+  id: number
   name: string
   url: string
 }

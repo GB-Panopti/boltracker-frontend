@@ -2,7 +2,7 @@
 import { AreaChart } from '@tremor/react';
 import { Badge } from '@/components/Badge';
 import React from 'react';
-import { useStockData } from '@/app/contexts/StockDataContext';
+import { useAppData } from '@/app/contexts/StockDataContext';
 import { cx, formatters, percentageFormatter } from '@/lib/utils';
 import { PeriodValue } from "@/app/(main)/overview/page";
 import { DateRange } from "react-day-picker";
@@ -50,7 +50,7 @@ export function StockChart({
   granularity = 'hour',
 }: CardProps) {
 
-  const { stockData } = useStockData(); // Access stockData from the context
+  const { stockData } = useAppData(); // Access stockData from the context
   
 
   const formatter = formatters.unit;
@@ -99,7 +99,7 @@ export function StockChart({
       </div>
       <div className="mt-2 flex items-baseline justify-between">
         <dd className="text-xl text-gray-900 dark:text-gray-50">
-          {formatter(value)}
+          {formatter(value)} in stock
         </dd>
         {selectedPeriod !== "no-comparison" && (
           <dd className="text-sm text-gray-500">
@@ -118,13 +118,10 @@ export function StockChart({
           '#694873',
         ]}
         startEndOnly={true}
-        minValue={0}
         showYAxis={true}
         showAnimation={true}
         showLegend={false}
         showTooltip={true}
-        autoMinValue
-        maxValue={500}
         yAxisLabel="Stock"
       >
         {/*figure out how to add scatter points and stuff by checking the rechart docs*/}

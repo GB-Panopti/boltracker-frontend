@@ -52,26 +52,15 @@ const shortcuts = [
 ] as const
 
 export function Sidebar() {
-  const pathname = usePathname()
-  const isActive = (itemHref: string) => {
-    if (itemHref === siteConfig.baseLinks.settings) {
-      return pathname.startsWith("/settings")
-    }
-    return pathname === itemHref || pathname.startsWith(itemHref)
-  }
-  const isAddProduct = (itemHref: string) => {
-    return (itemHref === '#')
-  }
-  
   const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
-  const handleDialogItemSelect = () => {
+  const handleTrackProductSelect = () => {
     focusRef.current = dropdownTriggerRef.current
   }
 
-  const handleDialogItemOpenChange = (open: boolean) => {
+  const handleTrackProductDialogOpenChange = (open: boolean) => {
     setHasOpenDialog(open)
   }
 
@@ -113,8 +102,8 @@ export function Sidebar() {
                   >
                     <RiRadarLine className="size-5 shrink-0" aria-hidden="true" />
                     <ModalAddProduct
-                      onSelect={handleDialogItemSelect}
-                      onOpenChange={handleDialogItemOpenChange}
+                      onSelect={handleTrackProductSelect}
+                      onOpenChange={handleTrackProductDialogOpenChange}
                       itemName="Track product"
                     />
                   </Link>
@@ -129,7 +118,7 @@ export function Sidebar() {
                     )}
                   >
                     <RiBox1Line className="size-5 shrink-0" aria-hidden="true" />
-                    Products
+                    Tracked products
                   </div>
               <ProductSelector />
             </div>

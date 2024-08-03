@@ -10,7 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/Dialog";
-import { DropdownMenuItem } from "@/components/Dropdown";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { RiRadarLine } from "@remixicon/react";
@@ -34,10 +33,10 @@ export function ModalAddProduct({
   async function handleProductAdd(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      const product: Product = { name, url};
+      console.log('Adding product..');
+      const product: Product = { id:-1, name:name, url:url};
       const response = await ProductService.addProduct(product);
-  
-      // Handle success (you mentioned "blabla do something with response here")
+      
       console.log('Product added successfully:', response.data);
       onOpenChange(false);
     } catch (error) {

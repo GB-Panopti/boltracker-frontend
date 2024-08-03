@@ -13,7 +13,7 @@ import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
 import { ModalAddProduct } from "./ModalAddProduct"
-import { useProductData } from "@/app/contexts/StockDataContext"
+import { useAppData } from "@/app/contexts/StockDataContext"
 
 const workspaces = [
   {
@@ -34,7 +34,7 @@ const workspaces = [
 ]
 
 export const WorkspacesDropdownDesktop = () => {
-  const { products } = useProductData()
+  const { products } = useAppData()
   const [dropdownOpen, setDropdownOpen] = React.useState(false)
   const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)

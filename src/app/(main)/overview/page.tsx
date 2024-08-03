@@ -1,5 +1,5 @@
 "use client"
-import { useProductData } from "@/app/contexts/StockDataContext"
+import { useAppData } from "@/app/contexts/StockDataContext"
 import { StockChart } from "@/components/StockChart"
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
 import { cx } from "@/lib/utils"
@@ -95,7 +95,7 @@ export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 // ]
 
 
-// const { stockData } = useStockData();
+// const { stockData } = useAppData();
 // // Convert dates to timestamps to find the max date
 // const stockDates = stockData.map((datum) => new Date(datum.date).getTime());
 // const maxDate = stockDates.length ? new Date(Math.max(...stockDates)) : new Date();
@@ -109,7 +109,7 @@ export default function Overview() {
     from: subDays(maxDate, 30),
     to: maxDate,
   })
-  const { products } = useProductData();
+  const { products } = useAppData();
   
   return (
     <>

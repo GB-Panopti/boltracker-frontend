@@ -1,135 +1,53 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import StockService from '@/services/StockService';
-import { Product, StockDatum } from '@/data/schema';
 import ProductService from '@/services/ProductService';
+import { Product, StockDatum } from '@/data/schema';
 
-// Stock Data Context
-interface StockDataContextProps {
+// Combined Data Context
+interface AppDataContextProps {
   stockData: StockDatum[];
-  setStockData: React.Dispatch<React.SetStateAction<StockDatum[]>>;
-}
-
-const StockDataContext = createContext<StockDataContextProps | undefined>(undefined);
-
-export const useStockData = (): StockDataContextProps => {
-  const context = useContext(StockDataContext);
-  if (context === undefined) {
-    throw new Error('useStockData must be used within a StockDataProvider');
-  }
-  return context;
-};
-
-interface StockDataProviderProps {
-  children: ReactNode;
-}
-
-export const StockDataProvider = ({ children }: StockDataProviderProps) => {
-  const [stockData, setStockData] = useState<StockDatum[]>([]);
-
-  useEffect(() => {
-    StockService.getAllUserStocks().then((response) => {
-      setStockData(response.data);
-    });
-  }, []);
-
-  return (
-    <StockDataContext.Provider value={{ stockData, setStockData }}>
-      {children}
-    </StockDataContext.Provider>
-  );
-};
-
-// Product Data Context
-interface ProductDataContextProps {
   products: Product[];
+  setStockData: React.Dispatch<React.SetStateAction<StockDatum[]>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
-const ProductDataContext = createContext<ProductDataContextProps | undefined>(undefined);
+const AppDataContext = createContext<AppDataContextProps | undefined>(undefined);
 
-export const useProductData = (): ProductDataContextProps => {
-  const context = useContext(ProductDataContext);
+export const useAppData = (): AppDataContextProps => {
+  const context = useContext(AppDataContext);
   if (context === undefined) {
-    throw new Error('useProductData must be used within a ProductDataProvider');
+    throw new Error('useAppData must be used within an AppProvider');
   }
   return context;
 };
 
-interface ProductDataProviderProps {
+interface AppProviderProps {
   children: ReactNode;
 }
 
-export const ProductDataProvider = ({ children }: ProductDataProviderProps) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
+  const [stockData, setStockData] = useState<StockDatum[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    ProductService.getProducts().then((response) => {
-      setProducts(response.data);
-    });
+    const fetchData = async () => {
+      try {
+        const stockResponse = await StockService.getAllUserStocks();
+        const productResponse = await ProductService.getProducts();
+        setStockData(stockResponse.data);
+        setProducts(productResponse.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
-    <ProductDataContext.Provider value={{ products, setProducts }}>
+    <AppDataContext.Provider value={{ stockData, products, setStockData, setProducts }}>
       {children}
-    </ProductDataContext.Provider>
+    </AppDataContext.Provider>
   );
 };
-
-// Combined Provider
-export const AppProvider = ({ children }: { children: ReactNode }) => (
-  <StockDataProvider>
-    <ProductDataProvider>
-      {children}
-    </ProductDataProvider>
-  </StockDataProvider>
-);
-
-// "use client";
-// import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-// import StockService from '@/services/StockService';
-// import { Product, StockDatum } from '@/data/schema';
-// import ProductService from '@/services/ProductService';
-
-// interface StockDataContextProps {
-//   stockData: StockDatum[];
-//   setStockData: React.Dispatch<React.SetStateAction<StockDatum[]>>;
-// }
-
-// const StockDataContext = createContext<StockDataContextProps | undefined>(undefined);
-
-// export const useStockData = (): StockDataContextProps => {
-//   const context = useContext(StockDataContext);
-//   if (context === undefined) {
-//     throw new Error('useStockData must be used within a StockDataProvider');
-//   }
-//   return context;
-// };
-
-// interface StockDataProviderProps {
-//   children: ReactNode;
-// }
-
-// export const StockDataProvider = ({ children }: StockDataProviderProps) => {
-//   const [stockData, setStockData] = useState<StockDatum[]>([]);
-//   const [products, setProducts] = useState<Product[]>([]);
-
-//   useEffect(() => {
-//     StockService.getAllUserStocks().then((response) => {
-//       console.log('REGENNING STOCK DATA');
-//       setStockData(response.data);
-//     });
-//   }, []);
-
-//   useEffect(() => {
-//     ProductService.getProducts().then((response) => {
-//       setProducts(response.data);
-//     });
-//   }, []);
-
-//   return (
-//     <StockDataContext.Provider value={{ stockData, setStockData }}>
-//       {children}
-//     </StockDataContext.Provider>
-//   );
-// };
