@@ -20,8 +20,7 @@ export default function Example() {
             Ideal for providing analytics to your users.
           </p>
           <Button className="group mt-6" variant="secondary" asChild>
-            <a href={siteConfig.externalLink.blocks}>
-              Get full template here
+            <a href={siteConfig.baseLinks.settings}>
               <ArrowAnimated
                 className="stroke-gray-900 dark:stroke-gray-50"
                 aria-hidden="true"

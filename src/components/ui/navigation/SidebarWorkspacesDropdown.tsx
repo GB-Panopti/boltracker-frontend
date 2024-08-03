@@ -20,7 +20,7 @@ const workspaces = [
     value: "bol-analytics",
     name: "Bol.com analytics",
     initials: "BOL",
-    role: "?? tracked",
+    role: "",
     color: "bg-tremor-bol dark:bg-tremor-bol",
   },
   // {

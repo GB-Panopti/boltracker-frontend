@@ -50,15 +50,15 @@ export function ModalAddProduct({
   return (
     <>
       <Dialog onOpenChange={onOpenChange}>
-        <DialogTrigger className="w-full text-left">
-          <DropdownMenuItem
+        <DialogTrigger>
+          <div
             onSelect={(event) => {
               event.preventDefault();
               onSelect && onSelect();
             }}
           >
             {itemName}
-          </DropdownMenuItem>
+          </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-2xl">
           <form onSubmit={handleProductAdd}>

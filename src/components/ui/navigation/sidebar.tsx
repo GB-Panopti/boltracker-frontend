@@ -7,6 +7,7 @@ import {
   RiListCheck,
   RiSettings5Line,
   RiFocus3Line,
+  RiRadarLine,
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -17,10 +18,12 @@ import {
 } from "./SidebarWorkspacesDropdown"
 import { UserProfileDesktop, UserProfileMobile } from "./UserProfile"
 import ProductSelector from "@/ui/productSelector"
+import React from "react"
+import { ModalAddProduct } from "./ModalAddProduct"
 
 const navigation = [
   { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Track product", href: siteConfig.baseLinks.trackNew, icon: RiFocus3Line },
+  { name: "Track product", href: '#', icon: RiFocus3Line },
   { name: "Settings", href: siteConfig.baseLinks.settings, icon: RiSettings5Line },
 ] as const
 
@@ -56,7 +59,19 @@ export function Sidebar() {
     return pathname === itemHref || pathname.startsWith(itemHref)
   }
   const isAddProduct = (itemHref: string) => {
-    return (itemHref === siteConfig.baseLinks.trackNew)
+    return (itemHref === '#')
+  }
+  
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
+  const focusRef = React.useRef<null | HTMLButtonElement>(null)
+
+  const handleDialogItemSelect = () => {
+    focusRef.current = dropdownTriggerRef.current
+  }
+
+  const handleDialogItemOpenChange = (open: boolean) => {
+    setHasOpenDialog(open)
   }
 
   return (
@@ -70,23 +85,38 @@ export function Sidebar() {
             className="flex flex-1 flex-col space-y-10"
           >
             <ul role="list" className="space-y-0.5">
-              {navigation.map((item) => (
-                <li key={item.name}>
+              <li key="Overview">
+                <Link
+                  href={siteConfig.baseLinks.overview}
+                  className={cx(
+                    "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-200 hover:dark:bg-gray-900 text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
+                    isActive(siteConfig.baseLinks.overview) ? "text-indigo-600 dark:text-indigo-400" : "",
+                    focusRing,
+                  )}
+                >
+                  <RiHome2Line className="size-4 shrink-0" aria-hidden="true" />
+                  <span>Overview</span>
+                </Link>
+              </li>
+              
+              <li key="Track product">
                   <Link
-                    href={item.href}
+                    href="#"
                     className={cx(
-                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:bg-gray-100 hover:dark:bg-gray-900",
-                      isActive(item.href) ? "text-indigo-600 dark:text-indigo-400" : "",
-                      isAddProduct(item.href) ? "bg-emerald-500 text-emerald-50 ring-emerald-600/30 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-emerald-400/20 " : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                        // : ,
+                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-sm font-medium transition hover:dark:bg-gray-900 bg-emerald-500 text-emerald-50 ring-emerald-600/30 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-emerald-400/20 hover:bg-emerald-600 ",
+                      isActive(siteConfig.baseLinks.trackNew) ? "text-indigo-600 dark:text-indigo-400" : "",
+                      
                       focusRing,
                     )}
                   >
-                    <item.icon className="size-4 shrink-0" aria-hidden="true" />
-                    {item.name}
+                    <RiRadarLine className="size-4 shrink-0" aria-hidden="true" />
+                    <ModalAddProduct
+                      onSelect={handleDialogItemSelect}
+                      onOpenChange={handleDialogItemOpenChange}
+                      itemName="Track product"
+                    />
                   </Link>
                 </li>
-              ))}
             </ul>
             <div>
               <span className="text-xs font-medium leading-6 text-gray-500">

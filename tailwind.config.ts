@@ -26,9 +26,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        hs: gillBatesHouseStyle,
+        // hs: gillBatesHouseStyle,
         // light mode
-        tremor: {
+        gb: {
           bol: {
             DEFAULT: boldotcomblue,
           },
@@ -43,12 +43,28 @@ const config: Config = {
             emphasis: hsPrimary[700],
             inverted: colors.white,
           },
+          brandvariant: {
+            faint: hsPrimaryLite[100],
+            muted: hsPrimaryLite[200],
+            subtle: hsPrimaryLite[400],
+            DEFAULT: hsPrimaryLite[500],
+            emphasis: hsPrimaryLite[700],
+            inverted: colors.white,
+          },
           secondary: {
             faint: hsSecondary[100],
             muted: hsSecondary[200],
             subtle: hsSecondary[400],
-            default: hsSecondary[500],
+            DEFAULT: hsSecondary[500],
             emphasis: hsSecondary[700],
+            inverted: colors.white,
+          },
+          secondaryvariant: {
+            faint: hsSecondaryLite[100],
+            muted: hsSecondaryLite[200],
+            subtle: hsSecondaryLite[400],
+            DEFAULT: hsSecondaryLite[500],
+            emphasis: hsSecondaryLite[700],
             inverted: colors.white,
           },
           background: {
