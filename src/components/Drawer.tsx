@@ -102,20 +102,24 @@ const DrawerHeader = React.forwardRef<
   return (
     <div
       ref={ref}
-      className="flex items-start justify-between gap-x-4 border-b border-gray-200 pb-4 dark:border-gray-900"
+      className="items-start gap-x-4 border-b border-gray-200 pb-4 dark:border-gray-900"
       {...props}
     >
-      <div className={cx("mt-1 flex flex-col gap-y-1", className)}>
-        {children}
-      </div>
+
+      <div className="w-full items-start flex justify-between">
       <DrawerPrimitives.Close asChild>
         <Button
           variant="ghost"
-          className="aspect-square p-1 hover:bg-gray-100 hover:dark:bg-gray-400/10"
+          className="ml-auto aspect-square p-1 text-gray-100 hover:text-gray-900 hover:bg-gray-100 hover:dark:bg-gray-400/10"
         >
           <RiCloseLine className="size-6" aria-hidden="true" />
         </Button>
       </DrawerPrimitives.Close>
+      </div>
+
+      <div className={cx("mt-1 flex flex-col gap-y-1", className)}>
+        {children}
+      </div>
     </div>
   )
 })

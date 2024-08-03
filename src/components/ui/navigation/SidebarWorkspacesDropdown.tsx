@@ -163,13 +163,11 @@ export const WorkspacesDropdownMobile = () => {
       >
         <DropdownMenuTrigger asChild>
           <button className="flex items-center gap-x-1.5 rounded-md p-2 hover:bg-gray-100 focus:outline-none hover:dark:bg-gray-900">
-            <span
-              className={cx(
-                "flex aspect-square size-7 items-center justify-center rounded bg-gb-secondary p-2 text-xs font-medium text-white dark:bg-gb-secondary-500",
-              )}
+          <span
+              className="flex aspect-square size-8 items-center justify-center rounded bg-gb-brands-bol dark:bg-gb-brands-bol p-2 text-xs font-medium text-white "
               aria-hidden="true"
             >
-              RA
+              BOL
             </span>
             <RiArrowRightSLine
               className="size-4 shrink-0 text-gray-500"
@@ -177,7 +175,7 @@ export const WorkspacesDropdownMobile = () => {
             />
             <div className="flex w-full items-center justify-between gap-x-3 truncate">
               <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                Retail analytics
+                PANOPTI Bol.com
               </p>
               <RiExpandUpDownLine
                 className="size-4 shrink-0 text-gray-500"
@@ -225,12 +223,6 @@ export const WorkspacesDropdownMobile = () => {
               </DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <ModalAddProduct
-            onSelect={handleDialogItemSelect}
-            onOpenChange={handleDialogItemOpenChange}
-            itemName="Add workspace"
-          />
         </DropdownMenuContent>
       </DropdownMenu>
     </>

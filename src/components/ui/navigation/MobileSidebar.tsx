@@ -3,7 +3,6 @@ import { Button } from "@/components/Button"
 import {
   Drawer,
   DrawerBody,
-  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
@@ -12,48 +11,37 @@ import {
 import { cx, focusRing } from "@/lib/utils"
 import {
   RiHome2Line,
-  RiLinkM,
-  RiListCheck,
   RiMenuLine,
-  RiSettings5Line,
+  RiRadarLine,
+  RiBox1Line,
 } from "@remixicon/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import ProductSelector from "@/ui/productSelector"
+import React from "react"
+import { ModalAddProduct } from "./ModalAddProduct"
+import {
+  WorkspacesDropdownDesktop,
+  WorkspacesDropdownMobile,
+} from "./SidebarWorkspacesDropdown"
 
-const navigation = [
-  { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
-  {
-    name: "Settings",
-    href: siteConfig.baseLinks.settings,
-    icon: RiSettings5Line,
-  },
-] as const
 
-const shortcuts = [
-  {
-    name: "Add new user",
-    href: "#",
-    icon: RiLinkM,
-  },
-  {
-    name: "Workspace usage",
-    href: "#",
-    icon: RiLinkM,
-  },
-  {
-    name: "Cost spend control",
-    href: "#",
-    icon: RiLinkM,
-  },
-  {
-    name: "Overview – Rows written",
-    href: "#",
-    icon: RiLinkM,
-  },
-] as const
 
 export default function MobileSidebar() {
+
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+
+  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
+  const focusRef = React.useRef<null | HTMLButtonElement>(null)
+
+  const handleDialogItemSelect = () => {
+    focusRef.current = dropdownTriggerRef.current
+  }
+
+  const handleDialogItemOpenChange = (open: boolean) => {
+    setHasOpenDialog(open)
+  }
+
   const pathname = usePathname()
   const isActive = (itemHref: string) => {
     if (itemHref === siteConfig.baseLinks.settings) {
@@ -76,9 +64,9 @@ export default function MobileSidebar() {
             />
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="sm:max-w-lg">
-          <DrawerHeader>
-            <DrawerTitle>Retail Analytics</DrawerTitle>
+        <DrawerContent className="sm:max-w-lg border-gb-primary bg-gb-primary dark:border-gray-800 dark:bg-gb-primary-800">
+          <DrawerHeader className="w-full">
+            <WorkspacesDropdownDesktop/>
           </DrawerHeader>
           <DrawerBody>
             <nav
@@ -86,55 +74,52 @@ export default function MobileSidebar() {
               className="flex flex-1 flex-col space-y-10"
             >
               <ul role="list" className="space-y-1.5">
-                {navigation.map((item) => (
-                  <li key={item.name}>
-                    <DrawerClose asChild>
-                      <Link
-                        href={item.href}
-                        className={cx(
-                          isActive(item.href)
-                            ? "text-gb-secondary-600 dark:text-gb-secondary-400"
-                            : "text-gray-600 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                          "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-base font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",
-                          focusRing,
-                        )}
-                      >
-                        <item.icon
-                          className="size-5 shrink-0"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </Link>
-                    </DrawerClose>
+                <li key="Overview">
+                  <Link
+                    href={siteConfig.baseLinks.overview}
+                    className={cx(
+                      "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:bg-gray-200 hover:dark:bg-gray-900 text-gb-primarylite-50 hover:text-gray-900 dark:text-gb-primarylite-300 hover:dark:text-gray-50",
+                      // below commented out cuz it's nice if you have multiple nav options but with only Overview it just looks goofy bro
+                      // isActive(siteConfig.baseLinks.overview) ? "text-gb-secondary-600 dark:text-gb-secondary-400" : "", 
+                      focusRing,
+                    )}
+                  >
+                    <RiHome2Line className="size-5 shrink-0" aria-hidden="true" />
+                    <span>Overview</span>
+                  </Link>
+                </li>
+                
+                <li key="Track product">
+                    <Link
+                      href="#"
+                      className={cx(
+                        "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:dark:bg-gray-900 bg-gb-primarylite-600 text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:bg-gb-primarylite-400/20 dark:text-gb-primarylite-400 dark:ring-gb-primarylite-400/20 hover:bg-gb-secondary-400 ",
+                        // isActive(siteConfig.baseLinks.trackNew) ? "text-gb-secondary-600 dark:text-gb-secondary-400" : "",
+                        
+                        focusRing,
+                      )}
+                    >
+                      <RiRadarLine className="size-5 shrink-0" aria-hidden="true" />
+                      <ModalAddProduct
+                        onSelect={handleDialogItemSelect}
+                        onOpenChange={handleDialogItemOpenChange}
+                        itemName="Track product"
+                      />
+                    </Link>
                   </li>
-                ))}
               </ul>
               <div>
-                <span className="text-sm font-medium leading-6 text-gray-500 sm:text-xs">
-                  Shortcuts
-                </span>
-                <ul aria-label="shortcuts" role="list" className="space-y-0.5">
-                  {shortcuts.map((item) => (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className={cx(
-                          pathname === item.href || pathname.includes(item.href)
-                            ? "text-gb-secondary-600 dark:text-gb-secondary-400"
-                            : "text-gray-700 hover:text-gray-900 dark:text-gray-400 hover:dark:text-gray-50",
-                          "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 font-medium transition hover:bg-gray-100 sm:text-sm hover:dark:bg-gray-900",
-                          focusRing,
-                        )}
-                      >
-                        <item.icon
-                          className="size-4 shrink-0"
-                          aria-hidden="true"
-                        />
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <div
+                      className={cx(
+                        "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium text-gb-primarylite-50 ring-gb-primarylite-600/30  dark:text-gb-primarylite-300 dark:ring-gb-primarylite-400/20 ",
+                        // isActive(siteConfig.baseLinks.trackNew) ? "text-gb-secondary-600 dark:text-gb-secondary-400" : "",
+                        focusRing,
+                      )}
+                    >
+                      <RiBox1Line className="size-5 shrink-0" aria-hidden="true" />
+                      Products
+                    </div>
+                <ProductSelector />
               </div>
             </nav>
           </DrawerBody>
