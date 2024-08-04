@@ -36,8 +36,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, onOpenChange }) =>
     onOpenChange(open);
   }
 
-  async function handleProductEdit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function handleProductEdit() {
     try {
       console.log('Setting ', _name, ' to ', name, ' with id ', _id);
       const response = await ProductService.editProduct(_id, name);
@@ -49,8 +48,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, onOpenChange }) =>
     }
   }
 
-  async function handleProductDelete(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
+  async function handleProductDelete() {
     try {
       console.log('Setting ', _name, ' to ', name, ' with id ', _id);
       const response = await ProductService.deleteProduct(_id);
@@ -71,7 +69,6 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, onOpenChange }) =>
           </DialogTrigger>
         </li>
         <DialogContent className="sm:max-w-2xl">
-          <form onSubmit={handleProductEdit}>
             <DialogHeader>
               <DialogTitle>
                 <RiHammerLine
@@ -109,14 +106,13 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, onOpenChange }) =>
                   Go back
                 </Button>
               </DialogClose>
-              <Button variant="destructive" className="w-full sm:w-fit">
+              <Button onClick={() => handleProductDelete()} variant="destructive" className="w-full sm:w-fit">
                 Delete
               </Button>
-              <Button type="submit" className="w-full sm:w-fit">
+              <Button onClick={() => handleProductEdit()} type="submit" className="w-full sm:w-fit">
                 Save
               </Button>
             </DialogFooter>
-          </form>
         </DialogContent>
       </Dialog>
     </>

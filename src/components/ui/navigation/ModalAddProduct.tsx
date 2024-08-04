@@ -30,8 +30,7 @@ export function ModalAddProduct({
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
 
-  async function handleProductAdd(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function handleProductAdd() {
     try {
       console.log('Adding product..');
       const product: Product = { id:-1, name:name, url:url};
@@ -110,7 +109,7 @@ export function ModalAddProduct({
                   Go back
                 </Button>
               </DialogClose>
-              <Button type="submit" className="w-full sm:w-fit">
+              <Button onClick={() => handleProductAdd()} type="submit" className="w-full sm:w-fit">
                 Add product
               </Button>
             </DialogFooter>
