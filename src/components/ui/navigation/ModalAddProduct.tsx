@@ -33,7 +33,7 @@ export function ModalAddProduct({
   async function handleProductAdd() {
     try {
       console.log('Adding product..');
-      const product: Product = { id:-1, name:name, url:url};
+      const product: Product = { id:'', name:name, url:url};
       const response = await ProductService.addProduct(product);
       
       console.log('Product added successfully:', response.data);

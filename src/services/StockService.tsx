@@ -9,7 +9,7 @@ class StockService {
         return axios.get(STOCK_ALL_API_URL, { withCredentials: true });
     }
 
-    getStock(id) {
+    getStock(id: string) {
         return axios.get(STOCK_ID_API_URL + id, { withCredentials: true });
     }
 }

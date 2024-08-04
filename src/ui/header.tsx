@@ -15,9 +15,9 @@ const Header = () => {
     function addProduct() {
         const regex = /\b\d{16}\b/;
         const match = url.match(regex);
-        var id =  match ? match[0] : null;
+        var id =  match ? match[0] : '';
 
-        ProductService.addProduct({id: id, name: name, url: url, offerId: -1}).then(response => {
+        ProductService.addProduct({id: id, name: name, url: url}).then(response => {
             window.location.reload();
         });
     }

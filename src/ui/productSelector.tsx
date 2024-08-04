@@ -21,6 +21,7 @@ const ProductSelector = () => {
           <ul aria-label="shortcuts" role="list" className="space-y-0.5 border-l-2 border-gray-300 dark:border-gb-primary-400">
           {products.map((product: Product) => (
             <ModalEditProduct 
+              key={product.id}
               _name={product.name} 
               _id={product.id} 
               onSelect={handleProductSelect} 

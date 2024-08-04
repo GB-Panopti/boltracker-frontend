@@ -7,11 +7,10 @@ import { cx, formatters, percentageFormatter } from '@/lib/utils';
 import { PeriodValue } from "@/app/(main)/overview/page";
 import { DateRange } from "react-day-picker";
 import { eachHourOfInterval, eachDayOfInterval, eachMinuteOfInterval, format, isWithinInterval, Interval } from 'date-fns';
-import { CartesianGrid, XAxis, YAxis, Tooltip, Area } from 'recharts';
 
 export type CardProps = {
   title: string;
-  id: number;
+  id: string;
   selectedDates: DateRange | undefined;
   selectedPeriod: PeriodValue;
   granularity: 'hour' | 'day' | 'minute'; // Add granularity parameter
@@ -51,7 +50,6 @@ export function StockChart({
 }: CardProps) {
 
   const { stockData } = useAppData(); // Access stockData from the context
-  
 
   const formatter = formatters.unit;
 
@@ -59,12 +57,12 @@ export function StockChart({
     selectedDates?.from && selectedDates?.to
       ? { start: selectedDates.from, end: selectedDates.to }
       : null;
-
+      
   const filteredStockData = selectedDatesInterval
-    ? stockData.filter((datum) =>
-        isWithinInterval(new Date(datum.date), selectedDatesInterval)
-      ).filter((datum) => datum.id === id)
-    : stockData;
+      ? stockData.filter((datum) =>
+          isWithinInterval(new Date(datum.date), selectedDatesInterval)
+        ).filter((datum) => String(datum.id) === id)
+      : stockData.filter((datum) => String(datum.id) === id);
 
   const chartData = filteredStockData.map((datum) => ({
     date: new Date(datum.date),

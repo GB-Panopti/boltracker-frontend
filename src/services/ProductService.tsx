@@ -9,13 +9,14 @@ const DELETE_PRODUCT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/produ
 class ProductService {
 
     getProducts() {
-        return axios.get(PRODUCT_API_URL, { withCredentials: true });
+        var prods =  axios.get(PRODUCT_API_URL, { withCredentials: true });
+        return prods;
     }
 
     async addProduct(product: Product): Promise<AxiosResponse> {
         try {
             const response = await axios.post(
-                ADD_PRODUCT_API_URL, { id: -1, name: product.name, url: product.url, offerId: -1, }, { withCredentials: true }
+                ADD_PRODUCT_API_URL, { id: '', name: product.name, url: product.url, offerId: -1, }, { withCredentials: true }
             );
             return response;
         } catch (error) {
@@ -24,7 +25,7 @@ class ProductService {
         }
     }
     
-    async editProduct(id: number, name: string): Promise<AxiosResponse> {
+    async editProduct(id: string, name: string): Promise<AxiosResponse> {
         try {
             const response = await axios.post(
                 EDIT_PRODUCT_API_URL,
@@ -38,12 +39,12 @@ class ProductService {
         }
     }
 
-    async deleteProduct(id: number): Promise<AxiosResponse> {
+    async deleteProduct(id: string): Promise<AxiosResponse> {
         try {
             console.log(
-                DELETE_PRODUCT_API_URL + '?id=' + String(id),)
+                DELETE_PRODUCT_API_URL + '?id=' + id,)
             const response = await axios.post(
-                DELETE_PRODUCT_API_URL + '?id=' + String(id),
+                DELETE_PRODUCT_API_URL + '?id=' + id,
                 { withCredentials: true }
             );
             return response;

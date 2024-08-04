@@ -17,7 +17,7 @@ import ProductService from "@/services/ProductService";
 
 export type ModalProps = {
   _name: string;
-  _id: number;
+  _id: string;
   onSelect: () => void;
   onOpenChange: (open: boolean) => void;
 };
