@@ -29,18 +29,28 @@ export function ModalAddProduct({
 }: ModalProps) {
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
+  const [error, setError] = React.useState<string | null>(null);
 
   async function handleProductAdd() {
     try {
       console.log('Adding product..');
-      const product: Product = { id:'', name:name, url:url};
+      setError('Adding product..');
+      const product: Product = { id: '', name: name, url: url };
       const response = await ProductService.addProduct(product);
-      
-      console.log('Product added successfully:', response.data);
-      onOpenChange(false);
+
+      if (response.status === 200) {
+        console.log('Product added successfully:', response.data);
+        window.location.reload();
+      } else if (response.status === 400) {
+        setError('Bad request, is your url correct?');
+      } else if (response.status === 409) {
+        setError('Product already exists.');
+      } else if (response.status === 500) {
+        setError('Internal server error. Please try again later.');
+      }
     } catch (error) {
       console.error('Failed to add product:', error);
-      // show a user-friendly error message here
+      setError('An unexpected error occurred. Please try again.');
     }
   }
   
@@ -101,6 +111,7 @@ export function ModalAddProduct({
               </div>
             </DialogHeader>
             <DialogFooter className="mt-6">
+              {error && <div className="text-red-500 mt-2">{error}</div>}
               <DialogClose asChild>
                 <Button
                   className="mt-2 w-full sm:mt-0 sm:w-fit"
@@ -109,7 +120,7 @@ export function ModalAddProduct({
                   Go back
                 </Button>
               </DialogClose>
-              <Button onClick={() => handleProductAdd()} type="submit" className="w-full sm:w-fit">
+              <Button onClick={handleProductAdd} type="submit" className="w-full sm:w-fit">
                 Add product
               </Button>
             </DialogFooter>
