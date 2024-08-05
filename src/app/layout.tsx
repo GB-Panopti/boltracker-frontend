@@ -1,51 +1,15 @@
-import type { Metadata } from "next"
-import { ThemeProvider } from "next-themes"
-import { Inter } from "next/font/google"
-import "./globals.css"
+import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-})
+});
 
-import { Sidebar } from "@/components/ui/navigation/sidebar"
-import { siteConfig } from "./siteConfig"
-import { AppProvider } from "./contexts/StockDataContext"
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://panopti.nl"),
-  title: siteConfig.name,
-  description: siteConfig.description,
-  keywords: [],
-  authors: [
-    {
-      name: "Marijn Craenen",
-      url: "info@panopti.nl",
-    },
-    {
-      name: "Gregor Figueira Comojo",
-      url: "info@panopti.nl",
-    },
-  ],
-  creator: "Marijn Craenen",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-  },
-  // twitter: {
-  //   card: 'summary_large_image',
-  //   title: "Tremor OSS Dashboard",
-  //   creator: '@tremorlabs',
-  // },
-  icons: {
-    icon: "/favicon.ico",
-  },
-}
+import { Sidebar } from "@/components/ui/navigation/sidebar";
+import { AppProvider } from "./contexts/StockDataContext";
 
 export default function RootLayout({
   children,
@@ -68,5 +32,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  )
+  );
 }
