@@ -48,12 +48,12 @@ class ProductService {
         try {
             const response = await axios.post(
                 DELETE_PRODUCT_API_URL,
-                JSON.stringify(Number(id)), // Send the ID as a JSON-encoded value
+                JSON.stringify(id), 
                 {
                     headers: {
-                        'Content-Type': 'application/json' // Explicitly set content type
+                        'Content-Type': 'application/json' 
                     },
-                    withCredentials: true // Ensure credentials are sent
+                    withCredentials: true
                 }
             );
             return response;

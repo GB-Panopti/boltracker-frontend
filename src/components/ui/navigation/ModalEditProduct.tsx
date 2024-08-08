@@ -31,6 +31,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({
 }: ModalProps) => {
   const [name, setName] = useState("");
   const [isOpen, onOpenChange] = useState(false);
+  const [error, setError] = React.useState<string | null>(null);
   const { setProducts } = useAppData();
 
   useEffect(() => {
@@ -48,32 +49,35 @@ const ModalEditProduct: React.FC<ModalProps> = ({
     try {
       const productResponse = await ProductService.getProducts();
       setProducts(productResponse.data);
-    } catch (error) {
-      console.error("Error refreshing products:", error);
-    }
+    } catch (error) {}
   };
 
   async function handleProductEdit() {
     try {
-      console.log("Setting ", _name, " to ", name, " with id ", _id);
-      const response = await ProductService.editProduct(_id, name);
+      setError("Saving new name..");
+      console.log("Setting ", _name, " to ", name);
+      await ProductService.editProduct(_id, name);
       console.log("Product edited successfully:", name);
+      refreshProducts();
       onOpenChange(false);
+      setError(null);
     } catch (error) {
       console.error("Failed to edit product:", error);
-      // show a user-friendly error message here
+      setError("Something went wrong. Please try again.");
     }
   }
 
   async function handleProductDelete() {
     try {
-      console.log("Setting ", _name, " to ", name, " with id ", _id);
-      const response = await ProductService.deleteProduct(_id);
-      console.log("Product deleted successfully:", response.data);
+      setError('Deleting product..');
+      await ProductService.deleteProduct(_id);
+      setError('Product deleted successfully');
+      refreshProducts();
       onOpenChange(false);
+      setError(null);
     } catch (error) {
       console.error("Failed to edit product:", error);
-      // show a user-friendly error message here
+      setError("Something went wrong. Please try again.");
     }
   }
 
@@ -136,6 +140,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({
             </div>
           </DialogHeader>
           <DialogFooter className="mt-6">
+            {error && <div className="text-red-500 mt-2">{error}</div>}
             <DialogClose asChild>
               <Button
                 className="mt-2 w-full sm:mt-0 sm:w-fit"
