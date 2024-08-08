@@ -93,7 +93,7 @@ export function StockChart({
       </div>
       <AreaChart
         className="mt-6 h-32"
-        noDataText="No data, is product still for sale?"
+        noDataText="No data"
         data={chartData || []}
         index="formattedDate"
         yAxisWidth={45}

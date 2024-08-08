@@ -38,6 +38,12 @@ export function DropdownUserProfile({
 }: DropdownUserProfileProps) {
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
+
+  const handleLogout = () => {
+      document.cookie = 'session_cookie=; Max-Age=0; path=/; domain=yourdomain.com; secure; SameSite=Lax';
+      window.location.href = '/login';
+  };
+
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -104,7 +110,7 @@ export function DropdownUserProfile({
               <RiSettings2Line
                 className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
                 aria-hidden="true"/>
-              Settings
+                <p style={{ textDecoration: 'line-through' }}>Settings</p>
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
@@ -125,13 +131,19 @@ export function DropdownUserProfile({
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <RiLogoutBoxLine
-                    className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                  aria-hidden="true"/>
-              Sign out
-              
-            </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => {
+                    // Delete the session cookie
+                    document.cookie = 'session_cookie=; Max-Age=0; path=/; domain=yourdomain.com; secure; SameSite=Lax';
+
+                    // Redirect to the login page
+                    window.location.href = '/login';
+                }}>
+                    <RiLogoutBoxLine
+                        className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                        aria-hidden="true"
+                    />
+                    Sign out
+                </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
