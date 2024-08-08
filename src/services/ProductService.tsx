@@ -46,11 +46,15 @@ class ProductService {
 
     async deleteProduct(id: string): Promise<AxiosResponse> {
         try {
-            console.log(
-                DELETE_PRODUCT_API_URL + '?id=' + id,)
             const response = await axios.post(
-                DELETE_PRODUCT_API_URL + '?id=' + id,
-                { withCredentials: true }
+                DELETE_PRODUCT_API_URL,
+                JSON.stringify(Number(id)), // Send the ID as a JSON-encoded value
+                {
+                    headers: {
+                        'Content-Type': 'application/json' // Explicitly set content type
+                    },
+                    withCredentials: true // Ensure credentials are sent
+                }
             );
             return response;
         } catch (error) {
