@@ -1,14 +1,24 @@
-import React, { useState, createContext} from 'react';
+import React, { useState, createContext, ReactNode } from 'react';
 
-export const SelectedItemContext = createContext([{}, () => {}]);
+// Define the interface for the props
+interface SelectedItemProviderProps {
+  children: ReactNode;
+}
 
-export const SelectedItemProvider = (props) => {
-  const [state, setState] = useState({ id: null,
+// Create the context
+const SelectedItemContext = createContext<any>(null);
+
+const SelectedItemProvider: React.FC<SelectedItemProviderProps> = (props) => {
+  const [state, setState] = useState({
+    id: null,
     products: new Map(),
   });
+
   return (
     <SelectedItemContext.Provider value={[state, setState]}>
       {props.children}
     </SelectedItemContext.Provider>
   );
-}
+};
+
+export { SelectedItemProvider, SelectedItemContext };

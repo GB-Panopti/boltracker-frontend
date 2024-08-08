@@ -69,14 +69,16 @@ const ModalEditProduct: React.FC<ModalProps> = ({
 
   async function handleProductDelete() {
     try {
-      setError('Deleting product..');
-      await ProductService.deleteProduct(_id);
-      setError('Product deleted successfully');
-      refreshProducts();
-      onOpenChange(false);
-      setError(null);
+      if (window.confirm("Are you sure you want to delete this product? You can add it again later if you have the same URL.")) {
+        setError('Deleting product..');
+        await ProductService.deleteProduct(_id);
+        setError('Product deleted successfully');
+        refreshProducts();
+        onOpenChange(false);
+        setError(null);
+      }
     } catch (error) {
-      console.error("Failed to edit product:", error);
+      console.error("Failed to delete product:", error);
       setError("Something went wrong. Please try again.");
     }
   }
