@@ -4,7 +4,6 @@ const nextConfig = {
   env: {
     BASE_URL: process.env.BASE_URL
   },
-  output: 'export',
   redirects: async () => {
     return [
       {

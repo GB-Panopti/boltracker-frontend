@@ -24,6 +24,7 @@ const ProductSelector = () => {
               key={product.id}
               _name={product.name} 
               _id={product.id} 
+              _url={product.url}
               onSelect={handleProductSelect} 
               onOpenChange={handleDialogItemOpenChange} />
           ))}

@@ -14,14 +14,16 @@ import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { RiHammerLine } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
+import { ArrowAnimated } from "../icons/ArrowAnimated";
 
 export type ModalProps = {
   _name: string;
   _id: string;
+  _url: string;
   onSelect: () => void;
 };
 
-const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id }) => {
+const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, _url, onOpenChange }: ModalProps) => {
   const [name, setName] = useState('');
   const [isOpen, onOpenChange] = useState(false);
 
@@ -77,6 +79,27 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id }) => {
                 />
                 Edit {name}
               </DialogTitle>
+              <Button className="group mt-0 mr-auto overflow-hidden w-full" variant="ghost" asChild>
+                <div className="flex items-center w-full">
+                  <ArrowAnimated
+                    className="stroke-gray-900 dark:stroke-gray-50 mr-2 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <a
+                    className="text-xs text-gb-secondary-400 truncate overflow-hidden"
+                    style={{ maxWidth: 'calc(100% - 24px)' }}
+                    href={_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {_url}
+                  </a>
+                </div>
+              </Button>
+
+
+
+
               <DialogDescription className="mt-1 text-sm leading-6">
                 {/* With free plan, you can track up to 10 products. */}
               </DialogDescription>
