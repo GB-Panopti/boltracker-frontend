@@ -19,11 +19,11 @@ export type ModalProps = {
   _name: string;
   _id: string;
   onSelect: () => void;
-  onOpenChange: (open: boolean) => void;
 };
 
-const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, onOpenChange }) => {
+const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id }) => {
   const [name, setName] = useState('');
+  const [isOpen, onOpenChange] = useState(false);
 
   useEffect(() => {
     setName(_name);
@@ -62,7 +62,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, onOpenChange }) =>
 
   return (
     <>
-      <Dialog onOpenChange={handleOpenChange}>
+      <Dialog open={isOpen} onOpenChange={handleOpenChange}>
         <li className='ml-1 p-1 flex rounded-md hover:bg-gb-secondary-200 hover:dark:bg-gb-primary-900 text-gb-primarylite-50 hover:text-gray-900 dark:text-gb-primarylite-100 hover:dark:text-gray-50 '>
           <DialogTrigger className="gap-x-2.5 text-left px-2 py-1.5 text-xs font-medium mr-3 w-full">
             {name}
