@@ -35,7 +35,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
       try {
         const stockResponse = await StockService.getAllUserStocks();
         const productResponse = await ProductService.getProducts();
-        console.log('product data:', productResponse.data);
         setStockData(stockResponse.data);
         setProducts(productResponse.data);
       } catch (error) {

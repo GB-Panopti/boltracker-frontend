@@ -15,6 +15,7 @@ import { Label } from "@/components/Label";
 import { RiHammerLine } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
 import { ArrowAnimated } from "../icons/ArrowAnimated";
+import { useAppData } from "@/app/contexts/StockDataContext";
 
 export type ModalProps = {
   _name: string;
@@ -23,9 +24,10 @@ export type ModalProps = {
   onSelect: () => void;
 };
 
-const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, _url, onOpenChange }: ModalProps) => {
+const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, _url }: ModalProps) => {
   const [name, setName] = useState('');
   const [isOpen, onOpenChange] = useState(false);
+  const { setProducts } = useAppData();
 
   useEffect(() => {
     setName(_name);
@@ -37,6 +39,15 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, _url, onOpenChange
     }
     onOpenChange(open);
   }
+
+  const refreshProducts = async () => {
+    try {
+      const productResponse = await ProductService.getProducts();
+      setProducts(productResponse.data);
+    } catch (error) {
+      console.error('Error refreshing products:', error);
+    }
+  };
 
   async function handleProductEdit() {
     try {
@@ -124,7 +135,10 @@ const ModalEditProduct: React.FC<ModalProps> = ({ _name, _id, _url, onOpenChange
                 <Button
                   className="mt-2 w-full sm:mt-0 sm:w-fit"
                   variant="secondary"
-                  onClick={() => onOpenChange(false)}
+                  onClick={() => {
+                    onOpenChange(false);
+                    refreshProducts();
+                  }}
                 >
                   Go back
                 </Button>

@@ -5,15 +5,10 @@ import ModalEditProduct from '@/components/ui/navigation/ModalEditProduct';
 import { Product } from '@/data/schema';
 
 const ProductSelector = () => {
-  
-  const [, setHasOpenDialog] = React.useState(false)
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
   const handleProductSelect = () => {
     focusRef.current = dropdownTriggerRef.current
-  }
-  const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open)
   }
 
   const { products } = useAppData();
@@ -25,8 +20,7 @@ const ProductSelector = () => {
               _name={product.name} 
               _id={product.id} 
               _url={product.url}
-              onSelect={handleProductSelect} 
-              onOpenChange={handleDialogItemOpenChange} />
+              onSelect={handleProductSelect} />
           ))}
         </ul>
   );

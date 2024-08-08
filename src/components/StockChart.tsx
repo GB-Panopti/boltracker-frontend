@@ -37,8 +37,6 @@ export function StockChart({
 }: CardProps) {
 
   const { stockData } = useAppData(); // Access stockData from the context
-
-  console.log(stockData);
   const formatter = formatters.unit;
 
   const selectedDatesInterval =
