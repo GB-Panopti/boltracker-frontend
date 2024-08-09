@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Tremor Raw chartColors [v0.0.0]
 
 export type ColorUtility = "bg" | "stroke" | "fill" | "text"
@@ -9,7 +10,7 @@ export const chartColors = {
     fill: "fill-blue-500",
     text: "text-blue-500",
   },
-  gb-primarylite: {
+  "gb-primarylite": {
     bg: "bg-gb-primarylite-500",
     stroke: "stroke-gb-primarylite-500",
     fill: "fill-gb-primarylite-500",
@@ -39,7 +40,7 @@ export const chartColors = {
     fill: "fill-cyan-500",
     text: "text-cyan-500",
   },
-  gb-secondary: {
+  "gb-secondary": {
     bg: "bg-gb-secondary-600 dark:bg-gb-secondary-500",
     stroke: "stroke-gb-secondary-600 dark:stroke-gb-secondary-500",
     fill: "fill-gb-secondary-600 dark:fill-gb-secondary-500",
@@ -53,6 +54,7 @@ export const chartColors = {
   },
 } as const satisfies {
   [color: string]: {
+    // eslint-disable-next-line no-unused-vars
     [key in ColorUtility]: string
   }
 }

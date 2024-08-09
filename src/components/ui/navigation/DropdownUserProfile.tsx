@@ -39,11 +39,6 @@ export function DropdownUserProfile({
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
 
-  const handleLogout = () => {
-      document.cookie = 'session_cookie=; Max-Age=0; path=/; domain=yourdomain.com; secure; SameSite=Lax';
-      window.location.href = '/login';
-  };
-
   React.useEffect(() => {
     setMounted(true)
   }, [])

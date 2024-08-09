@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Product } from '@/data/schema';
 import axios, { AxiosResponse } from 'axios'
 
@@ -9,7 +10,7 @@ const DELETE_PRODUCT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/produ
 class ProductService {
 
     getProducts() {
-        var prods =  axios.get(PRODUCT_API_URL, { withCredentials: true });
+        const prods =  axios.get(PRODUCT_API_URL, { withCredentials: true });
         return prods;
     }
 
@@ -24,7 +25,6 @@ class ProductService {
                 // Return the error response to be handled by the calling function
                 return error.response;
             } else {
-                console.error('Error adding product:', error);
                 throw error; // Re-throw the error to be caught by the calling function
             }
         }
@@ -39,7 +39,6 @@ class ProductService {
             );
             return response;
         } catch (error) {
-            console.error('Error editing product:', error);
             throw error; // Re-throw the error to be caught by the calling function
         }
     }
@@ -58,10 +57,10 @@ class ProductService {
             );
             return response;
         } catch (error) {
-            console.error('Error deleting product:', error);
             throw error; // Re-throw the error to be caught by the calling function
         }
     }
 }
 
-export default new ProductService();
+const productServiceInstance = new ProductService();
+export default productServiceInstance;

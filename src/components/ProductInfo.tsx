@@ -1,4 +1,4 @@
-import { Card, Tracker, CategoryBar, type Color } from "@tremor/react"
+import { Card } from "@tremor/react"
 
 
 export function ProductInfo() {

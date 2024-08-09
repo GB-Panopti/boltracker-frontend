@@ -3,15 +3,10 @@ import { siteConfig } from "@/app/siteConfig"
 import { cx, focusRing } from "@/lib/utils"
 import {
   RiHome2Line,
-  RiLinkM,
-  RiListCheck,
-  RiSettings5Line,
-  RiFocus3Line,
   RiRadarLine,
   RiBox1Line,
 } from "@remixicon/react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import MobileSidebar from "./MobileSidebar"
 import {
   WorkspacesDropdownDesktop,
@@ -22,37 +17,9 @@ import ProductSelector from "@/ui/productSelector"
 import React from "react"
 import { ModalAddProduct } from "./ModalAddProduct"
 
-const navigation = [
-  { name: "Overview", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
-  { name: "Track product", href: '#', icon: RiFocus3Line },
-  { name: "Settings", href: siteConfig.baseLinks.settings, icon: RiSettings5Line },
-] as const
-
-const shortcuts = [
-  {
-    name: "Add new user",
-    href: "#",
-    icon: RiLinkM,
-  },
-  {
-    name: "Workspace usage",
-    href: "#",
-    icon: RiLinkM,
-  },
-  {
-    name: "Cost spend control",
-    href: "#",
-    icon: RiLinkM,
-  },
-  {
-    name: "Overview – Rows written",
-    href: "#",
-    icon: RiLinkM,
-  },
-] as const
 
 export function Sidebar() {
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  const [, setHasOpenDialog] = React.useState(false)
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
 

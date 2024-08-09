@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import {
@@ -5,7 +6,6 @@ import {
   DrawerBody,
   DrawerContent,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/Drawer"
 import { cx, focusRing } from "@/lib/utils"
@@ -16,20 +16,18 @@ import {
   RiBox1Line,
 } from "@remixicon/react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import ProductSelector from "@/ui/productSelector"
 import React from "react"
 import { ModalAddProduct } from "./ModalAddProduct"
 import {
   WorkspacesDropdownDesktop,
-  WorkspacesDropdownMobile,
 } from "./SidebarWorkspacesDropdown"
 
 
 
 export default function MobileSidebar() {
 
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  const [, setHasOpenDialog] = React.useState(false)
 
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
@@ -42,13 +40,13 @@ export default function MobileSidebar() {
     setHasOpenDialog(open)
   }
 
-  const pathname = usePathname()
-  const isActive = (itemHref: string) => {
-    if (itemHref === siteConfig.baseLinks.settings) {
-      return pathname.startsWith("/settings")
-    }
-    return pathname === itemHref || pathname.startsWith(itemHref)
-  }
+  // const pathname = usePathname()
+  // const isActive = (itemHref: string) => {
+  //   if (itemHref === siteConfig.baseLinks.settings) {
+  //     return pathname.startsWith("/settings")
+  //   }
+  //   return pathname === itemHref || pathname.startsWith(itemHref)
+  // }
   return (
     <>
       <Drawer>

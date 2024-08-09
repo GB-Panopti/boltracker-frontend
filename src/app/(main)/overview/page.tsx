@@ -10,13 +10,13 @@ import { DateRange } from "react-day-picker"
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
 
-// export type KpiEntry = {
-//   title: string
-//   percentage: number
-//   current: number
-//   allowed: number
-//   unit?: string
-// }
+export type KpiEntry = {
+  title: string
+  percentage: number
+  current: number
+  allowed: number
+  unit?: string
+}
 
 // const data: KpiEntry[] = [
 //   {
@@ -65,13 +65,13 @@ export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 //   },
 // ]
 
-// export type KpiEntryExtended = Omit<
-//   KpiEntry,
-//   "current" | "allowed" | "unit"
-// > & {
-//   value: string
-//   color: string
-// }
+export type KpiEntryExtended = Omit<
+  KpiEntry,
+  "current" | "allowed" | "unit"
+> & {
+  value: string
+  color: string
+}
 
 // const data3: KpiEntryExtended[] = [
 //   {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import {
@@ -6,13 +7,11 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/Dropdown"
 import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
-import { ModalAddProduct } from "./ModalAddProduct"
 import { useAppData } from "@/app/contexts/StockDataContext"
 
 const workspaces = [
@@ -36,20 +35,20 @@ const workspaces = [
 export const WorkspacesDropdownDesktop = () => {
   const { products } = useAppData()
   const [dropdownOpen, setDropdownOpen] = React.useState(false)
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
-  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
+  // const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  // const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
-  const handleDialogItemSelect = () => {
-    focusRef.current = dropdownTriggerRef.current
-  }
+  // const handleDialogItemSelect = () => {
+  //   focusRef.current = dropdownTriggerRef.current
+  // }
 
-  const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open)
-    if (open === false) {
-      setDropdownOpen(false)
-    }
-  }
+  // const handleDialogItemOpenChange = (open: boolean) => {
+  //   setHasOpenDialog(open)
+  //   if (open === false) {
+  //     setDropdownOpen(false)
+  //   }
+  // }
   return (
     <>
       {/* sidebar (lg+) */}
@@ -88,7 +87,7 @@ export const WorkspacesDropdownDesktop = () => {
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          hidden={hasOpenDialog}
+          // hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
             if (focusRef.current) {
               focusRef.current.focus()
@@ -138,27 +137,27 @@ export const WorkspacesDropdownDesktop = () => {
 }
 
 export const WorkspacesDropdownMobile = () => {
-  const [dropdownOpen, setDropdownOpen] = React.useState(false)
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
-  const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
-  const focusRef = React.useRef<null | HTMLButtonElement>(null)
+  // const [dropdownOpen, setDropdownOpen] = React.useState(false)
+  // const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  // const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
+  // const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
-  const handleDialogItemSelect = () => {
-    focusRef.current = dropdownTriggerRef.current
-  }
+  // const handleDialogItemSelect = () => {
+  //   focusRef.current = dropdownTriggerRef.current
+  // }
 
-  const handleDialogItemOpenChange = (open: boolean) => {
-    setHasOpenDialog(open)
-    if (open === false) {
-      setDropdownOpen(false)
-    }
-  }
+  // const handleDialogItemOpenChange = (open: boolean) => {
+  //   setHasOpenDialog(open)
+  //   if (open === false) {
+  //     setDropdownOpen(false)
+  //   }
+  // }
   return (
     <>
       {/* sidebar (xs-lg) */}
       <DropdownMenu
-        open={dropdownOpen}
-        onOpenChange={setDropdownOpen}
+        // open={dropdownOpen}
+        // onOpenChange={setDropdownOpen}
         modal={false}
       >
         <DropdownMenuTrigger asChild>
@@ -186,14 +185,14 @@ export const WorkspacesDropdownMobile = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           className="!min-w-72"
-          hidden={hasOpenDialog}
-          onCloseAutoFocus={(event) => {
-            if (focusRef.current) {
-              focusRef.current.focus()
-              focusRef.current = null
-              event.preventDefault()
-            }
-          }}
+          // hidden={hasOpenDialog}
+          // onCloseAutoFocus={(event) => {
+          //   if (focusRef.current) {
+          //     focusRef.current.focus()
+          //     focusRef.current = null
+          //     event.preventDefault()
+          //   }
+          // }}
         >
           <DropdownMenuGroup>
             <DropdownMenuLabel>

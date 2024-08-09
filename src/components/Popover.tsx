@@ -40,8 +40,7 @@ const PopoverClose = React.forwardRef<
 
 PopoverClose.displayName = "PopoverClose"
 
-interface ContentProps
-  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitives.Content> {}
+type ContentProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitives.Content>
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitives.Content>,

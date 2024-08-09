@@ -62,7 +62,7 @@ export function ModalAddProduct({
           <div
             onSelect={(event) => {
               event.preventDefault();
-              onSelect && onSelect();
+              onSelect();
             }}
           >
             {itemName}

@@ -1,18 +1,18 @@
-import { Badge } from "@/components/Badge"
-import { ProgressBar } from "@/components/ProgressBar"
+import { Badge } from "@/components/Badge";
+import { ProgressBar } from "@/components/ProgressBar";
 
 import { KpiEntry } from "@/app/(main)/overview/page"
 
 export type CardProps = {
-  title: string
-  change: string
-  value: string
-  valueDescription: string
-  ctaDescription: string
-  ctaText: string
-  ctaLink: string
-  data: KpiEntry[]
-}
+  title: string;
+  change: string;
+  value: string;
+  valueDescription: string;
+  ctaDescription: string;
+  ctaText: string;
+  ctaLink: string;
+  data: KpiEntry[];
+};
 
 export function ProgressBarCard({
   title,
@@ -23,7 +23,7 @@ export function ProgressBarCard({
   ctaText,
   ctaLink,
   data,
-}: CardProps) {
+}: CardProps): JSX.Element {
   return (
     <>
       <div className="flex flex-col justify-between">
@@ -66,12 +66,15 @@ export function ProgressBarCard({
         <div>
           <p className="mt-6 text-xs text-gray-500">
             {ctaDescription}{" "}
-            <a href={ctaLink} className="text-gb-secondary-600 dark:text-gb-secondary-400">
+            <a
+              href={ctaLink}
+              className="text-gb-secondary-600 dark:text-gb-secondary-400"
+            >
               {ctaText}
             </a>
           </p>
         </div>
       </div>
     </>
-  )
+  );
 }

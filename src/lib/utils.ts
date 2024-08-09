@@ -3,7 +3,7 @@
 import clsx, { type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-export function cx(...args: ClassValue[]) {
+export function cx(...args: ClassValue[]): string {
   return twMerge(clsx(...args))
 }
 
@@ -40,7 +40,7 @@ export const hasErrorInput = [
 
 // Number formatter function
 
-export const usNumberformatter = (number: number, decimals = 0) =>
+export const usNumberformatter = (number: number, decimals = 0): string =>
   Intl.NumberFormat("us", {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
@@ -48,7 +48,7 @@ export const usNumberformatter = (number: number, decimals = 0) =>
     .format(Number(number))
     .toString()
 
-export const percentageFormatter = (number: number, decimals = 1) => {
+export const percentageFormatter = (number: number, decimals = 1): string => {
   const formattedNumber = new Intl.NumberFormat("en-US", {
     style: "percent",
     minimumFractionDigits: decimals,
@@ -59,7 +59,7 @@ export const percentageFormatter = (number: number, decimals = 1) => {
   return `${symbol}${formattedNumber}`
 }
 
-export const millionFormatter = (number: number, decimals = 1) => {
+export const millionFormatter = (number: number, decimals = 1): string => {
   const formattedNumber = new Intl.NumberFormat("en-US", {
     style: "decimal",
     minimumFractionDigits: decimals,
@@ -68,7 +68,7 @@ export const millionFormatter = (number: number, decimals = 1) => {
   return `${formattedNumber}M`
 }
 export const formatters: { [key: string]: any } = {
-  currency: (number: number, currency: string = "USD") =>
+  currency: (number: number, currency = "USD") =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: currency,

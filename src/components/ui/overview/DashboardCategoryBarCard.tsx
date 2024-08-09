@@ -1,19 +1,19 @@
-import { Badge } from "@/components/Badge"
-import { cx } from "@/lib/utils"
+import { Badge } from "@/components/Badge";
+import { cx } from "@/lib/utils";
 
-import type { KpiEntryExtended } from "@/app/(main)/overview/page"
+import type { KpiEntryExtended } from "@/app/(main)/overview/page";
 
 export type CardProps = {
-  title: string
-  change: string
-  value: string
-  valueDescription: string
-  subtitle: string
-  ctaDescription: string
-  ctaText: string
-  ctaLink: string
-  data: KpiEntryExtended[]
-}
+  title: string;
+  change: string;
+  value: string;
+  valueDescription: string;
+  subtitle: string;
+  ctaDescription: string;
+  ctaText: string;
+  ctaLink: string;
+  data: KpiEntryExtended[];
+};
 
 export function CategoryBarCard({
   title,
@@ -75,11 +75,14 @@ export function CategoryBarCard({
         </div>
         <p className="mt-6 text-xs text-gray-500">
           {ctaDescription}{" "}
-          <a href={ctaLink} className="text-gb-secondary-600 dark:text-gb-secondary-400">
+          <a
+            href={ctaLink}
+            className="text-gb-secondary-600 dark:text-gb-secondary-400"
+          >
             {ctaText}
           </a>
         </p>
       </div>
     </>
-  )
+  );
 }

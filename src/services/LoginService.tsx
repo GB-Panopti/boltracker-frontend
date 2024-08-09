@@ -8,7 +8,7 @@ const LOGOUT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/logout";
 
 class LoginService {
 
-    checkUser(name, password) {
+    checkUser(name: string, password: string) {
         return axios.post(LOGIN_API_URL, { 
             username: name,
             password: password
@@ -20,4 +20,5 @@ class LoginService {
     }	
 }
 
-export default new LoginService();
+const loginServiceInstance = new LoginService();
+export default loginServiceInstance;

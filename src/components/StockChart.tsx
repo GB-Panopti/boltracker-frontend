@@ -1,19 +1,19 @@
 "use client";
-import { AreaChart } from '@tremor/react';
-import { Badge } from '@/components/Badge';
-import React from 'react';
-import { useAppData } from '@/app/contexts/StockDataContext';
-import { cx, formatters, percentageFormatter } from '@/lib/utils';
+import { AreaChart } from "@tremor/react";
+import { Badge } from "@/components/Badge";
+import React from "react";
+import { useAppData } from "@/app/contexts/StockDataContext";
+import { cx, formatters, percentageFormatter } from "@/lib/utils";
 import { PeriodValue } from "@/app/(main)/overview/page";
 import { DateRange } from "react-day-picker";
-import { format, isWithinInterval } from 'date-fns';
+import { format, isWithinInterval } from "date-fns";
 
 export type CardProps = {
   title: string;
   id: string;
   selectedDates: DateRange | undefined;
   selectedPeriod: PeriodValue;
-  granularity: 'hour' | 'day' | 'minute'; // Add granularity parameter
+  granularity: "hour" | "day" | "minute"; // Add granularity parameter
 };
 
 export const getBadgeType = (value: number) => {
@@ -35,7 +35,6 @@ export function StockChart({
   selectedDates,
   selectedPeriod,
 }: CardProps) {
-
   const { stockData } = useAppData(); // Access stockData from the context
   const formatter = formatters.unit;
 
@@ -43,24 +42,27 @@ export function StockChart({
     selectedDates?.from && selectedDates?.to
       ? { start: selectedDates.from, end: selectedDates.to }
       : null;
-      
+
   const filteredStockData = selectedDatesInterval
-      ? stockData.filter((datum) =>
+    ? stockData
+        .filter((datum) =>
           isWithinInterval(new Date(datum.date), selectedDatesInterval)
-        ).filter((datum) => String(datum.id) === id)
-      : stockData.filter((datum) => String(datum.id) === id);
+        )
+        .filter((datum) => String(datum.id) === id)
+    : stockData.filter((datum) => String(datum.id) === id);
 
   const chartData = filteredStockData.map((datum) => ({
     date: new Date(datum.date),
     stock: datum.stock,
-    formattedDate: format(new Date(datum.date), 'yyyy-MM-dd HH:mm'),
+    formattedDate: format(new Date(datum.date), "yyyy-MM-dd HH:mm"),
   }));
 
   const categories =
     selectedPeriod === "no-comparison" ? ["stock"] : ["stock", "previousStock"];
-  
-  const value = chartData.length > 0 ? (chartData[chartData.length - 1].stock || 0) : 0;
-  const previousValue = chartData.length > 0 ? (chartData[0].stock || 0) : 0;
+
+  const value =
+    chartData.length > 0 ? chartData[chartData.length - 1].stock || 0 : 0;
+  const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
   const evolution =
     selectedPeriod !== "no-comparison" && previousValue !== 0
@@ -87,7 +89,8 @@ export function StockChart({
         </dd>
         {selectedPeriod !== "no-comparison" && (
           <dd className="text-sm text-gray-500">
-            {value > previousValue ? 'up' : 'down'} from {formatter(previousValue)}
+            {value > previousValue ? "up" : "down"} from{" "}
+            {formatter(previousValue)}
           </dd>
         )}
       </div>
@@ -98,9 +101,7 @@ export function StockChart({
         index="formattedDate"
         yAxisWidth={45}
         categories={categories}
-        colors={[
-          '#694873',
-        ]}
+        colors={["#694873"]}
         startEndOnly={true}
         showYAxis={true}
         showAnimation={true}

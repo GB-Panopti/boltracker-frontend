@@ -44,13 +44,12 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-import { Sidebar } from "@/components/ui/navigation/sidebar";
 import { AppProvider } from "./contexts/StockDataContext";
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -60,10 +59,7 @@ export default function RootLayout({
       >
         <div className="mx-auto">
           <ThemeProvider defaultTheme="system" attribute="class">
-            <AppProvider>
-                {children}
-
-            </AppProvider>
+            <AppProvider>{children}</AppProvider>
           </ThemeProvider>
         </div>
       </body>
