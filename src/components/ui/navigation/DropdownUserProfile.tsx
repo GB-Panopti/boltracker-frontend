@@ -13,6 +13,7 @@ import {
   DropdownMenuSubMenuTrigger,
   DropdownMenuTrigger,
 } from "@/components/Dropdown"
+import loginServiceInstance from "@/services/LoginService"
 import {
   RiArrowRightUpLine,
   RiComputerLine,
@@ -26,6 +27,8 @@ import {
 import { useTheme } from "next-themes"
 import Link from "next/link"
 import * as React from "react"
+import ModalEditPassword from "./ModalEditPassword"
+
 
 export type DropdownUserProfileProps = {
   children: React.ReactNode
@@ -39,6 +42,8 @@ export function DropdownUserProfile({
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
 
+  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -51,7 +56,7 @@ export function DropdownUserProfile({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align={align}>
-          <DropdownMenuLabel>your.email@acme.com</DropdownMenuLabel>
+          <DropdownMenuLabel>Your Account</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuSubMenu>
               <DropdownMenuSubMenuTrigger>
@@ -107,6 +112,19 @@ export function DropdownUserProfile({
                 aria-hidden="true"/>
                 <p style={{ textDecoration: 'line-through' }}>Settings</p>
             </DropdownMenuItem>
+            <DropdownMenuItem onClick={(e) => {
+                e.preventDefault(); // Prevent default action to keep dropdown open
+                setHasOpenDialog(true);
+              }}>
+              <RiSettings2Line
+                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                aria-hidden="true"/>
+                <ModalEditPassword
+                  onSelect={() => {
+                    setHasOpenDialog(false); // Close the modal after action
+                  }}
+                />
+            </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
@@ -126,12 +144,17 @@ export function DropdownUserProfile({
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-                <DropdownMenuItem onClick={() => {
+                <DropdownMenuItem onClick={async () => {
                     // Delete the session cookie
-                    document.cookie = 'session_cookie=; Max-Age=0; path=/; domain=yourdomain.com; secure; SameSite=Lax';
-
+                    const response = await loginServiceInstance.logout()
+                    // document.cookie = 'session_cookie=; Max-Age=0; path=/; domain=yourdomain.com; secure; SameSite=Lax';
+                    if (response.status === 200) {
+                      window.location.href = '/login';
+                    } else {
+                      console.log("Something went wrong with login out!")
+                    }
+                    
                     // Redirect to the login page
-                    window.location.href = '/login';
                 }}>
                     <RiLogoutBoxLine
                         className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
