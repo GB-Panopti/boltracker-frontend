@@ -13,7 +13,6 @@ import {
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { RiHammerLine } from "@remixicon/react";
-import { useAppData } from "@/app/contexts/StockDataContext";
 import loginServiceInstance from "@/services/LoginService";
 
 export type ModalProps = {
@@ -29,7 +28,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isOpen, onOpenChange] = useState(false);
-  const [error, setError] = React.useState<string | null>(null);
+  const [error, ] = React.useState<string | null>(null);
 
 
 

@@ -42,7 +42,7 @@ export function DropdownUserProfile({
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
 
-  const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
+  const [, setHasOpenDialog] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
