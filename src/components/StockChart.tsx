@@ -1,10 +1,11 @@
 "use client";
 import { AreaChart } from "@tremor/react";
-import { Badge } from "@/components/Badge";
+// import { Badge } from "@/components/Badge";
 import React from "react";
 import { useAppData } from "@/app/contexts/StockDataContext";
-import { cx, formatters, percentageFormatter } from "@/lib/utils";
-import { PeriodValue } from "@/app/(main)/overview/page";
+import { cx, formatters,  } from "@/lib/utils";
+// import { percentageFormatter  } from "@/lib/utils";
+import { PeriodValue } from "@/app/(main)/page";
 import { DateRange } from "react-day-picker";
 import { format, isWithinInterval } from "date-fns";
 
@@ -60,14 +61,16 @@ export function StockChart({
   const categories =
     selectedPeriod === "no-comparison" ? ["stock"] : ["stock", "previousStock"];
 
-  const value =
-    chartData.length > 0 ? chartData[chartData.length - 1].stock || 0 : 0;
-  const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
+  // const value = chartData.length > 0 ? chartData[chartData.length - 1].stock || 0 : 0;
+  // Value is the sum of all stock values in the selected period
+  const value = chartData.reduce((acc, curr) => acc + curr.stock, 0);
+  
+  // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
-  const evolution =
-    selectedPeriod !== "no-comparison" && previousValue !== 0
-      ? (value - previousValue) / previousValue
-      : 0;
+  // const evolution =
+  //   selectedPeriod !== "no-comparison" && previousValue !== 0
+  //     ? (value - previousValue) / previousValue
+  //     : 0;
 
   return (
     <div className={cx("transition")}>
@@ -76,23 +79,23 @@ export function StockChart({
           <dt className="font-bold text-gray-900 sm:text-sm dark:text-gray-50">
             {title}
           </dt>
-          {selectedPeriod !== "no-comparison" && (
+          {/* {selectedPeriod !== "no-comparison" && (
             <Badge variant={getBadgeType(evolution)}>
               {percentageFormatter(evolution)}
             </Badge>
-          )}
+          )} */}
         </div>
       </div>
       <div className="mt-2 flex items-baseline justify-between">
         <dd className="text-xl text-gray-900 dark:text-gray-50">
-          {formatter(value)} in stock
+          {formatter(value)} sales
         </dd>
-        {selectedPeriod !== "no-comparison" && (
+        {/* {selectedPeriod !== "no-comparison" && (
           <dd className="text-sm text-gray-500">
             {value > previousValue ? "up" : "down"} from{" "}
             {formatter(previousValue)}
           </dd>
-        )}
+        )} */}
       </div>
       <AreaChart
         className="mt-6 h-32"
