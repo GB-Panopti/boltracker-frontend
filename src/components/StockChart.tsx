@@ -54,16 +54,18 @@ export function StockChart({
 
   const chartData = filteredStockData.map((datum) => ({
     date: new Date(datum.date),
-    stock: datum.stock,
-    formattedDate: format(new Date(datum.date), "yyyy-MM-dd HH:mm"),
+    sales: datum.stock,
+    formattedDate: format(new Date(datum.date), "yyyy-MM-dd"),
   }));
 
   const categories =
-    selectedPeriod === "no-comparison" ? ["stock"] : ["stock", "previousStock"];
+    selectedPeriod === "no-comparison" ? ["sales"] : ["sales", "previousSales"];
 
   // const value = chartData.length > 0 ? chartData[chartData.length - 1].stock || 0 : 0;
   // Value is the sum of all stock values in the selected period
-  const value = chartData.reduce((acc, curr) => acc + curr.stock, 0);
+  const value = chartData.reduce((acc, curr) => acc + curr.sales, 0);
+
+  console.log(chartData)
   
   // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
@@ -110,7 +112,7 @@ export function StockChart({
         showAnimation={true}
         showLegend={false}
         showTooltip={true}
-        yAxisLabel="Stock"
+        yAxisLabel="Sales"
       >
         {/*figure out how to add scatter points and stuff by checking the tremor docs*/}
       </AreaChart>
