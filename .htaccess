@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Redirect arbitrary pages (like /page) to /page.html
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.html [L]
+
+# If the requested resource doesn't exist, redirect everything to index.html (React's single page app)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

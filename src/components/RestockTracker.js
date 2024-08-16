@@ -7,31 +7,31 @@ import { gray, green } from 'tailwindcss/colors';
 
 
 const data2 = [
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
   { color: 'rose', tooltip: 'Downtime' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
   { color: 'gray', tooltip: 'Maintenance' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
-  { color: 'emerald', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
   { color: 'yellow', tooltip: 'Degraded' },
-  { color: 'emerald', tooltip: 'Operational' },
+  { color: 'gb-primarylite', tooltip: 'Operational' },
 ];
 
 export function RestockTracker() {
@@ -67,19 +67,19 @@ React.useEffect(() => {
 
   return (
     <Card className="custom-card flex flex-col items-center justify-center">
-      <p className="text-tremor-default flex justify-between w-full">
-        <span className="text-tremor-content-strong dark:text-dark-tremor-content-strong font-medium">example.com</span>
-        <span className="text-tremor-content dark:text-dark-tremor-content">uptime 99.1%</span>
+      <p className="text-gb-default flex justify-between w-full">
+        <span className="text-gb-content-strong dark:text-dark-gb-content-strong font-medium">example.com</span>
+        <span className="text-gb-content dark:text-dark-gb-content">uptime 99.1%</span>
       </p>
       <Tracker data={data} className="mt-2 w-full" />
       <p className="w-full">
-        <span className="text-tremor-content-strong dark:text-dark-tremor-content-strong font-medium">There have been 3 stock refills in the last 3 months.
+        <span className="text-gb-content-strong dark:text-dark-gb-content-strong font-medium">There have been 3 stock refills in the last 3 months.
         </span>
       </p><br />
       <CategoryBar
             className="w-full"
             values={[40, 30, 20, 10]}
-            colors={['emerald', 'yellow', 'orange', 'rose']}
+            colors={['gb-primarylite', 'yellow', 'orange', 'rose']}
             markerValue={62}
           />
         
