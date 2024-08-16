@@ -28,7 +28,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isOpen, onOpenChange] = useState(false);
-  const [error, ] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
 
 
 
@@ -38,7 +38,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
 
 
   async function handleChangePassword() {
-
+    setError(null)
     if (newPassword === confirmPassword) {
       const response = await loginServiceInstance.changePassword(newPassword)
 
@@ -46,10 +46,10 @@ const ModalEditPassword: React.FC<ModalProps> = ({
         onOpenChange(false)
 
       } else {
-        alert("Something went wrong!")
+        setError("Something went wrong!")
       }
     } else {
-      alert("Passwords are not equal!")
+      setError("Passwords are not equal!")
     }
 
   }
