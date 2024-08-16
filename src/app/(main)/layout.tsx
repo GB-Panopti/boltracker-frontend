@@ -12,10 +12,10 @@ export default function Layout({
   const blur = useAuthRedirect();
   
   return (
-    <div>
+    <div className={blur}>
       <Sidebar />
       <main className="lg:pl-72">
-        <div className={"relative " + blur}>
+        <div className="relative">
           <div className="p-4 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10 lg:pt-7">
             {children}
           </div>
