@@ -103,6 +103,7 @@ export default function LoginForm() {
         event.preventDefault(); // Prevent default form submission behavior
         
         try {
+            await LoginService.logout(); // Logout the user if they are already logged in
             const response = await LoginService.checkUser(username, password);
             const res = response.data === "User logged in successfully!";
             
