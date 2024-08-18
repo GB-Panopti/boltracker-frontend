@@ -8,6 +8,7 @@ import { cx, formatters,  } from "@/lib/utils";
 import { PeriodValue } from "@/app/(main)/page";
 import { DateRange } from "react-day-picker";
 import { format, isWithinInterval } from "date-fns";
+import { StockDatum } from "@/data/schema";
 
 export type CardProps = {
   title: string;
@@ -44,15 +45,14 @@ export function StockChart({
       ? { start: selectedDates.from, end: selectedDates.to }
       : null;
 
-  const filteredStockData = selectedDatesInterval
-    ? stockData
-        .filter((datum) =>
-          isWithinInterval(new Date(datum.date), selectedDatesInterval)
-        )
-        .filter((datum) => String(datum.id) === id)
-    : stockData.filter((datum) => String(datum.id) === id);
+  const data = stockData[id as keyof typeof stockData];
 
-  const chartData = filteredStockData.map((datum) => ({
+  const filteredStockData = selectedDatesInterval && Array.isArray(data)
+      ? data.filter((datum) => isWithinInterval(new Date(datum.date), selectedDatesInterval))
+      : data;
+
+
+  const chartData = (filteredStockData as StockDatum[]).map((datum) => ({
     date: new Date(datum.date),
     sales: datum.stock,
     formattedDate: format(new Date(datum.date), "yyyy-MM-dd"),
@@ -64,8 +64,6 @@ export function StockChart({
   // const value = chartData.length > 0 ? chartData[chartData.length - 1].stock || 0 : 0;
   // Value is the sum of all stock values in the selected period
   const value = chartData.reduce((acc, curr) => acc + curr.sales, 0);
-
-  console.log(chartData)
   
   // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
