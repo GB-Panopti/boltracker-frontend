@@ -14,6 +14,8 @@ const GoogleIcon = (props) => (
 export default function LoginForm() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [error, setError] = React.useState(false);
+    const [errorMessage, setErrorMessage] = React.useState('');
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
@@ -31,12 +33,17 @@ export default function LoginForm() {
                     </label>
                     <TextInput
                     // type="email"
+                    error={error}
+                    errorMessage={errorMessage}
                     id="email"
                     name="email"
                     autoComplete="email"
                     placeholder="john@company.com"
                     className="mt-2 rounded-md"
-                    onValueChange={(value) => setUsername(value)}
+                    onValueChange={(value) => {
+                        setError(false);
+                        setUsername(value)
+                    }}
                     />
                 </div>
                 <div>
@@ -103,19 +110,34 @@ export default function LoginForm() {
         event.preventDefault(); // Prevent default form submission behavior
         
         try {
+            // Regex check if username is email
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)){
+                setError(true);
+                setErrorMessage('Invalid email');
+                // alert('Invalid email format');
+                return;
+            }
             await LoginService.logout(); // Logout the user if they are already logged in
             const response = await LoginService.checkUser(username, password);
-            const res = response.data === "User logged in successfully!";
-            
-            if (res) {
+
+            if (response.status === 200) {
                 window.location.href = "/"; // Redirect to the home page if the user is authenticated
-            } else {
-                console.log("Invalid username or password");
-                alert('Invalid username or password'); // Show an error message if the user is not authenticated
             }
+
         } catch (error) {
-            console.log(error);
-            alert('Server error. Please try again later.');
+            // In case of no response
+            if (error.code === "ERR_NETWORK") {
+                setError(true); 
+                setErrorMessage('Server is not responding');
+            // In case of 403 response (Unauthorized)
+            } else if (error.response.status === 403) {
+                setError(true);
+                setErrorMessage('Invalid username or password');
+            } else {
+                setError(true);
+                setErrorMessage('An unknown error occurred ' + error.response.status);
+            }
+
         }
     }
 }
