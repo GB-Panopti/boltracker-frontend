@@ -118,7 +118,7 @@ export default function LoginForm() {
                 return;
             }
             await LoginService.logout(); // Logout the user if they are already logged in
-            const response = await LoginService.checkUser(username, password);
+            const response = await LoginService.checkUser(username.toLowerCase(), password);
 
             if (response.status === 200) {
                 window.location.href = "/"; // Redirect to the home page if the user is authenticated
