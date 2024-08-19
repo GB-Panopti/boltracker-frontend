@@ -49,7 +49,7 @@ export function StockChart({
 
   const filteredStockData = selectedDatesInterval && Array.isArray(data)
       ? data.filter((datum) => isWithinInterval(new Date(datum.date), selectedDatesInterval))
-      : data;
+      : [];
 
 
   const chartData = (filteredStockData as StockDatum[]).map((datum) => ({
