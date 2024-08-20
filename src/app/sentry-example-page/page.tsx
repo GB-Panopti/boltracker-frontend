@@ -48,8 +48,13 @@ export default function Page() {
             fontSize: "14px",
             margin: "18px",
           }}
-          onClick={async () => {
-            throw new Error("Sentry Example Frontend Error");
+          onClick={() => {
+            try {
+              throw new Error("Sentry Example Frontend Error");
+            } catch (error) {
+              Sentry.captureException(error);
+              console.log("Error caught:", error);
+            }
           }}
         >
           Throw error!
@@ -57,7 +62,7 @@ export default function Page() {
 
         <p>
           Next, look for the error on the{" "}
-          <a href="https://gb-fl.sentry.io/issues/?project=4507803149336656">Issues Page</a>.
+          <a href="https://gb-fl.sentry.io/issues/?project=4507809898037328">Issues Page</a>.
         </p>
         <p style={{ marginTop: "24px" }}>
           For more information, see{" "}
