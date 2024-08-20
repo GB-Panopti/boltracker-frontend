@@ -45,6 +45,7 @@ const inter = Inter({
 });
 
 import { AppProvider } from "./contexts/StockDataContext";
+import * as Sentry from "@sentry/nextjs";
 
 export default function RootLayout({
   children,
@@ -58,9 +59,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <div className="mx-auto">
-          <ThemeProvider defaultTheme="system" attribute="class">
-            <AppProvider>{children}</AppProvider>
-          </ThemeProvider>
+          <Sentry.ErrorBoundary fallback={<p>ah noes</p>}>
+            <ThemeProvider defaultTheme="system" attribute="class">
+              <AppProvider>{children}</AppProvider>
+            </ThemeProvider>
+          </Sentry.ErrorBoundary>
         </div>
       </body>
     </html>

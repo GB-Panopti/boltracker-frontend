@@ -84,6 +84,15 @@ export function StockChart({
               {percentageFormatter(evolution)}
             </Badge>
           )} */}
+          <button
+            type="button"
+            onClick={() => {
+              console.log('aa');
+              throw new Error("Sentry Test Error");
+            }}
+          >
+            Break the world
+          </button>;
         </div>
       </div>
       <div className="mt-2 flex items-baseline justify-between">
