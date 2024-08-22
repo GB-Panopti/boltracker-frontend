@@ -112,7 +112,6 @@ export function StockChart({
         showTooltip={true}
         yAxisLabel="Sales"
       >
-        {/*figure out how to add scatter points and stuff by checking the tremor docs*/}
       </AreaChart>
     </div>
   );
