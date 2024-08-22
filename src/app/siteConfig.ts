@@ -4,7 +4,7 @@ export const siteConfig = {
   description: "I spy with my little eye..",
   baseLinks: {
     home: "/",
-    overview: "/overview",
+    overview: "/",
     trackNew: "/trackNew",
     settings: "/settings",
     details: "/details",

@@ -22,6 +22,7 @@ import {
   RiPaintBrushLine,
   RiQuestionLine,
   RiSettings2Line,
+  RiSpeakLine,
   RiSunLine,
 } from "@remixicon/react"
 import { useTheme } from "next-themes"
@@ -105,13 +106,6 @@ export function DropdownUserProfile({
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
-            
-            <DropdownMenuItem>
-              <RiSettings2Line
-                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                aria-hidden="true"/>
-                <p style={{ textDecoration: 'line-through' }}>Settings</p>
-            </DropdownMenuItem>
             <DropdownMenuItem onClick={(e) => {
                 e.preventDefault(); // Prevent default action to keep dropdown open
                 setHasOpenDialog(true);
@@ -128,17 +122,13 @@ export function DropdownUserProfile({
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <Link href="mailto:info@panopti.nl">
+            <Link href="/feedback">
               <DropdownMenuItem>
-                <RiQuestionLine
+                <RiSpeakLine
                     className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
                     aria-hidden="true"
                   />
-                Get help
-                <RiArrowRightUpLine
-                  className="mb-1 ml-1 size-2.5 shrink-0 text-gray-500"
-                  aria-hidden="true"
-                />
+                Give feedback
               </DropdownMenuItem>
             </Link>
           </DropdownMenuGroup>

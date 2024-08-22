@@ -12,7 +12,7 @@ import {
 } from "@/components/Dialog";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
-import { RiHammerLine } from "@remixicon/react";
+import { RiHammerLine, RiLock2Line, RiLockLine, RiRotateLockLine } from "@remixicon/react";
 import loginServiceInstance from "@/services/LoginService";
 
 export type ModalProps = {
@@ -64,7 +64,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>
-              <RiHammerLine
+              <RiRotateLockLine
                 aria-hidden="true"
                 className="mb-1 ml-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
               />
