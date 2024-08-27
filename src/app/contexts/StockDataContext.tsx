@@ -6,9 +6,9 @@ import { Product, StockDatum } from '@/data/schema';
 
 // Combined Data Context
 interface AppDataContextProps {
-  stockData: StockDatum[];
+  stockData: StockDatum[][];
   products: Product[];
-  setStockData: React.Dispatch<React.SetStateAction<StockDatum[]>>;
+  setStockData: React.Dispatch<React.SetStateAction<StockDatum[][]>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
@@ -27,7 +27,7 @@ interface AppProviderProps {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-  const [stockData, setStockData] = useState<StockDatum[]>([]);
+  const [stockData, setStockData] = useState<StockDatum[][]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
