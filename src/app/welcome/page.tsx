@@ -5,7 +5,10 @@ import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import { TremorPlaceholder } from "@/components/ui/icons/TremorPlaceholder"
 import Image from "next/image"
 import { UserProfileMobile } from "@/components/ui/navigation/UserProfile"
-import { Card } from "@tremor/react";
+import { Card, Divider, List, ListItem } from "@tremor/react";
+import { RiCheckboxCircleFill } from "@remixicon/react";
+import { features } from "process";
+import MobileSidebar from "@/components/ui/navigation/MobileSidebar";
 
 export default function LandingPage() {
   return (
@@ -132,21 +135,142 @@ export default function LandingPage() {
         </div>
 
 
-        <div className="my-40 flex w-full flex-col items-center justify-center">
-          <TremorPlaceholder className="size-20 shrink-0" aria-hidden="true" />
-          <h1 className="mt-6 text-7xl font-semibold sm:text-7xl" style={{ fontFamily: 'Rubik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol' }}>
-          Pricing
+
+        <div className="flex w-full flex-col items-center justify-center ">
+          <h1 className="mt-12 mb-6 text-5xl text-white font-semibold sm:text-7xl" style={{ fontFamily: 'Rubik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol' }}>
+            Pricing
           </h1>
-          <Button className="group mt-6" variant="accent" asChild>
-            <a href={siteConfig.baseLinks.settings}>
-              Try the demo now!
-              <ArrowAnimated
-                className="stroke-gray-900 dark:stroke-gray-50"
-                aria-hidden="true"
-              />
-            </a>
-          </Button>
+            
+          
+          <div className=" overflow-hidden flex w-4/5">
+            {/* tremor blocks pricing template*/}
+            <>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 ">
+                <div className="p-6">
+                  <h3 className="font-semibold text-tremor-content-strong ">
+                    Unlock all features
+                  </h3>
+                  <p className="mt-2 text-tremor-default leading-6 text-tremor-content ">
+                    Get the full potential of your data with our enhanced features that
+                    enable advanced data analytics and informed decision-making.
+                  </p>
+                  <div className="mt-8 space-y-6">
+                    <div className="relative border-l-2 border-tremor-border pl-4 ">
+                      <h4 className="text-tremor-default font-medium text-tremor-content-strong ">
+                        <a href="#" className="focus:outline-none">
+                          {/* Extend link to entire card */}
+                          <span className="absolute inset-0" aria-hidden={true} />
+                          Talk to Sales &#8594;
+                        </a>
+                      </h4>
+                      <p className="mt-1 text-tremor-default text-tremor-content ">
+                        Schedule a call with one of our sales representative
+                      </p>
+                    </div>
+                    <div className="relative border-l-2 border-tremor-border pl-4 ">
+                      <h4 className="text-tremor-default font-medium text-tremor-content-strong ">
+                        <a href="#" className="focus:outline-none">
+                          {/* Extend link to entire card */}
+                          <span className="absolute inset-0" aria-hidden={true} />
+                          Book a demo &#8594;
+                        </a>
+                      </h4>
+                      <p className="mt-1 text-tremor-default text-tremor-content ">
+                        Try out our premium features in a demo
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-3xl border border-tremor-border bg-tremor-background-muted p-6 ">
+                  <div className="flex items-start justify-between space-x-6">
+                    <h3 className="font-semibold text-tremor-content-strong ">
+                      Professional Plan Subscription
+                    </h3>
+                    <p className="flex items-baseline">
+                      <span className="text-tremor-metric font-semibold text-tremor-content-strong ">
+                        $89
+                      </span>
+                      <span className="text-tremor-default text-tremor-content ">
+                        /mo
+                      </span>
+                    </p>
+                  </div>
+                  <List className="mt-4 divide-y-0 text-tremor-content-emphasis ">
+                    
+                  <ListItem
+                        key="aha"
+                        className="justify-start space-x-2 py-2.5"
+                      >
+                        <RiCheckboxCircleFill
+                          className="size-5 shrink-0 text-tremor-brand "
+                          aria-hidden={true}
+                        />
+                        <span>uwu</span>
+                      </ListItem>
+                      <ListItem
+                        key="aha"
+                        className="justify-start space-x-2 py-2.5"
+                      >
+                        <RiCheckboxCircleFill
+                          className="size-5 shrink-0 text-tremor-brand "
+                          aria-hidden={true}
+                        />
+                        <span>uwu</span>
+                      </ListItem>
+                      <ListItem
+                        key="aha"
+                        className="justify-start space-x-2 py-2.5"
+                      >
+                        <RiCheckboxCircleFill
+                          className="size-5 shrink-0 text-tremor-brand "
+                          aria-hidden={true}
+                        />
+                        <span>uwu</span>
+                      </ListItem>
+                      <ListItem
+                        key="aha"
+                        className="justify-start space-x-2 py-2.5"
+                      >
+                        <RiCheckboxCircleFill
+                          className="size-5 shrink-0 text-tremor-brand "
+                          aria-hidden={true}
+                        />
+                        <span>uwu</span>
+                      </ListItem>
+                    
+                  </List>
+                  <Divider />
+                  <Button className="group mt-6" variant="primary">
+                    Subscribe now
+                  </Button>
+                  <UserProfileMobile/>
+
+
+                  <div className="rounded-3xl p-px bg-gradient-to-b from-gray-200 to-transparent">
+                    <div className="bg-gray-50 p-10 rounded-[calc(1.5rem-1px)]">
+                      <p className="text-gray-700">I absolutely 
+                        love Tailus! The component blocks are beautifully designed and easy to use, which makes creating a great-looking website a breeze.
+                      </p>
+
+                      <div className="mt-8 flex gap-4 items-center">
+                        <img className="h-12 w-12 rounded-full" src="https://pbs.twimg.com/profile_images/1599029039297077249/p0znhFdE_400x400.jpg" alt="" />
+                        <div>
+                          <h3 className="text-lg font-medium text-gray-700 ">Oketa Fred</h3>
+                          <span className="text-sm tracking-wide text-gray-600 ">Fullstack Developer</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </>
+          </div>
         </div>
+
+
         <div className="flex w-full flex-col items-center justify-center"/>
         <div className="mt-6 flex w-full flex-col items-center justify-center">
           <h1 className="text-2xl">footer</h1>
