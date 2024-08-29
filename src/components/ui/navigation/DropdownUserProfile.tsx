@@ -15,12 +15,10 @@ import {
 } from "@/components/Dropdown"
 import loginServiceInstance from "@/services/LoginService"
 import {
-  RiArrowRightUpLine,
   RiComputerLine,
   RiLogoutBoxLine,
   RiMoonLine,
   RiPaintBrushLine,
-  RiQuestionLine,
   RiSettings2Line,
   RiSpeakLine,
   RiSunLine,
