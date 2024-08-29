@@ -2,13 +2,10 @@
 import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
-import { TremorPlaceholder } from "@/components/ui/icons/TremorPlaceholder"
 import Image from "next/image"
 import { UserProfileMobile } from "@/components/ui/navigation/UserProfile"
-import { Card, Divider, List, ListItem } from "@tremor/react";
+import { Divider, List, ListItem } from "@tremor/react";
 import { RiCheckboxCircleFill } from "@remixicon/react";
-import { features } from "process";
-import MobileSidebar from "@/components/ui/navigation/MobileSidebar";
 
 export default function LandingPage() {
   return (
@@ -19,6 +16,7 @@ export default function LandingPage() {
         <div className="text-gray-200 font-extrabold ml-8 max-w-xs">
           Logo Panopti
         </div>
+        <UserProfileMobile/>
         <div className="flex items-center gap-1 sm:gap-2 ">
           <Button className="group text-gray-200" variant="ghost" asChild>
             <a href={siteConfig.baseLinks.pricing}>
@@ -46,15 +44,15 @@ export default function LandingPage() {
       {/* Hero */}
       <div className="mt-4 sm:mt-6 lg:mt-10">
         <div className="my-20 flex w-full flex-col items-center justify-center">
-          <h1 className="mt-6 mb-5 text-gray-200 text-7xl font-body sm:text-7xl">
-            Sell more, sell faster <br/>with better data
+          <h1 className="mt-6 mb-5 text-gray-200 text-5xl font-bold font-body sm:text-5xl text-center">
+            Find 💸Top-Selling💸 Products <br/> and Skyrocket Your Sales 🚀
           </h1>
-          <p className="mt-3 max-w-xl text-center text-gray-200">
-            Panopti is your powerful, easy-to-use Bol.com e-commerce dashboard that lets you track your and your competitors&apos; performance to help you maximize your profits.
+          <p className="mt-3 max-w-xl text-gray-200 text-center">
+          Panopti is your ultimate e-commerce insights platform{/*, empowering you to track, analyze, and outperform the competition*/}. Discover trending products, monitor key metrics, and optimize your strategies to maximize profits—effortlessly.
           </p>
-          <Button className="group mt-6 p-3 rounded-xl" variant="accent" asChild>
+          <Button className="group mt-6 p-2 w-1/4 rounded-lg" variant="accent" asChild>
             <a href={siteConfig.baseLinks.settings}>
-              <p className="text-lg">Try the demo now!</p>
+              <p className="text-lg font-semibold">Try the demo now!</p>
               <ArrowAnimated
                 className="stroke-gray-200 size-3"
                 aria-hidden="true"
@@ -62,32 +60,45 @@ export default function LandingPage() {
             </a>
           </Button>
 
-          <Image className="rounded-xl mt-6" src="/img/landing/dashboard.png" width={1000} height={150} alt="dashboard-preview"></Image>
+          <Image className="rounded-xl mt-6 mx-12" src="/img/landing/dashboard.png" width={900} height={150} alt="dashboard-preview"></Image>
           
         </div>
 
 
-        <div className="my-20  bg-gb-secondary-500 skew-y-2">
+        <div className="my-20 bg-gb-secondary-500 skew-y-2 shadow-[0_-10px_20px_rgba(0,0,0,0.2),_0_10px_20px_rgba(0,0,0,0.2)]">
+
           <div className="my-20 flex w-full flex-col items-center justify-center -skew-y-2 ">
-            <h1 className="mt-12 mb-6 text-5xl text-white font-semibold sm:text-7xl" style={{ fontFamily: 'Rubik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol' }}>
-              We have many details, yes yes!
-            </h1>
-              {/* <Image src="/img/landing/details.png" width={700} height={250} alt="dashboard-preview"></Image> */}
-            
+            <h1 className="mt-12 mb-8 mx-5 text-5xl text-white font-semibold ">
+              Discover your growth opportunities
+            </h1>            
             <div className=" overflow-hidden flex w-4/5">
               <Image className="w-1/2 object-cover rounded-lg shadow-2xl" src="/img/landing/details.png" alt="Image description" width={1900} height={1}/>
               <div className="p-4 flex flex-col justify-between max-w-xl">
-                <h3 className="text-white text-lg font-bold">Typography</h3>
-                <p className="text-gray-300 text-sm mt-2">
-                  Typography is the art and technique of arranging type to make written language legible, readable, and appealing when displayed.
-                </p>
+                <div className="flex items-start space-x-2">
+                  <p className="text-2xl">👀</p>
+                  <p className="text-gray-300 font-display text-xl">
+                    With <b>Panopti</b>, get instant access to detailed product performance stats, including sales data, pricing trends, and revenue insights.
+                  </p>
+                </div>
+                <div className="flex items-start space-x-2 mt-4">
+                  <p className="text-2xl">🎯</p>
+                  <p className="text-gray-300 font-display text-xl"> 
+                    Monitor individual products, track their sales history over time, and identify top performers. 
+                  </p>
+                </div>
+                <div className="flex items-start space-x-2 mt-4">
+                  <p className="text-2xl">📈</p>
+                  <p className="text-gray-300 font-display text-xl"> 
+                    Stay ahead of the competition by understanding how pricing affects demand, and compare your own products with competitors' to spot opportunities for growth.
+                  </p>
+                </div>
               </div>
             </div>
             <Button className="group mt-6" variant="accentInverse" asChild>
               <a href={siteConfig.baseLinks.settings}>
                 <p className="text-xl px-2">Try the demo now!</p>
                 <ArrowAnimated
-                  className="stroke-gray-900"
+                  className="stroke-gray-100"
                   aria-hidden="true"
                 />
               </a>
@@ -103,7 +114,7 @@ export default function LandingPage() {
               <div className="rounded-xl transform scale-110 -rotate-6 ">
                 <Image width={1000} height={1} src="/img/landing/details.png" alt="" loading="lazy" className=" rounded-xl"/>
                 <div className="w-full h-8 text-center font-bold text-gb-secondary-200 text-lg"> 
-                  hello 
+                  mid 
                 </div>
               </div>
               <div className="col-start-3 transform scale-75 rotate-6 translate-x-2 translate-y-15">
@@ -136,134 +147,85 @@ export default function LandingPage() {
 
 
 
-        <div className="flex w-full flex-col items-center justify-center ">
-          <h1 className="mt-12 mb-6 text-5xl text-white font-semibold sm:text-7xl" style={{ fontFamily: 'Rubik,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol' }}>
+        <div className="flex w-full flex-col items-center justify-center -skew-y-3 bg-gb-primary-400  shadow-[0_-10px_20px_rgba(0,0,0,0.2),_0_10px_20px_rgba(0,0,0,0.2)]">
+          <h1 id="pricing" className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl skew-y-3">
             Pricing
           </h1>
             
           
-          <div className=" overflow-hidden flex w-4/5">
+          <div className=" overflow-hidden flex w-4/5 mb-20 skew-y-3">
             {/* tremor blocks pricing template*/}
             <>
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 ">
-                <div className="p-6">
-                  <h3 className="font-semibold text-tremor-content-strong ">
-                    Unlock all features
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="p-6 !text-gray-100">
+                  <h3 className="font-semibold text-xl">
+                    Maximize Your E-commerce Success
                   </h3>
-                  <p className="mt-2 text-tremor-default leading-6 text-tremor-content ">
-                    Get the full potential of your data with our enhanced features that
-                    enable advanced data analytics and informed decision-making.
+                  <p className="mt-2 text-lg leading-6">
+                    Unlock unparalleled insights and take full control of your sales strategy with Panopti’s premium features. Get real-time data, compare your performance with competitors, and make informed decisions that drive growth.
                   </p>
                   <div className="mt-8 space-y-6">
                     <div className="relative border-l-2 border-tremor-border pl-4 ">
-                      <h4 className="text-tremor-default font-medium text-tremor-content-strong ">
+                      <h4 className="text-tremor-default font-medium text-lg ">
                         <a href="#" className="focus:outline-none">
                           {/* Extend link to entire card */}
                           <span className="absolute inset-0" aria-hidden={true} />
-                          Talk to Sales &#8594;
+                          Try the demo &#8594;
                         </a>
                       </h4>
-                      <p className="mt-1 text-tremor-default text-tremor-content ">
-                        Schedule a call with one of our sales representative
+                      <p className="mt-1 text-tremor-default  ">
+                        Explore our powerful features in action
                       </p>
                     </div>
-                    <div className="relative border-l-2 border-tremor-border pl-4 ">
-                      <h4 className="text-tremor-default font-medium text-tremor-content-strong ">
-                        <a href="#" className="focus:outline-none">
-                          {/* Extend link to entire card */}
-                          <span className="absolute inset-0" aria-hidden={true} />
-                          Book a demo &#8594;
-                        </a>
-                      </h4>
-                      <p className="mt-1 text-tremor-default text-tremor-content ">
-                        Try out our premium features in a demo
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="rounded-3xl border border-tremor-border bg-tremor-background-muted p-6 ">
-                  <div className="flex items-start justify-between space-x-6">
-                    <h3 className="font-semibold text-tremor-content-strong ">
-                      Professional Plan Subscription
-                    </h3>
-                    <p className="flex items-baseline">
-                      <span className="text-tremor-metric font-semibold text-tremor-content-strong ">
-                        $89
-                      </span>
-                      <span className="text-tremor-default text-tremor-content ">
-                        /mo
-                      </span>
-                    </p>
-                  </div>
-                  <List className="mt-4 divide-y-0 text-tremor-content-emphasis ">
-                    
-                  <ListItem
-                        key="aha"
-                        className="justify-start space-x-2 py-2.5"
-                      >
-                        <RiCheckboxCircleFill
-                          className="size-5 shrink-0 text-tremor-brand "
-                          aria-hidden={true}
-                        />
-                        <span>uwu</span>
-                      </ListItem>
-                      <ListItem
-                        key="aha"
-                        className="justify-start space-x-2 py-2.5"
-                      >
-                        <RiCheckboxCircleFill
-                          className="size-5 shrink-0 text-tremor-brand "
-                          aria-hidden={true}
-                        />
-                        <span>uwu</span>
-                      </ListItem>
-                      <ListItem
-                        key="aha"
-                        className="justify-start space-x-2 py-2.5"
-                      >
-                        <RiCheckboxCircleFill
-                          className="size-5 shrink-0 text-tremor-brand "
-                          aria-hidden={true}
-                        />
-                        <span>uwu</span>
-                      </ListItem>
-                      <ListItem
-                        key="aha"
-                        className="justify-start space-x-2 py-2.5"
-                      >
-                        <RiCheckboxCircleFill
-                          className="size-5 shrink-0 text-tremor-brand "
-                          aria-hidden={true}
-                        />
-                        <span>uwu</span>
-                      </ListItem>
-                    
-                  </List>
-                  <Divider />
-                  <Button className="group mt-6" variant="primary">
-                    Subscribe now
-                  </Button>
-                  <UserProfileMobile/>
-
-
-                  <div className="rounded-3xl p-px bg-gradient-to-b from-gray-200 to-transparent">
-                    <div className="bg-gray-50 p-10 rounded-[calc(1.5rem-1px)]">
-                      <p className="text-gray-700">I absolutely 
-                        love Tailus! The component blocks are beautifully designed and easy to use, which makes creating a great-looking website a breeze.
+                    <div className="bg-gray-50 p-10 m-0.5 rounded-[calc(1.5rem-1px)]">
+                      <p className="text-gray-700 text-lg">
+                      ⭐⭐⭐⭐⭐<br/>
+                      Panopti is fantastic! While they may not have every feature other tools offer, they deliver exactly the insights I need to discover new products to sell. Plus, they're significantly more affordable than the competition.
                       </p>
 
                       <div className="mt-8 flex gap-4 items-center">
                         <img className="h-12 w-12 rounded-full" src="https://pbs.twimg.com/profile_images/1599029039297077249/p0znhFdE_400x400.jpg" alt="" />
                         <div>
-                          <h3 className="text-lg font-medium text-gray-700 ">Oketa Fred</h3>
-                          <span className="text-sm tracking-wide text-gray-600 ">Fullstack Developer</span>
+                          <h3 className="text-lg font-medium text-gray-700 ">Eddie Albington</h3>
+                          <span className="text-sm tracking-wide text-gray-600 ">Bol.com dropshipper</span>
                         </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-
+                <div className="rounded-3xl p-1 pb-3 bg-gradient-to-r from-gb-secondary-500 to-gb-accent-400">
+                  <div className="bg-gray-50 p-6 m-1 h-full rounded-3xl text-gray-800 flex flex-col">
+                    <div className="flex items-start justify-between space-x-6">
+                      <h3 className="font-semibold text-2xl">Full access subscription</h3>
+                      <p className="flex items-baseline">
+                        <span className="text-bold font-semibold text-3xl lg:text-5xl xl:text-5xl">€20</span>
+                        <span className="text-tremor-default ">/mo</span>
+                      </p>
+                    </div>
+                    <div className="flex-grow flex flex-col justify-center">
+                      <List className="mt-4 divide-y-0 text-gray-700 text-lg">
+                        <ListItem key="aha" className="justify-start space-x-2 py-2.5">
+                          <span>✅ Real-time sales tracking</span>
+                        </ListItem>
+                        <ListItem key="aha" className="justify-start space-x-2 py-2.5">
+                          <span>✅ Compare with competitors</span>
+                        </ListItem>
+                        <ListItem key="aha" className="justify-start space-x-2 py-2.5">
+                          <span>✅ Actionable KPI insights</span>
+                        </ListItem>
+                        <ListItem key="aha" className="justify-start space-x-2 py-2.5">
+                          <span>✅ Historical performance analysis</span>
+                        </ListItem>
+                      </List>
+                    </div>
+                    <Divider />
+                    <div className="mt-auto">
+                      <Button className="group mt-6 rounded-lg w-full text-xl lg:text-2xl xl:text-2xl" variant="accent">
+                        👉 Subscribe now! 👈
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </>
@@ -271,10 +233,27 @@ export default function LandingPage() {
         </div>
 
 
-        <div className="flex w-full flex-col items-center justify-center"/>
-        <div className="mt-6 flex w-full flex-col items-center justify-center">
-          <h1 className="text-2xl">footer</h1>
-        </div>
+        <div className="flex mb-24 w-full flex-col items-center justify-center"/>
+        
+
+        <footer className="bg-gray-800 text-gray-300 pt-10">
+          <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0">
+              <h4 className="text-xl font-bold text-white">Panopti</h4>
+              <p className="mt-2 text-gray-400">Your e-commerce insights platform</p>
+            </div>
+            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+              <a href="/about" className="hover:underline">About Us</a>
+              <a href="/contact" className="hover:underline">Contact</a>
+              <a href="/privacy" className="hover:underline">Privacy Policy</a>
+              <a href="/terms" className="hover:underline">Terms of Service</a>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-gray-700 pt-6 text-center">
+            <p>© 2024 Panopti. All rights reserved.</p>
+            <p className="text-sm text-gray-500 mt-2">Built with ❤️ by the Panopti team.</p>
+          </div>
+        </footer>
       </div>
       </section>
     </>
