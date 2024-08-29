@@ -1,7 +1,7 @@
 "use client";
 import { AreaChart } from "@tremor/react";
 // import { Badge } from "@/components/Badge";
-import React from "react";
+// import React from "react";
 import { useAppData } from "@/app/contexts/StockDataContext";
 import { cx, formatters,  } from "@/lib/utils";
 // import { percentageFormatter  } from "@/lib/utils";
@@ -9,6 +9,7 @@ import { PeriodValue } from "@/app/(main)/page";
 import { DateRange } from "react-day-picker";
 import { format, isWithinInterval } from "date-fns";
 import { StockDatum } from "@/data/schema";
+import { RiStarSmileLine } from "@remixicon/react";
 
 export type CardProps = {
   title: string;
@@ -18,25 +19,29 @@ export type CardProps = {
   granularity: "hour" | "day" | "minute"; // Add granularity parameter
 };
 
-export const getBadgeType = (value: number) => {
-  if (value > 0) {
-    return "success";
-  } else if (value < 0) {
-    if (value < -50) {
-      return "warning";
-    }
-    return "error";
-  } else {
-    return "neutral";
-  }
+import React, { useRef, useEffect } from "react";
+import * as d3 from "d3";
+
+export type daataa = {
+  date: Date;
+  stock: number;
+  price: number;
 };
 
-export function StockChart({
-  title,
-  id,
-  selectedDates,
-  selectedPeriod,
-}: CardProps) {
+const data2: daataa[] = [
+  { date: new Date("2024-08-01"), stock: 10, price: 100 },
+  { date: new Date("2024-08-02"), stock: 20, price: 200 },
+  { date: new Date("2024-08-03"), stock: 15, price: 150 },
+];
+
+function StockChart({
+    title,
+    id,
+    selectedDates,
+    selectedPeriod,
+  }: CardProps) {
+  const svgRef = useRef<SVGSVGElement | null>(null);
+
   const { stockData } = useAppData(); // Access stockData from the context
   const formatter = formatters.unit;
 
@@ -52,67 +57,63 @@ export function StockChart({
       : [];
 
 
-  const chartData = (filteredStockData as StockDatum[]).map((datum) => ({
+  const chartData: daataa[] = (filteredStockData as daataa[]).map((datum) => ({
     date: new Date(datum.date),
-    sales: datum.stock,
+    stock: datum.stock,
+    price: datum.price,
     formattedDate: format(new Date(datum.date), "yyyy-MM-dd"),
   }));
 
-  const categories =
-    selectedPeriod === "no-comparison" ? ["sales"] : ["sales", "previousSales"];
+  console.log(chartData);
+  console.log(data2);
 
-  // const value = chartData.length > 0 ? chartData[chartData.length - 1].stock || 0 : 0;
-  // Value is the sum of all stock values in the selected period
-  const value = chartData.reduce((acc, curr) => acc + curr.sales, 0);
-  
-  // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
+  useEffect(() => {
+    const width = 500;
+    const height = 300;
+    const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-  // const evolution =
-  //   selectedPeriod !== "no-comparison" && previousValue !== 0
-  //     ? (value - previousValue) / previousValue
-  //     : 0;
+    const svg = svgRef.current && d3.select(svgRef.current)
+      .attr("width", width)
+      .attr("height", height)
+      .style("overflow", "visible");
 
-  return (
-    <div className={cx("transition")}>
-      <div className="flex items-center justify-between gap-x-2">
-        <div className="flex items-center gap-x-2">
-          <dt className="font-bold text-gray-900 sm:text-sm dark:text-gray-50">
-            {title}
-          </dt>
-          {/* {selectedPeriod !== "no-comparison" && (
-            <Badge variant={getBadgeType(evolution)}>
-              {percentageFormatter(evolution)}
-            </Badge>
-          )} */}
-        </div>
-      </div>
-      <div className="mt-2 flex items-baseline justify-between">
-        <dd className="text-xl text-gray-900 dark:text-gray-50">
-          {formatter(value)} sales
-        </dd>
-        {/* {selectedPeriod !== "no-comparison" && (
-          <dd className="text-sm text-gray-500">
-            {value > previousValue ? "up" : "down"} from{" "}
-            {formatter(previousValue)}
-          </dd>
-        )} */}
-      </div>
-      <AreaChart
-        className="mt-6 h-32"
-        noDataText="No data"
-        data={chartData || []}
-        index="formattedDate"
-        yAxisWidth={45}
-        categories={categories}
-        colors={["#694873"]}
-        startEndOnly={true}
-        showYAxis={true}
-        showAnimation={true}
-        showLegend={false}
-        showTooltip={true}
-        yAxisLabel="Sales"
-      >
-      </AreaChart>
-    </div>
-  );
+    const x = d3.scaleUtc()
+      .domain([selectedDates?.from ?? new Date(), selectedDates?.to ?? new Date()])
+      .range([margin.left, width - margin.right]);
+
+    const y = d3.scaleLinear()
+      .domain([0, 500])
+      .range([height - margin.bottom, margin.top]);
+
+    if (svg) {
+      svg.selectAll(".x-axis").remove();
+      svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0));
+
+      svg.selectAll(".y-axis").remove();
+      svg.append("g")
+        .attr("class", "y-axis")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y).ticks(height / 40));
+
+      const line = d3.line<daataa>()
+        .x(d => x(d.date))
+        .y(d => y(d.stock));
+
+      svg.selectAll(".line").remove();
+      svg.append("path")
+        .datum(chartData)
+        .attr("class", "line")
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", line);
+    }
+  }, []);
+
+  return <svg ref={svgRef}></svg>;
 }
+
+export default StockChart;

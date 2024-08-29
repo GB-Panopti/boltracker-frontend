@@ -1,12 +1,11 @@
 "use client"
-import { useAppData } from "@/app/contexts/StockDataContext"
-import { StockChart } from "@/components/StockChart"
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
 import { cx } from "@/lib/utils"
 import { subDays } from "date-fns"
 import React from "react"
 import { DateRange } from "react-day-picker"
 import { useAuthRedirect } from "./useAuthRedirect"
+import { ProductTable } from "@/components/ProductTable"
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
@@ -110,7 +109,6 @@ export default function Overview() {
     from: subDays(maxDate, 30),
     to: maxDate,
   })
-  const { products } = useAppData();
 
   useAuthRedirect();
   
@@ -133,21 +131,10 @@ export default function Overview() {
         </div>
         <dl
           className={cx(
-            "mt-10 grid grid-cols-1 gap-14 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3",
+            "mt-10 grid grid-cols-1 gap-14",
           )}
         >
-          {products.map((product) => {
-            return (
-              <StockChart
-                key={product.name}
-                title={product.name}
-                id={product.id}
-                selectedDates={selectedDates}
-                selectedPeriod={"last-year"}
-                granularity="hour"
-              />
-            )
-          })}
+        <ProductTable selectedDates={selectedDates}/>
         </dl>
       </section>
     </>
