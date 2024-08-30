@@ -85,7 +85,7 @@ export function ProductTable({
                                 </span>
                                 <span className="w-1/6 text-center">{rating.toFixed(1)}</span>
                                 <span className="w-1/6 text-right">
-                                {getIndicator(selectedDates, item.id, stockData)}
+                                {getIndicator(item.id)}
                         </span>
                         </div>  
                     </AccordionHeader>

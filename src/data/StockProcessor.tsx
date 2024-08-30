@@ -46,7 +46,7 @@ export function getTotalSales(selectedDates: DateRange | undefined, id: string, 
     return data.reduce((acc, datum) => acc + datum.stock, 0);
 }
 
-export function getIndicator(selectedDates: DateRange | undefined, id: string, stockData: StockDatum[][]) {
+export function getIndicator(id: string) {
     const {rawStockData} = useAppData();
     const {products} = useAppData();
     const index = products.findIndex((product) => product.id === id);
