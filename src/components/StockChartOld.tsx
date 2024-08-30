@@ -4,6 +4,7 @@ import React from "react";
 import { cx } from "@/lib/utils";
 import { StockDatum } from "@/data/schema";
 import { InfoCard } from "./InfoCard";
+import { useTheme } from "next-themes";
 
 export type CardProps = {
   id: string;
@@ -36,6 +37,7 @@ export function StockChartOld({
   ratingCount,
 }: CardProps) {
 
+  const {theme, } = useTheme();
   
   // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
@@ -74,7 +76,7 @@ export function StockChartOld({
         index="formattedDate"
         yAxisWidth={45}
         categories={['stock']}
-        colors={["#694873"]}
+        colors={theme === 'light' ? ["#119da4"] : ["#E5E7EB"]}
         startEndOnly={true}
         showYAxis={true}
         showAnimation={true}

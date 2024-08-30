@@ -7,8 +7,10 @@ import { Product, StockDatum } from '@/data/schema';
 // Combined Data Context
 interface AppDataContextProps {
   stockData: StockDatum[][];
+  rawStockData: StockDatum[][];
   products: Product[];
   setStockData: React.Dispatch<React.SetStateAction<StockDatum[][]>>;
+  setRawStockData: React.Dispatch<React.SetStateAction<StockDatum[][]>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
@@ -29,6 +31,7 @@ interface AppProviderProps {
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [stockData, setStockData] = useState<StockDatum[][]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [rawStockData, setRawStockData] = useState<StockDatum[][]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +49,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   }, []);
 
   return (
-    <AppDataContext.Provider value={{ stockData, products, setStockData, setProducts }}>
+    <AppDataContext.Provider value={{ stockData, products, rawStockData, setRawStockData, setStockData, setProducts }}>
       {children}
     </AppDataContext.Provider>
   );

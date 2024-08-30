@@ -1,8 +1,6 @@
 import { Fragment, useState } from 'react';
-import { RiFlag2Line } from '@remixicon/react';
 import { useAppData } from "@/app/contexts/StockDataContext"
 import {
-  Badge,
   Accordion,  
   AccordionHeader, 
   AccordionBody,
@@ -11,8 +9,9 @@ import {
 } from '@tremor/react';
 import { DateRange } from "react-day-picker";
 import { StockChartOld } from './StockChartOld';
-import { getFilteredStockData } from '@/data/StockProcessor';
+import { getFilteredStockData, getIndicator } from '@/data/StockProcessor';
 import { StockDatum } from '@/data/schema';
+import { useTheme } from 'next-themes';
 
 export type ProductTableProps = {
     selectedDates: DateRange | undefined;
@@ -21,9 +20,9 @@ export type ProductTableProps = {
 export function ProductTable({
     selectedDates
 }: ProductTableProps) {
-    const { products } = useAppData();
     const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
-    const { stockData } = useAppData(); // Access stockData from the context
+    const { stockData, products } = useAppData(); // Access stockData from the context
+    const {theme, } = useTheme();
 
 
     const toggleItem = (id: string) => {
@@ -34,15 +33,15 @@ export function ProductTable({
     };
 
     return (
-          <AccordionList>
-            <Accordion key="header">
-                <AccordionHeader key="header" className="bg-gray-100">
+          <AccordionList className='rounded-t-md'>
+            <Accordion key="header" className='rounded-t-lg'>
+                <AccordionHeader key="header" className="bg-gb-primarylite-500 text-gb-primarylite-50  dark:bg-dark-tremor-background-subtle font-semibold">
                     <div className="flex justify-between w-full">
                         <span className="w-1/6 text-left">Product</span>
                         <span className="w-1/6 text-center">Sales</span>
                         <span className="w-1/3 text-center">Revenue</span>
                         <span className="w-1/6 text-center">Rating</span>
-                        <span className="w-1/6 text-right">Type</span>
+                        <span className="w-1/6 text-right">Indicator</span>
                     </div>
                 </AccordionHeader>
             </Accordion>
@@ -58,36 +57,39 @@ export function ProductTable({
                 return (
                     <Accordion
                     key={item.id}
-                    className="rounded-sm"
+                    className=""
                     >
                     <AccordionHeader
-                        className={`hover:bg-gray-100 ${
-                        isOpen ? 'bg-gray-50' : ''
+                        className={`hover:bg-gray-100 hover:dark:bg-dark-tremor-background-subtle ${
+                        isOpen ? 'bg-gray-50 dark:bg-dark-tremor-background-subtle' : ''
                         }`}
                         onClick={() => toggleItem(item.id)}
                     >
-                        <div className="flex justify-between w-full">
+                        <div className="flex justify-between items-center   w-full">
                             <span className="w-1/6 text-left">{item.name}</span>
                             <span className="w-1/6 flex">
                                 <SparkAreaChart         
                                     data={data || []}
                                     index="formattedDate"
                                     categories={['stock']}
-                                    colors={["#694873"]}
+                                    colors={theme === 'light' ? ["#119da4"] : ["#E5E7EB"]}
                                     className='w-20 h-8 ml-10 mr-8'
                                         />
                                         {sales}
                                 </span>
-                                <span className="w-1/3 text-center">{'€' + (price * sales).toFixed(2)}</span>
+                                <span className="w-1/3 flex items-center text-center">
+                                    <div className='w-1/5 mx-auto flex justify-between items-center text-center'>
+                                        <span className='mr-auto left'>€</span>
+                                        <span>{(price * sales).toFixed(2)}</span>
+                                    </div>
+                                </span>
                                 <span className="w-1/6 text-center">{rating.toFixed(1)}</span>
                                 <span className="w-1/6 text-right">
-                            <Badge color="emerald" icon={RiFlag2Line}>
-                            Product
-                            </Badge>
+                                {getIndicator(selectedDates, item.id, stockData)}
                         </span>
                         </div>  
                     </AccordionHeader>
-                        <AccordionBody className="bg-gray-50">
+                        <AccordionBody className="bg-gray-50 dark:bg-dark-tremor-background">
                         <StockChartOld
                             key={item.name}
                             id={item.id}
