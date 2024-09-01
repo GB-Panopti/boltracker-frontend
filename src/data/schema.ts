@@ -19,3 +19,8 @@ export type ProductInfo = {
   rating: number
   reviews: number
 }
+
+export type User = {
+  email: string
+  is_demo: boolean
+}

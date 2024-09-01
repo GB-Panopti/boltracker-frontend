@@ -16,10 +16,13 @@ import { UserProfileDesktop, UserProfileMobile } from "./UserProfile"
 import ProductSelector from "@/ui/productSelector"
 import React from "react"
 import { ModalAddProduct } from "./ModalAddProduct"
+import { Card } from "@tremor/react"
+import { useAppData } from "@/app/contexts/StockDataContext"
 
 
 export function Sidebar() {
   const [, setHasOpenDialog] = React.useState(false)
+  const { user } = useAppData()
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
@@ -37,6 +40,25 @@ export function Sidebar() {
       <nav className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <aside className="flex grow flex-col gap-y-6 overflow-y-auto border-r border-gray-200 bg-gb-primary p-4  dark:border-gray-800 dark:bg-gb-primary-800">
           <WorkspacesDropdownDesktop />
+          {
+            (() => {
+              if (user.is_demo) {
+                return (
+                  <Card className="p-4 bg-red-400 dark:bg-gray-950">
+                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Demo mode</h2>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">You are in demo mode</p>
+                  </Card>
+                );
+              }
+              else {
+                return (
+                  <Card className="p-4 bg-green-400 dark:bg-gray-950">
+                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">NOT IN Demo mode</h2>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">User is paying?</p>
+                  </Card>);
+              }
+            })()
+          }
           <nav
             aria-label="core navigation links"
             className="flex flex-1 flex-col space-y-10"
