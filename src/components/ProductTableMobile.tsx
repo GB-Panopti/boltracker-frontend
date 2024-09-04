@@ -8,7 +8,6 @@ import {
 } from '@tremor/react';
 import { getFilteredStockData } from '@/data/StockProcessor';
 import { StockDatum } from '@/data/schema';
-import { useTheme } from 'next-themes';
 import { ProductTableProps } from './ProductTable';
 import { StockChartOldMobile } from './StockChartOldMobile';
 
@@ -17,7 +16,6 @@ export function ProductTableMobile({
 }: ProductTableProps) {
     const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
     const { stockData, products } = useAppData(); // Access stockData from the context
-    const {theme, } = useTheme();
 
 
     const toggleItem = (id: string) => {
