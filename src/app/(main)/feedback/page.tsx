@@ -16,7 +16,7 @@ export default function Example() {
     });
     const [error, setError] = useState('');
   
-    const handleChange = (e) => {
+    const handleChange = (e: { name?: any; value?: any; target?: any; }) => {
         // Handle custom events
         if (e?.target === undefined) {
             const { name, value } = e;
@@ -34,7 +34,7 @@ export default function Example() {
         }
     };
   
-    function handleFeedbackForm(event) {
+    function handleFeedbackForm(event: { preventDefault: () => void; }) {
         event.preventDefault();
     
         try {

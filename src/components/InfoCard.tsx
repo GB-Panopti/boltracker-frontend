@@ -3,7 +3,7 @@ import { Card } from "@tremor/react";
 
 export type InfoCardProps = {
     title: string;
-    value: string;
+    value: string | JSX.Element;
     };
 
 export function InfoCard({

@@ -2,10 +2,13 @@
 import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
 import { cx } from "@/lib/utils"
 import { subDays } from "date-fns"
-import React from "react"
+import React, { useEffect } from "react"
 import { DateRange } from "react-day-picker"
 import { useAuthRedirect } from "./useAuthRedirect"
 import { ProductTable } from "@/components/ProductTable"
+import { useAppData } from "../contexts/StockDataContext"
+import stockServiceInstance from "@/services/StockService"
+import { ProductTableMobile } from "@/components/ProductTableMobile"
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
@@ -111,6 +114,14 @@ export default function Overview() {
   })
 
   useAuthRedirect();
+  // get the raw stock data from the context
+  const { setRawStockData } = useAppData();
+
+  useEffect(() => { 
+    stockServiceInstance.getAllUserStockDateRange(selectedDates?.from, selectedDates?.to).then((response) => {
+      setRawStockData(response.data);
+    })
+  }, [selectedDates]);
   
   return (
     <>
@@ -134,7 +145,14 @@ export default function Overview() {
             "mt-10 grid grid-cols-1 gap-14",
           )}
         >
-        <ProductTable selectedDates={selectedDates}/>
+        <div className="md:hidden">
+          <ProductTableMobile selectedDates={selectedDates}/>
+        </div> 
+               {/*Product table should disappear when md  */}
+        <div className="hidden md:block">
+          <ProductTable selectedDates={selectedDates}/>
+        </div>
+
         </dl>
       </section>
     </>

@@ -1,15 +1,11 @@
 "use client";
-import { AreaChart } from "@tremor/react";
 // import { Badge } from "@/components/Badge";
 // import React from "react";
 import { useAppData } from "@/app/contexts/StockDataContext";
-import { cx, formatters,  } from "@/lib/utils";
 // import { percentageFormatter  } from "@/lib/utils";
 import { PeriodValue } from "@/app/(main)/page";
 import { DateRange } from "react-day-picker";
 import { format, isWithinInterval } from "date-fns";
-import { StockDatum } from "@/data/schema";
-import { RiStarSmileLine } from "@remixicon/react";
 
 export type CardProps = {
   title: string;
@@ -35,15 +31,12 @@ const data2: daataa[] = [
 ];
 
 function StockChart({
-    title,
     id,
     selectedDates,
-    selectedPeriod,
   }: CardProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   const { stockData } = useAppData(); // Access stockData from the context
-  const formatter = formatters.unit;
 
   const selectedDatesInterval =
     selectedDates?.from && selectedDates?.to

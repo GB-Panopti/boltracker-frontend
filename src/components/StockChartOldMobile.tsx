@@ -5,6 +5,7 @@ import { cx } from "@/lib/utils";
 import { StockDatum } from "@/data/schema";
 import { InfoCard } from "./InfoCard";
 import { useTheme } from "next-themes";
+import { getIndicator } from "@/data/StockProcessor";
 
 export type CardProps = {
   id: string;
@@ -28,7 +29,7 @@ export const getBadgeType = (value: number) => {
   }
 };
 
-export function StockChartOld({
+export function StockChartOldMobile({
   id,
   data,
   price,
@@ -47,27 +48,10 @@ export function StockChartOld({
   //     : 0;
 
   return (
-    <div className="flex justify-between w-full">
-    <span className='w-1/3'>
+    <div className="w-full">
+    <span className='w-full'>
     {/* Chart part of the component */}
     <div className={cx("transition")}>
-      <div className="flex items-center justify-between gap-x-2">
-        <div className="flex items-center gap-x-2">
-          {/* {selectedPeriod !== "no-comparison" && (
-            <Badge variant={getBadgeType(evolution)}>
-              {percentageFormatter(evolution)}
-            </Badge>
-          )} */}
-        </div>
-      </div>
-      <div className="mt-2 flex items-baseline justify-between">
-        {/* {selectedPeriod !== "no-comparison" && (
-          <dd className="text-sm text-gray-500">
-            {value > previousValue ? "up" : "down"} from{" "}
-            {formatter(previousValue)}
-          </dd>
-        )} */}
-      </div>
       <AreaChart
         key={id}
         className="h-52"
@@ -83,20 +67,23 @@ export function StockChartOld({
         showLegend={false}
         showTooltip={true}
         yAxisLabel="Sales"
-      />
+      /> <br/>
         {/*figure out how to add scatter points and stuff by checking the tremor docs*/}
         {/* Data FLEX part of the component */}
     </div>
     </span>
-      <span className={'w-1/3 text-center text-lg'}>
+    <div className="flex justify-between">
+      <span className={'w-1/2 text-center text-lg'}>
       <InfoCard title={'Price'} value={'€' + price.toString()} />
       <InfoCard title={'Sales'} value={sales.toString()} />
       <InfoCard title={'Total'} value={'€' + (sales * price).toFixed(2)} />
       </span>
-      <span className={'w-1/3 text-center text-lg'}>
+      <span className={'w-1/2 items-center text-center text-lg'}>
       <InfoCard title={'Reviews'} value={ratingCount.toString()} />
       <InfoCard title={'Stars'} value={ratingStars.toFixed(2)} />
+      <InfoCard title={'Indicator'} value={getIndicator(id)} />
       </span>
+    </div>
     </div>
     
   );
