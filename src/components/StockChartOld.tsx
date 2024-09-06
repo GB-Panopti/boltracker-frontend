@@ -5,6 +5,7 @@ import { cx } from "@/lib/utils";
 import { StockDatum } from "@/data/schema";
 import { InfoCard } from "./InfoCard";
 import { useTheme } from "next-themes";
+import { useTranslation } from "react-i18next";
 
 export type CardProps = {
   id: string;
@@ -38,6 +39,7 @@ export function StockChartOld({
 }: CardProps) {
 
   const {theme, } = useTheme();
+  const { t } = useTranslation();
   
   // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
@@ -71,7 +73,7 @@ export function StockChartOld({
       <AreaChart
         key={id}
         className="h-52"
-        noDataText="No data"
+        noDataText={t("stockchart.no_data")}
         data={data || []}
         index="formattedDate"
         yAxisWidth={45}
@@ -82,20 +84,20 @@ export function StockChartOld({
         showAnimation={true}
         showLegend={false}
         showTooltip={true}
-        yAxisLabel="Sales"
+        yAxisLabel={t("overview.sales")}
       />
         {/*figure out how to add scatter points and stuff by checking the tremor docs*/}
         {/* Data FLEX part of the component */}
     </div>
     </span>
       <span className={'w-1/3 text-center text-lg'}>
-      <InfoCard title={'Price'} value={'€' + price.toString()} />
-      <InfoCard title={'Sales'} value={sales.toString()} />
-      <InfoCard title={'Total'} value={'€' + (sales * price).toFixed(2)} />
+      <InfoCard title={t("stockchart.price")} value={'€' + price.toString()} />
+      <InfoCard title={t("overview.sales")} value={sales.toString()} />
+      <InfoCard title={t("stockchart.total")} value={'€' + (sales * price).toFixed(2)} />
       </span>
       <span className={'w-1/3 text-center text-lg'}>
-      <InfoCard title={'Reviews'} value={ratingCount.toString()} />
-      <InfoCard title={'Stars'} value={ratingStars.toFixed(2)} />
+      <InfoCard title={t("stockchart.reviews")} value={ratingCount.toString()} />
+      <InfoCard title={t("stockchart.rating")} value={ratingStars.toFixed(2)} />
       </span>
     </div>
     

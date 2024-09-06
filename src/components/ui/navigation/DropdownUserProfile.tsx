@@ -16,6 +16,7 @@ import {
 import loginServiceInstance from "@/services/LoginService"
 import {
   RiComputerLine,
+  RiGlobalLine,
   RiLogoutBoxLine,
   RiMoonLine,
   RiPaintBrushLine,
@@ -26,7 +27,9 @@ import {
 import { useTheme } from "next-themes"
 import Link from "next/link"
 import * as React from "react"
+import i18next from 'i18next';
 import ModalEditPassword from "./ModalEditPassword"
+import { useTranslation } from "react-i18next"
 
 
 export type DropdownUserProfileProps = {
@@ -40,6 +43,7 @@ export function DropdownUserProfile({
 }: DropdownUserProfileProps) {
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
+  const { t } = useTranslation()
 
   const [, setHasOpenDialog] = React.useState(false)
 
@@ -55,14 +59,14 @@ export function DropdownUserProfile({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align={align}>
-          <DropdownMenuLabel>Your Account</DropdownMenuLabel>
+          <DropdownMenuLabel>{t('sidebar.account')}</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuSubMenu>
               <DropdownMenuSubMenuTrigger>
                 <RiPaintBrushLine
                   className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
                   aria-hidden="true"/>
-                Theme
+                {t('sidebar.theme')}
                 </DropdownMenuSubMenuTrigger>
               <DropdownMenuSubMenuContent>
                 <DropdownMenuRadioGroup
@@ -77,7 +81,7 @@ export function DropdownUserProfile({
                     iconType="check"
                   >
                     <RiSunLine className="size-4 shrink-0" aria-hidden="true" />
-                    Light
+                    {t('sidebar.light')}
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem
                     aria-label="Switch to Dark Mode"
@@ -88,7 +92,7 @@ export function DropdownUserProfile({
                       className="size-4 shrink-0"
                       aria-hidden="true"
                     />
-                    Dark
+                    {t('sidebar.dark')}
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem
                     aria-label="Switch to System Mode"
@@ -99,7 +103,7 @@ export function DropdownUserProfile({
                       className="size-4 shrink-0"
                       aria-hidden="true"
                     />
-                    System
+                    {t('sidebar.system')}
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
@@ -120,13 +124,46 @@ export function DropdownUserProfile({
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
+            <DropdownMenuSubMenu>
+              <DropdownMenuSubMenuTrigger>
+                <RiGlobalLine
+                  className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                  aria-hidden="true"/>
+                {t('sidebar.language')}
+                </DropdownMenuSubMenuTrigger>
+              <DropdownMenuSubMenuContent>
+                <DropdownMenuRadioGroup
+                  value={i18next.language}
+                  onValueChange={(value) => {
+                    i18next.changeLanguage(value)
+                  }}
+                >
+                  <DropdownMenuRadioItem
+                    aria-label="Switch to Light Mode"
+                    value="en"
+                    iconType="check"
+                  >
+                    English
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem
+                    aria-label="Switch to Dark Mode"
+                    value="nl"
+                    iconType="check"
+                  >
+                    Nederlands
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuSubMenuContent>
+            </DropdownMenuSubMenu>
+          </DropdownMenuGroup>
+          <DropdownMenuGroup>
             <Link href="/feedback">
               <DropdownMenuItem>
                 <RiSpeakLine
                     className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
                     aria-hidden="true"
                   />
-                Give feedback
+                {t('sidebar.feedback')}
               </DropdownMenuItem>
             </Link>
           </DropdownMenuGroup>
@@ -148,7 +185,7 @@ export function DropdownUserProfile({
                         className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
                         aria-hidden="true"
                     />
-                    Sign out
+                    {t('sidebar.signout')}
                 </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

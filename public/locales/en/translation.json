@@ -1,0 +1,68 @@
+{
+    "cancel": "Cancel",
+    "apply": "Apply",    
+    "back": "Back",
+    "save": "Save",
+    "range": "Range",
+
+    "sidebar": {
+        "overview": "Overview",
+        "tracked_products": "Tracked products",
+        "account": "Your account",
+        "theme" : "Theme",
+        "light" : "Light",
+        "dark" : "Dark",
+        "system" : "System",
+        "password" : "Change Password",
+        "language" : "Language",
+        "feedback" : "Give Feedback",
+        "signout" : "Sign Out",
+        "workspace": {
+            "title": "Workspaces",
+            "tracked_products": "products tracked"
+        }
+    },
+
+    "track_product": {
+        "title": "Track product",
+        "header": "Track new product",
+        "product_name": "Product name",
+        "url": "Bol.com URL",
+        "add": "Add product",
+        "wrong_url": "Bad request, is your url correct?",
+        "already_exist": "Product already exists.",
+        "server_error": "Internal server error. Please try again later.",
+        "unexpected_error": "An unexpected error occurred. Please try again."
+    },
+
+    "password": {
+        "title": "Change Password",
+        "new_password": "New password",
+        "confirm_password": "Confirm password",
+        "change_password": "Change password"
+    },      
+
+    "overview": {
+        "title": "Overview",
+        "product": "Product",
+        "sales": "Sales",
+        "revenue": "Revenue",
+        "rating": "Rating",
+        "indicator": "Indicator"
+    },
+
+    "stockchart": {
+        "price": "Price",
+        "total": "Total",
+        "reviews": "Reviews",
+        "rating": "Stars",
+        "no_data": "No data"
+    },
+
+    "indicator": {
+        "new": "New",
+        "accurate": "Accurate",
+        "uncertain": "Uncertain",
+        "error": "Error"
+    }
+}

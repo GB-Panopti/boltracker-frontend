@@ -11,9 +11,9 @@ import {
   DialogTrigger,
 } from "@/components/Dialog";
 import { Input } from "@/components/Input";
-import { Label } from "@/components/Label";
-import { RiHammerLine, RiLock2Line, RiLockLine, RiRotateLockLine } from "@remixicon/react";
+import { RiRotateLockLine } from "@remixicon/react";
 import loginServiceInstance from "@/services/LoginService";
+import { useTranslation } from "react-i18next";
 
 export type ModalProps = {
   // _name: string;
@@ -29,6 +29,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isOpen, onOpenChange] = useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const { t } = useTranslation();
 
 
 
@@ -59,7 +60,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
     <>
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
           <DialogTrigger>
-              Change Password
+              {t("password.title")}
           </DialogTrigger>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
@@ -68,7 +69,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                 aria-hidden="true"
                 className="mb-1 ml-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
               />
-              Change Password
+              {t("password.title")}
             </DialogTitle>
             <Button
               className="group mt-0 mr-auto overflow-hidden w-full"
@@ -82,14 +83,11 @@ const ModalEditPassword: React.FC<ModalProps> = ({
             </DialogDescription>
             <div className="mt-4 grid grid-cols-1 gap-4">
               <div>
-                <Label htmlFor="product-name" className="font-medium">
-                  Product name
-                </Label>
                 <Input
                   type="password"
                   id="product-name"
                   name="product-name"
-                  placeholder="New Password"
+                  placeholder={t("password.new_password")}
                   className="mt-2"
                   onChange={(event) => setNewPassword(event.target.value)}
                 />                
@@ -97,7 +95,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                   type="password"
                   id="product-name"
                   name="product-name"
-                  placeholder="Confirm Password"
+                  placeholder={t("password.confirm_password")}
                   className="mt-2"
                   onChange={(event) => setConfirmPassword(event.target.value)}
                 />
@@ -115,15 +113,15 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                   onOpenChange(false);
                 }}
               >
-                Go back
-              </Button>
+                {t("back")}
+                </Button>
             </DialogClose>
             <Button
               onClick={() => handleChangePassword()}
               type="submit"
               className="w-full sm:w-fit"
             >
-              Save
+            {t("save")}
             </Button>
           </DialogFooter>
         </DialogContent>

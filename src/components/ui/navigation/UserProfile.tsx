@@ -6,8 +6,11 @@ import { RiHome3Line, RiHomeSmileFill, RiMore2Fill } from "@remixicon/react"
 
 import { DropdownUserProfile } from "./DropdownUserProfile"
 import { Icon } from "@tremor/react"
+import { useTranslation } from "react-i18next"
 
 export const UserProfileDesktop = () => {
+  const { t } = useTranslation()
+
   return (
     <DropdownUserProfile>
       <Button
@@ -25,7 +28,7 @@ export const UserProfileDesktop = () => {
           >
             <Icon icon={RiHome3Line} />
           </span>
-          <span>Your account</span>
+          <span>{t('sidebar.account')}</span>
         </span>
         <RiMore2Fill
           className="size-4 shrink-0 text-gray-200 group-hover:text-gray-200 group-hover:dark:text-gray-400"

@@ -9,9 +9,11 @@ import {
 } from '@tremor/react';
 import { DateRange } from "react-day-picker";
 import { StockChartOld } from './StockChartOld';
-import { getFilteredStockData, getIndicator } from '@/data/StockProcessor';
+import { getFilteredStockData } from '@/data/StockProcessor';
 import { StockDatum } from '@/data/schema';
 import { useTheme } from 'next-themes';
+import { useTranslation } from 'react-i18next';
+import { Indicator } from './Indicator';
 
 export type ProductTableProps = {
     selectedDates: DateRange | undefined;
@@ -23,6 +25,7 @@ export function ProductTable({
     const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
     const { stockData, products } = useAppData(); // Access stockData from the context
     const {theme, } = useTheme();
+    const { t } = useTranslation();
 
 
     const toggleItem = (id: string) => {
@@ -37,11 +40,11 @@ export function ProductTable({
             <Accordion key="header" className='rounded-t-lg'>
                 <AccordionHeader key="header" className="bg-gb-primarylite-500 text-gb-primarylite-50  dark:bg-dark-tremor-background-subtle font-semibold">
                     <div className="flex justify-between w-full">
-                        <span className="w-1/6 text-left">Product</span>
-                        <span className="w-1/6 text-center">Sales</span>
-                        <span className="w-1/3 text-center">Revenue</span>
-                        <span className="w-1/6 text-center">Rating</span>
-                        <span className="w-1/6 text-right">Indicator</span>
+                        <span className="w-1/6 text-left">{t("overview.product")}</span>
+                        <span className="w-1/6 text-center">{t("overview.sales")}</span>
+                        <span className="w-1/3 text-center">{t("overview.revenue")}</span>
+                        <span className="w-1/6 text-center">{t("overview.rating")}</span>
+                        <span className="w-1/6 text-right">{t("overview.indicator")}</span>
                     </div>
                 </AccordionHeader>
             </Accordion>
@@ -71,6 +74,7 @@ export function ProductTable({
                                 <SparkAreaChart         
                                     data={data || []}
                                     index="formattedDate"
+                                    noDataText={t("stockchart.no_data")}
                                     categories={['stock']}
                                     colors={theme === 'light' ? ["#119da4"] : ["#E5E7EB"]}
                                     className='w-20 h-8 ml-10 mr-8'
@@ -85,7 +89,7 @@ export function ProductTable({
                                 </span>
                                 <span className="w-1/6 text-center">{rating.toFixed(1)}</span>
                                 <span className="w-1/6 text-right">
-                                {getIndicator(item.id)}
+                                <Indicator id={item.id} />
                         </span>
                         </div>  
                     </AccordionHeader>

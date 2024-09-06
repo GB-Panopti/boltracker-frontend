@@ -1,0 +1,68 @@
+{
+    "cancel": "Annuleren",
+    "apply": "Toepassen",      
+    "back": "Terug",
+    "save": "Opslaan",
+    "range": "Bereik",
+
+    "sidebar": {
+        "overview": "Overzicht",
+        "tracked_products": "Gevolgde producten",
+        "account": "Jouw account",
+        "theme" : "Thema",
+        "light" : "Licht",
+        "dark" : "Donker",
+        "system" : "Systeem",
+        "password" : "Wachtwoord Veranderen",
+        "language" : "Taal",
+        "feedback" : "Geef Feedback",
+        "signout" : "Uitloggen",
+        "workspace": {
+            "title": "Werkruimtes",
+            "tracked_products": "producten gevolgd"
+        }
+    },
+
+    "track_product": {
+        "title": "Volg product",
+        "header": "Volg nieuw product",
+        "product_name": "Product naam",
+        "url": "Bol.com URL",
+        "add": "Product toevoegen",
+        "wrong_url": "Ongeldige URL, voer een geldige Bol.com URL in.",
+        "already_exist": "Product bestaat al in je lijst.",
+        "server_error": "Er is een fout opgetreden, probeer het later opnieuw.",
+        "unexpected_error": "Er is een fout opgetreden, probeer het opnieuw."
+    },
+
+    "password": {
+        "title": "Wachtwoord Veranderen",
+        "new_password": "Nieuw wachtwoord",
+        "confirm_password": "Bevestig wachtwoord",
+        "change_password": "Wachtwoord veranderen"
+    }, 
+
+    "overview": {
+        "title": "Overzicht",
+        "product": "Product",
+        "sales": "Verkoop",
+        "revenue": "Omzet",
+        "rating": "Beoordeling",
+        "indicator": "Indicator"
+    },
+
+    "stockchart": {
+        "price": "Prijs",
+        "total": "Totaal",
+        "reviews": "Beoordelingen",
+        "rating": "Sterren",
+        "no_data": "Geen data"
+    },
+
+    "indicator": {
+            "new": "Nieuw",
+            "accurate": "Accuraat",
+            "uncertain": "Onzeker",
+            "error": "Fout"
+        }
+}
