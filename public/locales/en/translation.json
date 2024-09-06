@@ -64,5 +64,17 @@
         "accurate": "Accurate",
         "uncertain": "Uncertain",
         "error": "Error"
+    },
+
+    "login": {
+        "header": "Login or create an account",
+        "email": "Email",
+        "email_placeholder": "john@company.com",
+        "password": "Password",
+        "login": "Sign in",
+        "terms": "By signing in, you agree to our ",
+        "terms2" : "terms of service",
+        "and" : "and",
+        "privacy" : "privacy policy"
     }
 }

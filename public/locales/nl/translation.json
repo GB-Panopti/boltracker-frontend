@@ -64,5 +64,17 @@
             "accurate": "Accuraat",
             "uncertain": "Onzeker",
             "error": "Fout"
-        }
+        },
+
+    "login": {
+        "header": "Log in of maak een account aan",
+        "email": "E-mail",
+        "email_placeholder": "jaap@bedrijf.nl",
+        "password": "Wachtwoord",
+        "login": "Inloggen",
+        "terms": "Door in te loggen ga je akkoord met de ",
+        "terms2" : "algemene voorwaarden",
+        "and" : "en",
+        "privacy" : "privacybeleid"
+    }
 }
