@@ -19,15 +19,15 @@ export default function LandingPage() {
         <UserProfileMobile/>
         <div className="flex items-center gap-1 sm:gap-2 ">
           <Button className="group text-gray-200" variant="ghost" asChild>
-            <a href={siteConfig.baseLinks.pricing}>
+            <a href="#pricing">
               Pricing
             </a>
           </Button>
-          <Button className="group text-gray-200" variant="ghost" asChild>
+          {/* <Button className="group text-gray-200" variant="ghost" asChild>
             <a href={siteConfig.baseLinks.changelog}>
               Changelog
             </a>
-          </Button>
+          </Button> */}
           <Button className="group text-gray-200" variant="ghost" asChild>
             <a href={siteConfig.baseLinks.login}>
               Sign in
@@ -65,7 +65,7 @@ export default function LandingPage() {
         </div>
 
 
-        <div className="my-20 bg-gb-secondary-500 skew-y-2 shadow-[0_-10px_20px_rgba(0,0,0,0.2),_0_10px_20px_rgba(0,0,0,0.2)]">
+        <div className="my-20 bg-gb-secondary-500 skew-y-2 shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
 
           <div className="my-20 flex w-full flex-col items-center justify-center -skew-y-2 ">
             <h1 className="mt-12 mb-8 mx-5 text-5xl text-white font-semibold ">
@@ -147,8 +147,8 @@ export default function LandingPage() {
 
 
 
-        <div className="flex w-full flex-col items-center justify-center -skew-y-3 bg-gb-primary-400  shadow-[0_-10px_20px_rgba(0,0,0,0.2),_0_10px_20px_rgba(0,0,0,0.2)]">
-          <h1 id="pricing" className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl skew-y-3">
+        <div id="pricing" className="flex w-full flex-col items-center justify-center -skew-y-3 bg-gb-primary-400  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
+          <h1 className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl skew-y-3">
             Pricing
           </h1>
             
@@ -178,13 +178,14 @@ export default function LandingPage() {
                       </p>
                     </div>
                     <div className="bg-gray-50 p-10 m-0.5 rounded-[calc(1.5rem-1px)]">
+                      <p className="text-gray-700 text-lg mb-1">
+                      ⭐⭐⭐⭐⭐
+                      </p>
                       <p className="text-gray-700 text-lg">
-                      ⭐⭐⭐⭐⭐<br/>
                       Panopti is fantastic! While they may not have every feature other tools offer, they deliver exactly the insights I need to discover new products to sell. Plus, they're significantly more affordable than the competition.
                       </p>
 
                       <div className="mt-8 flex gap-4 items-center">
-                        <img className="h-12 w-12 rounded-full" src="https://pbs.twimg.com/profile_images/1599029039297077249/p0znhFdE_400x400.jpg" alt="" />
                         <div>
                           <h3 className="text-lg font-medium text-gray-700 ">Eddie Albington</h3>
                           <span className="text-sm tracking-wide text-gray-600 ">Bol.com dropshipper</span>
@@ -243,15 +244,14 @@ export default function LandingPage() {
               <p className="mt-2 text-gray-400">Your e-commerce insights platform</p>
             </div>
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-              <a href="/about" className="hover:underline">About Us</a>
-              <a href="/contact" className="hover:underline">Contact</a>
-              <a href="/privacy" className="hover:underline">Privacy Policy</a>
-              <a href="/terms" className="hover:underline">Terms of Service</a>
+              <a href="mailto:info@panopti.nl" className="hover:underline">Contact</a>
+              {/* <a href="/privacy" className="hover:underline">Privacy Policy</a> */}
+              {/* <a href="/terms" className="hover:underline">Terms of Service</a> */}
             </div>
           </div>
           <div className="mt-8 border-t border-gray-700 pt-6 text-center">
             <p>© 2024 Panopti. All rights reserved.</p>
-            <p className="text-sm text-gray-500 mt-2">Built with ❤️ by the Panopti team.</p>
+            <p className="text-sm text-gray-500 mt-2 pb-2">Built with ❤️ by the Panopti team.</p>
           </div>
         </footer>
       </div>

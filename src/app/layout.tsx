@@ -65,11 +65,7 @@ export default function RootLayout({
         className={`${roboto.className} ${robotoThicc.className} overflow-y-scroll scroll-auto antialiased selection:bg-gb-secondary-100 selection:text-gb-secondary-700 dark:bg-gray-950`}
         suppressHydrationWarning
       >
-          <Sentry.ErrorBoundary fallback={<p>ah noes</p>}>
-            <ThemeProvider defaultTheme="system" attribute="class">
-              <AppProvider>{children}</AppProvider>
-            </ThemeProvider>
-          </Sentry.ErrorBoundary>
+        {children}
       </body>
     </html>
   );
