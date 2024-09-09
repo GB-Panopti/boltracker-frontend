@@ -36,7 +36,7 @@ export function ProductTable({
     return (
           <AccordionList>
             <Accordion key="header">
-                <AccordionHeader key="header" className="bg-gray-100">
+                <AccordionHeader key="header" id="product-table" className="bg-gray-100">
                     <div className="flex justify-between w-full">
                         <span className="w-1/6 text-left">Product</span>
                         <span className="w-1/6 text-center">Sales</span>
@@ -58,7 +58,7 @@ export function ProductTable({
                 return (
                     <Accordion
                     key={item.id}
-                    className="rounded-sm"
+                    className="product-row rounded-sm"
                     >
                     <AccordionHeader
                         className={`hover:bg-gray-100 ${

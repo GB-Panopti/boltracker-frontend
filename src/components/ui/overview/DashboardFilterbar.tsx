@@ -39,7 +39,7 @@ export function Filterbar({
       <DateRangePicker
         value={selectedDates}
         onChange={onDatesChange}
-        className="w-full sm:w-fit"
+        className="date-range w-full sm:w-fit"
         toDate={maxDate}
         fromDate={minDate}
         align="start"

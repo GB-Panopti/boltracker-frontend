@@ -4,7 +4,6 @@ import { cx } from "@/lib/utils"
 import { subDays } from "date-fns"
 import React from "react"
 import { DateRange } from "react-day-picker"
-import { useAuthRedirect } from "./useAuthRedirect"
 import { ProductTable } from "@/components/ProductTable"
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
@@ -110,8 +109,6 @@ export default function Overview() {
     to: maxDate,
   })
 
-  useAuthRedirect();
-  
   return (
     <>
       <section aria-labelledby="usage-overview">

@@ -75,6 +75,7 @@ export function Sidebar() {
               
               <li key="Track product">
                   <Link
+                    id="button-add-product"
                     href="#"
                     className={cx(
                       "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:dark:bg-gray-900 bg-gb-primarylite-600 text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:bg-gb-primarylite-400/20 dark:text-gb-primarylite-400 dark:ring-gb-primarylite-400/20 hover:bg-gb-secondary-400 ",

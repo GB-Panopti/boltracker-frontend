@@ -11,6 +11,7 @@ export const UserProfileDesktop = () => {
   return (
     <DropdownUserProfile>
       <Button
+        id="user-profile"
         aria-label="User settings"
         variant="primary"
         className={cx(
@@ -42,6 +43,7 @@ export const UserProfileMobile = () => {
       <Button
         aria-label="User settings"
         variant="ghost"
+        id="user-profile"
         className={cx(
           "group flex items-center rounded-md p-1 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
         )}
