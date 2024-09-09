@@ -1,5 +1,5 @@
 import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
+import { Inter, Roboto, Roboto_Condensed, Roboto_Flex, Roboto_Serif, Roboto_Slab, Rubik, Rubik_80s_Fade, Rubik_Doodle_Triangles, Rubik_Glitch, Rubik_Lines } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 import { siteConfig } from "./siteConfig";
@@ -38,10 +38,17 @@ export const metadata: Metadata = {
   },
 };
 
-const inter = Inter({
+
+const roboto = Rubik({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
+  variable: "--body-font",
+  weight: "800"
+});
+
+const robotoThicc = Rubik({
+  subsets: ["latin"],
+  variable: "--display-font",
+  weight: "400"
 });
 
 import { AppProvider } from "./contexts/StockDataContext";
@@ -55,14 +62,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} overflow-y-scroll scroll-auto antialiased selection:bg-gb-secondary-100 selection:text-gb-secondary-700 dark:bg-gray-950`}
+        className={`${roboto.className} ${robotoThicc.className} overflow-y-scroll scroll-auto antialiased selection:bg-gb-secondary-100 selection:text-gb-secondary-700 dark:bg-gray-950`}
         suppressHydrationWarning
       >
-          <Sentry.ErrorBoundary fallback={<p>ah noes</p>}>
-            <ThemeProvider defaultTheme="system" attribute="class">
-              <AppProvider>{children}</AppProvider>
-            </ThemeProvider>
-          </Sentry.ErrorBoundary>
+        {children}
       </body>
     </html>
   );

@@ -7,6 +7,10 @@ const config: Config = {
     // Path to Tremor module
     './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',],
   theme: {
+    fontFamily: {
+      "display": "var(--display-font)",
+      "body": "var(--body-font)",
+    },
     extend: {
       colors: {
         // light mode

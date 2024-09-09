@@ -6,6 +6,10 @@ const nextConfig = {
     BASE_URL: process.env.BASE_URL
   },
   output: 'export',
+  images: {
+    unoptimized: true,
+  },
+
   // redirects: async () => {  <-- redirects dont work with static webpage export which we need to do for Strato
   //   return [
   //     {

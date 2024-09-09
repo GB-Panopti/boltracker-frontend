@@ -44,6 +44,34 @@ const buttonVariants = tv({
         "disabled:text-gray-400",
         "disabled:dark:text-gray-600",
       ],
+      accent: [
+        // border
+        "border-gray-300 border-2",
+        // text color
+        "text-white",
+        // background color
+        "bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500",
+        // hover color
+        "hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500",
+        // transition
+        "transition-all duration-700",
+        // disabled
+        "disabled:text-gray-400",
+      ],
+      accentInverse: [
+        // border
+        "border-gray-300 border-2",
+        // text color
+        "text-white",
+        // hover color
+        "hover:bg-gradient-to-r hover:from-gb-secondary-500 hover:to-gb-accent-500",
+        // background color
+        "bg-gradient-to-r from-gb-primary-400 to-gb-accent-500",
+        // transition
+        "transition-all duration-700",
+        // disabled
+        "disabled:text-gray-400",
+      ],
       light: [
         // base
         "shadow-none",
