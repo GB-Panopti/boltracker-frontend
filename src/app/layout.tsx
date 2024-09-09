@@ -51,9 +51,6 @@ const robotoThicc = Rubik({
   weight: "400"
 });
 
-import { AppProvider } from "./contexts/StockDataContext";
-import * as Sentry from "@sentry/nextjs";
-
 export default function RootLayout({
   children,
 }: Readonly<{

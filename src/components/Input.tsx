@@ -33,7 +33,8 @@ const inputStyles = tv({
     // invalid (optional)
     // "aria-[invalid=true]:dark:ring-red-400/20 aria-[invalid=true]:ring-2 aria-[invalid=true]:ring-red-200 aria-[invalid=true]:border-red-500 invalid:ring-2 invalid:ring-red-200 invalid:border-red-500"
     // remove search cancel button (optional)
-    "[&::--webkit-search-cancel-button]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
+    // DEPRECATED: "&::-webkit-search-cancel-button:appearance-none", SHOULD REPLACE WITH :state(webkit-search-cancel-button) BUT TAILWIND DOESN'T SUPPORT IT
+    // "[&::--webkit-search-cancel-button]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
   ],
   variants: {
     hasError: {

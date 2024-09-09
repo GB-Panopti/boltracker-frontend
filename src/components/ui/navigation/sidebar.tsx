@@ -42,20 +42,14 @@ export function Sidebar() {
           <WorkspacesDropdownDesktop />
           {
             (() => {
-              if (user.is_demo) {
+              if (user && user.subscription === 0) {
                 return (
-                  <Card className="p-4 bg-red-400 dark:bg-gray-950">
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Demo mode</h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">You are in demo mode</p>
+                  <Card className="p-4 bg-gb-accent-500 dark:bg-gray-950 rounded-md border-gb-primary-400 border-4 ring-0">
+                    <h2 className="text-lg font-bold text-white dark:text-gray-50">DEMO MODE</h2>
+                    <p className="text-sm text-gray-100 dark:text-gray-400"><i>Feel free to look around!</i></p>
+                    <p className="text-xs text-gray-100 dark:text-gray-400">Subscribe to make changes and start tracking your own products.</p>
                   </Card>
                 );
-              }
-              else {
-                return (
-                  <Card className="p-4 bg-green-400 dark:bg-gray-950">
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">NOT IN Demo mode</h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">User is paying?</p>
-                  </Card>);
               }
             })()
           }
@@ -119,7 +113,17 @@ export function Sidebar() {
       </nav>
       {/* top navbar (xs-lg) */}
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between border-b border-gray-200 bg-white px-2 shadow-sm sm:gap-x-6 sm:px-4 lg:hidden dark:border-gray-800 dark:bg-gray-950">
+        
         <WorkspacesDropdownMobile />
+          {
+            (() => {
+              if (user && user.subscription === 0) {
+                return (
+                  <h2 className="text-lg font-bold text-gb-accent dark:text-gray-50">DEMO MODE</h2>
+                );
+              }
+            })()
+          }
         <div className="flex items-center gap-1 sm:gap-2">
           <UserProfileMobile />
           <MobileSidebar />

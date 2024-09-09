@@ -15,6 +15,7 @@ import { Label } from "@/components/Label";
 import { RiRadarLine } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
 import { Product } from "@/data/schema";
+import { useAppData } from "@/app/contexts/StockDataContext";
 
 export type ModalProps = {
   itemName: string;
@@ -27,19 +28,18 @@ export function ModalAddProduct({
   onSelect,
   onOpenChange,
 }: ModalProps) {
+  const { user } = useAppData();
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
 
   async function handleProductAdd() {
     try {
-      console.log('Adding product..');
       setError('Adding product..');
       const product: Product = { id: '', name: name, url: url };
       const response = await ProductService.addProduct(product);
 
       if (response.status === 200) {
-        console.log('Product added successfully:', response.data);
         window.location.reload();
       } else if (response.status === 400) {
         setError('Bad request, is your url correct?');
@@ -48,8 +48,7 @@ export function ModalAddProduct({
       } else if (response.status === 500) {
         setError('Internal server error. Please try again later.');
       }
-    } catch (error) {
-      console.error('Failed to add product:', error);
+    } catch {
       setError('An unexpected error occurred. Please try again.');
     }
   }
@@ -120,9 +119,24 @@ export function ModalAddProduct({
                   Go back
                 </Button>
               </DialogClose>
-              <Button onClick={handleProductAdd} type="submit" className="w-full sm:w-fit">
-                Add product
-              </Button>
+              {
+                (() => {
+                  if (user && user.subscription === 0) {
+                    return (
+                      <Button className="w-full sm:w-fit" variant="light">
+                        <s>Add product</s>
+                      </Button>
+                    );
+                  }
+                  else {
+                    return (
+                      <Button onClick={handleProductAdd} type="submit" className="w-full sm:w-fit" >
+                        Add product
+                      </Button>
+                    );
+                  }
+                })()
+              }
             </DialogFooter>
           </form>
         </DialogContent>

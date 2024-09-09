@@ -12,7 +12,7 @@ import {
 } from "@/components/Dialog";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
-import { RiHammerLine } from "@remixicon/react";
+import { RiDeleteBack2Line, RiDeleteBackLine, RiDeleteBin2Line, RiHammerLine, RiSave2Line } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
 import { ArrowAnimated } from "../icons/ArrowAnimated";
 import { useAppData } from "@/app/contexts/StockDataContext";
@@ -32,7 +32,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({
   const [name, setName] = useState("");
   const [isOpen, onOpenChange] = useState(false);
   const [error, setError] = React.useState<string | null>(null);
-  const { setProducts } = useAppData();
+  const { user, setProducts } = useAppData();
 
   useEffect(() => {
     setName(_name);
@@ -155,20 +155,52 @@ const ModalEditProduct: React.FC<ModalProps> = ({
                 Go back
               </Button>
             </DialogClose>
-            <Button
-              onClick={() => handleProductDelete()}
-              variant="destructive"
-              className="w-full sm:w-fit"
-            >
-              Delete
-            </Button>
-            <Button
-              onClick={() => handleProductEdit()}
-              type="submit"
-              className="w-full sm:w-fit"
-            >
-              Save
-            </Button>
+            {
+              (() => {
+                if (user && user.subscription === 0) {
+                  return (
+                    <div>
+                      <Button
+                        variant="light"
+                        className="w-full sm:w-fit mr-2 mb-2 sm:mb-0"
+                      >
+                        <RiDeleteBin2Line className="size-5 mr-1"/>
+                        <s><p className="flex">Delete</p> </s>
+                      </Button>
+                      <Button
+                        variant="light"
+                        className="w-full sm:w-fit"
+                      >
+                        <RiSave2Line className="size-5 mr-1"/>
+                        <s>Save</s>
+                      </Button>
+                    </div>
+                  );
+                }
+                else {
+                  return (
+                    <div>
+                      <Button
+                        onClick={() => handleProductDelete()}
+                        variant="destructive"
+                        className="w-full sm:w-fit mr-2 mb-2 sm:mb-0"
+                      >
+                        <RiDeleteBin2Line className="size-5 mr-1"/>
+                        <p className="flex">Delete</p> 
+                      </Button>
+                      <Button
+                        onClick={() => handleProductEdit()}
+                        type="submit"
+                        className="w-full sm:w-fit"
+                      >
+                        <RiSave2Line className="size-5 mr-1"/>
+                        Save
+                      </Button>
+                    </div>
+                  );
+                }
+              })()
+            }
           </DialogFooter>
         </DialogContent>
       </Dialog>

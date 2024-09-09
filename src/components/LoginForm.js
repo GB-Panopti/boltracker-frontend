@@ -1,6 +1,6 @@
 import LoginService from '@/services/LoginService';
 import { Button, Card, TextInput, Divider } from '@tremor/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { useAppData } from '@/app/contexts/StockDataContext';
@@ -17,7 +17,12 @@ export default function LoginForm() {
     const [password, setPassword] = React.useState('');
     const [error, setError] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState('');
-    const { user, setUser } = useAppData();
+    // const { user, setUser } = useAppData();
+
+    // useEffect(() => {
+    //     console.log('User updated:', user); // This will log the updated user when it changes
+    // }, [user]);
+
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
@@ -123,10 +128,9 @@ export default function LoginForm() {
             const response = await LoginService.checkUser(username.toLowerCase(), password);
 
             if (response.status === 200) {
-                setUser(response.data); // Set the user data in the context
-                window.location.href = "/"; // Redirect to the home page if the user is authenticated
+                // setUser(response.data); 
+                window.location.href = "/";
             }
-
         } catch (error) {
             // In case of no response
             if (error.code === "ERR_NETWORK") {

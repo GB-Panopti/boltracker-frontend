@@ -12,8 +12,9 @@ import {
 } from "@/components/Dialog";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
-import { RiHammerLine, RiLock2Line, RiLockLine, RiRotateLockLine } from "@remixicon/react";
+import { RiHammerLine, RiKey2Line, RiLock2Line, RiLockLine, RiRotateLockLine } from "@remixicon/react";
 import loginServiceInstance from "@/services/LoginService";
+import { useAppData } from "@/app/contexts/StockDataContext";
 
 export type ModalProps = {
   // _name: string;
@@ -25,6 +26,7 @@ export type ModalProps = {
 const ModalEditPassword: React.FC<ModalProps> = ({
 
 }: ModalProps) => {
+  const { user } = useAppData();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isOpen, onOpenChange] = useState(false);
@@ -65,8 +67,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
           <DialogHeader>
             <DialogTitle>
               <RiRotateLockLine
-                aria-hidden="true"
-                className="mb-1 ml-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
+                className="mb-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
               />
               Change Password
             </DialogTitle>
@@ -77,28 +78,23 @@ const ModalEditPassword: React.FC<ModalProps> = ({
             >
             </Button>
 
-            <DialogDescription className="mt-1 text-sm leading-6">
-              {/* With free plan, you can track up to 10 products. */}
+            <DialogDescription className="mt-1 ml-1 text-sm leading-6">
+              Please enter your new password.
             </DialogDescription>
             <div className="mt-4 grid grid-cols-1 gap-4">
               <div>
-                <Label htmlFor="product-name" className="font-medium">
-                  Product name
-                </Label>
                 <Input
                   type="password"
-                  id="product-name"
-                  name="product-name"
+                  name="new-password"
                   placeholder="New Password"
                   className="mt-2"
                   onChange={(event) => setNewPassword(event.target.value)}
                 />                
                 <Input
                   type="password"
-                  id="product-name"
-                  name="product-name"
+                  name="confirm-password"
                   placeholder="Confirm Password"
-                  className="mt-2"
+                  className="mt-4"
                   onChange={(event) => setConfirmPassword(event.target.value)}
                 />
               </div>
@@ -118,13 +114,33 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                 Go back
               </Button>
             </DialogClose>
-            <Button
-              onClick={() => handleChangePassword()}
-              type="submit"
-              className="w-full sm:w-fit"
-            >
-              Save
-            </Button>
+            
+            {
+              (() => {
+                if (user && user.subscription === 0) {
+                  return (
+                    <Button
+                      variant="light"
+                      className="w-full sm:w-fit"
+                    >
+                      <RiKey2Line className="size-5 mr-1"/>
+                      <s>Save</s>
+                    </Button>
+                  );
+                }
+                else {
+                  return (
+                    <Button
+                      onClick={() => handleChangePassword()}
+                      type="submit"
+                      className="w-full sm:w-fit"
+                    >
+                      Save
+                    </Button>
+                  );
+                }
+              })()
+            }
           </DialogFooter>
         </DialogContent>
       </Dialog>

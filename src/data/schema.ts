@@ -22,5 +22,5 @@ export type ProductInfo = {
 
 export type User = {
   email: string
-  is_demo: boolean
+  subscription: number
 }

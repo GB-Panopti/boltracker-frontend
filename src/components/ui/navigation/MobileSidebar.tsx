@@ -22,10 +22,13 @@ import { ModalAddProduct } from "./ModalAddProduct"
 import {
   WorkspacesDropdownDesktop,
 } from "./SidebarWorkspacesDropdown"
+import { useAppData } from "@/app/contexts/StockDataContext"
+import { Card } from "@tremor/react"
 
 
 
 export default function MobileSidebar() {
+  const { user } = useAppData()
 
   const [, setHasOpenDialog] = React.useState(false)
 
@@ -40,13 +43,6 @@ export default function MobileSidebar() {
     setHasOpenDialog(open)
   }
 
-  // const pathname = usePathname()
-  // const isActive = (itemHref: string) => {
-  //   if (itemHref === siteConfig.baseLinks.settings) {
-  //     return pathname.startsWith("/settings")
-  //   }
-  //   return pathname === itemHref || pathname.startsWith(itemHref)
-  // }
   return (
     <>
       <Drawer>
@@ -65,6 +61,20 @@ export default function MobileSidebar() {
         <DrawerContent className="sm:max-w-lg border-gb-primary bg-gb-primary dark:border-gray-800 dark:bg-gb-primary-800">
           <DrawerHeader className="w-full">
             <WorkspacesDropdownDesktop/>
+            
+          {
+            (() => {
+              if (user && user.subscription === 0) {
+                return (
+                  <Card className="p-4 bg-gb-accent-500 dark:bg-gray-950 rounded-md border-gb-primary-400 border-4 ring-0">
+                    <h2 className="text-lg font-bold text-white dark:text-gray-50">DEMO MODE</h2>
+                    <p className="text-sm text-gray-100 dark:text-gray-400"><i>Feel free to look around!</i></p>
+                    <p className="text-xs text-gray-100 dark:text-gray-400">Subscribe to make changes and start tracking your own products.</p>
+                  </Card>
+                );
+              }
+            })()
+          }
           </DrawerHeader>
           <DrawerBody>
             <nav
