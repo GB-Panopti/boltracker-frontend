@@ -81,12 +81,11 @@ export const TourContext = createContext({
     useEffect(() => {
       if (typeof document !== "undefined") {
         const shouldRunTutorial = () => {
-          // Run tutorial on page load iff the tutorial cookie has not been set and we run a demo account
           return document.cookie.indexOf("tutorial=done") === -1 && user?.subscription === 0;
         };
         setRun(shouldRunTutorial());
       }
-    }, []);
+    }, [user]);
   
     const handleJoyrideCallback = (data: CallBackProps) => {
       const { status, type } = data;
