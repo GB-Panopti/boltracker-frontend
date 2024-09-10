@@ -55,9 +55,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({
   async function handleProductEdit() {
     try {
       setError("Saving new name..");
-      console.log("Setting ", _name, " to ", name);
       await ProductService.editProduct(_id, name);
-      console.log("Product edited successfully:", name);
       refreshProducts();
       onOpenChange(false);
       setError(null);

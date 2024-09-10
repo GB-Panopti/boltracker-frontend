@@ -33,6 +33,7 @@ import ModalEditPassword from "./ModalEditPassword"
 import { TourContext } from "../../../app/(main)/tutorial";
 
 import { useTranslation } from "react-i18next"
+import { useAppData } from "@/app/contexts/AppProvider"
 
 
 export type DropdownUserProfileProps = {
@@ -44,6 +45,7 @@ export function DropdownUserProfile({
   children,
   align = "start",
 }: DropdownUserProfileProps) {
+  const { user } = useAppData();
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
   const { restartTour } = React.useContext(TourContext); 
@@ -52,7 +54,6 @@ export function DropdownUserProfile({
   const [, setHasOpenDialog] = React.useState(false)
 
   const test = () => {
-    console.log('pea');
     restartTour();
   }
 
@@ -68,7 +69,7 @@ export function DropdownUserProfile({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align={align}>
-          <DropdownMenuLabel>{t('sidebar.account')}</DropdownMenuLabel>
+          <DropdownMenuLabel>{user?.username}</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuSubMenu>
               <DropdownMenuSubMenuTrigger>

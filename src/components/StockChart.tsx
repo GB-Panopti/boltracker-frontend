@@ -57,9 +57,6 @@ function StockChart({
     formattedDate: format(new Date(datum.date), "yyyy-MM-dd"),
   }));
 
-  console.log(chartData);
-  console.log(data2);
-
   useEffect(() => {
     const width = 500;
     const height = 300;

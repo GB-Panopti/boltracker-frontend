@@ -22,6 +22,6 @@ export type ProductInfo = {
 }
 
 export type User = {
-  email: string
+  username: string
   subscription: number
 }

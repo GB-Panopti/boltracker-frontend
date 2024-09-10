@@ -52,8 +52,6 @@ export function Sidebar() {
                     <p className="text-xs text-gray-100 dark:text-gray-400">Subscribe to make changes and start tracking your own products.</p>
                   </Card>
                 );
-              } else {
-                console.log('user!!', user);
               }
             })()
           }

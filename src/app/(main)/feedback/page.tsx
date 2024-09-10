@@ -38,12 +38,8 @@ export default function Example() {
         event.preventDefault();
     
         try {
-            console.log('Sending feedback..');
             setError('Sending feedback..');
-    
             MetaService.sendFeedback(formData);
-    
-            console.log('Feedback sent successfully');
             window.location.reload();
         } catch (error) {
             console.error('Failed to send feedback:', error);
