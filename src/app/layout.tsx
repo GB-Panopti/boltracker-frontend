@@ -1,5 +1,4 @@
-import { ThemeProvider } from "next-themes";
-import { Inter, Roboto, Roboto_Condensed, Roboto_Flex, Roboto_Serif, Roboto_Slab, Rubik, Rubik_80s_Fade, Rubik_Doodle_Triangles, Rubik_Glitch, Rubik_Lines } from "next/font/google";
+import { Rubik} from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 import { siteConfig } from "./siteConfig";
