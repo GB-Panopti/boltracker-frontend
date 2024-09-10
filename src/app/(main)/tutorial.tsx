@@ -1,66 +1,36 @@
 import { useState, useEffect, createContext } from "react";
 import Joyride, { Step, CallBackProps, STATUS, EVENTS } from "react-joyride";
-import { useAppData } from "../contexts/StockDataContext";
+import { useAppData } from "../contexts/AppProvider";
+import { useTranslation } from 'react-i18next';
 
-const steps: Step[] = [
-  {
-    title: 'Welcome to Panopti!',
-    target: 'body',
-    content: 'This is your personal dashboard where you can track and manage bol.com products. Let’s explore our features.',
-    placement: 'center',
-    disableBeacon: true,
-  },
-  {
-    target: '#product-table',
-    content: 'Here, you can view all the products you’re tracking. It shows sales, revenue, and ratings in the date range you select. You can click on a product to see more details!',
-    placement: 'bottom',
-  },
-  {
-    target: '.date-range',
-    content: 'That date range selection is done here! You can choose any date range to inspect sales in that time period.',
-    placement: 'bottom',
-  },
-  {
-    target: '#product-table',
-    content: 'Sales are aggregated by day. When you start tracking a new product, it will take a few days to collect meaningful data. Please keep this in mind.',
-    placement: 'top',
-  },
-  {
-    target: '#button-add-product',
-    content: 'Track new products here. You\'ll need the bol.com product page URL, and a snappy name of your choosing!',
-    placement: 'right',
-  },
-  {
-    target: '#product-list',
-    content: 'This list shows all the products you’re tracking. You can click on a product to edit its name or delete it.',
-    placement: 'right',
-  },
-  {
-    target: '#mobile-sidebar-trigger',
-    content: 'Open this menu to add new products to track. You\'ll need its bol.com product page URL, and a snappy name of your choosing!',
-    placement: 'right',
-  },
-  {
-    target: '#user-profile',
-    content: 'Here you can change your password, language, the theme, or log out. You can also give feedback, or restart the tutorial!',
-    placement: 'top',
-  },
-  {
-    target: '#user-profile-mobile',
-    content: 'Here you can change your password, language, the theme, or log out. You can also give feedback, or restart the tutorial!',
-    placement: 'top',
-  },
-  {
-    title: 'That’s it!',
-    target: 'body',
-    content: 'Feel free to explore, and subscribe today to start tracking your own products! Thank you for using Panopti.',
-    placement: 'center',
-  },
-];
+
+
 
 export const TourContext = createContext({
     restartTour: () => {},
   });
+
+  
+const TutorialStep = (...msgs: string[]) => {
+    const { t } = useTranslation();
+    
+    return (
+      <div>
+        <div>
+          <div>
+            {
+                msgs.map((msg, index) => (
+                    <p key={index} dangerouslySetInnerHTML={{ __html: t(msg) }} />
+                ))
+            }
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  export default TutorialStep;
+  
   
   interface TutorialProviderProps {
     children: React.ReactNode;
@@ -69,6 +39,74 @@ export const TourContext = createContext({
   export function TutorialProvider({ children }: TutorialProviderProps) {
     const [run, setRun] = useState(false);
     const { user } = useAppData();
+    const { t } = useTranslation();
+
+
+  const steps: Step[] = [
+    {
+      title: t('tutorial.welcome_title'),
+      target: 'body',
+      content: TutorialStep('tutorial.welcome', 'tutorial.welcome_1'),
+      placement: 'center',
+      disableBeacon: true,
+    },
+    {
+      target: '#product-table',
+      content: TutorialStep('tutorial.step2'),
+      placement: 'bottom',
+    },
+    {
+      target: '#product-table-mobile',
+      content: TutorialStep('tutorial.step2'),
+      placement: 'bottom',
+    },
+    {
+      target: '.date-range',
+      content: TutorialStep('tutorial.step3'),
+      placement: 'bottom',
+    },
+    {
+      target: '#product-table',
+      content: TutorialStep('tutorial.step4'),
+      placement: 'top',
+    },
+    {
+      target: '#product-table-mobile',
+      content: TutorialStep('tutorial.step4'),
+      placement: 'bottom',
+    },
+    {
+      target: '#button-add-product',
+      content: TutorialStep('tutorial.step5'),
+      placement: 'right',
+    },
+    {
+      target: '#product-list',
+      content: TutorialStep('tutorial.step6'),
+      placement: 'right',
+    },
+    { // mobile only
+      target: '#mobile-sidebar-trigger',
+      content: TutorialStep('tutorial.step7'),
+      placement: 'right',
+    },
+    {
+      target: '#user-profile',
+      content: TutorialStep('tutorial.step8'),
+      placement: 'top',
+    },
+    {
+      target: '#user-profile-mobile',
+      content: TutorialStep('tutorial.step9'),
+      placement: 'top',
+    },
+    {
+      title: t('tutorial.done_title'),
+      target: 'body',
+      content: TutorialStep('tutorial.done', 'tutorial.done_1', 'tutorial.done_2', 'tutorial.done_3'),
+      placement: 'center',
+    },
+  ];
   
     const restartTour = () => {
       document.cookie = "tutorial=; max-age=0; path=/";

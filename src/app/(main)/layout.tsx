@@ -2,15 +2,26 @@
 
 import { Sidebar } from "@/components/ui/navigation/sidebar";
 import { ThemeProvider } from "next-themes";
-import { AppProvider } from "../contexts/StockDataContext";
+import { AppProvider } from "../contexts/AppProvider";
 import * as Sentry from "@sentry/nextjs";
 import { TutorialProvider } from "./tutorial";
+import { useEffect, useState } from "react";
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+
+  const [isHydrated, setIsHydrated] = useState(false); 
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  if (!isHydrated) {
+    return null; // Prevent mismatch between SSR and client-side rendering
+  }
+
   return (
     <Sentry.ErrorBoundary fallback={<p>ah noes</p>}>
       <ThemeProvider defaultTheme="system" attribute="class">

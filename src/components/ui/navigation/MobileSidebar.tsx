@@ -22,7 +22,7 @@ import { ModalAddProduct } from "./ModalAddProduct"
 import {
   WorkspacesDropdownDesktop,
 } from "./SidebarWorkspacesDropdown"
-import { useAppData } from "@/app/contexts/StockDataContext"
+import { useAppData } from "@/app/contexts/AppProvider"
 import { Card } from "@tremor/react"
 
 

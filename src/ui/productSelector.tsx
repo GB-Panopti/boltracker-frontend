@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { useAppData } from '@/app/contexts/StockDataContext';
+import { useAppData } from '@/app/contexts/AppProvider';
 import ModalEditProduct from '@/components/ui/navigation/ModalEditProduct';
 import { Product } from '@/data/schema';
 

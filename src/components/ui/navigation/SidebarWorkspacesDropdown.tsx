@@ -12,7 +12,7 @@ import {
 import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
-import { useAppData } from "@/app/contexts/StockDataContext"
+import { useAppData } from "@/app/contexts/AppProvider"
 import { useTranslation } from "react-i18next"
 
 const workspaces = [

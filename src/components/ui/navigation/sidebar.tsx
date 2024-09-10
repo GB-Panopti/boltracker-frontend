@@ -17,7 +17,7 @@ import ProductSelector from "@/ui/productSelector"
 import React from "react"
 import { ModalAddProduct } from "./ModalAddProduct"
 import { Card } from "@tremor/react"
-import { useAppData } from "@/app/contexts/StockDataContext"
+import { useAppData } from "@/app/contexts/AppProvider"
 import { useTranslation } from "react-i18next"
 
 

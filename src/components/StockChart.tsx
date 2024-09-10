@@ -1,7 +1,7 @@
 "use client";
 // import { Badge } from "@/components/Badge";
 // import React from "react";
-import { useAppData } from "@/app/contexts/StockDataContext";
+import { useAppData } from "@/app/contexts/AppProvider";
 // import { percentageFormatter  } from "@/lib/utils";
 import { PeriodValue } from "@/app/(main)/page";
 import { DateRange } from "react-day-picker";

@@ -15,7 +15,7 @@ import { Label } from "@/components/Label";
 import { RiRadarLine } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
 import { Product } from "@/data/schema";
-import { useAppData } from "@/app/contexts/StockDataContext";
+import { useAppData } from "@/app/contexts/AppProvider";
 import { useTranslation } from "react-i18next";
 
 export type ModalProps = {

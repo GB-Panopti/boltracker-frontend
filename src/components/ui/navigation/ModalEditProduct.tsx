@@ -15,7 +15,7 @@ import { Label } from "@/components/Label";
 import { RiDeleteBack2Line, RiDeleteBackLine, RiDeleteBin2Line, RiHammerLine, RiSave2Line } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
 import { ArrowAnimated } from "../icons/ArrowAnimated";
-import { useAppData } from "@/app/contexts/StockDataContext";
+import { useAppData } from "@/app/contexts/AppProvider";
 
 export type ModalProps = {
   _name: string;

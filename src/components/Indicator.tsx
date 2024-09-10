@@ -1,4 +1,4 @@
-import { useAppData } from '@/app/contexts/StockDataContext';
+import { useAppData } from '@/app/contexts/AppProvider';
 import { RiLoader2Line, RiErrorWarningLine, RiAlertLine, RiCheckboxCircleLine } from '@remixicon/react';
 import { Badge } from '@tremor/react';
 import React from 'react';

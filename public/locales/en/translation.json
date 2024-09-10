@@ -76,5 +76,24 @@
         "terms2" : "terms of service",
         "and" : "and",
         "privacy" : "privacy policy"
+    },
+    "tutorial": {
+        "welcome_title": "🎉 Welcome to Panopti! 🎉",
+        "welcome": "This is your personal Panopti dashboard where you can track and manage bol.com products.",
+        "welcome_1": "<br/>Let’s explore our features. 👉👉",
+        "step2": "Here, you can view all the products you're tracking. The table shows sales, revenue, and reviews over the selected date range. Click on a product to see the details!",
+        "step3": "The date range selection is done here! You can choose any period to inspect the revenue for that period.",
+        "step4": "Revenue is aggregated by day. When you start tracking a new product, it will take a few days before you see meaningful data. ⌛ Please keep this in mind.",
+        "step5": "Track new products here. All you'll need is its bol.com product page URL and a fun name of your choosing! 🤩",
+        "step6": "This list shows all the products you're tracking. You can click on a product to change its name or delete it.",
+        "step7": "Open this menu to add new products to track. All you'll need is its bol.com product page URL and a fun name of your choosing! 🤩",
+        "step8": "Here, you can change your password, language 🌎, or theme 🎨. You can also give feedback, log out, or restart the tutorial!",
+        "step9": "Here, you can change your password, language 🌎, or theme 🎨. You can also give feedback, log out, or restart the tutorial!",
+        "done": "Feel free to explore further, and",
+        "done_1": "<b><a href=\"/welcome\">👉SUBSCRIBE NOW👈</a><b>",
+        "done_2": "to start tracking your own products today!",
+        "done_3": "<br/>Thank you for using Panopti! 💖",
+        "done_title": "🙌 That's it! 🙌"
     }
+      
 }

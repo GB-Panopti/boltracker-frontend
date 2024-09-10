@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { useAppData } from "@/app/contexts/StockDataContext"
+import { useAppData } from "@/app/contexts/AppProvider"
 import {
   Accordion,  
   AccordionHeader, 
@@ -31,7 +31,7 @@ export function ProductTableMobile({
           <AccordionList className='rounded-t-md'>
             <Accordion key="header" className='rounded-t-lg'>
                 <AccordionHeader key="header" className="bg-gb-primarylite-500 text-gb-primarylite-50  dark:bg-dark-tremor-background-subtle font-semibold">
-                    <div className="flex justify-between w-full">
+                    <div className="flex justify-between w-full" id="product-table-mobile">
                         <span className="w-1/6 text-left">{t("overview.product")}</span>
                         <span className="w-1/6 text-center">{t("overview.sales")}</span>
                         <span className="w-1/6 text-right">{t("overview.revenue")}</span>

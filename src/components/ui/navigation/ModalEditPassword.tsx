@@ -13,9 +13,7 @@ import {
 import { Input } from "@/components/Input";
 import { RiKey2Line, RiRotateLockLine } from "@remixicon/react";
 import loginServiceInstance from "@/services/LoginService";
-import { useAppData } from "@/app/contexts/StockDataContext";
-import { RiRotateLockLine } from "@remixicon/react";
-import loginServiceInstance from "@/services/LoginService";
+import { useAppData } from "@/app/contexts/AppProvider";
 import { useTranslation } from "react-i18next";
 
 export type ModalProps = {

@@ -1,9 +1,10 @@
+"use client";
 import LoginService from '@/services/LoginService';
 import { Button, Card, TextInput, Divider } from '@tremor/react';
 import React, { useEffect } from 'react';
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
-import { useAppData } from '@/app/contexts/StockDataContext';
+import { useAppData } from '@/app/contexts/AppProvider';
 import { useTranslation } from 'react-i18next';
 
 const GoogleIcon = (props) => (
