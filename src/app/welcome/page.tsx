@@ -3,9 +3,7 @@ import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import Image from "next/image"
-import { UserProfileMobile } from "@/components/ui/navigation/UserProfile"
 import { Divider, List, ListItem } from "@tremor/react";
-import { RiCheckboxCircleFill } from "@remixicon/react";
 
 export default function LandingPage() {
   return (
@@ -16,7 +14,6 @@ export default function LandingPage() {
         <div className="text-gray-200 font-extrabold ml-8 max-w-xs">
           Logo Panopti
         </div>
-        <UserProfileMobile/>
         <div className="flex items-center gap-1 sm:gap-2 ">
           <Button className="group text-gray-200" variant="ghost" asChild>
             <a href="#pricing">
