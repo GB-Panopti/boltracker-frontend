@@ -81,7 +81,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
   // Only render children when user data has been fetched (and loading is complete)
   if (loading) {
-    return <div>Loading...</div>; // You can replace this with a more sophisticated loader if needed
+    return <div>Loading...</div>; 
   }
 
   return (
