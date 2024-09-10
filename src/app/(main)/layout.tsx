@@ -45,9 +45,19 @@ export default function Layout({
       content: 'This list shows all the products you’re tracking. You can click on a product to edit its name or delete it.',
       placement: 'right',
     },
+    { // this step is for mobile view
+      target: '#mobile-sidebar-trigger',
+      content: 'Open this menu to add new products to track. You\'ll need its bol.com product page URL, and a snappy name of your choosing!',
+      placement: 'right',
+    },
     {
       target: '#user-profile',
-      content: 'Here you can change your password, the theme, or log out. You can also give feedback, or restart the tutorial!',
+      content: 'Here you can change your password, language, the theme, or log out. You can also give feedback, or restart the tutorial!',
+      placement: 'top',
+    },
+    { // this step is for mobile view
+      target: '#user-profile-mobile',
+      content: 'Here you can change your password, language, the theme, or log out. You can also give feedback, or restart the tutorial!',
       placement: 'top',
     },
     {
@@ -66,7 +76,6 @@ export default function Layout({
           <Joyride 
             steps={steps}
             continuous={true}
-            showProgress={true}
             showSkipButton={true}
             disableOverlayClose={true}
             spotlightClicks={false}
@@ -93,16 +102,14 @@ export default function Layout({
               },
             }}
           />
-          <div>
-            <Sidebar />
-            <main className="lg:pl-72">
-              <div className="relative">
-                <div className="p-4 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10 lg:pt-7">
-                  {children}
-                </div>
+          <Sidebar />
+          <main className="lg:pl-72">
+            <div className="relative">
+              <div className="p-4 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10 lg:pt-7">
+                {children}
               </div>
-            </main>
-          </div>
+            </div>
+          </main>
         </AppProvider>
       </ThemeProvider>
     </Sentry.ErrorBoundary>

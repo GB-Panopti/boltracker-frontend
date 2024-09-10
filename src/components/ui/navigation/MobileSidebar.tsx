@@ -50,6 +50,7 @@ export default function MobileSidebar() {
           <Button
             variant="ghost"
             aria-label="open sidebar"
+            id="mobile-sidebar-trigger"
             className="group flex items-center rounded-md p-2 text-sm font-medium hover:bg-gray-100 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10"
           >
             <RiMenuLine

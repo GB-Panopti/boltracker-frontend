@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/Button"
 import { cx, focusRing } from "@/lib/utils"
-import { RiHome3Line, RiHomeSmileFill, RiMore2Fill } from "@remixicon/react"
+import { RiHome2Fill, RiHome2Line, RiHome3Line, RiHomeSmileFill, RiMore2Fill } from "@remixicon/react"
 
 import { DropdownUserProfile } from "./DropdownUserProfile"
 import { Icon } from "@tremor/react"
@@ -11,9 +11,9 @@ export const UserProfileDesktop = () => {
   return (
     <DropdownUserProfile>
       <Button
-        id="user-profile"
         aria-label="User settings"
         variant="primary"
+        id="user-profile"
         className={cx(
           focusRing,
           "group flex w-full items-center justify-between rounded-md p-2 text-sm font-medium text-gray-200 hover:bg-gb-secondary-800 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
@@ -43,7 +43,7 @@ export const UserProfileMobile = () => {
       <Button
         aria-label="User settings"
         variant="ghost"
-        id="user-profile"
+        id="user-profile-mobile"
         className={cx(
           "group flex items-center rounded-md p-1 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
         )}
@@ -52,7 +52,7 @@ export const UserProfileMobile = () => {
           className="flex size-7 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
           aria-hidden="true"
         >
-          <Icon icon={RiHomeSmileFill} />
+          <Icon icon={RiHome2Fill} />
         </span>
       </Button>
     </DropdownUserProfile>
