@@ -25,6 +25,7 @@ import { cx, focusInput, focusRing, hasErrorInput } from "@/lib/utils"
 
 import { Button } from "./Button"
 import { Calendar as CalendarPrimitive, type Matcher } from "./Calendar"
+import { useTranslation } from "react-i18next"
 
 //#region TimeInput
 // ============================================================================
@@ -739,6 +740,8 @@ const RangeDatePicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
+  const { t } = useTranslation();
+
   React.useEffect(() => {
     setRange(value ?? defaultValue ?? undefined)
   }, [value, defaultValue])
@@ -983,7 +986,7 @@ const RangeDatePicker = ({
               <div className="border-t border-gray-200 p-3 sm:flex sm:items-center sm:justify-between dark:border-gray-800">
                 <p className="tabular-nums text-gray-900 dark:text-gray-50">
                   <span className="text-gray-700 dark:text-gray-300">
-                    {translations?.range ?? "Range"}:
+                    {translations?.range ?? t("range")}:
                   </span>{" "}
                   <span className="font-medium">{displayRange}</span>
                 </p>
@@ -994,7 +997,7 @@ const RangeDatePicker = ({
                     type="button"
                     onClick={onCancel}
                   >
-                    {translations?.cancel ?? "Cancel"}
+                    {translations?.cancel ?? t("cancel")}
                   </Button>
                   <Button
                     variant="primary"
@@ -1002,7 +1005,7 @@ const RangeDatePicker = ({
                     type="button"
                     onClick={onApply}
                   >
-                    {translations?.apply ?? "Apply"}
+                    {translations?.apply ?? t("apply")}
                   </Button>
                 </div>
               </div>

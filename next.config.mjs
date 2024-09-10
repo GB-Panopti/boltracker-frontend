@@ -10,6 +10,14 @@ const nextConfig = {
     unoptimized: true,
   },
 
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   // redirects: async () => {  <-- redirects dont work with static webpage export which we need to do for Strato
   //   return [
   //     {

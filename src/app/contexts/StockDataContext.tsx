@@ -4,12 +4,16 @@ import StockService from '@/services/StockService';
 import ProductService from '@/services/ProductService';
 import LoginService from '@/services/LoginService';
 import { Product, StockDatum, User } from '@/data/schema';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../i18n';
 
 interface AppDataContextProps {
   stockData: StockDatum[][];
+  rawStockData: StockDatum[][];
   products: Product[];
   user: User | null;
   setStockData: React.Dispatch<React.SetStateAction<StockDatum[][]>>;
+  setRawStockData: React.Dispatch<React.SetStateAction<StockDatum[][]>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
@@ -31,6 +35,8 @@ interface AppProviderProps {
 export const AppProvider = ({ children }: AppProviderProps) => {
   const [stockData, setStockData] = useState<StockDatum[][]>([]);
   const [products, setProducts] = useState<Product[]>([]);
+  const [rawStockData, setRawStockData] = useState<StockDatum[][]>([]);
+
   const [user, setUser] = useState<User | null>(null);
 
   // Fetch user data from session on app load
@@ -73,8 +79,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   }, [user]); // Only run when `user` changes
 
   return (
-    <AppDataContext.Provider value={{ stockData, products, user, setStockData, setProducts, setUser }}>
-      {children}
-    </AppDataContext.Provider>
+    <I18nextProvider i18n={i18n}>
+      <AppDataContext.Provider value={{ stockData, products, rawStockData, setRawStockData, setStockData, setProducts, setUser }}>
+        {children}
+      </AppDataContext.Provider>
+    </I18nextProvider>
   );
 };

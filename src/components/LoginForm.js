@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { useAppData } from '@/app/contexts/StockDataContext';
+import { useTranslation } from 'react-i18next';
 
 const GoogleIcon = (props) => (
   <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -17,18 +18,14 @@ export default function LoginForm() {
     const [password, setPassword] = React.useState('');
     const [error, setError] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState('');
-    // const { user, setUser } = useAppData();
-
-    // useEffect(() => {
-    //     console.log('User updated:', user); // This will log the updated user when it changes
-    // }, [user]);
+    const { t } = useTranslation();
 
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <h3 className="text-center text-gb-title font-semibold text-gb-primary-400 dark:text-gb-primary-300">
-                Log in or create account
+                    {t('login.header')}
                 </h3>
                 <form action="#" method="post"  onSubmit={handleLogin} className="mt-6 space-y-4">
                 <div>
@@ -36,7 +33,7 @@ export default function LoginForm() {
                     htmlFor="email"
                     className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
                     >
-                    Email
+                        {t('login.email')} 
                     </label>
                     <TextInput
                     // type="email"
@@ -45,7 +42,7 @@ export default function LoginForm() {
                     id="email"
                     name="email"
                     autoComplete="email"
-                    placeholder="john@company.com"
+                    placeholder={t('login.email_placeholder')}
                     className="mt-2 rounded-md"
                     onValueChange={(value) => {
                         setError(false);
@@ -58,14 +55,14 @@ export default function LoginForm() {
                     htmlFor="password"
                     className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
                     >
-                    Password
+                        {t('login.password')}
                     </label>
                     <TextInput
                     type="password"
                     id="password"
                     name="password"
                     autoComplete="password"
-                    placeholder="password"
+                    placeholder={t('login.password').toLowerCase()}
                     className="mt-2 rounded-md"
                     onValueChange={(value) => setPassword(value)}
                     />
@@ -74,7 +71,7 @@ export default function LoginForm() {
                     type="submit"
                     className="mt-4 w-full whitespace-nowrap rounded-gb-default py-2 text-center text-gb-default font-medium text-gb-primary-100 rounded-sm hover:text-gb-secondary-100 shadow-gb-input bg-gb-primary hover:bg-gb-secondary-600 dark:hover:bg-gb-secondary-700 dark:bg-gb-primary dark:text-gb-primary-100 dark:hover:text-gb-secondary-100"
                 >
-                    Sign in
+                    {t('login.login')}
                 </button>
                 </form>
                 {/* <Divider>or with</Divider>
@@ -88,13 +85,13 @@ export default function LoginForm() {
                 </span>
                 </a> */}
                 <p className="mt-4 text-gb-label text-gb-content dark:text-dark-gb-content">
-                By signing in, you agree to our{' '}
+                    {t('login.terms')}
                 <a href="#" className="underline underline-offset-4">
-                    terms of service
+                    {t('login.terms2')}
                 </a>{' '}
-                and{' '}
+                    {t('login.and')}{' '}
                 <a href="#" className="underline underline-offset-4">
-                    privacy policy
+                    {t('login.privacy')}
                 </a>
                 .
                 </p>

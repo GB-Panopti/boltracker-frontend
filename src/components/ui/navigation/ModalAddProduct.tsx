@@ -16,6 +16,7 @@ import { RiRadarLine } from "@remixicon/react";
 import ProductService from "@/services/ProductService";
 import { Product } from "@/data/schema";
 import { useAppData } from "@/app/contexts/StockDataContext";
+import { useTranslation } from "react-i18next";
 
 export type ModalProps = {
   itemName: string;
@@ -32,24 +33,25 @@ export function ModalAddProduct({
   const [name, setName] = React.useState('');
   const [url, setUrl] = React.useState('');
   const [error, setError] = React.useState<string | null>(null);
+  const { t } = useTranslation();
 
   async function handleProductAdd() {
     try {
       setError('Adding product..');
-      const product: Product = { id: '', name: name, url: url };
+      const product: Product = { id: '', name: name, url: url, createdAt: new Date() };
       const response = await ProductService.addProduct(product);
 
       if (response.status === 200) {
         window.location.reload();
       } else if (response.status === 400) {
-        setError('Bad request, is your url correct?');
+        setError(t("track_product.wrong_url"));
       } else if (response.status === 409) {
-        setError('Product already exists.');
+        setError(t("track_product.already_exists"));
       } else if (response.status === 500) {
-        setError('Internal server error. Please try again later.');
+        setError(t("track_product.server_error"));
       }
-    } catch {
-      setError('An unexpected error occurred. Please try again.');
+    } catch (error) {
+      setError(t("track_product.unexpected_error"));
     }
   }
   
@@ -75,7 +77,7 @@ export function ModalAddProduct({
                   aria-hidden="true"
                   className="mb-1 ml-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
                 />
-                Track new product
+                {t("track_product.header")}
               </DialogTitle>
               <DialogDescription className="mt-1 text-sm leading-6">
                 {/* With free plan, you can track up to 10 products. */}
@@ -83,20 +85,20 @@ export function ModalAddProduct({
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="product-name" className="font-medium">
-                    Product name
+                  {t("track_product.product_name")}
                   </Label>
                   <Input
                     id="product-name"
                     name="product-name"
                     value={name}
-                    placeholder="Turtles, Termites, Traffic Jams"
+                    placeholder="LEGO set"
                     className="mt-2"
                     onChange={(event) => setName(event.target.value)}
                   />
                 </div>
                 <div>
                   <Label htmlFor="product-url" className="font-medium">
-                    Bol.com url
+                  {t("track_product.url")}
                   </Label>
                   <Input
                     id="product-url"
@@ -116,7 +118,7 @@ export function ModalAddProduct({
                   className="mt-2 w-full sm:mt-0 sm:w-fit"
                   variant="secondary"
                 >
-                  Go back
+                  {t("back")}
                 </Button>
               </DialogClose>
               {
@@ -124,14 +126,14 @@ export function ModalAddProduct({
                   if (user && user.subscription === 0) {
                     return (
                       <Button className="w-full sm:w-fit" variant="light">
-                        <s>Add product</s>
+                        <s>{t("track_product.add")}</s>
                       </Button>
                     );
                   }
                   else {
                     return (
                       <Button onClick={handleProductAdd} type="submit" className="w-full sm:w-fit" >
-                        Add product
+                        {t("track_product.add")}
                       </Button>
                     );
                   }

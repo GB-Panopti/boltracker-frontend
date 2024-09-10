@@ -11,6 +11,7 @@ export type Product = {
   id: string
   name: string
   url: string
+  createdAt: Date
 }
 
 export type ProductInfo = {
