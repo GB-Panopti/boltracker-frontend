@@ -36,8 +36,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [stockData, setStockData] = useState<StockDatum[][]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [rawStockData, setRawStockData] = useState<StockDatum[][]>([]);
-
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true); // Track loading state
 
   // Fetch user data from session on app load
   useEffect(() => {
@@ -53,18 +53,19 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         if (typeof window !== 'undefined') {
           window.location.href = '/login'; // Static redirect
         }
+      } finally {
+        setLoading(false); // User has been fetched or login redirect is triggered
       }
     };
 
     fetchUser();
-  }, []); // Empty dependency array ensures this runs only once
+  }, []);
 
   // Fetch stock data and products when user is authenticated
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
         try {
-          console.log(user);
           const stockResponse = await StockService.getAllUserStocks();
           const productResponse = await ProductService.getProducts();
           setStockData(stockResponse.data);
@@ -76,11 +77,16 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     };
 
     fetchData();
-  }, [user]); // Only run when `user` changes
+  }, [user]);
+
+  // Only render children when user data has been fetched (and loading is complete)
+  if (loading) {
+    return <div>Loading...</div>; // You can replace this with a more sophisticated loader if needed
+  }
 
   return (
     <I18nextProvider i18n={i18n}>
-      <AppDataContext.Provider value={{ stockData, products, rawStockData, setRawStockData, setStockData, setProducts, setUser }}>
+      <AppDataContext.Provider value={{ stockData, products, rawStockData, setRawStockData, setStockData, setProducts, setUser, user }}>
         {children}
       </AppDataContext.Provider>
     </I18nextProvider>

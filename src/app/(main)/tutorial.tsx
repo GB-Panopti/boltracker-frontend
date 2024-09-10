@@ -76,8 +76,9 @@ const TutorialStep = (...msgs: string[]) => {
       placement: 'bottom',
     },
     {
+      title: t('tutorial.step5_title'),
       target: '#button-add-product',
-      content: TutorialStep('tutorial.step5'),
+      content: TutorialStep('tutorial.step5', 'tutorial.step5_1'),
       placement: 'right',
     },
     {
