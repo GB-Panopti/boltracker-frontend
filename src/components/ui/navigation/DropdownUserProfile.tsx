@@ -24,11 +24,14 @@ import {
   RiSettings2Line,
   RiSpeakLine,
   RiSunLine,
+  RiTreasureMapLine,
 } from "@remixicon/react"
 import { useTheme } from "next-themes"
 import Link from "next/link"
 import * as React from "react"
 import ModalEditPassword from "./ModalEditPassword"
+import { TourContext } from "../../../app/(main)/tutorial";
+
 
 
 export type DropdownUserProfileProps = {
@@ -42,8 +45,14 @@ export function DropdownUserProfile({
 }: DropdownUserProfileProps) {
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
+  const { restartTour } = React.useContext(TourContext); 
 
   const [, setHasOpenDialog] = React.useState(false)
+
+  const test = () => {
+    console.log('pea');
+    restartTour();
+  }
 
   React.useEffect(() => {
     setMounted(true)
@@ -131,6 +140,13 @@ export function DropdownUserProfile({
                 Give feedback
               </DropdownMenuItem>
             </Link>
+            <DropdownMenuItem onClick={test}>
+              <RiTreasureMapLine
+                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                aria-hidden="true"
+              />
+              Start tour
+            </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
