@@ -13,6 +13,7 @@ import { cx, focusInput } from "@/lib/utils"
 import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
 import React from "react"
 import { useAppData } from "@/app/contexts/StockDataContext"
+import { useTranslation } from "react-i18next"
 
 const workspaces = [
   {
@@ -38,6 +39,7 @@ export const WorkspacesDropdownDesktop = () => {
   // const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
   // const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
+  const { t } = useTranslation()
 
   // const handleDialogItemSelect = () => {
   //   focusRef.current = dropdownTriggerRef.current
@@ -76,7 +78,7 @@ export const WorkspacesDropdownDesktop = () => {
                   PANOPTI Bol.com
                 </p>
                 <p className="whitespace-nowrap text-left text-xs text-gray-300 dark:text-gray-300">
-                  {products.length} products tracked
+                  {products.length} {t("sidebar.workspace.tracked_products")}
                 </p>
               </div>
               <RiExpandUpDownLine
@@ -98,7 +100,7 @@ export const WorkspacesDropdownDesktop = () => {
         >
           <DropdownMenuGroup>
             <DropdownMenuLabel>
-              Workspaces ({workspaces.length})
+              {t("sidebar.workspace.title")} ({workspaces.length})
             </DropdownMenuLabel>
             {workspaces.map((workspace) => (
               <DropdownMenuItem key={workspace.value}>
@@ -141,6 +143,8 @@ export const WorkspacesDropdownMobile = () => {
   // const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
   // const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   // const focusRef = React.useRef<null | HTMLButtonElement>(null)
+
+  const { t } = useTranslation()
 
   // const handleDialogItemSelect = () => {
   //   focusRef.current = dropdownTriggerRef.current
@@ -196,7 +200,7 @@ export const WorkspacesDropdownMobile = () => {
         >
           <DropdownMenuGroup>
             <DropdownMenuLabel>
-              Workspaces ({workspaces.length})
+            {t("sidebar.workspace.title")} ({workspaces.length})
             </DropdownMenuLabel>
             {workspaces.map((workspace) => (
               <DropdownMenuItem key={workspace.value}>

@@ -9,6 +9,7 @@ import { ProductTable } from "@/components/ProductTable"
 import { useAppData } from "../contexts/StockDataContext"
 import stockServiceInstance from "@/services/StockService"
 import { ProductTableMobile } from "@/components/ProductTableMobile"
+import { useTranslation } from "react-i18next"
 
 export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
 
@@ -116,6 +117,7 @@ export default function Overview() {
   useAuthRedirect();
   // get the raw stock data from the context
   const { setRawStockData } = useAppData();
+  const { t } = useTranslation();
 
   useEffect(() => { 
     stockServiceInstance.getAllUserStockDateRange(selectedDates?.from, selectedDates?.to).then((response) => {
@@ -130,7 +132,7 @@ export default function Overview() {
           id="usage-overview"
           className="scroll-mt-8 text-lg font-semibold text-gray-900 sm:text-xl dark:text-gray-50"
         >
-          Overview
+          {t("overview.title")}
         </h1>
         <div className="sticky top-16 z-20 flex items-center justify-between border-b border-gray-200 bg-white pb-4 pt-4 sm:pt-6 lg:top-0 lg:mx-0 lg:px-0 lg:pt-8 dark:border-gray-800 dark:bg-gray-950">
           <Filterbar

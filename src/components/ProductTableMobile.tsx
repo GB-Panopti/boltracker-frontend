@@ -10,12 +10,14 @@ import { getFilteredStockData } from '@/data/StockProcessor';
 import { StockDatum } from '@/data/schema';
 import { ProductTableProps } from './ProductTable';
 import { StockChartOldMobile } from './StockChartOldMobile';
+import { useTranslation } from 'react-i18next';
 
 export function ProductTableMobile({
     selectedDates
 }: ProductTableProps) {
     const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
     const { stockData, products } = useAppData(); // Access stockData from the context
+    const { t } = useTranslation();
 
 
     const toggleItem = (id: string) => {
@@ -30,9 +32,9 @@ export function ProductTableMobile({
             <Accordion key="header" className='rounded-t-lg'>
                 <AccordionHeader key="header" className="bg-gb-primarylite-500 text-gb-primarylite-50  dark:bg-dark-tremor-background-subtle font-semibold">
                     <div className="flex justify-between w-full">
-                        <span className="w-1/6 text-left">Product</span>
-                        <span className="w-1/6 text-center">Sales</span>
-                        <span className="w-1/6 text-right">Revenue</span>
+                        <span className="w-1/6 text-left">{t("overview.product")}</span>
+                        <span className="w-1/6 text-center">{t("overview.sales")}</span>
+                        <span className="w-1/6 text-right">{t("overview.revenue")}</span>
                     </div>
                 </AccordionHeader>
             </Accordion>

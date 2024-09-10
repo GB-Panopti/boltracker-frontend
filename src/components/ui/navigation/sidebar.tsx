@@ -16,12 +16,14 @@ import { UserProfileDesktop, UserProfileMobile } from "./UserProfile"
 import ProductSelector from "@/ui/productSelector"
 import React from "react"
 import { ModalAddProduct } from "./ModalAddProduct"
+import { useTranslation } from "react-i18next"
 
 
 export function Sidebar() {
   const [, setHasOpenDialog] = React.useState(false)
   const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   const focusRef = React.useRef<null | HTMLButtonElement>(null)
+  const { t } = useTranslation()
 
   const handleTrackProductSelect = () => {
     focusRef.current = dropdownTriggerRef.current
@@ -53,7 +55,7 @@ export function Sidebar() {
                   )}
                 >
                   <RiHome2Line className="size-5 shrink-0" aria-hidden="true" />
-                  <span>Overview</span>
+                  <span>{t('sidebar.overview')}</span>
                 </Link>
               </li>
               
@@ -71,7 +73,7 @@ export function Sidebar() {
                     <ModalAddProduct
                       onSelect={handleTrackProductSelect}
                       onOpenChange={handleTrackProductDialogOpenChange}
-                      itemName="Track product"
+                      itemName={t("track_product.title")}
                     />
                   </Link>
                 </li>
@@ -85,7 +87,7 @@ export function Sidebar() {
                     )}
                   >
                     <RiBox1Line className="size-5 shrink-0" aria-hidden="true" />
-                    Tracked products
+                    {t('sidebar.tracked_products')}
                   </div>
               <ProductSelector />
             </div>

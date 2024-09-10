@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import StockService from '@/services/StockService';
 import ProductService from '@/services/ProductService';
 import { Product, StockDatum } from '@/data/schema';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../i18n';
 
 // Combined Data Context
 interface AppDataContextProps {
@@ -49,8 +51,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   }, []);
 
   return (
-    <AppDataContext.Provider value={{ stockData, products, rawStockData, setRawStockData, setStockData, setProducts }}>
-      {children}
-    </AppDataContext.Provider>
+    <I18nextProvider i18n={i18n}>
+      <AppDataContext.Provider value={{ stockData, products, rawStockData, setRawStockData, setStockData, setProducts }}>
+        {children}
+      </AppDataContext.Provider>
+    </I18nextProvider>
   );
 };
