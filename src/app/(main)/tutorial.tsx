@@ -66,12 +66,12 @@ const TutorialStep = (...msgs: string[]) => {
       placement: 'bottom',
     },
     {
-      target: '#product-table',
+      target: '#revenue-table-head',
       content: TutorialStep('tutorial.step4'),
       placement: 'top',
     },
     {
-      target: '#product-table-mobile',
+      target: '#revenue-table-head-mobile',
       content: TutorialStep('tutorial.step4'),
       placement: 'bottom',
     },

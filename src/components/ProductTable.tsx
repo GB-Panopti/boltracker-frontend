@@ -42,7 +42,7 @@ export function ProductTable({
                     <div className="flex justify-between w-full" id="product-table">
                         <span className="w-1/6 text-left">{t("overview.product")}</span>
                         <span className="w-1/6 text-center">{t("overview.sales")}</span>
-                        <span className="w-1/3 text-center">{t("overview.revenue")}</span>
+                        <span id="revenue-table-head" className="w-1/3 text-center">{t("overview.revenue")}</span>
                         <span className="w-1/6 text-center">{t("overview.rating")}</span>
                         <span className="w-1/6 text-right">{t("overview.indicator")}</span>
                     </div>

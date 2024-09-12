@@ -92,7 +92,7 @@
         "step8": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",
         "step9": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",
         "done": "Voel je vrij om verder te verkennen, of",
-        "done_1": "<b><a href=\"/welcome\">👉ABONNEER JE NU👈</a><b>",
+        "done_1":"<a href='/welcome#pricing' class='relative inline-flex items-center justify-center whitespace-nowrap text-center text-base font-medium shadow-sm ease-in-out sm:text-sm disabled:pointer-events-none disabled:shadow-none outline outline-offset-2 outline-0 focus-visible:outline-2 outline-gb-secondary-500 dark:outline-gb-secondary-500 border-gray-300 border-2 text-white bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 transition-all duration-700 disabled:text-gray-400 group mt-2 mb-4 p-2 w-auto rounded-lg'><p class='font-semibold'>👉 ABONNEER NU 👈</p></a>",
         "done_2": "om vandaag nog te beginnen met het tracken van je eigen producten!",
         "done_3": "<br/>Bedankt dat je Panopti gebruikt! 💖",
         "done_title": "🙌 Dat was 'm! 🙌"

@@ -189,14 +189,11 @@ export function DropdownUserProfile({
                 <DropdownMenuItem onClick={async () => {
                     // Delete the session cookie
                     const response = await loginServiceInstance.logout()
-                    // document.cookie = 'session_cookie=; Max-Age=0; path=/; domain=yourdomain.com; secure; SameSite=Lax';
                     if (response.status === 200) {
                       window.location.href = '/login';
                     } else {
                       console.log("Something went wrong with login out!")
                     }
-                    
-                    // Redirect to the login page
                 }}>
                     <RiLogoutBoxLine
                         className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"

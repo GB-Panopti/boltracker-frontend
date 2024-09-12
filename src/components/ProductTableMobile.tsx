@@ -34,7 +34,7 @@ export function ProductTableMobile({
                     <div className="flex justify-between w-full" id="product-table-mobile">
                         <span className="w-1/6 text-left">{t("overview.product")}</span>
                         <span className="w-1/6 text-center">{t("overview.sales")}</span>
-                        <span className="w-1/6 text-right">{t("overview.revenue")}</span>
+                        <span id="revenue-table-head-mobile" className="w-1/6 text-right">{t("overview.revenue")}</span>
                     </div>
                 </AccordionHeader>
             </Accordion>
