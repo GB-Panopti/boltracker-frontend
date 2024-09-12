@@ -91,10 +91,8 @@
         "step7": "Open this menu to add new products to track. All you'll need is its bol.com product page URL and a fun name of your choosing! 🤩",
         "step8": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
         "step9": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
-        "done": "Feel free to explore further, or",
-        "done_1": "<a href='/welcome#pricing' class='relative inline-flex items-center justify-center whitespace-nowrap text-center text-base font-medium shadow-sm ease-in-out sm:text-sm disabled:pointer-events-none disabled:shadow-none outline outline-offset-2 outline-0 focus-visible:outline-2 outline-gb-secondary-500 dark:outline-gb-secondary-500 border-gray-300 border-2 text-white bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 transition-all duration-700 disabled:text-gray-400 group mt-2 mb-4 p-2 w-auto rounded-lg'><p class='font-semibold'>👉 SUBSCRIBE NOW 👈</p></a>",
-        "done_2": "to start tracking your own products today!",
-        "done_3": "<br/>Thank you for using Panopti! 💖",
-        "done_title": "🙌 That's it! 🙌"
+        "done": "<br/>You're almost there! Enter your email to explore further.",
+        "done_1": "<br/><span style='display: inline-block; position: relative;'>Thank you for using Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
+        "done_title": "🙌 Almost done! 🙌"
     }
 }

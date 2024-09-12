@@ -13,15 +13,40 @@ export const TourContext = createContext({
   
 const TutorialStep = (...msgs: string[]) => {
     const { t } = useTranslation();
-    
+    const hasTutorialDone = msgs.includes('tutorial.done');
+
+    const handleDemoEmail = () => {
+      console.log('demo email');
+    }
+  
     return (
       <div>
         <div>
           <div>
+
+            {hasTutorialDone && (
+              <div className='relative flex items-center w-full max-w-lg'>
+                <input
+                  type='email'
+                  id='email'
+                  placeholder={t('Enter your email')}
+                  className='w-full px-4 py-2 text-base font-medium border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 focus:border-gb-secondary-500 transition-all duration-300'
+                  required
+                />
+                <button
+                  type='button'
+                  onClick={handleDemoEmail}
+                  className='px-4 py-2 text-white font-medium bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 border border-gb-secondary-500 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 transition-all duration-300'
+                >
+                  {t('Submit')}
+                </button>
+              </div>
+            )}
+            
             {
-                msgs.map((msg, index) => (
-                    <p key={index} dangerouslySetInnerHTML={{ __html: t(msg) }} />
-                ))
+              msgs.map((msg, index) => (
+                <p key={index} dangerouslySetInnerHTML={{ __html: t(msg) }} />
+              ))
             }
           </div>
         </div>
@@ -104,8 +129,9 @@ const TutorialStep = (...msgs: string[]) => {
     {
       title: t('tutorial.done_title'),
       target: 'body',
-      content: TutorialStep('tutorial.done', 'tutorial.done_1', 'tutorial.done_2', 'tutorial.done_3'),
+      content: TutorialStep('tutorial.done', 'tutorial.done_1',),
       placement: 'center',
+      hideFooter: true,
     },
   ];
   
@@ -116,7 +142,7 @@ const TutorialStep = (...msgs: string[]) => {
         setRun(true);
       }, 100);
     };
-  
+
     useEffect(() => {
       if (typeof document !== "undefined") {
         const shouldRunTutorial = () => {
@@ -146,8 +172,9 @@ const TutorialStep = (...msgs: string[]) => {
           steps={steps}
           run={run}
           continuous={true}
-          showSkipButton={true}
           disableOverlayClose={true}
+          disableCloseOnEsc={true}
+          hideCloseButton={true}
           spotlightClicks={false}
           locale={{
             back: "Back",

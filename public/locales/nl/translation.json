@@ -90,11 +90,12 @@
         "step6": "Deze lijst laat alle producten zien die je trackt. Je kan op een product klikken om de naam te veranderen of het product te verwijderen.",
         "step7": "Open dit menu om nieuwe producten toe te voegen om te tracken. Je hebt alleen de bol.com product pagina URL nodig, en een leuke naam naar keuze! 🤩",
         "step8": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",
-        "step9": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",
-        "done": "Voel je vrij om verder te verkennen, of",
-        "done_1":"<a href='/welcome#pricing' class='relative inline-flex items-center justify-center whitespace-nowrap text-center text-base font-medium shadow-sm ease-in-out sm:text-sm disabled:pointer-events-none disabled:shadow-none outline outline-offset-2 outline-0 focus-visible:outline-2 outline-gb-secondary-500 dark:outline-gb-secondary-500 border-gray-300 border-2 text-white bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 transition-all duration-700 disabled:text-gray-400 group mt-2 mb-4 p-2 w-auto rounded-lg'><p class='font-semibold'>👉 ABONNEER NU 👈</p></a>",
-        "done_2": "om vandaag nog te beginnen met het tracken van je eigen producten!",
-        "done_3": "<br/>Bedankt dat je Panopti gebruikt! 💖",
-        "done_title": "🙌 Dat was 'm! 🙌"
+        "step9": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",{
+        "done": "Je bent er bijna! Voer je e-mailadres in om verder te verkennen.",
+        "done_1": "<div class='relative flex items-center mt-6 w-full max-w-lg'><input type='email' id='email' placeholder='Enter your email' class='w-full px-4 py-2 text-base font-medium border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 focus:border-gb-secondary-500 transition-all duration-300' required><button type='button' onclick='handleDemoEmail()' class='px-4 py-2 text-white font-medium bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 border border-gb-secondary-500 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 transition-all duration-300'>Start</button></div>",
+        "done_2": "<br/>Bedankt dat je Panopti gebruikt! 💖",
+        "done_title": "🙌 Bijna klaar! 🙌"
+        }
+        
     }
 }
