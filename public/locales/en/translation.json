@@ -1,111 +1,111 @@
 {
-    "cancel": "Cancel",
-    "apply": "Apply",    
-    "back": "Back",
-    "save": "Save",
-    "range": "Range",
+  "cancel": "Cancel",
+  "apply": "Apply",
+  "back": "Back",
+  "save": "Save",
+  "range": "Range",
 
-    "sidebar": {
-        "overview": "Overview",
-        "tracked_products": "Tracked products",
-        "account": "Your account",
-        "theme" : "Theme",
-        "light" : "Light",
-        "dark" : "Dark",
-        "system" : "System",
-        "password" : "Change Password",
-        "language" : "Language",
-        "feedback" : "Give Feedback",
-        "signout" : "Sign Out",
-        "workspace": {
-            "title": "Workspaces",
-            "tracked_products": "products tracked"
-        }
-    },
-
-    "track_product": {
-        "title": "Track product",
-        "header": "Track new product",
-        "product_name": "Product name",
-        "url": "Bol.com URL",
-        "add": "Add product",
-        "wrong_url": "Bad request, is your url correct?",
-        "already_exist": "Product already exists.",
-        "server_error": "Internal server error. Please try again later.",
-        "unexpected_error": "An unexpected error occurred. Please try again."
-    },
-
-    "password": {
-        "title": "Change Password",
-        "new_password": "New password",
-        "confirm_password": "Confirm password",
-        "change_password": "Change password"
-    },      
-
-    "overview": {
-        "title": "Overview",
-        "product": "Product",
-        "sales": "Sales",
-        "revenue": "Revenue",
-        "rating": "Rating",
-        "indicator": "Indicator"
-    },
-
-    "stockchart": {
-        "price": "Price",
-        "total": "Total",
-        "reviews": "Reviews",
-        "rating": "Stars",
-        "no_data": "No data"
-    },
-
-    "indicator": {
-        "new": "New",
-        "accurate": "Accurate",
-        "uncertain": "Uncertain",
-        "error": "Error"
-    },
-
-    "login": {
-        "header": "Login or create an account",
-        "email": "Email",
-        "email_placeholder": "john@company.com",
-        "password": "Password",
-        "login": "Sign in",
-        "terms": "By signing in, you agree to our ",
-        "terms2" : "terms of service",
-        "and" : "and",
-        "privacy" : "privacy policy"
-    },
-    "demo_mode": {
-        "header": "DEMO MODE",
-        "subheader": "Feel free to look around!",
-        "text": "Subscribe to start tracking your own products and see how they perform!"
-    },
-    "tutorial": {
-        "welcome_title": "🎉 Welcome to Panopti! 🎉",
-        "welcome": "This is your personal Panopti dashboard where you can track and manage bol.com products.",
-        "welcome_1": "<br/>Let’s explore our features. 👉👉",
-        "step2": "Here, you can view all the products you're tracking. The table shows sales, revenue, and reviews over the selected date range. Click on a product to see the details!",
-        "step3": "The date range selection is done here! You can choose any period to inspect the revenue for that period.",
-        "step4": "Revenue is aggregated by day. When you start tracking a new product, it will take a few days before you see meaningful data. ⌛ Please keep this in mind.",
-        "step5_title": "Track new products here! 🎯",
-        "step5": "All you need is its bol.com product URL as pictured, and a fun name of your choosing! 🤩",
-        "step5_1": "<img src='/img/url-pointer2.png' alt='URL guide' style='width: 150%; height: auto;' class='bol-com-url-img' />",
-        "step6": "This list shows all the products you're tracking. You can click on a product to change its name or delete it.",
-        "step7": "Open this menu to add new products to track. All you'll need is its bol.com product page URL and a fun name of your choosing! 🤩",
-        "step8": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
-        "step9": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
-        "done": "That concludes our tour!",
-        "done_1": "<br/><span style='display: inline-block; position: relative;'>Thank you for using Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
-        "done_title": "🙌 That's it! 🙌",
-        "done_demo": "<br/>You're almost there! Enter your email to explore further.",
-        "done_1_demo": "<br/><span style='display: inline-block; position: relative;'>Thank you for trying Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
-        "done_title_demo": "🙌 Almost done! 🙌",
-        "btn_next": "Next",
-        "btn_back": "Back",
-        "btn_last": "Finish",
-        "btn_skip": "Skip",
-        "btn_close": "Close"
+  "sidebar": {
+    "overview": "Overview",
+    "tracked_products": "Tracked products",
+    "account": "Your account",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "password": "Change Password",
+    "language": "Language",
+    "feedback": "Give Feedback",
+    "signout": "Sign Out",
+    "workspace": {
+      "title": "Workspaces",
+      "tracked_products": "products tracked"
     }
+  },
+
+  "track_product": {
+    "title": "Track product",
+    "header": "Track new product",
+    "product_name": "Product name",
+    "url": "Bol.com URL",
+    "add": "Add product",
+    "wrong_url": "Bad request, is your url correct?",
+    "already_exist": "Product already exists.",
+    "server_error": "Internal server error. Please try again later.",
+    "unexpected_error": "An unexpected error occurred. Please try again."
+  },
+
+  "password": {
+    "title": "Change Password",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "change_password": "Change password"
+  },
+
+  "overview": {
+    "title": "Overview",
+    "product": "Product",
+    "sales": "Sales",
+    "revenue": "Revenue",
+    "rating": "Rating",
+    "indicator": "Indicator"
+  },
+
+  "stockchart": {
+    "price": "Price",
+    "total": "Total",
+    "reviews": "Reviews",
+    "rating": "Stars",
+    "no_data": "No data"
+  },
+
+  "indicator": {
+    "new": "New",
+    "accurate": "Accurate",
+    "uncertain": "Uncertain",
+    "error": "Error"
+  },
+
+  "login": {
+    "header": "Login or create an account",
+    "email": "Email",
+    "email_placeholder": "john@company.com",
+    "password": "Password",
+    "login": "Sign in",
+    "terms": "By signing in, you agree to our ",
+    "terms2": "terms of service",
+    "and": "and",
+    "privacy": "privacy policy"
+  },
+  "demo_mode": {
+    "header": "DEMO MODE",
+    "subheader": "Feel free to look around!",
+    "text": "Subscribe to start tracking your own products and see how they perform!"
+  },
+  "tutorial": {
+    "welcome_title": "🎉 Welcome to Panopti! 🎉",
+    "welcome": "This is your personal Panopti dashboard where you can track and manage bol.com products.",
+    "welcome_1": "<br/>Let’s explore our features. 👉👉",
+    "step2": "Here, you can view all the products you're tracking. The table shows sales, revenue, and reviews over the selected date range. Click on a product to see the details!",
+    "step3": "The date range selection is done here! You can choose any period to inspect the revenue for that period.",
+    "step4": "Revenue is aggregated by day. When you start tracking a new product, it will take a few days before you see meaningful data. ⌛ Please keep this in mind.",
+    "step5_title": "Track new products here! 🎯",
+    "step5": "All you need is its bol.com product URL as pictured, and a fun name of your choosing! 🤩",
+    "step5_1": "<img src='/img/url-pointer2.png' alt='URL guide' style='width: 150%; height: auto;' class='bol-com-url-img' />",
+    "step6": "This list shows all the products you're tracking. You can click on a product to change its name or delete it.",
+    "step7": "Open this menu to add new products to track. All you'll need is its bol.com product page URL and a fun name of your choosing! 🤩",
+    "step8": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
+    "step9": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
+    "done": "That concludes our tour!",
+    "done_1": "<br/><span style='display: inline-block; position: relative;'>Thank you for using Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
+    "done_title": "🙌 That's it! 🙌",
+    "done_demo": "<br/>You're almost there! Enter your email to explore further.",
+    "done_1_demo": "<br/><span style='display: inline-block; position: relative;'>Thank you for trying Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
+    "done_title_demo": "🙌 Almost done! 🙌",
+    "btn_next": "Next",
+    "btn_back": "Back",
+    "btn_last": "Finish",
+    "btn_skip": "Skip",
+    "btn_close": "Close"
+  }
 }

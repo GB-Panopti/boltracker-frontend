@@ -6,10 +6,11 @@ import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  tunnel: process.env.NEXT_PUBLIC_SERVER_HOST + '/api/sentry-tunnel',
+  tunnel: process.env.NEXT_PUBLIC_SERVER_HOST + "/api/sentry-tunnel",
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1,
-  environment: process.env.NODE_ENV === 'production' ? 'production' : 'development',  // Set environment explicitly
+  environment:
+    process.env.NODE_ENV === "production" ? "production" : "development", // Set environment explicitly
 
   replaysOnErrorSampleRate: 0.5,
   replaysSessionSampleRate: 0.1,

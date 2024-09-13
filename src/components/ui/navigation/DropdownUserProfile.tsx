@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,8 +12,8 @@ import {
   DropdownMenuSubMenuContent,
   DropdownMenuSubMenuTrigger,
   DropdownMenuTrigger,
-} from "@/components/Dropdown"
-import loginServiceInstance from "@/services/LoginService"
+} from "@/components/Dropdown";
+import loginServiceInstance from "@/services/LoginService";
 import {
   RiComputerLine,
   RiGlobalLine,
@@ -24,45 +24,44 @@ import {
   RiSpeakLine,
   RiSunLine,
   RiTreasureMapLine,
-} from "@remixicon/react"
-import { useTheme } from "next-themes"
-import Link from "next/link"
-import * as React from "react"
-import i18next from 'i18next';
-import ModalEditPassword from "./ModalEditPassword"
+} from "@remixicon/react";
+import { useTheme } from "next-themes";
+import Link from "next/link";
+import * as React from "react";
+import i18next from "i18next";
+import ModalEditPassword from "./ModalEditPassword";
 import { TourContext } from "../../../app/(main)/tutorial";
 
-import { useTranslation } from "react-i18next"
-import { useAppData } from "@/app/contexts/AppProvider"
-
+import { useTranslation } from "react-i18next";
+import { useAppData } from "@/app/contexts/AppProvider";
 
 export type DropdownUserProfileProps = {
-  children: React.ReactNode
-  align?: "center" | "start" | "end"
-}
+  children: React.ReactNode;
+  align?: "center" | "start" | "end";
+};
 
 export function DropdownUserProfile({
   children,
   align = "start",
 }: DropdownUserProfileProps) {
   const { user } = useAppData();
-  const [mounted, setMounted] = React.useState(false)
-  const { theme, setTheme } = useTheme()
-  const { restartTour } = React.useContext(TourContext); 
-  const { t } = useTranslation()
+  const [mounted, setMounted] = React.useState(false);
+  const { theme, setTheme } = useTheme();
+  const { restartTour } = React.useContext(TourContext);
+  const { t } = useTranslation();
 
-  const [, setHasOpenDialog] = React.useState(false)
+  const [, setHasOpenDialog] = React.useState(false);
 
   const test = () => {
     restartTour();
-  }
+  };
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
   return (
     <>
@@ -75,14 +74,15 @@ export function DropdownUserProfile({
               <DropdownMenuSubMenuTrigger>
                 <RiPaintBrushLine
                   className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                  aria-hidden="true"/>
-                {t('sidebar.theme')}
-                </DropdownMenuSubMenuTrigger>
+                  aria-hidden="true"
+                />
+                {t("sidebar.theme")}
+              </DropdownMenuSubMenuTrigger>
               <DropdownMenuSubMenuContent>
                 <DropdownMenuRadioGroup
                   value={theme}
                   onValueChange={(value) => {
-                    setTheme(value)
+                    setTheme(value);
                   }}
                 >
                   <DropdownMenuRadioItem
@@ -91,7 +91,7 @@ export function DropdownUserProfile({
                     iconType="check"
                   >
                     <RiSunLine className="size-4 shrink-0" aria-hidden="true" />
-                    {t('sidebar.light')}
+                    {t("sidebar.light")}
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem
                     aria-label="Switch to Dark Mode"
@@ -102,7 +102,7 @@ export function DropdownUserProfile({
                       className="size-4 shrink-0"
                       aria-hidden="true"
                     />
-                    {t('sidebar.dark')}
+                    {t("sidebar.dark")}
                   </DropdownMenuRadioItem>
                   <DropdownMenuRadioItem
                     aria-label="Switch to System Mode"
@@ -113,23 +113,26 @@ export function DropdownUserProfile({
                       className="size-4 shrink-0"
                       aria-hidden="true"
                     />
-                    {t('sidebar.system')}
+                    {t("sidebar.system")}
                   </DropdownMenuRadioItem>
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
-            <DropdownMenuItem onClick={(e) => {
+            <DropdownMenuItem
+              onClick={(e) => {
                 e.preventDefault(); // Prevent default action to keep dropdown open
                 setHasOpenDialog(true);
-              }}>
+              }}
+            >
               <RiSettings2Line
                 className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                aria-hidden="true"/>
-                <ModalEditPassword
-                  onSelect={() => {
-                    setHasOpenDialog(false); // Close the modal after action
-                  }}
-                />
+                aria-hidden="true"
+              />
+              <ModalEditPassword
+                onSelect={() => {
+                  setHasOpenDialog(false); // Close the modal after action
+                }}
+              />
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
@@ -138,14 +141,15 @@ export function DropdownUserProfile({
               <DropdownMenuSubMenuTrigger>
                 <RiGlobalLine
                   className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                  aria-hidden="true"/>
-                {t('sidebar.language')}
-                </DropdownMenuSubMenuTrigger>
+                  aria-hidden="true"
+                />
+                {t("sidebar.language")}
+              </DropdownMenuSubMenuTrigger>
               <DropdownMenuSubMenuContent>
                 <DropdownMenuRadioGroup
                   value={i18next.language}
                   onValueChange={(value) => {
-                    i18next.changeLanguage(value)
+                    i18next.changeLanguage(value);
                   }}
                 >
                   <DropdownMenuRadioItem
@@ -170,10 +174,10 @@ export function DropdownUserProfile({
             <Link href="/feedback">
               <DropdownMenuItem>
                 <RiSpeakLine
-                    className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                    aria-hidden="true"
-                  />
-                {t('sidebar.feedback')}
+                  className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                  aria-hidden="true"
+                />
+                {t("sidebar.feedback")}
               </DropdownMenuItem>
             </Link>
             <DropdownMenuItem onClick={test}>
@@ -186,24 +190,26 @@ export function DropdownUserProfile({
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-                <DropdownMenuItem onClick={async () => {
-                    // Delete the session cookie
-                    const response = await loginServiceInstance.logout()
-                    if (response.status === 200) {
-                      window.location.href = '/login';
-                    } else {
-                      console.log("Something went wrong with login out!")
-                    }
-                }}>
-                    <RiLogoutBoxLine
-                        className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                        aria-hidden="true"
-                    />
-                    {t('sidebar.signout')}
-                </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={async () => {
+                // Delete the session cookie
+                const response = await loginServiceInstance.logout();
+                if (response.status === 200) {
+                  window.location.href = "/login";
+                } else {
+                  console.log("Something went wrong with login out!");
+                }
+              }}
+            >
+              <RiLogoutBoxLine
+                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
+                aria-hidden="true"
+              />
+              {t("sidebar.signout")}
+            </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
+  );
 }

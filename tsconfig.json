@@ -24,6 +24,13 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "middleware.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/ErrorBoundary.js"],
+  "include": [
+    "next-env.d.ts",
+    "middleware.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/ErrorBoundary.js"
+  ],
   "exclude": ["node_modules"]
 }

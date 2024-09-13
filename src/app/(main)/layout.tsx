@@ -10,10 +10,9 @@ import { useEffect, useState } from "react";
 export default function Layout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-
-  const [isHydrated, setIsHydrated] = useState(false); 
+  const [isHydrated, setIsHydrated] = useState(false);
   useEffect(() => {
     setIsHydrated(true);
   }, []);
@@ -39,5 +38,5 @@ export default function Layout({
         </AppProvider>
       </ThemeProvider>
     </Sentry.ErrorBoundary>
-  )
+  );
 }

@@ -69,7 +69,7 @@ export function Sidebar() {
                   href={siteConfig.baseLinks.overview}
                   className={cx(
                     "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:bg-gray-200 hover:dark:bg-gray-900 text-gb-primarylite-50 hover:text-gray-900 dark:text-gb-primarylite-300 hover:dark:text-gray-50",
-                    focusRing
+                    focusRing,
                   )}
                 >
                   <RiHome2Line className="size-5 shrink-0" aria-hidden="true" />
@@ -83,7 +83,7 @@ export function Sidebar() {
                   href="#"
                   className={cx(
                     "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:dark:bg-gray-900 bg-gb-primarylite-600 text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:bg-gb-primarylite-400/20 dark:text-gb-primarylite-400 dark:ring-gb-primarylite-400/20 hover:bg-gb-secondary-400",
-                    focusRing
+                    focusRing,
                   )}
                 >
                   <RiRadarLine className="size-5 shrink-0" aria-hidden="true" />
@@ -101,7 +101,7 @@ export function Sidebar() {
               <div
                 className={cx(
                   "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:text-gb-primarylite-300 dark:ring-gb-primarylite-400/20",
-                  focusRing
+                  focusRing,
                 )}
               >
                 <RiBox1Line className="size-5 shrink-0" aria-hidden="true" />

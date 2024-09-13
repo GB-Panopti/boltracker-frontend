@@ -1,4 +1,4 @@
-import { Rubik} from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 import { siteConfig } from "./siteConfig";
@@ -37,17 +37,16 @@ export const metadata: Metadata = {
   },
 };
 
-
 const roboto = Rubik({
   subsets: ["latin"],
   variable: "--body-font",
-  weight: "800"
+  weight: "800",
 });
 
 const robotoThicc = Rubik({
   subsets: ["latin"],
   variable: "--display-font",
-  weight: "400"
+  weight: "400",
 });
 
 export default function RootLayout({
