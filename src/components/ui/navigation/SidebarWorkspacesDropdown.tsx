@@ -74,8 +74,8 @@ export const WorkspacesDropdownDesktop = () => {
             </span>
             <div className="flex w-full items-center justify-between gap-x-4 truncate">
               <div className="truncate">
-                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-200 dark:text-gray-50">
-                  PANOPTI Bol.com
+                <p className="text-left truncate whitespace-nowrap text-sm font-medium text-gray-200 dark:text-gray-50">
+                  Bol.com
                 </p>
                 <p className="whitespace-nowrap text-left text-xs text-gray-300 dark:text-gray-300">
                   {products.length} {t("sidebar.workspace.tracked_products")}
@@ -178,7 +178,7 @@ export const WorkspacesDropdownMobile = () => {
             />
             <div className="flex w-full items-center justify-between gap-x-3 truncate">
               <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                PANOPTI Bol.com
+                Bol.com
               </p>
               <RiExpandUpDownLine
                 className="size-4 shrink-0 text-gray-500"

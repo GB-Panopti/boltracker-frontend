@@ -72,6 +72,7 @@ export const TourContext = createContext({
     const [run, setRun] = useState(false);
     const [error, setError] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState('');
+    const [activeSteps, setActiveSteps] = useState<Step[]>([]);
     const { user } = useAppData();
     const { t } = useTranslation();
 
@@ -79,7 +80,6 @@ export const TourContext = createContext({
   const handleDemoEmail = async () => {
     const email = (document.getElementById('email') as HTMLInputElement).value;
     if (email) {
-      console.log('checking email');
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
         setError(true);
         // alert('Invalid email format');
@@ -94,8 +94,9 @@ export const TourContext = createContext({
         if (response.status === 200) {
           setError(false);
           document.cookie = "tutorial=done; max-age=31536000; path=/"; // Set the cookie for 1 year
-          setRun(false); // Stop the Joyride tour
-          console.log("Email successfully saved");
+          if(run) {
+            setRun(false); // Stop the Joyride tour
+          }
         } else {
           setError(true);
           setErrorMessage('Failed to save email. Please try again.');
@@ -248,7 +249,8 @@ export const TourContext = createContext({
   
     const restartTour = () => {
       document.cookie = "tutorial=; max-age=0; path=/";
-      setRun(false);
+      setRun(false);// Set non-demo steps for the restart
+      setActiveSteps(steps);
       setTimeout(() => {
         setRun(true);
       }, 100);
@@ -257,10 +259,18 @@ export const TourContext = createContext({
     useEffect(() => {
       if (typeof document !== "undefined") {
         const shouldRunTutorial = () => {
-          return document.cookie.indexOf("tutorial=done") === -1 && user?.subscription === 0;
+          return document.cookie.indexOf("tutorial=done") === -1;
         };
+
+        if (user?.username === 'demo@panopti.nl') {
+          setActiveSteps(stepsDemo);
+        } else {
+          setActiveSteps(steps);
+        }
+
         setRun(shouldRunTutorial());
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
   
     const handleJoyrideCallback = (data: CallBackProps) => {
@@ -281,19 +291,19 @@ export const TourContext = createContext({
       <TourContext.Provider value={{ restartTour, setRun }}>
         <Joyride
           key={run ? 'running' : 'stopped'}
-          steps={user?.username === 'demo@panopti.nl' ? stepsDemo : steps}
+          steps={activeSteps}
           run={run}
-          continuous={true}
+          continuous={true}   
           disableOverlayClose={true}
           disableCloseOnEsc={true}
           hideCloseButton={true}
           spotlightClicks={false}
           locale={{
-            back: "Back",
-            close: "Close",
-            last: "Finish",
-            next: "Next",
-            skip: "Skip",
+            back: t('tutorial.btn_back'),
+            close: t('tutorial.btn_close'),
+            last: t('tutorial.btn_last'),
+            next: t('tutorial.btn_next'),
+            skip: t('tutorial.btn_skip'),
           }}
           callback={handleJoyrideCallback}
           styles={{

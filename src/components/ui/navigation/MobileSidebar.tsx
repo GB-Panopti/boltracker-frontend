@@ -24,11 +24,13 @@ import {
 } from "./SidebarWorkspacesDropdown"
 import { useAppData } from "@/app/contexts/AppProvider"
 import { Card } from "@tremor/react"
+import { useTranslation } from "react-i18next"
 
 
 
 export default function MobileSidebar() {
   const { user } = useAppData()
+  const { t } = useTranslation()
 
   const [, setHasOpenDialog] = React.useState(false)
 
@@ -68,9 +70,9 @@ export default function MobileSidebar() {
               if (user && user.subscription === 0) {
                 return (
                   <Card className="p-4 bg-gb-accent-500 dark:bg-gray-950 rounded-md border-gb-primary-400 border-4 ring-0">
-                    <h2 className="text-lg font-bold text-white dark:text-gray-50">DEMO MODE</h2>
-                    <p className="text-sm text-gray-100 dark:text-gray-400"><i>Feel free to look around!</i></p>
-                    <p className="text-xs text-gray-100 dark:text-gray-400">Subscribe to make changes and start tracking your own products.</p>
+                    <h2 className="text-lg font-bold text-white dark:text-gray-50">{t('demo_mode.header')}</h2>
+                    <p className="text-sm text-gray-100 dark:text-gray-400"><i>{t('demo_mode.subheader')}</i></p>
+                    <p className="text-xs text-gray-100 dark:text-gray-400">{t('demo_mode.text')}</p>
                   </Card>
                 );
               }

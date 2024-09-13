@@ -77,6 +77,11 @@
         "and" : "en",
         "privacy" : "privacybeleid"
     },
+    "demo_mode": {
+        "header": "DEMO MODUS",
+        "subheader": "Kijk rustig rond!",
+        "text": "Abonneer je om je eigen producten te volgen en te zien hoe ze presteren!"
+    },
     "tutorial": {
         "welcome_title": "🎉 Welkom bij Panopti! 🎉",
         "welcome": "Dit is jouw persoonlijke Panopti dashboard waar je bol.com producten kan tracken en managen.",
@@ -96,6 +101,11 @@
         "done_title_demo": "🙌 Bijna klaar! 🙌",
         "done": "De tour zit er op!",
         "done_1": "<br/><span style='display: inline-block; position: relative;'>Bedankt dat je Panopti gebruikt! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
-        "done_title": "🙌 Dat was 'm! 🙌"
+        "done_title": "🙌 Dat was 'm! 🙌",
+        "btn_next": "Volgende",
+        "btn_back": "Terug",
+        "btn_last": "Klaar",
+        "btn_skip": "Overslaan",
+        "btn_close": "Sluiten"
     }
 }

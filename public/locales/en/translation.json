@@ -77,6 +77,11 @@
         "and" : "and",
         "privacy" : "privacy policy"
     },
+    "demo_mode": {
+        "header": "DEMO MODE",
+        "subheader": "Feel free to look around!",
+        "text": "Subscribe to start tracking your own products and see how they perform!"
+    },
     "tutorial": {
         "welcome_title": "🎉 Welcome to Panopti! 🎉",
         "welcome": "This is your personal Panopti dashboard where you can track and manage bol.com products.",
@@ -96,6 +101,11 @@
         "done_title": "🙌 That's it! 🙌",
         "done_demo": "<br/>You're almost there! Enter your email to explore further.",
         "done_1_demo": "<br/><span style='display: inline-block; position: relative;'>Thank you for trying Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
-        "done_title_demo": "🙌 Almost done! 🙌"
+        "done_title_demo": "🙌 Almost done! 🙌",
+        "btn_next": "Next",
+        "btn_back": "Back",
+        "btn_last": "Finish",
+        "btn_skip": "Skip",
+        "btn_close": "Close"
     }
 }

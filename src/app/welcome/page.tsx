@@ -5,6 +5,7 @@ import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import Image from "next/image"
 import { Divider, List, ListItem } from "@tremor/react";
 import LoginService from "@/services/LoginService";
+import { Logo } from "@/components/ui/icons/Logo";
 
 export default function LandingPage() {
 
@@ -28,12 +29,12 @@ export default function LandingPage() {
     <>
     <section className="bg-gradient-to-r from-gb-primary-600 via-gb-primarylite-800 to-gb-primary-600">
       
-      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between  bg-gb-primary-600 px-2 shadow-sm sm:gap-x-6 sm:px-4">
-        <div className="text-gray-200 font-extrabold ml-8 max-w-xs">
-          Logo Panopti
+      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between  bg-gb-secondary-600 px-2 shadow-sm sm:gap-x-6 sm:px-4 border-b-2 border-b-gray100">
+        <div className="text-gray-200 font-extrabold ml-4 max-w-xs">
+          <Logo className="!text-2xl"/>
         </div>
         <div className="flex items-center gap-1 sm:gap-2 ">
-          <Button className="group text-gray-200" variant="ghost" asChild>
+          <Button className="group text-gray-200 !text-lg" variant="ghost" asChild>
             <a href="#pricing">
               Pricing
             </a>
@@ -43,12 +44,12 @@ export default function LandingPage() {
               Changelog
             </a>
           </Button> */}
-          <Button className="group text-gray-200" variant="ghost" asChild>
+          <Button className="group text-gray-200 !text-lg" variant="primary" asChild>
             <a href={siteConfig.baseLinks.login}>
               Sign in
             </a>
           </Button>
-          <Button className="group" variant="accent" asChild>
+          <Button className="group !text-lg" variant="accent" asChild>
             <a href="#" onClick={handleDemoLogin}>
               Try the demo now!
             </a>
