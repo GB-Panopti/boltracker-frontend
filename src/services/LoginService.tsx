@@ -5,6 +5,7 @@ const LOGIN_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/login";
 const CHANGE_PASSWORD_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/set-password";
 const LOGOUT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/logout";
 const GET_USER_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/get-user";
+const SAVE_EMAIL_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/save-email";
 
 class LoginService {
     checkUser(name: string, password: string) {
@@ -27,6 +28,13 @@ class LoginService {
 
     getUserFromSession() {
         return axios.get(GET_USER_API_URL, { withCredentials: true });
+    }
+
+    saveEmailAddr(emailAddr: string, source: string) {
+        return axios.post(SAVE_EMAIL_API_URL, {
+            email: emailAddr,
+            source: source
+        }, { withCredentials: true });
     }
 }
 

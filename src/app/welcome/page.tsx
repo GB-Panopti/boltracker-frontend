@@ -4,8 +4,26 @@ import { Button } from "@/components/Button"
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import Image from "next/image"
 import { Divider, List, ListItem } from "@tremor/react";
+import LoginService from "@/services/LoginService";
 
 export default function LandingPage() {
+
+  const handleDemoLogin = async () => {
+    const demoEmail = "demo@panopti.nl";
+    const demoPassword = "password";
+
+    try {
+      // Log out the current user (if logged in) and log in with the demo credentials
+      await LoginService.logout();
+      const response = await LoginService.checkUser(demoEmail, demoPassword);
+
+      if (response.status === 200) {
+        window.location.href = siteConfig.baseLinks.home;
+      }
+    } catch {
+    }
+  }
+
   return (
     <>
     <section className="bg-gradient-to-r from-gb-primary-600 via-gb-primarylite-800 to-gb-primary-600">
@@ -31,7 +49,7 @@ export default function LandingPage() {
             </a>
           </Button>
           <Button className="group" variant="accent" asChild>
-            <a href={siteConfig.baseLinks.settings}>
+            <a href="#" onClick={handleDemoLogin}>
               Try the demo now!
             </a>
           </Button>

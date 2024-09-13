@@ -1,43 +1,50 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext, useRef } from "react";
 import Joyride, { Step, CallBackProps, STATUS, EVENTS } from "react-joyride";
 import { useAppData } from "../contexts/AppProvider";
 import { useTranslation } from 'react-i18next';
+import LoginService from '@/services/LoginService';
+import { TextInput } from "@tremor/react";
+import React from "react";
 
 
 
 
 export const TourContext = createContext({
     restartTour: () => {},
+    setRun: (value: boolean) => {}
   });
 
+  interface TutorialStepProps {
+    handleDemoEmail: () => void;
+    msgs: string[];
+  }
   
-const TutorialStep = (...msgs: string[]) => {
+  const TutorialStep: React.FC<TutorialStepProps> = ({ handleDemoEmail, msgs }) => {
+    const [error, setError] = React.useState(false);
+    const [errorMessage, setErrorMessage] = React.useState('');
     const { t } = useTranslation();
-    const hasTutorialDone = msgs.includes('tutorial.done');
-
-    const handleDemoEmail = () => {
-      console.log('demo email');
-    }
+    const hasTutorialDone = msgs.includes('tutorial.done_demo');
+  
   
     return (
       <div>
         <div>
           <div>
-
             {hasTutorialDone && (
               <div className='relative flex items-center w-full max-w-lg'>
-                <input
+                  <TextInput
+                  // type="email"
+                  error={error}
+                  id="email"
                   type='email'
-                  id='email'
                   placeholder={t('Enter your email')}
-                  className='w-full px-4 py-2 text-base font-medium border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 focus:border-gb-secondary-500 transition-all duration-300'
+                  className='w-full px-4 text-base font-medium border dark:text-black border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 focus:border-gb-secondary-500 transition-all duration-300'
                   required
                 />
                 <button
                   type='button'
                   onClick={handleDemoEmail}
-                  className='px-4 py-2 text-white font-medium bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 border border-gb-secondary-500 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 transition-all duration-300'
-                >
+                  className="px-4 py-2 h-full text-white font-medium bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 border border-gb-secondary-500 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 transition-all duration-300">
                   {t('Submit')}
                 </button>
               </div>
@@ -63,73 +70,177 @@ const TutorialStep = (...msgs: string[]) => {
   
   export function TutorialProvider({ children }: TutorialProviderProps) {
     const [run, setRun] = useState(false);
+    const [error, setError] = React.useState(false);
+    const [errorMessage, setErrorMessage] = React.useState('');
     const { user } = useAppData();
     const { t } = useTranslation();
+
+
+  const handleDemoEmail = async () => {
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    if (email) {
+      console.log('checking email');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        setError(true);
+        // alert('Invalid email format');
+        return;
+      }
+      const source = 'demo';
+      try {
+        // Await the result of the post request
+        const response = await LoginService.saveEmailAddr(email, source);
+  
+        // Check if the response was successful (status code 200)
+        if (response.status === 200) {
+          setError(false);
+          document.cookie = "tutorial=done; max-age=31536000; path=/"; // Set the cookie for 1 year
+          setRun(false); // Stop the Joyride tour
+          console.log("Email successfully saved");
+        } else {
+          setError(true);
+          setErrorMessage('Failed to save email. Please try again.');
+        }
+      } catch (error) {
+        // Handle any errors that occurred during the request
+        console.error("Error saving email:", error);
+        setError(true);
+        setErrorMessage('An error occurred. Please try again later.');
+      }
+    }
+  };
 
 
   const steps: Step[] = [
     {
       title: t('tutorial.welcome_title'),
       target: 'body',
-      content: TutorialStep('tutorial.welcome', 'tutorial.welcome_1'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.welcome', 'tutorial.welcome_1']} />,
       placement: 'center',
       disableBeacon: true,
     },
     {
       target: '#product-table',
-      content: TutorialStep('tutorial.step2'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step2']} />,
       placement: 'bottom',
     },
     {
       target: '#product-table-mobile',
-      content: TutorialStep('tutorial.step2'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step2']} />,
       placement: 'bottom',
     },
     {
       target: '.date-range',
-      content: TutorialStep('tutorial.step3'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step3']} />,
       placement: 'bottom',
     },
     {
       target: '#revenue-table-head',
-      content: TutorialStep('tutorial.step4'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step4']} />,
       placement: 'top',
     },
     {
       target: '#revenue-table-head-mobile',
-      content: TutorialStep('tutorial.step4'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step4']} />,
       placement: 'bottom',
     },
     {
       title: t('tutorial.step5_title'),
       target: '#button-add-product',
-      content: TutorialStep('tutorial.step5', 'tutorial.step5_1'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step5', 'tutorial.step5_1']} />,
       placement: 'right',
     },
     {
       target: '#product-list',
-      content: TutorialStep('tutorial.step6'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step6']} />,
       placement: 'right',
     },
     { // mobile only
       target: '#mobile-sidebar-trigger',
-      content: TutorialStep('tutorial.step7'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step7']} />,
       placement: 'right',
     },
     {
       target: '#user-profile',
-      content: TutorialStep('tutorial.step8'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step8']} />,
       placement: 'top',
     },
     {
       target: '#user-profile-mobile',
-      content: TutorialStep('tutorial.step9'),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step9']} />,
       placement: 'top',
     },
     {
       title: t('tutorial.done_title'),
       target: 'body',
-      content: TutorialStep('tutorial.done', 'tutorial.done_1',),
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.done', 'tutorial.done_1']} />,
+      placement: 'center',
+    },
+  ];
+  
+
+  const stepsDemo: Step[] = [
+    {
+      title: t('tutorial.welcome_title'),
+      target: 'body',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.welcome', 'tutorial.welcome_1']} />,
+      placement: 'center',
+      disableBeacon: true,
+    },
+    {
+      target: '#product-table',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step2']} />,
+      placement: 'bottom',
+    },
+    {
+      target: '#product-table-mobile',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step2']} />,
+      placement: 'bottom',
+    },
+    {
+      target: '.date-range',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step3']} />,
+      placement: 'bottom',
+    },
+    {
+      target: '#revenue-table-head',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step4']} />,
+      placement: 'top',
+    },
+    {
+      target: '#revenue-table-head-mobile',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step4']} />,
+      placement: 'bottom',
+    },
+    {
+      title: t('tutorial.step5_title'),
+      target: '#button-add-product',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step5', 'tutorial.step5_1']} />,
+      placement: 'right',
+    },
+    {
+      target: '#product-list',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step6']} />,
+      placement: 'right',
+    },
+    { // mobile only
+      target: '#mobile-sidebar-trigger',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step7']} />,
+      placement: 'right',
+    },
+    {
+      target: '#user-profile',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step8']} />,
+      placement: 'top',
+    },
+    {
+      target: '#user-profile-mobile',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.step9']} />,
+      placement: 'top',
+    },
+    {
+      title: t('tutorial.done_title_demo'),
+      target: 'body',
+      content: <TutorialStep handleDemoEmail={handleDemoEmail} msgs={['tutorial.done_demo', 'tutorial.done_1_demo']} />,
       placement: 'center',
       hideFooter: true,
     },
@@ -167,9 +278,10 @@ const TutorialStep = (...msgs: string[]) => {
     };
   
     return (
-      <TourContext.Provider value={{ restartTour }}>
+      <TourContext.Provider value={{ restartTour, setRun }}>
         <Joyride
-          steps={steps}
+          key={run ? 'running' : 'stopped'}
+          steps={user?.username === 'demo@panopti.nl' ? stepsDemo : steps}
           run={run}
           continuous={true}
           disableOverlayClose={true}

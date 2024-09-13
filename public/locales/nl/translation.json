@@ -90,12 +90,12 @@
         "step6": "Deze lijst laat alle producten zien die je trackt. Je kan op een product klikken om de naam te veranderen of het product te verwijderen.",
         "step7": "Open dit menu om nieuwe producten toe te voegen om te tracken. Je hebt alleen de bol.com product pagina URL nodig, en een leuke naam naar keuze! 🤩",
         "step8": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",
-        "step9": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",{
-        "done": "Je bent er bijna! Voer je e-mailadres in om verder te verkennen.",
-        "done_1": "<div class='relative flex items-center mt-6 w-full max-w-lg'><input type='email' id='email' placeholder='Enter your email' class='w-full px-4 py-2 text-base font-medium border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 focus:border-gb-secondary-500 transition-all duration-300' required><button type='button' onclick='handleDemoEmail()' class='px-4 py-2 text-white font-medium bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500 hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500 border border-gb-secondary-500 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-gb-secondary-500 transition-all duration-300'>Start</button></div>",
-        "done_2": "<br/>Bedankt dat je Panopti gebruikt! 💖",
-        "done_title": "🙌 Bijna klaar! 🙌"
-        }
-        
+        "step9": "Hier kun je je wachtwoord, taal 🌎, of kleurenthema 🎨 veranderen. <br/> Je kan hier ook feedback geven, uitloggen, of deze tutorial opnieuw starten!",
+        "done_demo": "<br/>Je bent er bijna! Voer je e-mailadres in om verder te verkennen.",
+        "done_1_demo": "<br/><span style='display: inline-block; position: relative;'>Bedankt dat je Panopti probeert! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
+        "done_title_demo": "🙌 Bijna klaar! 🙌",
+        "done": "De tour zit er op!",
+        "done_1": "<br/><span style='display: inline-block; position: relative;'>Bedankt dat je Panopti gebruikt! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
+        "done_title": "🙌 Dat was 'm! 🙌"
     }
 }

@@ -91,8 +91,11 @@
         "step7": "Open this menu to add new products to track. All you'll need is its bol.com product page URL and a fun name of your choosing! 🤩",
         "step8": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
         "step9": "Here, you can change your password, language 🌎, or theme 🎨. <br/> You can also give feedback, log out, or restart the tutorial!",
-        "done": "<br/>You're almost there! Enter your email to explore further.",
+        "done": "That concludes our tour!",
         "done_1": "<br/><span style='display: inline-block; position: relative;'>Thank you for using Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
-        "done_title": "🙌 Almost done! 🙌"
+        "done_title": "🙌 That's it! 🙌",
+        "done_demo": "<br/>You're almost there! Enter your email to explore further.",
+        "done_1_demo": "<br/><span style='display: inline-block; position: relative;'>Thank you for trying Panopti! 💖<span style='position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; background: linear-gradient(to right, red, #ff7eb3); border-radius: 2px;'></span></span>",
+        "done_title_demo": "🙌 Almost done! 🙌"
     }
 }
