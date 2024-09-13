@@ -5,6 +5,7 @@ import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
 import Image from "next/image"
 import { Divider, List, ListItem } from "@tremor/react";
 import LoginService from "@/services/LoginService";
+import stripeServiceInstance from "@/services/StripeService";
 
 export default function LandingPage() {
 
@@ -237,7 +238,7 @@ export default function LandingPage() {
                     </div>
                     <Divider />
                     <div className="mt-auto">
-                      <Button className="group mt-6 rounded-lg w-full text-xl lg:text-2xl xl:text-2xl" variant="accent">
+                      <Button onClick={stripeServiceInstance.createCheckoutSession} className="group mt-6 rounded-lg w-full text-xl lg:text-2xl xl:text-2xl" variant="accent">
                         👉 Subscribe now! 👈
                       </Button>
                     </div>
