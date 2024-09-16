@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Divider, List, ListItem } from "@tremor/react";
 import LoginService from "@/services/LoginService";
 import { Logo } from "@/components/ui/icons/Logo";
+import stripeServiceInstance from "@/services/StripeService";
 
 export default function LandingPage() {
   const handleDemoLogin = async () => {
@@ -324,7 +325,7 @@ export default function LandingPage() {
                       <Divider />
                       <div className="mt-auto">
                         <Button
-                          className="group mt-6 rounded-lg w-full text-xl lg:text-2xl xl:text-2xl"
+                          onClick={stripeServiceInstance.createCheckoutSession} className="group mt-6 rounded-lg w-full text-xl lg:text-2xl xl:text-2xl"
                           variant="accent"
                         >
                           👉 Subscribe now! 👈
