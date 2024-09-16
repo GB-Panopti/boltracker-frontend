@@ -1,11 +1,11 @@
 "use client";
-import LoginService from '@/services/LoginService';
-import { Button, Card, TextInput, Divider } from '@tremor/react';
-import React, { useEffect } from 'react';
+import LoginService from "@/services/LoginService";
+import { Button, Card, TextInput, Divider } from "@tremor/react";
+import React, { useEffect } from "react";
 import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
-import { useAppData } from '@/app/contexts/AppProvider';
-import { useTranslation } from 'react-i18next';
+import { useAppData } from "@/app/contexts/AppProvider";
+import { useTranslation } from "react-i18next";
 
 const GoogleIcon = (props) => (
   <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -13,69 +13,73 @@ const GoogleIcon = (props) => (
   </svg>
 );
 
-
 export default function LoginForm() {
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    const [error, setError] = React.useState(false);
-    const [errorMessage, setErrorMessage] = React.useState('');
-    const { t } = useTranslation();
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState("");
+  const { t } = useTranslation();
 
-    return (
-        <>
-            <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                <h3 className="text-center text-gb-title font-semibold text-gb-primary-400 dark:text-gb-primary-300">
-                    {t('login.header')}
-                </h3>
-                <form action="#" method="post"  onSubmit={handleLogin} className="mt-6 space-y-4">
-                <div>
-                    <label
-                    htmlFor="email"
-                    className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
-                    >
-                        {t('login.email')} 
-                    </label>
-                    <TextInput
-                    // type="email"
-                    error={error}
-                    errorMessage={errorMessage}
-                    id="email"
-                    name="email"
-                    autoComplete="email"
-                    placeholder={t('login.email_placeholder')}
-                    className="mt-2 rounded-md"
-                    onValueChange={(value) => {
-                        setError(false);
-                        setUsername(value)
-                    }}
-                    />
-                </div>
-                <div>
-                    <label
-                    htmlFor="password"
-                    className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
-                    >
-                        {t('login.password')}
-                    </label>
-                    <TextInput
-                    type="password"
-                    id="password"
-                    name="password"
-                    autoComplete="password"
-                    placeholder={t('login.password').toLowerCase()}
-                    className="mt-2 rounded-md"
-                    onValueChange={(value) => setPassword(value)}
-                    />
-                </div>
-                <button
-                    type="submit"
-                    className="mt-4 w-full whitespace-nowrap rounded-gb-default py-2 text-center text-gb-default font-medium text-gb-primary-100 rounded-sm hover:text-gb-secondary-100 shadow-gb-input bg-gb-primary hover:bg-gb-secondary-600 dark:hover:bg-gb-secondary-700 dark:bg-gb-primary dark:text-gb-primary-100 dark:hover:text-gb-secondary-100"
-                >
-                    {t('login.login')}
-                </button>
-                </form>
-                {/* <Divider>or with</Divider>
+  return (
+    <>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-4 py-10 lg:px-6">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h3 className="text-center text-gb-title font-semibold text-gb-primary-400 dark:text-gb-primary-300">
+            {t("login.header")}
+          </h3>
+          <form
+            action="#"
+            method="post"
+            onSubmit={handleLogin}
+            className="mt-6 space-y-4"
+          >
+            <div>
+              <label
+                htmlFor="email"
+                className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
+              >
+                {t("login.email")}
+              </label>
+              <TextInput
+                // type="email"
+                error={error}
+                errorMessage={errorMessage}
+                id="email"
+                name="email"
+                autoComplete="email"
+                placeholder={t("login.email_placeholder")}
+                className="mt-2 rounded-md"
+                onValueChange={(value) => {
+                  setError(false);
+                  setUsername(value);
+                }}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="text-gb-default font-medium text-gb-content-strong dark:text-gray-300"
+              >
+                {t("login.password")}
+              </label>
+              <TextInput
+                type="password"
+                id="password"
+                name="password"
+                autoComplete="password"
+                placeholder={t("login.password").toLowerCase()}
+                className="mt-2 rounded-md"
+                onValueChange={(value) => setPassword(value)}
+              />
+            </div>
+            <button
+              type="submit"
+              className="mt-4 w-full whitespace-nowrap rounded-gb-default py-2 text-center text-gb-default font-medium text-gb-primary-100 rounded-sm hover:text-gb-secondary-100 shadow-gb-input bg-gb-primary hover:bg-gb-secondary-600 dark:hover:bg-gb-secondary-700 dark:bg-gb-primary dark:text-gb-primary-100 dark:hover:text-gb-secondary-100"
+            >
+              {t("login.login")}
+            </button>
+          </form>
+          {/* <Divider>or with</Divider>
                 <a
                 href="#"
                 className="flex w-full items-center justify-center space-x-2 rounded-gb-default border border-gb-border bg-gb-background py-2 text-gb-content-strong shadow-gb-input hover:bg-gb-background-subtle dark:border-dark-gb-border dark:bg-dark-gb-background dark:text-gray-300" dark:shadow-dark-gb-input dark:hover:bg-dark-gb-background-subtle"
@@ -85,68 +89,66 @@ export default function LoginForm() {
                     Sign in with Google
                 </span>
                 </a> */}
-                <p className="mt-4 text-gb-label text-gb-content dark:text-dark-gb-content">
-                    {t('login.terms')}
-                <a href="#" className="underline underline-offset-4">
-                    {t('login.terms2')}
-                </a>{' '}
-                    {t('login.and')}{' '}
-                <a href="#" className="underline underline-offset-4">
-                    {t('login.privacy')}
-                </a>
-                .
-                </p>
-            </div>
-            </div>
-        </>        
-    );
-    // return (
-    //     <Card className="mx-auto max-w-md my-auto top-[50%] rounded-md border-0">
-    //         <form method="GET" onSubmit={handleLogin}>
-    //             <h1 className='text-gb-brand-faint'> Login </h1>
-    //             <TextInput placeholder='Username' label="Username" onValueChange={(value) => setUsername(value)} className='rounded-md my-5' />
-    //             <TextInput placeholder='Password' label="Password" onValueChange={(value) => setPassword(value)} type="password" className='rounded-md my-5' />
-    //             <Button type='submit' className=''>Login</Button>
-    //         </form>
-    //     </Card>
-    // );
+          <p className="mt-4 text-gb-label text-gb-content dark:text-dark-gb-content">
+            {t("login.terms")}
+            <a href="#" className="underline underline-offset-4">
+              {t("login.terms2")}
+            </a>{" "}
+            {t("login.and")}{" "}
+            <a href="#" className="underline underline-offset-4">
+              {t("login.privacy")}
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    </>
+  );
+  // return (
+  //     <Card className="mx-auto max-w-md my-auto top-[50%] rounded-md border-0">
+  //         <form method="GET" onSubmit={handleLogin}>
+  //             <h1 className='text-gb-brand-faint'> Login </h1>
+  //             <TextInput placeholder='Username' label="Username" onValueChange={(value) => setUsername(value)} className='rounded-md my-5' />
+  //             <TextInput placeholder='Password' label="Password" onValueChange={(value) => setPassword(value)} type="password" className='rounded-md my-5' />
+  //             <Button type='submit' className=''>Login</Button>
+  //         </form>
+  //     </Card>
+  // );
 
-    async function handleLogin(event) {
-        event.preventDefault(); // Prevent default form submission behavior
-        
-        try {
-            // Regex check if username is email
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)){
-                setError(true);
-                setErrorMessage('Invalid email');
-                // alert('Invalid email format');
-                return;
-            }
-            await LoginService.logout(); // Logout the user if they are already logged in
-            const response = await LoginService.checkUser(username.toLowerCase(), password);
+  async function handleLogin(event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
-            if (response.status === 200) {
-                // setUser(response.data); 
-                window.location.href = "/";
-            }
-        } catch (error) {
-            // In case of no response
-            if (error.code === "ERR_NETWORK") {
-                setError(true); 
-                setErrorMessage('Server is not responding');
-            // In case of 403 response (Unauthorized)
-            } else if (error.response.status === 403) {
-                setError(true);
-                setErrorMessage('Invalid username or password');
-            } else {
-                setError(true);
-                setErrorMessage('An unknown error occurred ' + error.response.status);
-            }
+    try {
+      // Regex check if username is email
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username)) {
+        setError(true);
+        setErrorMessage("Invalid email");
+        // alert('Invalid email format');
+        return;
+      }
+      await LoginService.logout(); // Logout the user if they are already logged in
+      const response = await LoginService.checkUser(
+        username.toLowerCase(),
+        password,
+      );
 
-        }
+      if (response.status === 200) {
+        // setUser(response.data);
+        window.location.href = "/";
+      }
+    } catch (error) {
+      // In case of no response
+      if (error.code === "ERR_NETWORK") {
+        setError(true);
+        setErrorMessage("Server is not responding");
+        // In case of 403 response (Unauthorized)
+      } else if (error.response.status === 403) {
+        setError(true);
+        setErrorMessage("Invalid username or password");
+      } else {
+        setError(true);
+        setErrorMessage("An unknown error occurred " + error.response.status);
+      }
     }
+  }
 }
-
-
-
-

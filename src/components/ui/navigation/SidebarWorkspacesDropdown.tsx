@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client"
+"use client";
 
 import {
   DropdownMenu,
@@ -8,12 +8,12 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/components/Dropdown"
-import { cx, focusInput } from "@/lib/utils"
-import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react"
-import React from "react"
-import { useAppData } from "@/app/contexts/AppProvider"
-import { useTranslation } from "react-i18next"
+} from "@/components/Dropdown";
+import { cx, focusInput } from "@/lib/utils";
+import { RiArrowRightSLine, RiExpandUpDownLine } from "@remixicon/react";
+import React from "react";
+import { useAppData } from "@/app/contexts/AppProvider";
+import { useTranslation } from "react-i18next";
 
 const workspaces = [
   {
@@ -31,15 +31,15 @@ const workspaces = [
   //   color: "bg-gb-amazon dark:bg-gb-amazon",
   // },
   // // Add more workspaces...
-]
+];
 
 export const WorkspacesDropdownDesktop = () => {
-  const { products } = useAppData()
-  const [dropdownOpen, setDropdownOpen] = React.useState(false)
+  const { products } = useAppData();
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
   // const [hasOpenDialog, setHasOpenDialog] = React.useState(false)
   // const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
-  const focusRef = React.useRef<null | HTMLButtonElement>(null)
-  const { t } = useTranslation()
+  const focusRef = React.useRef<null | HTMLButtonElement>(null);
+  const { t } = useTranslation();
 
   // const handleDialogItemSelect = () => {
   //   focusRef.current = dropdownTriggerRef.current
@@ -74,8 +74,8 @@ export const WorkspacesDropdownDesktop = () => {
             </span>
             <div className="flex w-full items-center justify-between gap-x-4 truncate">
               <div className="truncate">
-                <p className="truncate whitespace-nowrap text-sm font-medium text-gray-200 dark:text-gray-50">
-                  PANOPTI Bol.com
+                <p className="text-left truncate whitespace-nowrap text-sm font-medium text-gray-200 dark:text-gray-50">
+                  Bol.com
                 </p>
                 <p className="whitespace-nowrap text-left text-xs text-gray-300 dark:text-gray-300">
                   {products.length} {t("sidebar.workspace.tracked_products")}
@@ -92,9 +92,9 @@ export const WorkspacesDropdownDesktop = () => {
           // hidden={hasOpenDialog}
           onCloseAutoFocus={(event) => {
             if (focusRef.current) {
-              focusRef.current.focus()
-              focusRef.current = null
-              event.preventDefault()
+              focusRef.current.focus();
+              focusRef.current = null;
+              event.preventDefault();
             }
           }}
         >
@@ -135,8 +135,8 @@ export const WorkspacesDropdownDesktop = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
-}
+  );
+};
 
 export const WorkspacesDropdownMobile = () => {
   // const [dropdownOpen, setDropdownOpen] = React.useState(false)
@@ -144,7 +144,7 @@ export const WorkspacesDropdownMobile = () => {
   // const dropdownTriggerRef = React.useRef<null | HTMLButtonElement>(null)
   // const focusRef = React.useRef<null | HTMLButtonElement>(null)
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   // const handleDialogItemSelect = () => {
   //   focusRef.current = dropdownTriggerRef.current
@@ -166,7 +166,7 @@ export const WorkspacesDropdownMobile = () => {
       >
         <DropdownMenuTrigger asChild>
           <button className="flex items-center gap-x-1.5 rounded-md p-2 hover:bg-gray-100 focus:outline-none hover:dark:bg-gray-900">
-          <span
+            <span
               className="flex aspect-square size-8 items-center justify-center rounded bg-gb-brands-bol dark:bg-gb-brands-bol p-2 text-xs font-medium text-white "
               aria-hidden="true"
             >
@@ -178,7 +178,7 @@ export const WorkspacesDropdownMobile = () => {
             />
             <div className="flex w-full items-center justify-between gap-x-3 truncate">
               <p className="truncate whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-50">
-                PANOPTI Bol.com
+                Bol.com
               </p>
               <RiExpandUpDownLine
                 className="size-4 shrink-0 text-gray-500"
@@ -200,7 +200,7 @@ export const WorkspacesDropdownMobile = () => {
         >
           <DropdownMenuGroup>
             <DropdownMenuLabel>
-            {t("sidebar.workspace.title")} ({workspaces.length})
+              {t("sidebar.workspace.title")} ({workspaces.length})
             </DropdownMenuLabel>
             {workspaces.map((workspace) => (
               <DropdownMenuItem key={workspace.value}>
@@ -229,5 +229,5 @@ export const WorkspacesDropdownMobile = () => {
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  )
-}
+  );
+};

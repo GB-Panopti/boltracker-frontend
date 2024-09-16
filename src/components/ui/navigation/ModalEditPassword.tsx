@@ -23,9 +23,7 @@ export type ModalProps = {
   onSelect: () => void;
 };
 
-const ModalEditPassword: React.FC<ModalProps> = ({
-
-}: ModalProps) => {
+const ModalEditPassword: React.FC<ModalProps> = ({}: ModalProps) => {
   const { user } = useAppData();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -33,51 +31,40 @@ const ModalEditPassword: React.FC<ModalProps> = ({
   const [error, setError] = React.useState<string | null>(null);
   const { t } = useTranslation();
 
-
-
   function handleOpenChange(open: boolean): void {
     onOpenChange(open);
   }
 
-
   async function handleChangePassword() {
-    setError(null)
+    setError(null);
     if (newPassword === confirmPassword) {
-      const response = await loginServiceInstance.changePassword(newPassword)
+      const response = await loginServiceInstance.changePassword(newPassword);
 
-      if (response.status === 200){
-        onOpenChange(false)
-
+      if (response.status === 200) {
+        onOpenChange(false);
       } else {
-        setError("Something went wrong!")
+        setError("Something went wrong!");
       }
     } else {
-      setError("Passwords are not equal!")
+      setError("Passwords are not equal!");
     }
-
   }
-
 
   return (
     <>
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-          <DialogTrigger>
-              {t("password.title")}
-          </DialogTrigger>
+        <DialogTrigger>{t("password.title")}</DialogTrigger>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
             <DialogTitle>
-              <RiRotateLockLine
-                className="mb-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200"
-              />
+              <RiRotateLockLine className="mb-1 mr-1 size-6 shrink-0 inline-block text-gray-800 dark:text-gray-200" />
               {t("password.title")}
             </DialogTitle>
             <Button
               className="group mt-0 mr-auto overflow-hidden w-full"
               variant="ghost"
               asChild
-            >
-            </Button>
+            ></Button>
 
             <DialogDescription className="mt-1 ml-1 text-sm leading-6">
               Please enter your new password.
@@ -90,7 +77,7 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                   placeholder={t("password.new_password")}
                   className="mt-2"
                   onChange={(event) => setNewPassword(event.target.value)}
-                />                
+                />
                 <Input
                   type="password"
                   name="confirm-password"
@@ -100,7 +87,6 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                 />
               </div>
             </div>
-            
           </DialogHeader>
           <DialogFooter className="mt-6">
             {error && <div className="text-red-500 mt-2">{error}</div>}
@@ -113,35 +99,29 @@ const ModalEditPassword: React.FC<ModalProps> = ({
                 }}
               >
                 {t("back")}
-                </Button>
+              </Button>
             </DialogClose>
-            
-            {
-              (() => {
-                if (user && user.subscription === 0) {
-                  return (
-                    <Button
-                      variant="light"
-                      className="w-full sm:w-fit"
-                    >
-                      <RiKey2Line className="size-5 mr-1"/>
-                      <s>{t("save")}</s>
-                    </Button>
-                  );
-                }
-                else {
-                  return (
-                    <Button
-                      onClick={() => handleChangePassword()}
-                      type="submit"
-                      className="w-full sm:w-fit"
-                    >
-                      {t("save")}
-                    </Button>
-                  );
-                }
-              })()
-            }
+
+            {(() => {
+              if (user && user.subscription === 0) {
+                return (
+                  <Button variant="light" className="w-full sm:w-fit">
+                    <RiKey2Line className="size-5 mr-1" />
+                    <s>{t("save")}</s>
+                  </Button>
+                );
+              } else {
+                return (
+                  <Button
+                    onClick={() => handleChangePassword()}
+                    type="submit"
+                    className="w-full sm:w-fit"
+                  >
+                    {t("save")}
+                  </Button>
+                );
+              }
+            })()}
           </DialogFooter>
         </DialogContent>
       </Dialog>

@@ -38,10 +38,9 @@ export function StockChartOldMobile({
   ratingStars,
   ratingCount,
 }: CardProps) {
-
-  const {theme, } = useTheme();
+  const { theme } = useTheme();
   const { t } = useTranslation();
-  
+
   // const previousValue = chartData.length > 0 ? chartData[0].stock || 0 : 0;
 
   // const evolution =
@@ -51,42 +50,57 @@ export function StockChartOldMobile({
 
   return (
     <div className="w-full">
-    <span className='w-full'>
-    {/* Chart part of the component */}
-    <div className={cx("transition")}>
-      <AreaChart
-        key={id}
-        className="h-52"
-        noDataText={t("stockchart.no_data")}
-        data={data || []}
-        index="formattedDate"
-        yAxisWidth={45}
-        categories={['stock']}
-        colors={theme === 'light' ? ["#119da4"] : ["#E5E7EB"]}
-        startEndOnly={true}
-        showYAxis={true}
-        showAnimation={true}
-        showLegend={false}
-        showTooltip={true}
-        yAxisLabel={t("overview.sales")}
-      /> <br/>
-        {/*figure out how to add scatter points and stuff by checking the tremor docs*/}
-        {/* Data FLEX part of the component */}
-    </div>
-    </span>
-    <div className="flex justify-between">
-      <span className={'w-1/2 text-center text-lg'}>
-      <InfoCard title={t("stockchart.price")} value={'€' + price.toString()} />
-      <InfoCard title={t("overview.sales")} value={sales.toString()} />
-      <InfoCard title={t("stockchart.total")} value={'€' + (sales * price).toFixed(2)} />
+      <span className="w-full">
+        {/* Chart part of the component */}
+        <div className={cx("transition")}>
+          <AreaChart
+            key={id}
+            className="h-52"
+            noDataText={t("stockchart.no_data")}
+            data={data || []}
+            index="formattedDate"
+            yAxisWidth={45}
+            categories={["stock"]}
+            colors={theme === "light" ? ["#119da4"] : ["#E5E7EB"]}
+            startEndOnly={true}
+            showYAxis={true}
+            showAnimation={true}
+            showLegend={false}
+            showTooltip={true}
+            yAxisLabel={t("overview.sales")}
+          />{" "}
+          <br />
+          {/*figure out how to add scatter points and stuff by checking the tremor docs*/}
+          {/* Data FLEX part of the component */}
+        </div>
       </span>
-      <span className={'w-1/2 items-center text-center text-lg'}>
-      <InfoCard title={t("stockchart.reviews")} value={ratingCount.toString()} />
-      <InfoCard title={t("stockchart.rating")} value={ratingStars.toFixed(2)} />
-      <InfoCard title={t("overview.indicator")} value={<Indicator id={id} />} />
-      </span>
+      <div className="flex justify-between">
+        <span className={"w-1/2 text-center text-lg"}>
+          <InfoCard
+            title={t("stockchart.price")}
+            value={"€" + price.toString()}
+          />
+          <InfoCard title={t("overview.sales")} value={sales.toString()} />
+          <InfoCard
+            title={t("stockchart.total")}
+            value={"€" + (sales * price).toFixed(2)}
+          />
+        </span>
+        <span className={"w-1/2 items-center text-center text-lg"}>
+          <InfoCard
+            title={t("stockchart.reviews")}
+            value={ratingCount.toString()}
+          />
+          <InfoCard
+            title={t("stockchart.rating")}
+            value={ratingStars.toFixed(2)}
+          />
+          <InfoCard
+            title={t("overview.indicator")}
+            value={<Indicator id={id} />}
+          />
+        </span>
+      </div>
     </div>
-    </div>
-    
   );
 }

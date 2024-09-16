@@ -27,16 +27,16 @@
 
 export const getBadgeType = (value: number) => {
   if (value > 0) {
-    return "success"
+    return "success";
   } else if (value < 0) {
     if (value < -50) {
-      return "warning"
+      return "warning";
     }
-    return "error"
+    return "error";
   } else {
-    return "neutral"
+    return "neutral";
   }
-}
+};
 
 // export function ChartCard({
 //   title,

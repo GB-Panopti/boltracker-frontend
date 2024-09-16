@@ -30,15 +30,20 @@ export function ModalAddProduct({
   onOpenChange,
 }: ModalProps) {
   const { user } = useAppData();
-  const [name, setName] = React.useState('');
-  const [url, setUrl] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [url, setUrl] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const { t } = useTranslation();
 
   async function handleProductAdd() {
     try {
-      setError('Adding product..');
-      const product: Product = { id: '', name: name, url: url, createdAt: new Date() };
+      setError("Adding product..");
+      const product: Product = {
+        id: "",
+        name: name,
+        url: url,
+        createdAt: new Date(),
+      };
       const response = await ProductService.addProduct(product);
 
       if (response.status === 200) {
@@ -54,7 +59,6 @@ export function ModalAddProduct({
       setError(t("track_product.unexpected_error"));
     }
   }
-  
 
   return (
     <>
@@ -85,7 +89,7 @@ export function ModalAddProduct({
               <div className="mt-4 grid grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="product-name" className="font-medium">
-                  {t("track_product.product_name")}
+                    {t("track_product.product_name")}
                   </Label>
                   <Input
                     id="product-name"
@@ -98,7 +102,7 @@ export function ModalAddProduct({
                 </div>
                 <div>
                   <Label htmlFor="product-url" className="font-medium">
-                  {t("track_product.url")}
+                    {t("track_product.url")}
                   </Label>
                   <Input
                     id="product-url"
@@ -121,24 +125,25 @@ export function ModalAddProduct({
                   {t("back")}
                 </Button>
               </DialogClose>
-              {
-                (() => {
-                  if (user && user.subscription === 0) {
-                    return (
-                      <Button className="w-full sm:w-fit" variant="light">
-                        <s>{t("track_product.add")}</s>
-                      </Button>
-                    );
-                  }
-                  else {
-                    return (
-                      <Button onClick={handleProductAdd} type="submit" className="w-full sm:w-fit" >
-                        {t("track_product.add")}
-                      </Button>
-                    );
-                  }
-                })()
-              }
+              {(() => {
+                if (user && user.subscription === 0) {
+                  return (
+                    <Button className="w-full sm:w-fit" variant="light">
+                      <s>{t("track_product.add")}</s>
+                    </Button>
+                  );
+                } else {
+                  return (
+                    <Button
+                      onClick={handleProductAdd}
+                      type="submit"
+                      className="w-full sm:w-fit"
+                    >
+                      {t("track_product.add")}
+                    </Button>
+                  );
+                }
+              })()}
             </DialogFooter>
           </form>
         </DialogContent>

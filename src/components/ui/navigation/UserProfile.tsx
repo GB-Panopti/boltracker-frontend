@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/Button"
-import { cx, focusRing } from "@/lib/utils"
-import { RiHome2Fill, RiHome2Line, RiHome3Line, RiHomeSmileFill, RiMore2Fill } from "@remixicon/react"
+import { Button } from "@/components/Button";
+import { cx, focusRing } from "@/lib/utils";
+import {
+  RiHome2Fill,
+  RiHome2Line,
+  RiHome3Line,
+  RiHomeSmileFill,
+  RiMore2Fill,
+} from "@remixicon/react";
 
-import { DropdownUserProfile } from "./DropdownUserProfile"
-import { Icon } from "@tremor/react"
-import { useTranslation } from "react-i18next"
+import { DropdownUserProfile } from "./DropdownUserProfile";
+import { Icon } from "@tremor/react";
+import { useTranslation } from "react-i18next";
 
 export const UserProfileDesktop = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <DropdownUserProfile>
@@ -29,7 +35,7 @@ export const UserProfileDesktop = () => {
           >
             <Icon icon={RiHome3Line} />
           </span>
-          <span>{t('sidebar.account')}</span>
+          <span>{t("sidebar.account")}</span>
         </span>
         <RiMore2Fill
           className="size-4 shrink-0 text-gray-200 group-hover:text-gray-200 group-hover:dark:text-gray-400"
@@ -37,8 +43,8 @@ export const UserProfileDesktop = () => {
         />
       </Button>
     </DropdownUserProfile>
-  )
-}
+  );
+};
 
 export const UserProfileMobile = () => {
   return (
@@ -59,5 +65,5 @@ export const UserProfileMobile = () => {
         </span>
       </Button>
     </DropdownUserProfile>
-  )
-}
+  );
+};

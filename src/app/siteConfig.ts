@@ -13,6 +13,6 @@ export const siteConfig = {
     changelog: "/changelog",
     pricing: "/pricing",
   },
-}
+};
 
-export type siteConfig = typeof siteConfig
+export type siteConfig = typeof siteConfig;
