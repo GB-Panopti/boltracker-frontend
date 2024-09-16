@@ -76,7 +76,7 @@ export default function LandingPage() {
               variant="accent"
               asChild
             >
-              <a href={siteConfig.baseLinks.settings}>
+              <a  href="#" onClick={handleDemoLogin}>
                 <p className="text-lg font-semibold">Try the demo now!</p>
                 <ArrowAnimated
                   className="stroke-gray-200 size-3"
@@ -134,7 +134,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <Button className="group mt-6" variant="accentInverse" asChild>
-                <a href={siteConfig.baseLinks.settings}>
+                <a href="#" onClick={handleDemoLogin}>
                   <p className="text-xl px-2">Try the demo now!</p>
                   <ArrowAnimated
                     className="stroke-gray-100"
@@ -244,8 +244,7 @@ export default function LandingPage() {
                     <div className="mt-8 space-y-6">
                       <div className="relative border-l-2 border-tremor-border pl-4 ">
                         <h4 className="text-tremor-default font-medium text-lg ">
-                          <a href="#" className="focus:outline-none">
-                            {/* Extend link to entire card */}
+                          <a href="#" onClick={handleDemoLogin}>
                             <span
                               className="absolute inset-0"
                               aria-hidden={true}
