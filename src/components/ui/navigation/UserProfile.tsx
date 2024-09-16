@@ -1,21 +1,28 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/Button"
-import { cx, focusRing } from "@/lib/utils"
-import { RiHome3Line, RiHomeSmileFill, RiMore2Fill } from "@remixicon/react"
+import { Button } from "@/components/Button";
+import { cx, focusRing } from "@/lib/utils";
+import {
+  RiHome2Fill,
+  RiHome2Line,
+  RiHome3Line,
+  RiHomeSmileFill,
+  RiMore2Fill,
+} from "@remixicon/react";
 
-import { DropdownUserProfile } from "./DropdownUserProfile"
-import { Icon } from "@tremor/react"
-import { useTranslation } from "react-i18next"
+import { DropdownUserProfile } from "./DropdownUserProfile";
+import { Icon } from "@tremor/react";
+import { useTranslation } from "react-i18next";
 
 export const UserProfileDesktop = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <DropdownUserProfile>
       <Button
         aria-label="User settings"
         variant="primary"
+        id="user-profile"
         className={cx(
           focusRing,
           "group flex w-full items-center justify-between rounded-md p-2 text-sm font-medium text-gray-200 hover:bg-gb-secondary-800 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
@@ -28,7 +35,7 @@ export const UserProfileDesktop = () => {
           >
             <Icon icon={RiHome3Line} />
           </span>
-          <span>{t('sidebar.account')}</span>
+          <span>{t("sidebar.account")}</span>
         </span>
         <RiMore2Fill
           className="size-4 shrink-0 text-gray-200 group-hover:text-gray-200 group-hover:dark:text-gray-400"
@@ -36,8 +43,8 @@ export const UserProfileDesktop = () => {
         />
       </Button>
     </DropdownUserProfile>
-  )
-}
+  );
+};
 
 export const UserProfileMobile = () => {
   return (
@@ -45,6 +52,7 @@ export const UserProfileMobile = () => {
       <Button
         aria-label="User settings"
         variant="ghost"
+        id="user-profile-mobile"
         className={cx(
           "group flex items-center rounded-md p-1 text-sm font-medium text-gray-900 hover:bg-gray-100 data-[state=open]:bg-gray-100 data-[state=open]:bg-gray-400/10 hover:dark:bg-gray-400/10",
         )}
@@ -53,9 +61,9 @@ export const UserProfileMobile = () => {
           className="flex size-7 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
           aria-hidden="true"
         >
-          <Icon icon={RiHomeSmileFill} />
+          <Icon icon={RiHome2Fill} />
         </span>
       </Button>
     </DropdownUserProfile>
-  )
-}
+  );
+};

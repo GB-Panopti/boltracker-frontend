@@ -1,11 +1,11 @@
 // Tremor Raw Button [v0.0.0]
 
-import { Slot } from "@radix-ui/react-slot"
-import { RiLoader2Fill } from "@remixicon/react"
-import React from "react"
-import { tv, type VariantProps } from "tailwind-variants"
+import { Slot } from "@radix-ui/react-slot";
+import { RiLoader2Fill } from "@remixicon/react";
+import React from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
-import { cx, focusRing } from "@/lib/utils"
+import { cx, focusRing } from "@/lib/utils";
 
 const buttonVariants = tv({
   base: [
@@ -43,6 +43,34 @@ const buttonVariants = tv({
         // disabled
         "disabled:text-gray-400",
         "disabled:dark:text-gray-600",
+      ],
+      accent: [
+        // border
+        "border-gray-300 border-2",
+        // text color
+        "text-white",
+        // background color
+        "bg-gradient-to-r from-gb-secondary-500 to-gb-accent-500",
+        // hover color
+        "hover:bg-gradient-to-r hover:from-gb-primary-400 hover:to-gb-accent-500",
+        // transition
+        "transition-all duration-700",
+        // disabled
+        "disabled:text-gray-400",
+      ],
+      accentInverse: [
+        // border
+        "border-gray-300 border-2",
+        // text color
+        "text-white",
+        // hover color
+        "hover:bg-gradient-to-r hover:from-gb-secondary-500 hover:to-gb-accent-500",
+        // background color
+        "bg-gradient-to-r from-gb-primary-400 to-gb-accent-500",
+        // transition
+        "transition-all duration-700",
+        // disabled
+        "disabled:text-gray-400",
       ],
       light: [
         // base
@@ -88,14 +116,14 @@ const buttonVariants = tv({
   defaultVariants: {
     variant: "primary",
   },
-})
+});
 
 interface ButtonProps
   extends React.ComponentPropsWithoutRef<"button">,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
-  isLoading?: boolean
-  loadingText?: string
+  asChild?: boolean;
+  isLoading?: boolean;
+  loadingText?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -112,7 +140,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }: ButtonProps,
     forwardedRef,
   ) => {
-    const Component = asChild ? Slot : "button"
+    const Component = asChild ? Slot : "button";
     return (
       <Component
         ref={forwardedRef}
@@ -135,10 +163,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           children
         )}
       </Component>
-    )
+    );
   },
-)
+);
 
-Button.displayName = "Button"
+Button.displayName = "Button";
 
-export { Button, buttonVariants, type ButtonProps }
+export { Button, buttonVariants, type ButtonProps };

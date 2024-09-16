@@ -2,12 +2,18 @@
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
   "rules": {
     // "no-unused-vars": "warn", // Catch unused variables (JavaScript)
-    "@typescript-eslint/no-unused-vars": ["warn", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ],
     // "@typescript-eslint/explicit-module-boundary-types": "warn", // Enforce explicit return types on functions and class methods
     "@typescript-eslint/no-explicit-any": "warn", // Warn on usage of 'any' type
     "@typescript-eslint/no-inferrable-types": "warn", // Warn on types that can be inferred by TypeScript
     "@typescript-eslint/no-empty-function": "warn", // Warn on empty functions
-    "@typescript-eslint/no-use-before-define": ["error", { "functions": false, "classes": true }], // Prevent usage of variables before they are defined
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      { "functions": false, "classes": true }
+    ], // Prevent usage of variables before they are defined
     "no-console": "warn", // Warn on console statements
     "no-debugger": "warn" // Warn on debugger statements
   }

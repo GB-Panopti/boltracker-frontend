@@ -6,9 +6,13 @@ export const siteConfig = {
     home: "/",
     overview: "/",
     trackNew: "/trackNew",
+    login: "/login",
+    welcome: "/welcome",
     settings: "/settings",
     details: "/details",
+    changelog: "/changelog",
+    pricing: "/pricing",
   },
-}
+};
 
-export type siteConfig = typeof siteConfig
+export type siteConfig = typeof siteConfig;

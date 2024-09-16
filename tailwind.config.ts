@@ -1,29 +1,95 @@
-import type { Config } from "tailwindcss"
-import colors from "tailwindcss/colors"
+import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   darkMode: "selector",
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}",
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     // Path to Tremor module
-    './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',],
+    "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
+    fontFamily: {
+      display: "var(--display-font)",
+      body: "var(--body-font)",
+    },
     extend: {
       colors: {
         // light mode
         gb: {
-          primary: // 'dark green'
-            { DEFAULT: '#16302b', 900: '#040a09', 800: '#091411', 700: '#0d1d1a', 600: '#122723', 500: '#16302b', 400: '#326d61', 300: '#4ea997', 200: '#87c8bb', 100: '#c3e3dd', 50: '#c3e3dd' }, 
-          primarylite: // 'cambridge blue'
-            { DEFAULT: '#85b79d', 900: '#17281f', 800: '#2f503f', 700: '#46785e', 600: '#5e9f7d', 500: '#85b79d', 400: '#9dc6b1', 300: '#b6d4c4', 200: '#cee2d8', 100: '#e7f1eb', 50: '#e7f1eb' }, 
-          secondary: // 'english violet'
-            { DEFAULT: '#694873', 900: '#150f17', 800: '#2a1d2e', 700: '#402c46', 600: '#553a5d', 500: '#694873', 400: '#8e619c', 300: '#aa88b5', 200: '#c7b0ce', 100: '#e3d7e6', 50: '#e3d7e6' }, 
-          secondarylite: // 'periwinkle'
-            { DEFAULT: '#dcd6f7', 900: '#1a0f4d', 800: '#351e99', 700: '#583bd8', 600: '#9988e7', 500: '#dcd6f7', 400: '#e2ddf8', 300: '#e9e5fa', 200: '#f0eefc', 100: '#f8f6fd', 50: '#f8f6fd' }, 
-          accent: // 'dark cyan'
-            { DEFAULT: '#119da4', 900: '#031f20', 800: '#073e41', 700: '#0a5d61', 600: '#0e7b81', 500: '#119da4', 400: '#17d4de', 300: '#4be4ec', 200: '#87edf2', 100: '#c3f6f9', 50: '#c3f6f9' }, 
+          // 'dark green'
+          primary: {
+            DEFAULT: "#16302b",
+            900: "#040a09",
+            800: "#091411",
+            700: "#0d1d1a",
+            600: "#122723",
+            500: "#16302b",
+            400: "#326d61",
+            300: "#4ea997",
+            200: "#87c8bb",
+            100: "#c3e3dd",
+            50: "#c3e3dd",
+          },
+          // 'cambridge blue'
+          primarylite: {
+            DEFAULT: "#85b79d",
+            900: "#17281f",
+            800: "#2f503f",
+            700: "#46785e",
+            600: "#5e9f7d",
+            500: "#85b79d",
+            400: "#9dc6b1",
+            300: "#b6d4c4",
+            200: "#cee2d8",
+            100: "#e7f1eb",
+            50: "#e7f1eb",
+          },
+          // 'english violet'
+          secondary: {
+            DEFAULT: "#694873",
+            900: "#150f17",
+            800: "#2a1d2e",
+            700: "#402c46",
+            600: "#553a5d",
+            500: "#694873",
+            400: "#8e619c",
+            300: "#aa88b5",
+            200: "#c7b0ce",
+            100: "#e3d7e6",
+            50: "#e3d7e6",
+          },
+          // 'periwinkle'
+          secondarylite: {
+            DEFAULT: "#dcd6f7",
+            900: "#1a0f4d",
+            800: "#351e99",
+            700: "#583bd8",
+            600: "#9988e7",
+            500: "#dcd6f7",
+            400: "#e2ddf8",
+            300: "#e9e5fa",
+            200: "#f0eefc",
+            100: "#f8f6fd",
+            50: "#f8f6fd",
+          },
+          // 'dark cyan'
+          accent: {
+            DEFAULT: "#119da4",
+            900: "#031f20",
+            800: "#073e41",
+            700: "#0a5d61",
+            600: "#0e7b81",
+            500: "#119da4",
+            400: "#17d4de",
+            300: "#4be4ec",
+            200: "#87edf2",
+            100: "#c3f6f9",
+            50: "#c3f6f9",
+          },
           brands: {
-            bol: '#0300a4',
-            amazon: '#ff9913',
+            bol: "#0300a4",
+            amazon: "#ff9913",
           },
           background: {
             muted: colors.gray[50],
@@ -32,10 +98,10 @@ const config: Config = {
             emphasis: colors.gray[700],
           },
           border: {
-            DEFAULT: '#2a1d2e', // = gb.secondary[200]
+            DEFAULT: "#2a1d2e", // = gb.secondary[200]
           },
           ring: {
-            DEFAULT: '#2a1d2e', // = gb.secondary[200]
+            DEFAULT: "#2a1d2e", // = gb.secondary[200]
           },
           content: {
             subtle: colors.gray[400],
@@ -46,9 +112,9 @@ const config: Config = {
           },
         },
         // dark mode
-        'dark-tremor': {
+        "dark-tremor": {
           brand: {
-            faint: '#0B1229',
+            faint: "#0B1229",
             muted: colors.blue[950],
             subtle: colors.blue[800],
             DEFAULT: colors.blue[500],
@@ -56,7 +122,7 @@ const config: Config = {
             inverted: colors.blue[950],
           },
           background: {
-            muted: '#131A2B',
+            muted: "#131A2B",
             subtle: colors.gray[800],
             DEFAULT: colors.gray[900],
             emphasis: colors.gray[300],
@@ -135,17 +201,17 @@ const config: Config = {
     {
       pattern:
         /^(bg-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
-      variants: ['hover', 'ui-selected'],
+      variants: ["hover", "ui-selected"],
     },
     {
       pattern:
         /^(text-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
-      variants: ['hover', 'ui-selected'],
+      variants: ["hover", "ui-selected"],
     },
     {
       pattern:
         /^(border-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
-      variants: ['hover', 'ui-selected'],
+      variants: ["hover", "ui-selected"],
     },
     {
       pattern:
@@ -160,21 +226,23 @@ const config: Config = {
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
 
-      ...["[#694873]", "[#E5E7EB]", "[#119da4]", "[#0300A4]"].flatMap((customColor) => [
-      `bg-${customColor}`,
-      `border-${customColor}`,
-      `hover:bg-${customColor}`,
-      `hover:border-${customColor}`,
-      `hover:text-${customColor}`,
-      `fill-${customColor}`,
-      `ring-${customColor}`,
-      `stroke-${customColor}`,
-      `text-${customColor}`,
-      `ui-selected:bg-${customColor}`,
-      `ui-selected:border-${customColor}`,
-      `ui-selected:text-${customColor}`,
-    ])
+    ...["[#694873]", "[#E5E7EB]", "[#119da4]", "[#0300A4]"].flatMap(
+      (customColor) => [
+        `bg-${customColor}`,
+        `border-${customColor}`,
+        `hover:bg-${customColor}`,
+        `hover:border-${customColor}`,
+        `hover:text-${customColor}`,
+        `fill-${customColor}`,
+        `ring-${customColor}`,
+        `stroke-${customColor}`,
+        `text-${customColor}`,
+        `ui-selected:bg-${customColor}`,
+        `ui-selected:border-${customColor}`,
+        `ui-selected:text-${customColor}`,
+      ],
+    ),
   ],
   plugins: [require("@tailwindcss/forms")],
-}
-export default config
+};
+export default config;

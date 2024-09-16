@@ -1,26 +1,24 @@
-"use client"
-import { Filterbar } from "@/components/ui/overview/DashboardFilterbar"
-import { cx } from "@/lib/utils"
-import { subDays } from "date-fns"
-import React, { useEffect } from "react"
-import { DateRange } from "react-day-picker"
-import { useAuthRedirect } from "./useAuthRedirect"
-import { ProductTable } from "@/components/ProductTable"
-import { useAppData } from "../contexts/StockDataContext"
-import stockServiceInstance from "@/services/StockService"
-import { ProductTableMobile } from "@/components/ProductTableMobile"
-import { useTranslation } from "react-i18next"
+"use client";
+import { Filterbar } from "@/components/ui/overview/DashboardFilterbar";
+import { cx } from "@/lib/utils";
+import { subDays } from "date-fns";
+import React, { useEffect } from "react";
+import { DateRange } from "react-day-picker";
+import { ProductTable } from "@/components/ProductTable";
+import { useAppData } from "../contexts/AppProvider";
+import stockServiceInstance from "@/services/StockService";
+import { ProductTableMobile } from "@/components/ProductTableMobile";
+import { useTranslation } from "react-i18next";
 
-export type PeriodValue = "previous-period" | "last-year" | "no-comparison"
-
+export type PeriodValue = "previous-period" | "last-year" | "no-comparison";
 
 export type KpiEntry = {
-  title: string
-  percentage: number
-  current: number
-  allowed: number
-  unit?: string
-}
+  title: string;
+  percentage: number;
+  current: number;
+  allowed: number;
+  unit?: string;
+};
 
 // const data: KpiEntry[] = [
 //   {
@@ -73,9 +71,9 @@ export type KpiEntryExtended = Omit<
   KpiEntry,
   "current" | "allowed" | "unit"
 > & {
-  value: string
-  color: string
-}
+  value: string;
+  color: string;
+};
 
 // const data3: KpiEntryExtended[] = [
 //   {
@@ -98,33 +96,33 @@ export type KpiEntryExtended = Omit<
 //   },
 // ]
 
-
 // const { stockData } = useAppData();
 // // Convert dates to timestamps to find the max date
 // const stockDates = stockData.map((datum) => new Date(datum.date).getTime());
 // const maxDate = stockDates.length ? new Date(Math.max(...stockDates)) : new Date();
 
-const maxDate = new Date()
+const maxDate = new Date();
 
 export default function Overview() {
   const [selectedDates, setSelectedDates] = React.useState<
-  DateRange | undefined
+    DateRange | undefined
   >({
     from: subDays(maxDate, 30),
     to: maxDate,
-  })
+  });
 
-  useAuthRedirect();
   // get the raw stock data from the context
   const { setRawStockData } = useAppData();
   const { t } = useTranslation();
 
-  useEffect(() => { 
-    stockServiceInstance.getAllUserStockDateRange(selectedDates?.from, selectedDates?.to).then((response) => {
-      setRawStockData(response.data);
-    })
+  useEffect(() => {
+    stockServiceInstance
+      .getAllUserStockDateRange(selectedDates?.from, selectedDates?.to)
+      .then((response) => {
+        setRawStockData(response.data);
+      });
   }, [selectedDates]);
-  
+
   return (
     <>
       <section aria-labelledby="usage-overview">
@@ -142,21 +140,16 @@ export default function Overview() {
             onDatesChange={(dates) => setSelectedDates(dates)}
           />
         </div>
-        <dl
-          className={cx(
-            "mt-10 grid grid-cols-1 gap-14",
-          )}
-        >
-        <div className="md:hidden">
-          <ProductTableMobile selectedDates={selectedDates}/>
-        </div> 
-               {/*Product table should disappear when md  */}
-        <div className="hidden md:block">
-          <ProductTable selectedDates={selectedDates}/>
-        </div>
-
+        <dl className={cx("mt-10 grid grid-cols-1 gap-14")}>
+          <div className="md:hidden">
+            <ProductTableMobile selectedDates={selectedDates} />
+          </div>
+          {/*Product table should disappear when md  */}
+          <div className="hidden md:block">
+            <ProductTable selectedDates={selectedDates} />
+          </div>
         </dl>
       </section>
     </>
-  )
+  );
 }

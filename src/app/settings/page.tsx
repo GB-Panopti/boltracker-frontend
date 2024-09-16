@@ -1,7 +1,7 @@
-import { Button } from "@/components/Button"
-import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated"
-import { TremorPlaceholder } from "@/components/ui/icons/TremorPlaceholder"
-import { siteConfig } from "../siteConfig"
+import { Button } from "@/components/Button";
+import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated";
+import { TremorPlaceholder } from "@/components/ui/icons/TremorPlaceholder";
+import { siteConfig } from "../siteConfig";
 
 export default function Settings() {
   return (
@@ -24,5 +24,5 @@ export default function Settings() {
         </div>
       </div>
     </>
-  )
+  );
 }
