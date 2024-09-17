@@ -194,7 +194,7 @@ export default function LandingPage() {
         </div>
         </div>
 
-      <div id="pricing" className="flex w-full flex-col items-center justify-center -skew-y-3 bg-gb-accent-600  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
+      <div id="pricing" className="flex w-full flex-col items-center justify-center -skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
         <h1 className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl skew-y-3">
           {t('landing.pricing_header')}
         </h1>
@@ -283,7 +283,7 @@ export default function LandingPage() {
         </div>
       </section>
       <footer className="bg-gray-800 text-gray-300 pt-10">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div className=" mx-10 px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <h4 className="text-xl font-bold text-white">Panopti</h4>
             <p className="mt-2 text-gray-400">
