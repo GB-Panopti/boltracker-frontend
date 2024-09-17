@@ -56,7 +56,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <section className="pb-40 bg-gradient-to-b to-gb-primary-500 from-gb-primarylite-700 ">
+      <section className="pb-40 bg-gradient-to-b to-gb-primary-500  from-50% from-gb-primarylite-700 ">
         <div className="">
           <div className="pt-12 flex flex-col items-center w-full justify-center">
             <h1 className="mt-6 mb-10 text-gray-200 text-2xl sm:text-4xl lg:text-7xl mx-4 font-bold font-body text-center leading-tight">
@@ -81,7 +81,7 @@ export default function LandingPage() {
               <div className="lg:w-5/6 flex justify-center lg:justify-end mt-10 lg:mt-0  mx-4 mb-20">
                 <Image
                   className="rounded-xl shadow-lg sm:mr-4 "
-                  src="/img/landing/dashboard.png"
+                  src="/img/landing/Panopti_4.png"
                   width={1900}
                   height={150}
                   alt="dashboard-preview"
@@ -93,7 +93,7 @@ export default function LandingPage() {
       </section>
 
       <section className="bg-gradient-to-r from-gb-primary-500 via-gb-primarylite-800 to-gb-primary-600 pb-56">
-        <div className="relative -top-12 py-10 bg-gb-primary-300 skew-y-2 shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
+        <div className="relative -top-12 pt-10 pb-24 bg-gb-primary-300 skew-y-2 shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
           <div className="pt-6 flex w-full flex-col items-center justify-center -skew-y-2">
             <h1 className="mb-8 mt-12 mx-5 text-5xl text-white font-semibold text-center">
               <span className="hidden md:inline-block">🪴</span> {t('landing.growth_header')} <span className="hidden md:inline-block">🪴</span>
@@ -103,7 +103,7 @@ export default function LandingPage() {
                 <div className="relative w-full h-full">
                   <Image
                     className="rounded-lg shadow-2xl"
-                    src="/img/landing/details.png"
+                    src="/img/landing/Panopti_1.png"
                     alt={t('landing.image_alt')}
                     layout="responsive"
                     width={1900}
