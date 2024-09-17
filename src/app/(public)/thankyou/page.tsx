@@ -41,7 +41,7 @@ export default function ThankYouPage() {
 
           {/* Subtitle for the password information */}
           <h2 className="mt-3 mb-3 text-gray-100 text-2xl font-semibold">
-            Your temporary password can be found in your email. {email}
+            Your temporary password can be found in your email: {email}
           </h2>
 
           {/* Instructions */}
