@@ -76,7 +76,7 @@ export function StockChartOld({
             data={data || []}
             index="formattedDate"
             yAxisWidth={45}
-            categories={["stock"]}
+            categories={["sales"]}
             colors={theme === "light" ? ["#119da4"] : ["#E5E7EB"]}
             startEndOnly={true}
             showYAxis={true}

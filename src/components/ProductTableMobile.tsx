@@ -7,7 +7,7 @@ import {
   AccordionList,
 } from "@tremor/react";
 import { getFilteredStockData } from "@/data/StockProcessor";
-import { StockDatum } from "@/data/schema";
+import { SalesDatum } from "@/data/schema";
 import { ProductTableProps } from "./ProductTable";
 import { StockChartOldMobile } from "./StockChartOldMobile";
 import { useTranslation } from "react-i18next";
@@ -46,12 +46,12 @@ export function ProductTableMobile({ selectedDates }: ProductTableProps) {
       <Fragment>
         {products.map((item) => {
           const isOpen = openItems[item.id];
-          const data: StockDatum[] = getFilteredStockData(
+          const data: SalesDatum[] = getFilteredStockData(
             selectedDates,
             item.id,
             stockData,
           );
-          const sales = data.reduce((acc, datum) => acc + datum.stock, 0);
+          const sales = data.reduce((acc, datum) => acc + datum.sales, 0);
           const price = data[data.length - 1] ? data[data.length - 1].price : 0;
           const rating = data[data.length - 1]
             ? data[data.length - 1].ratingStars

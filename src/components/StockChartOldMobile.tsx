@@ -2,7 +2,7 @@
 import { AreaChart } from "@tremor/react";
 import React from "react";
 import { cx } from "@/lib/utils";
-import { StockDatum } from "@/data/schema";
+import { SalesDatum } from "@/data/schema";
 import { InfoCard } from "./InfoCard";
 import { useTheme } from "next-themes";
 import { Indicator } from "./Indicator";
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 export type CardProps = {
   id: string;
-  data: StockDatum[];
+  data: SalesDatum[];
   price: number;
   sales: number;
   ratingStars: number;
@@ -60,7 +60,7 @@ export function StockChartOldMobile({
             data={data || []}
             index="formattedDate"
             yAxisWidth={45}
-            categories={["stock"]}
+            categories={["sales"]}
             colors={theme === "light" ? ["#119da4"] : ["#E5E7EB"]}
             startEndOnly={true}
             showYAxis={true}

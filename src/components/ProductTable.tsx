@@ -10,7 +10,7 @@ import {
 import { DateRange } from "react-day-picker";
 import { StockChartOld } from "./StockChartOld";
 import { getFilteredStockData } from "@/data/StockProcessor";
-import { StockDatum } from "@/data/schema";
+import { SalesDatum } from "@/data/schema";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 import { Indicator } from "./Indicator";
@@ -53,12 +53,12 @@ export function ProductTable({ selectedDates }: ProductTableProps) {
       <Fragment>
         {products.map((item) => {
           const isOpen = openItems[item.id];
-          const data: StockDatum[] = getFilteredStockData(
+          const data: SalesDatum[] = getFilteredStockData(
             selectedDates,
             item.id,
             stockData,
           );
-          const sales = data.reduce((acc, datum) => acc + datum.stock, 0);
+          const sales = data.reduce((acc, datum) => acc + datum.sales, 0);
           const price = data[data.length - 1] ? data[data.length - 1].price : 0;
           const rating = data[data.length - 1]
             ? data[data.length - 1].ratingStars
@@ -84,7 +84,7 @@ export function ProductTable({ selectedDates }: ProductTableProps) {
                       data={data || []}
                       index="formattedDate"
                       noDataText={t("stockchart.no_data")}
-                      categories={["stock"]}
+                      categories={["sales"]}
                       colors={theme === "light" ? ["#119da4"] : ["#E5E7EB"]}
                       className="w-20 h-8 ml-10 mr-8"
                     />

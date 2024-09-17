@@ -1,12 +1,12 @@
 import { DateRange } from "react-day-picker";
-import { StockDatum } from "./schema";
+import { SalesDatum, StockDatum } from "./schema";
 import { format, isWithinInterval } from "date-fns";
 
 export function getFilteredStockData(
   selectedDates: DateRange | undefined,
   id: string,
   stockData: StockDatum[][],
-): StockDatum[] {
+): SalesDatum[] {
   const selectedDatesInterval =
     selectedDates?.from && selectedDates?.to
       ? { start: selectedDates.from, end: selectedDates.to }
@@ -24,7 +24,7 @@ export function getFilteredStockData(
   const chartData = (filteredStockData as StockDatum[]).map((datum) => ({
     id: datum.id,
     date: new Date(datum.date),
-    stock: datum.stock,
+    sales: datum.stock,
     formattedDate: format(new Date(datum.date), "yyyy-MM-dd"),
     price: datum.price,
     ratingStars: datum.ratingStars,
@@ -49,5 +49,5 @@ export function getTotalSales(
   stockData: StockDatum[][],
 ) {
   const data = getFilteredStockData(selectedDates, id, stockData);
-  return data.reduce((acc, datum) => acc + datum.stock, 0);
+  return data.reduce((acc, datum) => acc + datum.sales, 0);
 }

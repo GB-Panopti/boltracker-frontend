@@ -7,6 +7,15 @@ export type StockDatum = {
   ratingCount: number;
 };
 
+export type SalesDatum = {
+  date: Date;
+  id: string;
+  sales: number;
+  price: number;
+  ratingStars: number;
+  ratingCount: number;
+};
+
 export type Product = {
   id: string;
   name: string;
