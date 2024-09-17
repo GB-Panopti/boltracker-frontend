@@ -3,11 +3,10 @@ export const siteConfig = {
   url: "http://localhost:3000",
   description: "I spy with my little eye..",
   baseLinks: {
-    home: "/",
-    overview: "/",
+    dashboard: "/dashboard",
     trackNew: "/trackNew",
     login: "/login",
-    welcome: "/welcome",
+    welcome: "/",
     settings: "/settings",
     details: "/details",
     changelog: "/changelog",

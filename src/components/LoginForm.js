@@ -6,6 +6,7 @@ import { Input } from "@/components/Input";
 import { Label } from "@/components/Label";
 import { useAppData } from "@/app/contexts/AppProvider";
 import { useTranslation } from "react-i18next";
+import { siteConfig } from "@/app/siteConfig";
 
 const GoogleIcon = (props) => (
   <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
@@ -134,7 +135,7 @@ export default function LoginForm() {
 
       if (response.status === 200) {
         // setUser(response.data);
-        window.location.href = "/";
+        window.location.href = siteConfig.baseLinks.dashboard;
       }
     } catch (error) {
       // In case of no response

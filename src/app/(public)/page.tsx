@@ -19,7 +19,7 @@ export default function LandingPage() {
       const response = await LoginService.checkUser(demoEmail, demoPassword);
 
       if (response.status === 200) {
-        window.location.href = siteConfig.baseLinks.home;
+        window.location.href = siteConfig.baseLinks.dashboard;
       }
     } catch {}
   };

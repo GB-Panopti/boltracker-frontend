@@ -4,6 +4,8 @@
 
 import * as Sentry from "@sentry/nextjs";
 
+const isBugReportPage = ["/dashboard", "/login"].includes(location.pathname);
+
 Sentry.init({
   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
   tunnel: process.env.NEXT_PUBLIC_SERVER_HOST + "/api/sentry-tunnel",
@@ -21,10 +23,11 @@ Sentry.init({
       maskAllText: true,
       blockAllMedia: true,
     }),
-    Sentry.feedbackIntegration({
+    ...(isBugReportPage ? [Sentry.feedbackIntegration({
       colorScheme: "system",
       enableScreenshot: false,
       isNameRequired: true,
     }),
+    ] : []),
   ],
 });

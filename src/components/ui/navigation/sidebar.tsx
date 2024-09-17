@@ -66,7 +66,7 @@ export function Sidebar() {
             <ul role="list" className="space-y-0.5">
               <li key="Overview">
                 <Link
-                  href={siteConfig.baseLinks.overview}
+                  href={siteConfig.baseLinks.dashboard}
                   className={cx(
                     "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:bg-gray-200 hover:dark:bg-gray-900 text-gb-primarylite-50 hover:text-gray-900 dark:text-gb-primarylite-300 hover:dark:text-gray-50",
                     focusRing,

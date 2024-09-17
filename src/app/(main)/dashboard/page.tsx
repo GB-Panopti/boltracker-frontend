@@ -5,7 +5,7 @@ import { subDays } from "date-fns";
 import React, { useEffect } from "react";
 import { DateRange } from "react-day-picker";
 import { ProductTable } from "@/components/ProductTable";
-import { useAppData } from "../contexts/AppProvider";
+import { useAppData } from "../../contexts/AppProvider";
 import stockServiceInstance from "@/services/StockService";
 import { ProductTableMobile } from "@/components/ProductTableMobile";
 import { useTranslation } from "react-i18next";

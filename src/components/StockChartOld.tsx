@@ -2,14 +2,14 @@
 import { AreaChart } from "@tremor/react";
 import React from "react";
 import { cx } from "@/lib/utils";
-import { StockDatum } from "@/data/schema";
+import { SalesDatum } from "@/data/schema";
 import { InfoCard } from "./InfoCard";
 import { useTheme } from "next-themes";
 import { useTranslation } from "react-i18next";
 
 export type CardProps = {
   id: string;
-  data: StockDatum[];
+  data: SalesDatum[];
   price: number;
   sales: number;
   ratingStars: number;

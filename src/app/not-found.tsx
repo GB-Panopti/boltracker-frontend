@@ -7,7 +7,7 @@ import { siteConfig } from "./siteConfig";
 export default function NotFound() {
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <Link href={siteConfig.baseLinks.home}>
+      <Link href={siteConfig.baseLinks.welcome}>
         <DatabaseLogo className="mt-6 h-10" />
       </Link>
       <p className="mt-6 text-4xl font-semibold text-gb-secondary-600 sm:text-5xl dark:text-gb-secondary-500">
@@ -20,7 +20,7 @@ export default function NotFound() {
         Sorry, we couldn’t find the page you’re looking for.
       </p>
       <Button asChild className="group mt-8" variant="light">
-        <Link href={siteConfig.baseLinks.home}>
+        <Link href={siteConfig.baseLinks.welcome}>
           Go to the home page
           <RiArrowRightLine
             className="ml-1.5 size-5 text-gray-900 dark:text-gray-50"
