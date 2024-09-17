@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next) // pass the i18n instance to react-i18next.
   .init({
     supportedLngs: ["en", "nl"], // languages to support
-    fallbackLng: "en", // default language
+    fallbackLng: "nl", // default language
     detection: {
       order: [
         "cookie",

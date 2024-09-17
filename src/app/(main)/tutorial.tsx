@@ -92,6 +92,8 @@ export function TutorialProvider({ children }: TutorialProviderProps) {
           document.cookie = "tutorial=done; max-age=31536000; path=/"; // Set the cookie for 1 year
           if (run) {
             setRun(false); // Stop the Joyride tour
+            // TODO Fix state update of setRun not working?!?!?!?!!?
+            window.location.reload(); // Reload the page to remove the tour
           }
         } else {
           setError(true);
