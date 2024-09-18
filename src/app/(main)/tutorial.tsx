@@ -1,4 +1,5 @@
-import { useState, useEffect, createContext, useContext, useRef } from "react";
+"use client";
+import { useState, useEffect, createContext } from "react";
 import Joyride, { Step, CallBackProps, STATUS, EVENTS } from "react-joyride";
 import { useAppData } from "../contexts/AppProvider";
 import { useTranslation } from "react-i18next";
@@ -90,18 +91,13 @@ export function TutorialProvider({ children }: TutorialProviderProps) {
         if (response.status === 200) {
           setError(false);
           document.cookie = "tutorial=done; max-age=31536000; path=/"; // Set the cookie for 1 year
-          if (run) {
-            setRun(false); // Stop the Joyride tour
-            // TODO Fix state update of setRun not working?!?!?!?!!?
-            window.location.reload(); // Reload the page to remove the tour
-          }
+          setRun(false); // Stop the Joyride tour
         } else {
           setError(true);
           setErrorMessage("Failed to save email. Please try again.");
         }
       } catch (error) {
         // Handle any errors that occurred during the request
-        console.error("Error saving email:", error);
         setError(true);
         setErrorMessage("An error occurred. Please try again later.");
       }

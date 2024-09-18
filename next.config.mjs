@@ -32,7 +32,7 @@ export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options
 
-  org: "gb-fl",
+  org: "gill-bates",
   project: "panopti-backend",
 
   // Only print logs for uploading source maps in CI
