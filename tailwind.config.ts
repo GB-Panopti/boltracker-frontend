@@ -207,6 +207,13 @@ const config: Config = {
         accordionOpen: "accordionOpen 150ms cubic-bezier(0.87, 0, 0.13, 1)",
         accordionClose: "accordionClose 150ms cubic-bezier(0.87, 0, 0.13, 1)",
       },
+      screens: {
+        'xs': '550px',  // Use pixels consistently
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+      },
     },
   },
   safelist: [

@@ -9,7 +9,7 @@ export function Logo({
     <div className={`flex items-center ${className}`} {...props}>
       <Image src="/img/logo.svg" alt="Panopti Logo" width={50} height={50} />
 
-      <span className="ml-2 text-2xl font-bold text-gray-100">Panopti</span>
+      <span className="ml-2 text-2xl font-bold text-gray-100 hidden min-[430px]:inline">Panopti</span>
     </div>
   );
 }

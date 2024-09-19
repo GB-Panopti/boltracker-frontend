@@ -52,7 +52,10 @@ export default function LandingPage() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="bg-gb-primary-100">
               <Button variant="secondary">
-                🌍 {i18n.language === "nl" ? "Nederlands" : "English"}
+                🌍 
+                <span className="hidden min-[520px]:inline">
+                  {i18n.language === "nl" ? "Nederlands" : "English"}
+                </span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -305,11 +308,14 @@ export default function LandingPage() {
                     <h3 className="font-semibold text-2xl">
                       {t("landing.subscription_title")}
                     </h3>
-                    <p className="flex items-baseline">
-                      <span className="text-bold font-semibold text-3xl lg:text-5xl xl:text-5xl">
-                        €20
+                    <p className="flex flex-col items-center">
+                      <span className="flex items-baseline">
+                        <span className="text-bold font-semibold text-3xl lg:text-5xl xl:text-5xl">
+                          €20
+                        </span>
+                        <span className="text-tremor-default "> p/m</span>
                       </span>
-                      <span className="text-tremor-default ">/mo</span>
+                      <span className="text-tremor-default text-sm mt-1"> ({t("landing.ex_vat")})</span>
                     </p>
                   </div>
                   <div className="flex-grow flex flex-col justify-center">
