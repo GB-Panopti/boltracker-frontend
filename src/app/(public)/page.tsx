@@ -13,7 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/Accordion";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import i18n from "../i18n";
 import {
   DropdownMenu,
@@ -23,6 +23,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
 import { changeLanguage } from "i18next";
+import { RiStarFill, RiStarHalfFill } from "@remixicon/react";
 
 export default function LandingPage() {
   const { t } = useTranslation();
@@ -52,7 +53,7 @@ export default function LandingPage() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="bg-gb-primary-100">
               <Button variant="secondary">
-                🌍 
+                🌍
                 <span className="hidden min-[520px]:inline">
                   {i18n.language === "nl" ? "Nederlands" : "English"}
                 </span>
@@ -98,16 +99,22 @@ export default function LandingPage() {
       <section className="pb-40 bg-gradient-to-b to-gb-primary-500  from-50% from-gb-primarylite-700 ">
         <div className="">
           <div className="pt-12 flex flex-col items-center w-full justify-center">
-            <h1 className="mt-6 mb-10 text-gray-200 text-2xl sm:text-4xl lg:text-7xl mx-4 font-bold font-body text-center leading-tight">
+            <h1 className="lg:mx-20 mt-6 mb-10 text-gray-200 text-2xl sm:text-4xl lg:text-7xl font-bold font-body text-center leading-tight">
               {t("landing.hero_header")}
             </h1>
             <div className="flex flex-col lg:flex-row items-center justify-between lg:space-x-8 w-full max-w-7xl">
               <div className="lg:w-1/2 text-left mx-4">
+                <p className="text-lg lg:text-xl text-gray-200 leading-relaxed">
+                  <Trans
+                      i18nKey="landing.hero_text"
+                      components={{ i: <em />, b: <strong /> }}
+                    />
+                </p>
                 <p className="text-lg lg:text-xl text-gray-200 font-light leading-relaxed">
-                  {t("landing.hero_text")}
+                  {t("landing.hero_text2")}
                 </p>
                 <Button
-                  className="group mt-6 p-3 w-full sm:w-auto max-w-sm lg:max-w-xs rounded-lg mb-20"
+                  className="group mt-6 p-3 w-full sm:w-auto max-w-sm lg:max-w-xs rounded-lg"
                   variant="accent"
                   asChild
                 >
@@ -121,6 +128,18 @@ export default function LandingPage() {
                     />
                   </a>
                 </Button>
+                <p className="text-xs text-gray-200 mt-2">
+                  <Trans
+                    i18nKey="landing.demo_no_register"
+                    components={{ i: <em />, b: <strong /> }}
+                  />
+                </p>
+                <p className="text-xs text-gray-200 mt-2">
+                  <Trans
+                    i18nKey="landing.free_trial"
+                    components={{ i: <em />, b: <strong /> }}
+                  />
+                </p>
               </div>
               <div className="lg:w-5/6 flex justify-center lg:justify-end mt-10 lg:mt-0  mx-4 mb-20">
                 <Image
@@ -195,6 +214,18 @@ export default function LandingPage() {
                     </a>
                   </Button>
                 </div>
+                <p className="text-xs text-white mt-2">
+                  <Trans
+                    i18nKey="landing.demo_no_register"
+                    components={{ i: <em />, b: <strong /> }}
+                  />
+                </p>
+                <p className="text-xs text-white mt-2">
+                  <Trans
+                    i18nKey="landing.free_trial"
+                    components={{ i: <em />, b: <strong /> }}
+                  />
+                </p>
               </div>
             </div>
           </div>
@@ -285,7 +316,15 @@ export default function LandingPage() {
                     </p>
                   </div>
                   <div className="bg-gray-50 p-10 m-0.5 rounded-[calc(1.5rem-1px)]">
-                    <p className="text-gray-700 text-lg mb-1">⭐⭐⭐⭐⭐</p>
+                    <p className="text-gray-700 text-lg mb-1">
+                      <span className="flex">
+                        <RiStarFill />
+                        <RiStarFill />
+                        <RiStarFill />
+                        <RiStarFill />
+                        <RiStarHalfFill />
+                      </span>
+                    </p>
                     <p className="text-gray-700 text-lg">
                       {t("landing.review_text")}
                     </p>
@@ -315,7 +354,10 @@ export default function LandingPage() {
                         </span>
                         <span className="text-tremor-default "> p/m</span>
                       </span>
-                      <span className="text-tremor-default text-sm mt-1"> ({t("landing.ex_vat")})</span>
+                      <span className="text-tremor-default text-sm mt-1">
+                        {" "}
+                        ({t("landing.ex_vat")})
+                      </span>
                     </p>
                   </div>
                   <div className="flex-grow flex flex-col justify-center">
@@ -347,10 +389,16 @@ export default function LandingPage() {
                     </List>
                   </div>
                   <Divider />
-                  <div className="mt-auto">
+                  <p className="text-xs text-gray-900 mt-2 ml-2">
+                    <Trans
+                      i18nKey="landing.pricing_disclaimer"
+                      components={{ i: <em />, b: <strong /> }}
+                    />
+                  </p>
+                  <div className="mt-2">
                     <Button
                       onClick={stripeServiceInstance.createCheckoutSession}
-                      className="group mt-6 rounded-lg w-full text-xl lg:text-2xl xl:text-2xl"
+                      className="group rounded-lg w-full text-xl lg:text-2xl xl:text-2xl"
                       variant="accent"
                     >
                       {t("landing.subscribe_cta")}
