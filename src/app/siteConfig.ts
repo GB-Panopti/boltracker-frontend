@@ -11,6 +11,7 @@ export const siteConfig = {
     details: "/details",
     changelog: "/changelog",
     pricing: "/pricing",
+    forgottenPassword: "/forgotten-password",
   },
 };
 
