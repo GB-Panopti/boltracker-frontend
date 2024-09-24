@@ -2,6 +2,8 @@ import { Rubik } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
 import { siteConfig } from "./siteConfig";
+import Script from "next/script";
+import { NEXT_BODY_SUFFIX } from "next/dist/lib/constants";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://panopti.nl"),
@@ -56,6 +58,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script defer src={process.env.NEXT_PUBLIC_UMAMI_SRC} data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID} />
       <body
         className={`${roboto.className} ${robotoThicc.className} overflow-y-scroll scroll-auto antialiased selection:bg-gb-secondary-100 selection:text-gb-secondary-700 dark:bg-gray-950`}
         suppressHydrationWarning
