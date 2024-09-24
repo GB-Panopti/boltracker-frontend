@@ -79,22 +79,12 @@ export function Sidebar() {
                 </Link>
               </li>
 
-              <li key="Track product">
-                <Link
-                  id="button-add-product"
-                  href="#"
-                  className={cx(
-                    "flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:dark:bg-gray-900 bg-gb-primarylite-600 text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:bg-gb-primarylite-400/20 dark:text-gb-primarylite-400 dark:ring-gb-primarylite-400/20 hover:bg-gb-secondary-400",
-                    focusRing
-                  )}
-                >
-                  <RiRadarLine className="size-5 shrink-0" aria-hidden="true" />
+              <li key="Track product" className="w-[100%]">
                   <ModalAddProduct
                     onSelect={handleTrackProductSelect}
                     onOpenChange={handleTrackProductDialogOpenChange}
                     itemName={t("track_product.title")}
                   />
-                </Link>
               </li>
             </ul>
 
