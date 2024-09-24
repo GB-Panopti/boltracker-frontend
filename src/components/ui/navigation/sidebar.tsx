@@ -9,7 +9,7 @@ import {
   WorkspacesDropdownMobile,
 } from "./SidebarWorkspacesDropdown";
 import { UserProfileDesktop, UserProfileMobile } from "./UserProfile";
-import ProductSelector from "@/ui/productSelector";
+import ProductSelector from "@/components/ui/navigation/ProductSelector";
 import React from "react";
 import { ModalAddProduct } from "./ModalAddProduct";
 import { Card } from "@tremor/react";

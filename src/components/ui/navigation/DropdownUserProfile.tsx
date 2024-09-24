@@ -119,29 +119,11 @@ export function DropdownUserProfile({
                 </DropdownMenuRadioGroup>
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
-            
             <DropdownMenuItem
               onClick={async () => {window.location.href = siteConfig.baseLinks.settings;}}
             >
               <RiSettings2Line className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800" aria-hidden="true" />
               {t("sidebar.accountsettings")}
-            </DropdownMenuItem>
-
-            <DropdownMenuItem
-              onClick={(e) => {
-                e.preventDefault(); // Prevent default action to keep dropdown open
-                setHasOpenDialog(true);
-              }}
-            >
-              <RiSettings2Line
-                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                aria-hidden="true"
-              />
-              <ModalEditPassword
-                onSelect={() => {
-                  setHasOpenDialog(false); // Close the modal after action
-                }}
-              />
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />

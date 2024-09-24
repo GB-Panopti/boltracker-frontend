@@ -1,7 +1,6 @@
 "use client";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/Tabs";
 import { cx } from "@/lib/utils";
-import ReferralsTable from "@/ui/referralsTable";
 import { CategoryBarCard } from "@/components/ui/settings/CategoryBarCard";
 import { KpiEntryExtended } from "../dashboard/page";
 import { Input } from "@/components/Input";
@@ -12,7 +11,8 @@ import { useAppData } from "@/app/contexts/AppProvider";
 import loginServiceInstance from "@/services/LoginService";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import BillingTab from "./billingTab";
+import BillingTab from "../../../components/ui/settings/billingTab";
+import ReferralsTable from "@/components/ui/settings/referralsTable";
 export default function SettingsgPage() {
   const { user } = useAppData();
   const [newEmail, setNewEmail] = useState("");
@@ -105,11 +105,11 @@ export default function SettingsgPage() {
         <dl className={cx("mt-10 grid grid-cols-1 gap-14")}>
           <Tabs defaultValue="tab1">
             <TabsList>
-              <TabsTrigger value="tab2">
-                {t("settings.tab_referrals")}
-              </TabsTrigger>
               <TabsTrigger value="tab1">
                 {t("settings.tab_account")}
+              </TabsTrigger>
+              <TabsTrigger value="tab2">
+                {t("settings.tab_referrals")}
               </TabsTrigger>
               <TabsTrigger value="tab3">
                 {t("settings.tab_billing")}
@@ -125,6 +125,9 @@ export default function SettingsgPage() {
                     <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-50">
                       Change email
                     </h2>
+                    <p className="text-sm text-gray-600 dark:text-gray-500">
+                      {user?.username}
+                    </p>
                   </div>
                   <div className="space-y-2 col-span-8 md:col-span-2">
                     <Label htmlFor="new-email">Insert Email</Label>
