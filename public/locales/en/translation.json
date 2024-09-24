@@ -20,9 +20,9 @@
     "workspace": {
       "title": "Workspaces",
       "tracked_products": "products tracked"
-    }
+    },
+    "accountsettings": "Settings"
   },
-
   "track_product": {
     "title": "Track product",
     "header": "Track new product",

@@ -22,9 +22,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
-import {
-  motion,
-} from "framer-motion";
 import { changeLanguage } from "i18next";
 import { RiStarFill, RiStarHalfFill } from "@remixicon/react";
 import { AuroraHero } from "./hero";
@@ -32,8 +29,8 @@ import { useState, useEffect } from "react";
 
 export default function LandingPage() {
   const { t } = useTranslation();
-  const [showHeader, setShowHeader] = useState(false);
-  
+  const [headerBg, setHeaderBg] = useState("bg-transparent"); // Default header background is transparent
+
   const handleDemoLogin = async () => {
     const demoEmail = "demo@panopti.nl";
     const demoPassword = "password";
@@ -49,14 +46,12 @@ export default function LandingPage() {
     } catch {}
   };
 
-  // Detect scroll and show header when past AuroraHero
   useEffect(() => {
     const handleScroll = () => {
-      // Show header after scrolling past 80vh
-      if (window.scrollY > window.innerHeight * 0.6) {
-        setShowHeader(true);
+      if (window.scrollY > 50) {
+        setHeaderBg("bg-gb-secondary-600 shadow-md"); // Apply background and shadow after scrolling 50px
       } else {
-        setShowHeader(false);
+        setHeaderBg("bg-transparent"); // Transparent background at the top
       }
     };
 
@@ -66,24 +61,17 @@ export default function LandingPage() {
 
   return (
     <>
-    {/* AuroraHero Component */}
-    <AuroraHero />
-
-    {/* Motion Header */}
-    <motion.div
-      initial={{ y: -100 }} // Start hidden above the screen
-      animate={{ y: showHeader ? 0 : -100 }} // Slide in/out based on scroll
-      transition={{ duration: 0.5, ease: "easeInOut" }} // Smooth slide-in animation
-      className={`fixed top-0 z-40 w-full bg-gb-secondary-600 shadow-md h-16 shrink-0 items-center justify-between  px-2 sm:gap-x-6 sm:px-4 border-b-2 border-b-gray-100`}
-      style={{ display: showHeader ? "flex" : "none" }} // Only display when needed
-    >
+      {/* Fixed Header */}
+      <div
+        className={`fixed top-0 z-40 w-full h-16 flex items-center justify-between px-2 sm:gap-x-6 sm:px-4 transition-colors duration-300 ${headerBg}`}
+      >
         <div className="text-gray-200 font-extrabold ml-4 max-w-xs">
           <Logo className="!text-2xl" />
         </div>
 
         <div className="flex items-center gap-1 sm:gap-2">
           <DropdownMenu>
-            <DropdownMenuTrigger asChild className="bg-gb-primary-100">
+            <DropdownMenuTrigger asChild>
               <Button variant="secondary">
                 🌍
                 <span className="hidden min-[520px]:inline">
@@ -125,71 +113,14 @@ export default function LandingPage() {
               {t("landing.demo_button")}
             </a>
           </Button>
-      </div>
-    </motion.div>
-
-      <section className="pb-40 bg-gradient-to-b to-gb-primary-500  from-50% from-gb-primarylite-700 ">
-        <div className="">
-          <div className="pt-12 flex flex-col items-center w-full justify-center">
-            <h1 className="lg:mx-20 mt-6 mb-10 text-gray-200 text-2xl sm:text-4xl lg:text-7xl font-bold font-body text-center leading-tight">
-              {t("landing.hero_header")}
-            </h1>
-            <div className="flex flex-col lg:flex-row items-center justify-between lg:space-x-8 w-full max-w-7xl">
-              <div className="lg:w-1/2 text-left mx-4">
-                <p className="text-lg lg:text-xl text-gray-200 leading-relaxed">
-                  <Trans
-                      i18nKey="landing.hero_text"
-                      components={{ i: <em />, b: <strong /> }}
-                    />
-                </p>
-                <p className="text-lg lg:text-xl text-gray-200 font-light leading-relaxed">
-                  {t("landing.hero_text2")}
-                </p>
-                <Button
-                  className="group mt-6 p-3 w-full sm:w-auto max-w-sm lg:max-w-xs rounded-lg"
-                  variant="accent"
-                  asChild
-                >
-                  <a href="#" onClick={handleDemoLogin}>
-                    <p className="text-lg font-semibold">
-                      {t("landing.cta_button")}
-                    </p>
-                    <ArrowAnimated
-                      className="stroke-gray-200 size-3"
-                      aria-hidden="true"
-                    />
-                  </a>
-                </Button>
-                <p className="text-xs text-gray-200 mt-2">
-                  <Trans
-                    i18nKey="landing.demo_no_register"
-                    components={{ i: <em />, b: <strong /> }}
-                  />
-                </p>
-                <p className="text-xs text-gray-200 mt-2">
-                  <Trans
-                    i18nKey="landing.free_trial"
-                    components={{ i: <em />, b: <strong /> }}
-                  />
-                </p>
-              </div>
-              <div className="lg:w-5/6 flex justify-center lg:justify-end mt-10 lg:mt-0  mx-4 mb-20">
-                <Image
-                  className="rounded-xl shadow-lg sm:mr-4 "
-                  src="/img/landing/Panopti_4.png"
-                  width={1900}
-                  height={150}
-                  alt="dashboard-preview"
-                />
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
+
+      <AuroraHero handleDemoLogin={handleDemoLogin} />
 
       <section className="bg-gradient-to-r from-gb-primary-500 via-gb-primarylite-800 to-gb-primary-600 pb-56">
-        <div className="relative -top-12 pt-10 pb-24 bg-gb-primary-300 skew-y-2 shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
-          <div className="pt-6 flex w-full flex-col items-center justify-center -skew-y-2">
+        <div className="relative pt-10 pb-24 bg-gb-primary-300 skew-y-0 shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
+          <div className="pt-6 flex w-full flex-col items-center justify-center -skew-y-0">
             <h1 className="mb-8 mt-12 mx-5 text-5xl text-white font-semibold text-center">
               <span className="hidden md:inline-block">🪴</span>{" "}
               {t("landing.growth_header")}{" "}

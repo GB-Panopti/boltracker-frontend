@@ -12,7 +12,11 @@ import { useTranslation } from "react-i18next";
 
 const COLORS_TOP = ["#694873", "#85b79d", "#119da4"];
 
-export const AuroraHero = () => {
+type AuroraHeroProps = {
+  handleDemoLogin: () => void;
+};
+
+export const AuroraHero = ({ handleDemoLogin }: AuroraHeroProps) => {
   const { t } = useTranslation();
   const color = useMotionValue(COLORS_TOP[0]);
 
@@ -23,6 +27,7 @@ export const AuroraHero = () => {
       repeat: Infinity,
       repeatType: "mirror",
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #020617 50%, ${color})`;
@@ -59,11 +64,12 @@ export const AuroraHero = () => {
           }}
           className="group relative flex w-fit items-center gap-1.5 rounded-full bg-gray-950/10 px-4 py-2 text-gray-50 transition-colors hover:bg-gray-950/50"
         >
-          {t("landing.cta_button")}
-          <ArrowAnimated className="transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+          <a href="#" onClick={handleDemoLogin} className="flex">
+            {t("landing.cta_button")}
+            <ArrowAnimated className="my-auto transition-transform group-hover:-rotate-45 group-active:-rotate-12" />
+          </a>
         </motion.button>
       </div>
-
       <div className="absolute inset-0 z-0">
         <Canvas>
           <Stars radius={50} count={2500} factor={4} fade speed={2} />
