@@ -1,6 +1,6 @@
 import { Badge } from "@/components/Badge";
 import { cx } from "@/lib/utils";
-
+import { CategoryBar } from "@/components/CategoryBar";
 import type { KpiEntryExtended } from "@/app/(main)/page";
 
 export type CardProps = {
@@ -13,6 +13,7 @@ export type CardProps = {
   ctaText: string;
   ctaLink: string;
   data: KpiEntryExtended[];
+  marker?: { value: number; tooltip?: string };
 };
 
 export function CategoryBarCard({
@@ -25,7 +26,11 @@ export function CategoryBarCard({
   ctaText,
   ctaLink,
   data,
+  marker,
 }: CardProps) {
+  const values = data.map(item => item.percentage);
+  const colors = data.map(item => item.color);
+
   return (
     <>
       <div className="flex flex-col justify-between">
@@ -46,15 +51,13 @@ export function CategoryBarCard({
             <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
               {subtitle}
             </p>
-            <div className="mt-2 flex items-center gap-0.5">
-              {data.map((item) => (
-                <div
-                  key={item.title}
-                  className={cx(item.color, `h-1.5 rounded-full`)}
-                  style={{ width: `${item.percentage}%` }}
-                />
-              ))}
-            </div>
+            {/* Replace hardcoded bar with CategoryBar */}
+            <CategoryBar 
+              values={values} // Pass the array of percentages
+              colors={colors} // Pass the array of colors
+              marker={marker} // Pass the marker if provided
+              showLabels={false} // Adjust as needed, this hides labels in the bar
+            />
           </div>
           <ul role="list" className="mt-5 space-y-2">
             {data.map((item) => (

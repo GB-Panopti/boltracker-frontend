@@ -112,9 +112,9 @@
     "pricing": "Prijzen",
     "signin": "Inloggen",
     "demo_button": "Probeer de demo nu!",
-    "hero_header": "Boost je Bol.com-strategie met data van Panopti! 🚀",
+    "hero_header": "Boost je Bol.com-strategie met data van Panopti",
     "hero_text": "<b>Stel je voor, dat je precies weet welke producten op Bol.com als warme broodjes over de toonbank gaan!</b>",
-    "hero_text2": "Met Panopti volg je je concurrenten, ontdek je onbenutte niches en verfijn je je strategie om je sales moeiteloos te verhogen en de concurrentie voor te blijven!",
+    "hero_text2": "Met Panopti volg je kansrijke producten en ontdek je nieuwe marktniches, waardoor je zonder moeite je verkoop verhoogt en de concurrentie voor blijft.",
     "cta_button": "Bekijk het in actie",
     "demo_no_register": "Gewoon proberen, geen betaalgegevens nodig!",
     "free_trial": "Abonneer je later met een <b><i>gratis 30-dagen proefperiode!</i></b> ✨",
@@ -154,5 +154,19 @@
     "footer_rights": "Alle rechten voorbehouden.",
     "footer_built_with": "Gemaakt met ❤️ door het Panopti-team.",
     "ex_vat": "ex. btw"
+  },
+  "billing": {
+    "title": "Factureringsinformatie",
+    "subscription_type": "Abonnementstype",
+    "subscribed_since": "Geabonneerd Sinds",
+    "billing_date": "Factuurdatum",
+    "billing_method": "Betaalmethode",
+    "cancel_subscription": "Abonnement annuleren",
+    "confirm_cancel_title": "Abonnement annuleren?",
+    "confirm_cancel_description": "We zullen je missen! Als je annuleert, loopt je abonnement door tot het einde van deze factureringsperiode.",
+    "confirm_cancel_feedback": "Kun je een moment nemen om je reden voor vertrek te delen?",
+    "confirm_cancel_feedback_placeholder": "Je feedback helpt ons onze service te verbeteren.",
+    "go_back": "Wacht, ga terug!",
+    "confirm_cancel_button": "Ja, annuleren"
   }
 }
