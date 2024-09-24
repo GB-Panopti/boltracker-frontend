@@ -22,11 +22,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/Dropdown";
+import {
+  motion,
+} from "framer-motion";
 import { changeLanguage } from "i18next";
 import { RiStarFill, RiStarHalfFill } from "@remixicon/react";
+import { AuroraHero } from "./hero";
+import { useState, useEffect } from "react";
 
 export default function LandingPage() {
   const { t } = useTranslation();
+  const [showHeader, setShowHeader] = useState(false);
+  
   const handleDemoLogin = async () => {
     const demoEmail = "demo@panopti.nl";
     const demoPassword = "password";
@@ -42,14 +49,39 @@ export default function LandingPage() {
     } catch {}
   };
 
+  // Detect scroll and show header when past AuroraHero
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show header after scrolling past 80vh
+      if (window.scrollY > window.innerHeight * 0.6) {
+        setShowHeader(true);
+      } else {
+        setShowHeader(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between  bg-gb-secondary-600 px-2 shadow-sm sm:gap-x-6 sm:px-4 border-b-2 border-b-gray100">
+    {/* AuroraHero Component */}
+    <AuroraHero />
+
+    {/* Motion Header */}
+    <motion.div
+      initial={{ y: -100 }} // Start hidden above the screen
+      animate={{ y: showHeader ? 0 : -100 }} // Slide in/out based on scroll
+      transition={{ duration: 0.5, ease: "easeInOut" }} // Smooth slide-in animation
+      className={`fixed top-0 z-40 w-full bg-gb-secondary-600 shadow-md h-16 shrink-0 items-center justify-between  px-2 sm:gap-x-6 sm:px-4 border-b-2 border-b-gray-100`}
+      style={{ display: showHeader ? "flex" : "none" }} // Only display when needed
+    >
         <div className="text-gray-200 font-extrabold ml-4 max-w-xs">
           <Logo className="!text-2xl" />
         </div>
 
-        <div className="flex items-center gap-1 sm:gap-2 ">
+        <div className="flex items-center gap-1 sm:gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="bg-gb-primary-100">
               <Button variant="secondary">
@@ -93,8 +125,8 @@ export default function LandingPage() {
               {t("landing.demo_button")}
             </a>
           </Button>
-        </div>
       </div>
+    </motion.div>
 
       <section className="pb-40 bg-gradient-to-b to-gb-primary-500  from-50% from-gb-primarylite-700 ">
         <div className="">
