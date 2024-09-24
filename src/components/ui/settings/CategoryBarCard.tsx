@@ -51,12 +51,11 @@ export function CategoryBarCard({
             <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
               {subtitle}
             </p>
-            {/* Replace hardcoded bar with CategoryBar */}
             <CategoryBar 
-              values={values} // Pass the array of percentages
-              colors={colors} // Pass the array of colors
-              marker={marker} // Pass the marker if provided
-              showLabels={false} // Adjust as needed, this hides labels in the bar
+              values={values}
+              colors={colors}
+              marker={marker}
+              showLabels={false}
             />
           </div>
           <ul role="list" className="mt-5 space-y-2">
