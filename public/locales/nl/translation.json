@@ -68,7 +68,7 @@
   },
 
   "login": {
-    "header": "Log in of maak een account aan",
+    "header": "Log in bij Panopti",
     "email": "E-mail",
     "email_placeholder": "jaap@bedrijf.nl",
     "password": "Wachtwoord",

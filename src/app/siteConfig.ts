@@ -12,6 +12,8 @@ export const siteConfig = {
     changelog: "/changelog",
     pricing: "/pricing",
     forgottenPassword: "/forgotten-password",
+    privacy: "/privacy-policy",
+    terms: "/terms-of-service",
   },
 };
 

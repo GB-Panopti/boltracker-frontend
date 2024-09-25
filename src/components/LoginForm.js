@@ -82,11 +82,11 @@ export default function LoginForm() {
           </form>
           <p className="mt-4 text-gb-label text-gb-content dark:text-dark-gb-content">
             {t("login.terms")}
-            <a href="#" className="underline underline-offset-4">
+            <a href={siteConfig.baseLinks.terms} target="_blank" className="underline underline-offset-4">
               {t("login.terms2")}
             </a>{" "}
             {t("login.and")}{" "}
-            <a href="#" className="underline underline-offset-4">
+            <a href={siteConfig.baseLinks.privacy} target="_blank" className="underline underline-offset-4">
               {t("login.privacy")}
             </a>
             .

@@ -68,7 +68,7 @@
   },
 
   "login": {
-    "header": "Login or create an account",
+    "header": "Login to Panopti",
     "email": "Email",
     "email_placeholder": "john@company.com",
     "password": "Password",
