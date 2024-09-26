@@ -1,5 +1,7 @@
 // Tremor Raw cx [v0.0.0]
 
+import { siteConfig } from "@/app/siteConfig";
+import LoginService from "@/services/LoginService";
 import clsx, { type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -74,4 +76,19 @@ export const formatters: { [key: string]: any } = {
       currency: currency,
     }).format(number),
   unit: (number: number) => `${usNumberformatter(number)}`,
+};
+
+export const handleDemoLogin = async () => {
+  const demoEmail = "demo@panopti.nl";
+  const demoPassword = "password";
+
+  try {
+    // Log out the current user (if logged in) and log in with the demo credentials
+    await LoginService.logout();
+    const response = await LoginService.checkUser(demoEmail, demoPassword);
+
+    if (response.status === 200) {
+      window.location.href = siteConfig.baseLinks.dashboard;
+    }
+  } catch {}
 };

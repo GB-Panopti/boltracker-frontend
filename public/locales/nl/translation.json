@@ -20,7 +20,8 @@
     "workspace": {
       "title": "Werkruimtes",
       "tracked_products": "producten gevolgd"
-    }
+    },
+    "accountsettings": "Instellingen"
   },
 
   "track_product": {
@@ -108,6 +109,24 @@
     "btn_skip": "Overslaan",
     "btn_close": "Sluiten"
   },
+  "pricing": {
+    "pricing_header": "Prijzen",
+    "pricing_subheader": "Maximaliseer je succes in e-commerce",
+    "pricing_text": "Ontgrendel ongeëvenaarde inzichten en neem de volledige controle over je verkoopstrategie met de premium functies van Panopti. Ontvang real-time data, vergelijk je prestaties met concurrenten en neem weloverwogen beslissingen die jouw groei stimuleren.",
+    "pricing_demo_cta": "Probeer de demo →",
+    "pricing_demo_subtext": "Ontdek onze krachtige functies in actie",
+    "pricing_disclaimer": "<b>30 dagen uitproberen voor je eerste betaling!</b> Op elk moment opzegbaar.",
+    "review_text": "\"Ik vind Panopti fijn omdat het simpel is en me precies de data geeft die ik nodig heb om producten te vinden. Er ontbreken nog wat functies, maar voor de prijs is het echt een goede deal!\"",
+    "review_role": "Bol.com dropshipper",
+    "subscription_title": "Volledige toegang",
+    "feature_1": "Real-time verkooptracking",
+    "feature_2": "Vergelijk met concurrenten",
+    "feature_3": "Actiegerichte KPI-inzichten",
+    "feature_4": "Historische prestatieanalyse",
+    "subscribe_cta": "👉 Abonneer nu! 👈",
+    "referral_placeholder": "Heb je een kortingscode? Voer het hier in!",
+    "referral_label": "Kortingscode"
+  },
   "landing": {
     "pricing": "Prijzen",
     "signin": "Inloggen",
@@ -135,20 +154,6 @@
     "faq_answer_4": "We werken jouw productstatistieken dagelijks bij door de hele dag door continu data te verzamelen, zodat we jou de meest nauwkeurige inzichten kunnen bieden.",
     "faq_question_5": "Ik heb verdere vragen, hoe kan ik jullie bereiken?",
     "faq_answer_5": "Je kunt altijd contact met ons opnemen via info@panopti.nl. We helpen je graag verder!",
-    "pricing_header": "Prijzen",
-    "pricing_subheader": "Maximaliseer je succes in e-commerce",
-    "pricing_text": "Ontgrendel ongeëvenaarde inzichten en neem de volledige controle over je verkoopstrategie met de premium functies van Panopti. Ontvang real-time data, vergelijk je prestaties met concurrenten en neem weloverwogen beslissingen die jouw groei stimuleren.",
-    "pricing_demo_cta": "Probeer de demo →",
-    "pricing_demo_subtext": "Ontdek onze krachtige functies in actie",
-    "pricing_disclaimer": "<b>30 dagen uitproberen voor je eerste betaling!</b> Op elk moment opzegbaar.",
-    "review_text": "\"Ik vind Panopti fijn omdat het simpel is en me precies de data geeft die ik nodig heb om producten te vinden. Er ontbreken nog wat functies, maar voor de prijs is het echt een goede deal!\"",
-    "review_role": "Bol.com dropshipper",
-    "subscription_title": "Volledige toegang",
-    "feature_1": "Real-time verkooptracking",
-    "feature_2": "Vergelijk met concurrenten",
-    "feature_3": "Actiegerichte KPI-inzichten",
-    "feature_4": "Historische prestatieanalyse",
-    "subscribe_cta": "👉 Abonneer nu! 👈",
     "footer_tagline": "Jouw e-commerce-platform",
     "footer_contact": "Contact",
     "footer_rights": "Alle rechten voorbehouden.",
