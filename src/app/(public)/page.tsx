@@ -416,9 +416,21 @@ export default function LandingPage() {
             <h4 className="text-xl font-bold text-white">Panopti</h4>
             <p className="mt-2 text-gray-400">{t("landing.footer_tagline")}</p>
           </div>
+
+          <div className="mb-6 md:mb-0">
+          <p className="text-white">KVK: 94867410</p>
+          <p className="text-white">Btw-id: NL866918851B01</p>
+          </div>
+
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
             <a href="mailto:info@panopti.nl" className="hover:underline">
               {t("landing.footer_contact")}
+            </a>
+            <a href={siteConfig.baseLinks.privacy} className="hover:underline">
+              {t("login.privacy")}
+            </a>
+            <a href={siteConfig.baseLinks.terms} className="hover:underline">
+              {t("login.terms2")}
             </a>
           </div>
         </div>

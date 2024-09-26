@@ -22,7 +22,7 @@ export default function Layout({
   }
 
   return (
-    <Sentry.ErrorBoundary fallback={<p>ah noes</p>}>
+    <Sentry.ErrorBoundary fallback={<p>Something went wrong on our server. Please try again later, or contact us at <a href="mailto:info@panopti.nl">info@panopti.nl</a>.</p>}>
       <ThemeProvider defaultTheme="system" attribute="class">
         <AppProvider>
           <TutorialProvider>
