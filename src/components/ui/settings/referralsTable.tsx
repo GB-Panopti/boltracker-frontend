@@ -128,18 +128,27 @@ const ReferralsTable = () => {
       default:
         return <RiUserLine className="size-6 mr-2" />;
     }
-  }
+  };
 
   return (
     <>
       <div>
         <div className="flex justify-between items-start">
-          <p className="text-gray-900 text-lg font-bold ml-0">Referred users</p>
+          <p className="text-gray-900 text-lg font-bold ml-0">
+            {t("settings.referrals.referred_users")}
+          </p>
 
           <div className="flex items-center">
-            <Input type= "text" value={data.referralCode} roundedRightNone placeholder="referral not available" disabled readOnly />
+            <Input
+              type="text"
+              value={data.referralCode}
+              roundedRightNone
+              placeholder={t("settings.referrals.referral_not_available")}
+              disabled
+              readOnly
+            />
             <Button className="rounded-l-none border-2 border-l-0" variant="accent">
-              Copy referral code
+              {t("settings.referrals.copy_referral_code")}
               <RiClipboardLine className="size-4 ml-2 mb-0.5" />
             </Button>
           </div>
@@ -147,13 +156,13 @@ const ReferralsTable = () => {
 
         <TableRoot>
           <Table>
-            {/* <TableCaption>{t('referrals.table_title')}</TableCaption> */}
+            {/* <TableCaption>{t('settings.referrals.table_title')}</TableCaption> */}
             <TableHead>
               <TableRow>
-                <TableHeaderCell>Email</TableHeaderCell>
-                {/* <TableHeaderCell>Date added</TableHeaderCell> */}
-                <TableHeaderCell>Status</TableHeaderCell>
-                <TableHeaderCell>Months subscribed</TableHeaderCell>
+                <TableHeaderCell>{t("settings.referrals.email")}</TableHeaderCell>
+                {/* <TableHeaderCell>{t('settings.referrals.date_added')}</TableHeaderCell> */}
+                <TableHeaderCell>{t("settings.referrals.status")}</TableHeaderCell>
+                <TableHeaderCell>{t("settings.referrals.months_subscribed")}</TableHeaderCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -169,7 +178,9 @@ const ReferralsTable = () => {
                     {item.date_added}
                   </TableCell> */}
                   <TableCell>{getBadgeColor(item.status)}</TableCell>
-                  <TableCell className="text-right text-lg">{item.subscription_time}</TableCell>
+                  <TableCell className="text-right text-lg">
+                    {item.subscription_time}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

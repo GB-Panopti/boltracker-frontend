@@ -23,6 +23,66 @@
     },
     "accountsettings": "Settings"
   },
+  "settings": {
+    "title": "Settings",
+    "tab_account": "Account",
+    "tab_referrals": "Referrals",
+    "tab_billing": "Billing",
+    "account": {
+      "error_invalid_email": "Invalid email.",
+      "error_same_email": "Email is the same as the current one!",
+      "email_changed_success": "Email changed successfully!",
+      "error_generic": "Something went wrong!",
+      "error_emails_not_equal": "Emails are not equal!",
+      "password_changed_success": "Password changed successfully!",
+      "error_passwords_not_equal": "Passwords are not equal!",
+      "redirect_message": "You will be redirected to the login screen after changing your email or password.",
+      "change_email_header": "Change email",
+      "current_email": "Current email",
+      "insert_email_label": "Insert Email",
+      "enter_email_placeholder": "Enter email",
+      "confirm_email_label": "Confirm Email",
+      "save_button": "Save",
+      "change_password_header": "Change password",
+      "insert_password_label": "Insert Password",
+      "new_password_placeholder": "Enter new password",
+      "confirm_password_label": "Confirm Password",
+      "confirm_password_placeholder": "Confirm new password"
+    },
+    "billing": {
+      "title": "Billing Information",
+      "subscription_type": "Subscription Type",
+      "subscribed_since": "Subscribed Since",
+      "billing_date": "Billing Date",
+      "billing_method": "Billing Method",
+      "cancel_subscription": "Cancel Subscription",
+      "confirm_cancel_title": "Cancel subscription?",
+      "confirm_cancel_description": "We’ll be sad to see you leave! If you cancel, your subscription will continue until the end of this billing cycle.",
+      "confirm_cancel_feedback": "Could you take a moment to share your reason for leaving?",
+      "confirm_cancel_feedback_placeholder": "Your feedback helps us improve our service.",
+      "go_back": "Wait, go back!",
+      "confirm_cancel_button": "Yes, Cancel"
+    },
+    "referrals": {
+      "header": "Referrals",
+      "description": "Refer your friends and get discounts on your monthly fee.",
+      "discount_info": "Every referral who subscribes for 3 months will give you a 10% discount on your next billing cycle.",
+      "monthly_fee": "Monthly fee",
+      "per_month": "per month",
+      "current_costs": "Current costs",
+      "cta_description": "Referrals who just reached 3 months will affect your next billing cycle.",
+      "marker_tooltip": "45% discount",
+      "base_fee": "Base fee",
+      "discountable_fee": "Discountable fee",
+      "applied_discount": "Applied discount",
+      "referred_users": "Referred users",
+      "referral_not_available": "Referral not available",
+      "copy_referral_code": "Copy referral code",
+      "email": "Email",
+      "status": "Status",
+      "months_subscribed": "Months subscribed"
+    }
+  },
   "track_product": {
     "title": "Track product",
     "header": "Track new product",
@@ -124,7 +184,8 @@
     "feature_4": "Historical performance analysis",
     "subscribe_cta": "👉 Subscribe now! 👈",
     "referral_placeholder": "Do you have a referral code? Enter it here!",
-    "referral_label": "Referral code"
+    "referral_label": "Referral code",
+    "return_home": "← Return to homepage"
   },
   "landing": {
     "pricing": "Pricing",
@@ -158,19 +219,5 @@
     "footer_rights": "All rights reserved.",
     "footer_built_with": "Built with ❤️ by the Panopti team.",
     "ex_vat": "ex. VAT"
-  },
-  "billing": {
-    "title": "Billing Information",
-    "subscription_type": "Subscription Type",
-    "subscribed_since": "Subscribed Since",
-    "billing_date": "Billing Date",
-    "billing_method": "Billing Method",
-    "cancel_subscription": "Cancel Subscription",
-    "confirm_cancel_title": "Cancel subscription?",
-    "confirm_cancel_description": "We’ll be sad to see you leave! If you cancel, your subscription will continue until the end of this billing cycle.",
-    "confirm_cancel_feedback": "Could you take a moment to share your reason for leaving?",
-    "confirm_cancel_feedback_placeholder": "Your feedback helps us improve our service.",
-    "go_back": "Wait, go back!",
-    "confirm_cancel_button": "Yes, Cancel"
   }
 }

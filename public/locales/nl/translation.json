@@ -24,6 +24,67 @@
     "accountsettings": "Instellingen"
   },
 
+  "settings": {
+    "title": "Instellingen",
+    "tab_account": "Account",
+    "tab_referrals": "Kortingscodes",
+    "tab_billing": "Facturering",
+    "account": {
+      "error_invalid_email": "Ongeldig e-mailadres.",
+      "error_same_email": "Het e-mailadres is hetzelfde als het huidige!",
+      "email_changed_success": "E-mailadres succesvol gewijzigd!",
+      "error_generic": "Er is iets misgegaan!",
+      "error_emails_not_equal": "E-mailadressen komen niet overeen!",
+      "password_changed_success": "Wachtwoord succesvol gewijzigd!",
+      "error_passwords_not_equal": "Wachtwoorden komen niet overeen!",
+      "redirect_message": "Je word doorgestuurd naar het inlogscherm na het wijzigen van je e-mailadres of wachtwoord.",
+      "change_email_header": "E-mailadres wijzigen",
+      "current_email": "Huidig e-mailadres",
+      "insert_email_label": "Voer e-mailadres in",
+      "enter_email_placeholder": "Voer e-mailadres in",
+      "confirm_email_label": "Bevestig e-mailadres",
+      "save_button": "Opslaan",
+      "change_password_header": "Wachtwoord wijzigen",
+      "insert_password_label": "Voer wachtwoord in",
+      "new_password_placeholder": "Voer nieuw wachtwoord in",
+      "confirm_password_label": "Bevestig wachtwoord",
+      "confirm_password_placeholder": "Bevestig nieuw wachtwoord"
+    },
+    "billing": {
+      "title": "Factureringsinformatie",
+      "subscription_type": "Abonnementstype",
+      "subscribed_since": "Geabonneerd Sinds",
+      "billing_date": "Factuurdatum",
+      "billing_method": "Betaalmethode",
+      "cancel_subscription": "Abonnement annuleren",
+      "confirm_cancel_title": "Abonnement annuleren?",
+      "confirm_cancel_description": "We zullen je missen! Als je annuleert, loopt je abonnement door tot het einde van deze factureringsperiode.",
+      "confirm_cancel_feedback": "Kun je een moment nemen om je reden voor vertrek te delen?",
+      "confirm_cancel_feedback_placeholder": "Je feedback helpt ons onze service te verbeteren.",
+      "go_back": "Wacht, ga terug!",
+      "confirm_cancel_button": "Ja, annuleren"
+    },
+    "referrals": {
+      "header": "Kortingscodes",
+      "description": "Nodig je netwerk uit en ontvang kortingen op je maandelijkse kosten.",
+      "discount_info": "Elke verwijzing die 3+ maanden lid blijft, geeft je 10% korting op je volgende factureringscyclus.",
+      "monthly_fee": "Maandelijkse kosten",
+      "per_month": "per maand",
+      "current_costs": "Huidige kosten",
+      "cta_description": "Verwijzingen die net 3 maanden lid zijn, activeren in je volgende factureringscyclus.",
+      "marker_tooltip": "45% korting",
+      "base_fee": "Basiskosten",
+      "discountable_fee": "Kosten die in aanmerking komen voor korting",
+      "applied_discount": "Toegepaste korting",
+      "referred_users": "Uitstaande uitnodigingen",
+      "referral_not_available": "Verwijzing niet beschikbaar",
+      "copy_referral_code": "Kopieer verwijzingscode",
+      "email": "E-mail",
+      "status": "Status",
+      "months_subscribed": "Maanden geabonneerd"
+    }
+  },
+
   "track_product": {
     "title": "Volg product",
     "header": "Volg nieuw product",
@@ -125,7 +186,8 @@
     "feature_4": "Historische prestatieanalyse",
     "subscribe_cta": "👉 Abonneer nu! 👈",
     "referral_placeholder": "Heb je een kortingscode? Voer het hier in!",
-    "referral_label": "Kortingscode"
+    "referral_label": "Kortingscode",
+    "return_home": "← Terug naar de homepage"
   },
   "landing": {
     "pricing": "Prijzen",
@@ -159,19 +221,5 @@
     "footer_rights": "Alle rechten voorbehouden.",
     "footer_built_with": "Gemaakt met ❤️ door het Panopti-team.",
     "ex_vat": "ex. btw"
-  },
-  "billing": {
-    "title": "Factureringsinformatie",
-    "subscription_type": "Abonnementstype",
-    "subscribed_since": "Geabonneerd Sinds",
-    "billing_date": "Factuurdatum",
-    "billing_method": "Betaalmethode",
-    "cancel_subscription": "Abonnement annuleren",
-    "confirm_cancel_title": "Abonnement annuleren?",
-    "confirm_cancel_description": "We zullen je missen! Als je annuleert, loopt je abonnement door tot het einde van deze factureringsperiode.",
-    "confirm_cancel_feedback": "Kun je een moment nemen om je reden voor vertrek te delen?",
-    "confirm_cancel_feedback_placeholder": "Je feedback helpt ons onze service te verbeteren.",
-    "go_back": "Wacht, ga terug!",
-    "confirm_cancel_button": "Ja, annuleren"
   }
 }

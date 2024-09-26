@@ -12,6 +12,18 @@ export const PricingSection = () => {
 
   return (
     <>
+      
+      
+      <div className="w-full">
+        <div className="relative pr-4 w-fit ml-6">
+                <h4 className="text-tremor-default font-medium text-lg ">
+                  <a href="/">
+                    <span className="absolute inset-0" aria-hidden={true} />
+                    {t("pricing.return_home")}
+                  </a>
+                </h4>
+                </div>   </div>
+
       <h1 className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl">
         {t("pricing.pricing_header")}
       </h1>
