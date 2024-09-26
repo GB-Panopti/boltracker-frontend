@@ -53,8 +53,8 @@ export default function LandingPage() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild className="bg-gb-primary-100">
               <Button variant="secondary">
-                🌍
-                <span className="hidden min-[520px]:inline">
+                {i18n.language === "nl" ? "🇳🇱" : "🇺🇸"}
+                <span className="hidden ml-2 min-[520px]:inline">
                   {i18n.language === "nl" ? "Nederlands" : "English"}
                 </span>
               </Button>
