@@ -4,6 +4,7 @@
   "back": "Back",
   "save": "Save",
   "range": "Range",
+  "send": "Send",
 
   "sidebar": {
     "overview": "Overview",
@@ -67,7 +68,7 @@
   },
 
   "login": {
-    "header": "Login or create an account",
+    "header": "Login to Panopti",
     "email": "Email",
     "email_placeholder": "john@company.com",
     "password": "Password",
@@ -75,7 +76,11 @@
     "terms": "By signing in, you agree to our ",
     "terms2": "terms of service",
     "and": "and",
-    "privacy": "privacy policy"
+    "privacy": "privacy policy",
+    "forgot_password": "Forgot password?",
+    "forgot_header": "What is your email? We will send you a link to reset your password.",
+    "reset_header": "Reset your password.",
+    "failed": "Invalid credentials."
   },
   "demo_mode": {
     "header": "DEMO MODE",
@@ -154,6 +159,14 @@
     "footer_rights": "All rights reserved.",
     "footer_built_with": "Built with ❤️ by the Panopti team.",
     "ex_vat": "ex. VAT"
+  },
+  "reset": {
+    "no_match": "Password does not match",
+    "success": "Password successfully reset",
+    "expired": "Link has expired"
+  },
+  "unknown" : {
+    "error": "An error occurred, please try again later.",
+    "server": "Server is not responding, please try again later."
   }
-  
 }
