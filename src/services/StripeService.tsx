@@ -7,9 +7,9 @@ const VERIFY_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stripe/verify
 
 class StripeService {
     createCheckoutSession() {
-        axios.get(CHECKOUT_API_URL, { withCredentials : true }).then(response => {
+        axios.get(CHECKOUT_API_URL, { withCredentials: true }).then(response => {
             window.location.assign(response.data);
-        }); 
+        });
     }
 
     verifyPayment(sessionId: string) {

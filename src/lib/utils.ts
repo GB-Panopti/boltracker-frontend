@@ -90,5 +90,5 @@ export const handleDemoLogin = async () => {
     if (response.status === 200) {
       window.location.href = siteConfig.baseLinks.dashboard;
     }
-  } catch {}
+  } catch { }
 };

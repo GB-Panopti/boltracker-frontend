@@ -9,10 +9,10 @@ import { cx } from "@/lib/utils"
 
 interface TooltipProps
   extends Omit<TooltipPrimitives.TooltipContentProps, "content" | "onClick">,
-    Pick<
-      TooltipPrimitives.TooltipProps,
-      "open" | "defaultOpen" | "onOpenChange" | "delayDuration"
-    > {
+  Pick<
+    TooltipPrimitives.TooltipProps,
+    "open" | "defaultOpen" | "onOpenChange" | "delayDuration"
+  > {
   content: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   side?: "bottom" | "left" | "top" | "right"

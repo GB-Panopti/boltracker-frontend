@@ -3,8 +3,8 @@ import axios from "axios";
 const LOGIN_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/login";
 const CHANGE_EMAIL_API_URL =
   process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/set-email";
-  const CHANGE_PASSWORD_API_URL =
-    process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/set-password";
+const CHANGE_PASSWORD_API_URL =
+  process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/set-password";
 const LOGOUT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/logout";
 const GET_USER_API_URL =
   process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/get-user";

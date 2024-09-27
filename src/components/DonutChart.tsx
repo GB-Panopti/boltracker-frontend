@@ -235,9 +235,9 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
             onClick={
               onValueChange && activeIndex !== undefined
                 ? () => {
-                    setActiveIndex(undefined)
-                    onValueChange(null)
-                  }
+                  setActiveIndex(undefined)
+                  onValueChange(null)
+                }
                 : undefined
             }
             margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
@@ -282,12 +282,12 @@ const DonutChart = React.forwardRef<HTMLDivElement, DonutChartProps>(
                 content={({ active, payload }) => {
                   const cleanPayload = payload
                     ? payload.map((item: any) => ({
-                        category: item.payload[category],
-                        value: item.value,
-                        color: categoryColors.get(
-                          item.payload[category],
-                        ) as AvailableChartColorsKeys,
-                      }))
+                      category: item.payload[category],
+                      value: item.value,
+                      color: categoryColors.get(
+                        item.payload[category],
+                      ) as AvailableChartColorsKeys,
+                    }))
                     : []
 
                   const payloadCategory: string = cleanPayload[0]?.category

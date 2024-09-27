@@ -120,7 +120,7 @@ export function DropdownUserProfile({
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
             <DropdownMenuItem
-              onClick={async () => {window.location.href = siteConfig.baseLinks.settings;}}
+              onClick={async () => { window.location.href = siteConfig.baseLinks.settings; }}
             >
               <RiSettings2Line className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800" aria-hidden="true" />
               {t("sidebar.accountsettings")}

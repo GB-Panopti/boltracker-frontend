@@ -44,14 +44,14 @@ const inputStyles = tv({
     enableStepper: {
       true: "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
     },
-    roundedLeftNone: {true: "rounded-l-none",},
-    roundedRightNone: {true: "rounded-r-none",},
+    roundedLeftNone: { true: "rounded-l-none", },
+    roundedRightNone: { true: "rounded-r-none", },
   },
 });
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputStyles> {
+  VariantProps<typeof inputStyles> {
   inputClassName?: string;
 }
 
@@ -81,10 +81,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={isPassword ? typeState : type}
           className={cx(
             inputStyles({
-              hasError, 
+              hasError,
               enableStepper,
               roundedRightNone,
-              roundedLeftNone, 
+              roundedLeftNone,
             }),
             {
               "pl-8": isSearch,

@@ -28,77 +28,77 @@ const ReferralsTable = () => {
     status: string;
     subscription_time: number | string;
   }> = [
-    {
-      id: 1,
-      email: "harry.potter@hogwarts.com",
-      date_added: "2024-01-15",
-      status: "Subscribed",
-      subscription_time: 8,
-    },
-    {
-      id: 2,
-      email: "frodo.baggins@shire.org",
-      date_added: "2024-02-10",
-      status: "Invited",
-      subscription_time: "-",
-    },
-    {
-      id: 3,
-      email: "tony.stark@starkindustries.com",
-      date_added: "2024-03-22",
-      status: "Newly subscribed",
-      subscription_time: 2,
-    },
-    {
-      id: 4,
-      email: "hermione.granger@hogwarts.com",
-      date_added: "2024-04-08",
-      status: "Canceled",
-      subscription_time: "-",
-    },
-    {
-      id: 5,
-      email: "luke.skywalker@rebellion.org",
-      date_added: "2024-05-18",
-      status: "Subscribed",
-      subscription_time: 6,
-    },
-    {
-      id: 6,
-      email: "peter.parker@dailybugle.com",
-      date_added: "2024-06-01",
-      status: "Invited",
-      subscription_time: "-",
-    },
-    {
-      id: 7,
-      email: "darth.vader@empire.com",
-      date_added: "2024-07-14",
-      status: "Canceled",
-      subscription_time: "-",
-    },
-    {
-      id: 8,
-      email: "bruce.wayne@wayneenterprises.com",
-      date_added: "2024-08-05",
-      status: "Subscribed",
-      subscription_time: 3,
-    },
-    {
-      id: 9,
-      email: "clark.kent@dailyplanet.com",
-      date_added: "2024-09-23",
-      status: "Newly subscribed",
-      subscription_time: 1,
-    },
-    {
-      id: 10,
-      email: "bilbo.baggins@shire.org",
-      date_added: "2024-10-07",
-      status: "Subscribed",
-      subscription_time: 5,
-    },
-  ];
+      {
+        id: 1,
+        email: "harry.potter@hogwarts.com",
+        date_added: "2024-01-15",
+        status: "Subscribed",
+        subscription_time: 8,
+      },
+      {
+        id: 2,
+        email: "frodo.baggins@shire.org",
+        date_added: "2024-02-10",
+        status: "Invited",
+        subscription_time: "-",
+      },
+      {
+        id: 3,
+        email: "tony.stark@starkindustries.com",
+        date_added: "2024-03-22",
+        status: "Newly subscribed",
+        subscription_time: 2,
+      },
+      {
+        id: 4,
+        email: "hermione.granger@hogwarts.com",
+        date_added: "2024-04-08",
+        status: "Canceled",
+        subscription_time: "-",
+      },
+      {
+        id: 5,
+        email: "luke.skywalker@rebellion.org",
+        date_added: "2024-05-18",
+        status: "Subscribed",
+        subscription_time: 6,
+      },
+      {
+        id: 6,
+        email: "peter.parker@dailybugle.com",
+        date_added: "2024-06-01",
+        status: "Invited",
+        subscription_time: "-",
+      },
+      {
+        id: 7,
+        email: "darth.vader@empire.com",
+        date_added: "2024-07-14",
+        status: "Canceled",
+        subscription_time: "-",
+      },
+      {
+        id: 8,
+        email: "bruce.wayne@wayneenterprises.com",
+        date_added: "2024-08-05",
+        status: "Subscribed",
+        subscription_time: 3,
+      },
+      {
+        id: 9,
+        email: "clark.kent@dailyplanet.com",
+        date_added: "2024-09-23",
+        status: "Newly subscribed",
+        subscription_time: 1,
+      },
+      {
+        id: 10,
+        email: "bilbo.baggins@shire.org",
+        date_added: "2024-10-07",
+        status: "Subscribed",
+        subscription_time: 5,
+      },
+    ];
 
   const getBadgeColor = (status: string) => {
     switch (status) {

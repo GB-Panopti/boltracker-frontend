@@ -8,33 +8,15 @@ import {
   motion,
   animate,
 } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import { PricingSection } from "@/components/ui/landing/pricing";
 import { siteConfig } from "@/app/siteConfig";
 import LoginService from "@/services/LoginService";
 import { LandingHeader } from "@/components/ui/landing/header";
-import { LandingFooter } from "@/components/ui/landing/footer";
 
 const COLORS_TOP = ["#694873", "#85b79d", "#119da4"];
 
 export default function PricingPage() {
-  const { t } = useTranslation();
   const color = useMotionValue(COLORS_TOP[0]);
-
-  const handleDemoLogin = async () => {
-    const demoEmail = "demo@panopti.nl";
-    const demoPassword = "password";
-
-    try {
-      // Log out the current user (if logged in) and log in with the demo credentials
-      await LoginService.logout();
-      const response = await LoginService.checkUser(demoEmail, demoPassword);
-
-      if (response.status === 200) {
-        window.location.href = siteConfig.baseLinks.dashboard;
-      }
-    } catch {}
-  };
 
   useEffect(() => {
     animate(color, COLORS_TOP, {

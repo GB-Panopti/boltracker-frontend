@@ -1,11 +1,8 @@
 "use client";
-import { siteConfig } from "@/app/siteConfig";
 import { Button } from "@/components/Button";
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated";
 import Image from "next/image";
 import { PricingSection } from "@/components/ui/landing/pricing";
-import LoginService from "@/services/LoginService";
-import { Logo } from "@/components/ui/icons/Logo";
 import {
   Accordion,
   AccordionContent,
@@ -15,7 +12,6 @@ import {
 import { Trans, useTranslation } from "react-i18next";
 import { handleDemoLogin } from "@/lib/utils";
 import { AuroraHero } from "../../components/ui/landing/hero";
-import { useState, useEffect } from "react";
 import { LandingHeader } from "@/components/ui/landing/header";
 import { LandingFooter } from "@/components/ui/landing/footer";
 
@@ -163,12 +159,12 @@ export default function LandingPage() {
 
 
         <div
-      id="pricing"
-      className="-skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]"
-    >
-      <div className="flex w-full flex-col items-center justify-center skew-y-3">
-        <PricingSection />
-        </div></div>
+          id="pricing"
+          className="-skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]"
+        >
+          <div className="flex w-full flex-col items-center justify-center skew-y-3">
+            <PricingSection />
+          </div></div>
 
       </section>
       <LandingFooter />

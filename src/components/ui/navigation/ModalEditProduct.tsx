@@ -55,7 +55,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({
     try {
       const productResponse = await ProductService.getProducts();
       setProducts(productResponse.data);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   async function handleProductEdit() {

@@ -45,8 +45,8 @@ function StockChart({ id, selectedDates }: CardProps) {
   const filteredStockData =
     selectedDatesInterval && Array.isArray(data)
       ? data.filter((datum) =>
-          isWithinInterval(new Date(datum.date), selectedDatesInterval),
-        )
+        isWithinInterval(new Date(datum.date), selectedDatesInterval),
+      )
       : [];
 
   const chartData: daataa[] = (filteredStockData as daataa[]).map((datum) => ({

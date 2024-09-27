@@ -23,7 +23,7 @@ export type ModalProps = {
   onSelect: () => void;
 };
 
-const ModalEditPassword: React.FC<ModalProps> = ({}: ModalProps) => {
+const ModalEditPassword: React.FC<ModalProps> = ({ }: ModalProps) => {
   const { user } = useAppData();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

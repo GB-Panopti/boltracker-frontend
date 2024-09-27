@@ -55,7 +55,7 @@ export default function BillingTab() {
           </p>
         </div>
       </div>
-      
+
       <div className="">
         <Dialog>
           <DialogTrigger asChild>
@@ -70,8 +70,8 @@ export default function BillingTab() {
               <DialogDescription className="mt-1 text-sm leading-6 grid-flow-row">
                 <div>{t("settings.billing.confirm_cancel_description")}</div>
                 <div>
-                    {t("settings.billing.confirm_cancel_feedback")}
-                    <Input type="text" placeholder={t("settings.billing.confirm_cancel_feedback_placeholder")} />
+                  {t("settings.billing.confirm_cancel_feedback")}
+                  <Input type="text" placeholder={t("settings.billing.confirm_cancel_feedback_placeholder")} />
                 </div>
               </DialogDescription>
             </DialogHeader>

@@ -51,7 +51,7 @@ export function CategoryBarCard({
             <p className="text-sm font-medium text-gray-900 dark:text-gray-50">
               {subtitle}
             </p>
-            <CategoryBar 
+            <CategoryBar
               values={values}
               colors={colors}
               marker={marker}
