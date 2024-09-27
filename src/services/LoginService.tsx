@@ -10,6 +10,8 @@ const GET_USER_API_URL =
   process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/get-user";
 const SAVE_EMAIL_API_URL =
   process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/save-email";
+const UNSUBSCRIBE_API_URL =
+  process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/unsubscribe";
 
 class LoginService {
   checkUser(name: string, password: string) {
@@ -63,6 +65,15 @@ class LoginService {
       { withCredentials: true },
     );
   }
+  
+  cancelSubscription() {
+    return axios.post(
+      UNSUBSCRIBE_API_URL,
+      {},
+      { withCredentials: true },
+    );
+  }
+  
 }
 
 const loginServiceInstance = new LoginService();

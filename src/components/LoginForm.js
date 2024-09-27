@@ -118,6 +118,8 @@ export default function LoginForm() {
 
   async function handleLogin(event) {
     event.preventDefault(); // Prevent default form submission behavior
+    setError(false); // Reset error state
+    setErrorMessage(""); // Reset error message
 
     try {
       // Regex check if username is email

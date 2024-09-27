@@ -4,14 +4,23 @@ import { useTranslation } from "react-i18next";
 import { RiDoorClosedLine } from "@remixicon/react";
 import { useAppData } from "@/app/contexts/AppProvider";
 import { Input } from "@/components/Input";
+import LoginService from "@/services/LoginService";
 
 export default function BillingTab() {
   const { t } = useTranslation();
   const { user } = useAppData();
 
-  const handleCancelSubscription = () => {
-    // Call the API to cancel the subscription
-    console.log("Subscription Canceled");
+  async function handleCancelSubscription() {
+    const unsubscribe = await LoginService.cancelSubscription();
+    if (unsubscribe.status === 200) {
+      alert("Sorry to see you go! Your subscription was cancelled successfully. You will be able to use Panopti until the end of your billing period.");
+    } else if (unsubscribe.status === 500) {
+      alert("A server error occurred while cancelling your subscription. Please try again later. If the problem persists, please contact support at info@panopti.nl.");
+    }
+    else {
+      alert("An error occurred while cancelling your subscription. Please try again later. If the problem persists, please contact support at info@panopti.nl.");
+    }
+
   };
 
   return (

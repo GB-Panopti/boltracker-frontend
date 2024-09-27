@@ -33,4 +33,9 @@ export type ProductInfo = {
 export type User = {
   username: string;
   subscription: number;
+  subscriptionName: string;
+  subscriptionStatus: string;
+  billingCycleEnd: Date;
+  subscribedSince: Date;
+  billingMethod: string;
 };
