@@ -4,7 +4,16 @@ import { Button } from "@/components/Button";
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated";
 import stripeServiceInstance from "@/services/StripeService";
 import { RiHome2Line } from "@remixicon/react";
+import Script from "next/script";
 import React, { useState } from "react";
+
+
+declare global {
+  interface Window {
+    trackdesk?: (...args: any[]) => void;
+    TrackdeskObject?: any;
+  }
+}
 
 export default function ThankYouPage() {
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -23,15 +32,55 @@ export default function ThankYouPage() {
         stripeServiceInstance.verifyPayment(sessionId).then((response) => {
           if (response.data) {
             setEmail(response.data);
-            console.log(response.data); 
           }});
       } else {
         window.location.href = siteConfig.baseLinks.welcome;
       }
   }, []);
 
+
+  React.useEffect(() => {
+    // Run this effect when the email has been set
+    console.log('Email:', email);
+    if (email) {
+      (function (t: Window & { [key: string]: any }, d: string, k: string) {
+        (t[k] = t[k] || []).push(d);
+        t[d] =
+          t[d] ||
+          t[k].f ||
+          function () {
+            (t[d].q = t[d].q || []).push(arguments);
+          };
+      })(window, 'trackdesk', 'TrackdeskObject');
+
+      console.log('Tracking externalCid with email:', email);
+      console.log(window.trackdesk)
+      window.trackdesk?.('panopti', 'externalCid', {
+        externalCid: email, // Use the email from state here
+        revenueOriginId: '8d168061-5963-4ae6-9598-90bb228d99b7',
+      });
+    }
+  }, [email]); // This effect runs when `email` is updated
+
   return (
     <>
+
+          <Script
+                  src="//cdn.trackdesk.com/tracking.js"
+                  strategy="afterInteractive" // This ensures the script is loaded after the page is interactive
+                />
+        {/* Add inline script to initialize trackdesk */}
+        <Script id="trackdesk-init" strategy="afterInteractive">
+        {`
+          (function(t,d,k){(t[k]=t[k]||[]).push(d);t[d]=t[d]||t[k].f||function(){(t[d].q=t[d].q||[]).push(arguments)}})(window,"trackdesk","TrackdeskObject");
+
+          trackdesk('panopti', 'externalCid', {
+            externalCid: "YOUR_EXT_CID",
+            revenueOriginId: '8d168061-5963-4ae6-9598-90bb228d99b7'
+          });
+        `}
+      </Script>
+
       <div className="min-h-screen bg-gradient-to-r from-gb-primary-600 via-gb-primarylite-800 to-gb-primary-600 flex items-center justify-center">
         <div className="flex w-full flex-col items-center justify-center text-left">
           {/* Heading */}

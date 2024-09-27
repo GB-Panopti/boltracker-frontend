@@ -24,6 +24,7 @@ import {
 } from "@/components/Dropdown";
 import { changeLanguage } from "i18next";
 import { RiStarFill, RiStarHalfFill } from "@remixicon/react";
+import Script from "next/script";
 
 export default function LandingPage() {
   const { t } = useTranslation();
@@ -44,6 +45,18 @@ export default function LandingPage() {
 
   return (
     <>
+          {/* Add inline script to initialize trackdesk */}
+          <Script id="trackdesk-init" strategy="afterInteractive">
+        {`
+          (function(t,d,k){
+            (t[k]=t[k]||[]).push(d);
+            t[d]=t[d]||t[k].f||function(){
+              (t[d].q=t[d].q||[]).push(arguments)
+            }
+          })(window,"trackdesk","TrackdeskObject");
+          trackdesk('panopti', 'click');
+        `}
+      </Script>
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between  bg-gb-secondary-600 px-2 shadow-sm sm:gap-x-6 sm:px-4 border-b-2 border-b-gray100">
         <div className="text-gray-200 font-extrabold ml-4 max-w-xs">
           <Logo className="!text-2xl" />

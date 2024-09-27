@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/ErrorBoundary.js"
-  ],
+, "src/app/(public)/thankyou/page.tsx"  ],
   "exclude": ["node_modules"]
 }
