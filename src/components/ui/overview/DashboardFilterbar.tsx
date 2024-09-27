@@ -43,12 +43,13 @@ export function Filterbar({
     // add more locales here if needed
   };
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [locale, setLocale] = useState(localeMap[i18n.language]);
 
   useEffect(() => {
     // Update the date-fns locale when the i18n language changes
     setLocale(localeMap[i18n.language]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n.language]);
 
   return (

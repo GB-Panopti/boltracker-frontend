@@ -24,12 +24,6 @@ export type daataa = {
   price: number;
 };
 
-const data2: daataa[] = [
-  { date: new Date("2024-08-01"), stock: 10, price: 100 },
-  { date: new Date("2024-08-02"), stock: 20, price: 200 },
-  { date: new Date("2024-08-03"), stock: 15, price: 150 },
-];
-
 function StockChart({ id, selectedDates }: CardProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
@@ -117,6 +111,7 @@ function StockChart({ id, selectedDates }: CardProps) {
         .attr("stroke-width", 1.5)
         .attr("d", line);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <svg ref={svgRef}></svg>;

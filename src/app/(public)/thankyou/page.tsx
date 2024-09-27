@@ -52,7 +52,7 @@ export default function ThankYouPage() {
 
           {/* Feedback Encouragement */}
           <p className="mt-3 max-w-xl text-gray-200">
-            If you need help or have feedback, don't hesitate to reach out via the feedback button in your dashboard. We’re always here to assist! 💬
+            If you need help or have feedback, don't hesitate to reach out via the feedback button in your dashboard. We're always here to assist! 💬
           </p>
 
           {/* Confirmation Checkbox */}

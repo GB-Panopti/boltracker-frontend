@@ -121,6 +121,7 @@ export default function Overview() {
       .then((response) => {
         setRawStockData(response.data);
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDates]);
 
   return (

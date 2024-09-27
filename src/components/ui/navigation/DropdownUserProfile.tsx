@@ -29,7 +29,6 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import * as React from "react";
 import i18next from "i18next";
-import ModalEditPassword from "./ModalEditPassword";
 import { TourContext } from "../../../app/(main)/tutorial";
 
 import { useTranslation } from "react-i18next";
@@ -50,8 +49,6 @@ export function DropdownUserProfile({
   const { theme, setTheme } = useTheme();
   const { restartTour } = React.useContext(TourContext);
   const { t } = useTranslation();
-
-  const [, setHasOpenDialog] = React.useState(false);
 
   const test = () => {
     restartTour();
@@ -188,7 +185,6 @@ export function DropdownUserProfile({
                 if (response.status === 200) {
                   window.location.href = siteConfig.baseLinks.login;
                 } else {
-                  console.error("Something went wrong with logging out!");
                   throw new Error(response.statusText);
                 }
               }}

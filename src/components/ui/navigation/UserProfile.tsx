@@ -4,9 +4,7 @@ import { Button } from "@/components/Button";
 import { cx, focusRing } from "@/lib/utils";
 import {
   RiHome2Fill,
-  RiHome2Line,
   RiHome3Line,
-  RiHomeSmileFill,
   RiMore2Fill,
 } from "@remixicon/react";
 
