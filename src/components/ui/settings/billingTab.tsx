@@ -8,7 +8,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
-} from "@/components/Dialog"; // Assuming you have a Dialog component
+} from "@/components/Dialog";
 import { useTranslation } from "react-i18next";
 import { RiDoorClosedLine } from "@remixicon/react";
 import { useAppData } from "@/app/contexts/AppProvider";
@@ -20,15 +20,15 @@ export default function BillingTab() {
   const { t } = useTranslation();
   const { user } = useAppData();
 
-  // State for formatted subscription details
-  const [subscriptionType, setSubscriptionType] =
-    useState<string>("non-active");
+  // State for formatted subscription details, reason, and comment
+  const [subscriptionType, setSubscriptionType] = useState<string>("non-active");
   const [subscribedSince, setSubscribedSince] = useState<string>("?");
   const [billingDate, setBillingDate] = useState<string>("?");
+  const [unsubscribeReason, setUnsubscribeReason] = useState<string>(""); // State for reason
+  const [unsubscribeComment, setUnsubscribeComment] = useState<string>(""); // State for comment
 
   const formatDate = (timestamp: string | number): string => {
     const date = new Date(Number(timestamp) * 1000);
-    console.log(date);
     return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -61,18 +61,18 @@ export default function BillingTab() {
   }, [user, t]);
 
   async function handleCancelSubscription() {
-    const unsubscribe = await LoginService.cancelSubscription();
-    if (unsubscribe.status === 200) {
+    const response = await LoginService.cancelSubscription(unsubscribeReason, unsubscribeComment);
+    if (response.status === 200) {
       alert(
-        "Sorry to see you go! Your subscription was cancelled successfully. You will be able to use Panopti until the end of your billing period."
+        t("settings.billing.subscription_cancel_success")
       );
-    } else if (unsubscribe.status === 500) {
+    } else if (response.status === 500) {
       alert(
-        "A server error occurred while cancelling your subscription. Please try again later. If the problem persists, please contact support at info@panopti.nl."
+        t("settings.billing.subscription_cancel_server_error")
       );
     } else {
       alert(
-        "An error occurred while cancelling your subscription. Please try again later. If the problem persists, please contact support at info@panopti.nl."
+        t("settings.billing.subscription_cancel_error")
       );
     }
   }
@@ -129,13 +129,42 @@ export default function BillingTab() {
               </DialogTitle>
               <DialogDescription className="mt-1 text-sm leading-6 grid-flow-row">
                 <div>{t("settings.billing.confirm_cancel_description")}</div>
+                
+                {/* Dropdown for reasons */}
                 <div>
-                  {t("settings.billing.confirm_cancel_feedback")}
+                  <label htmlFor="unsubscribe-reason" className="block text-sm font-medium text-gray-700">
+                    {t("settings.billing.confirm_cancel_reason")}
+                  </label>
+                  <select
+                    id="unsubscribe-reason"
+                    name="unsubscribe-reason"
+                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    value={unsubscribeReason}
+                    onChange={(e) => setUnsubscribeReason(e.target.value)}  // Set the selected reason
+                  >
+                    <option value="">{t("settings.billing.select_reason")}</option>
+                    <option value="customer_service">{t("settings.billing.reason.customer_service")}</option>
+                    <option value="low_quality">{t("settings.billing.reason.low_quality")}</option>
+                    <option value="missing_features">{t("settings.billing.reason.missing_features")}</option>
+                    <option value="switched_service">{t("settings.billing.reason.switched_service")}</option>
+                    <option value="too_complex">{t("settings.billing.reason.too_complex")}</option>
+                    <option value="too_expensive">{t("settings.billing.reason.too_expensive")}</option>
+                    <option value="unused">{t("settings.billing.reason.unused")}</option>
+                    <option value="other">{t("settings.billing.reason.other")}</option>
+                  </select>
+                </div>
+
+                {/* Input for comment */}
+                <div className="mt-4">
+                  <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
+                    {t("settings.billing.confirm_cancel_feedback")}
+                  </label>
                   <Input
+                    id="comment"
                     type="text"
-                    placeholder={t(
-                      "settings.billing.confirm_cancel_feedback_placeholder"
-                    )}
+                    placeholder={t("settings.billing.confirm_cancel_feedback_placeholder")}
+                    value={unsubscribeComment}
+                    onChange={(e) => setUnsubscribeComment(e.target.value)}  // Set the comment
                   />
                 </div>
               </DialogDescription>

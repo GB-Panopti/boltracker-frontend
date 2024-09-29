@@ -21,7 +21,7 @@ class LoginService {
         username: name,
         password: password,
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -36,7 +36,7 @@ class LoginService {
         username: email,
         password: "[HIDDEN]",
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -47,7 +47,7 @@ class LoginService {
         username: "[HIDDEN]",
         password: password,
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
 
@@ -62,18 +62,17 @@ class LoginService {
         email: emailAddr,
         source: source,
       },
-      { withCredentials: true },
+      { withCredentials: true }
     );
   }
-  
-  cancelSubscription() {
+
+  cancelSubscription(reason: string, comment: string) {
     return axios.post(
       UNSUBSCRIBE_API_URL,
-      {},
-      { withCredentials: true },
+      { reason: reason, comment: comment },
+      { withCredentials: true }
     );
   }
-  
 }
 
 const loginServiceInstance = new LoginService();
