@@ -12,6 +12,10 @@ const SAVE_EMAIL_API_URL =
   process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/save-email";
 const UNSUBSCRIBE_API_URL =
   process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/unsubscribe";
+const FORGOTTEN_PASSWORD_API_URL = 
+  process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/forgotten-password";
+const RESET_PASSWORD_API_URL = 
+  process.env.NEXT_PUBLIC_SERVER_HOST + "/api/auth/reset-password";
 
 class LoginService {
   checkUser(name: string, password: string) {
@@ -72,6 +76,20 @@ class LoginService {
       { reason: reason, comment: comment },
       { withCredentials: true }
     );
+  }
+
+  forgottenPassword(email: string) {
+    return axios.get(FORGOTTEN_PASSWORD_API_URL + "?email=" + email);
+  }
+
+  resetPassword(password: string) {
+    // get the seed from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const seed = urlParams.get("seed");
+    return axios.post(RESET_PASSWORD_API_URL, {
+      seed: seed,
+      password: password
+    });
   }
 }
 

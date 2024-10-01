@@ -63,13 +63,14 @@ export function ModalAddProduct({
   return (
     <>
       <Dialog onOpenChange={onOpenChange}>
-        <DialogTrigger>
+        <DialogTrigger className="w-[100%]">
           <div
-            onSelect={(event) => {
-              event.preventDefault();
+            onClick={() => {
               onSelect();
             }}
+            className="flex items-center gap-x-2.5 rounded-md px-2 py-1.5 text-md font-medium transition hover:dark:bg-gray-900 bg-gb-primarylite-600 text-gb-primarylite-50 ring-gb-primarylite-600/30 dark:bg-gb-primarylite-400/20 dark:text-gb-primarylite-400 dark:ring-gb-primarylite-400/20 hover:bg-gb-secondary-400"
           >
+          <RiRadarLine className="size-5 shrink-0" aria-hidden="true" /> 
             {itemName}
           </div>
         </DialogTrigger>

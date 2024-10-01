@@ -4,6 +4,7 @@
   "back": "Terug",
   "save": "Opslaan",
   "range": "Bereik",
+  "send": "Verstuur",
 
   "sidebar": {
     "overview": "Overzicht",
@@ -150,7 +151,7 @@
   },
 
   "login": {
-    "header": "Log in of maak een account aan",
+    "header": "Log in bij Panopti",
     "email": "E-mail",
     "email_placeholder": "jaap@bedrijf.nl",
     "password": "Wachtwoord",
@@ -158,7 +159,11 @@
     "terms": "Door in te loggen ga je akkoord met de ",
     "terms2": "algemene voorwaarden",
     "and": "en",
-    "privacy": "privacybeleid"
+    "privacy": "privacybeleid",
+    "forgot_password": "Wachtwoord vergeten?",
+    "forgot_header": "Wat is je e-mailadres? Dan sturen we je binnen enkele minuten een linkje om een nieuw wachtwoord in te stellen.",
+    "reset_header": "Reset je wachtwoord.",
+    "failed": "Ongeldige inloggegevens."
   },
   "demo_mode": {
     "header": "DEMO MODUS",
@@ -242,5 +247,14 @@
     "footer_rights": "Alle rechten voorbehouden.",
     "footer_built_with": "Gemaakt met ❤️ door het Panopti-team.",
     "ex_vat": "ex. btw"
+  },
+  "reset": {
+    "no_match": "Wachtwoord komt niet overeen",
+    "success": "Wachtwoord succesvol gereset",
+    "expired": "Link is verlopen"
+  },
+  "unknown" : {
+    "error": "Er is een fout opgetreden, probeer het later opnieuw.",
+    "server": "Server reageert niet, probeer het later opnieuw."
   }
 }
