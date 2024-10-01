@@ -25,9 +25,9 @@ export default function SettingsgPage() {
               <TabsTrigger value="tab1">
                 {t("settings.tab_account")}
               </TabsTrigger>
-              <TabsTrigger value="tab2">
+              {/* <TabsTrigger value="tab2">
                 {t("settings.tab_referrals")}
-              </TabsTrigger>
+              </TabsTrigger> */}
               <TabsTrigger value="tab3">
                 {t("settings.tab_billing")}
               </TabsTrigger>

@@ -59,10 +59,31 @@
       "cancel_subscription": "Abonnement annuleren",
       "confirm_cancel_title": "Abonnement annuleren?",
       "confirm_cancel_description": "We zullen je missen! Als je annuleert, loopt je abonnement door tot het einde van deze factureringsperiode.",
-      "confirm_cancel_feedback": "Kun je een moment nemen om je reden voor vertrek te delen?",
+      "confirm_cancel_reason": "Kun je een moment nemen om je reden voor vertrek te delen?",
+      "confirm_cancel_feedback": "Feedback (optioneel)",
       "confirm_cancel_feedback_placeholder": "Je feedback helpt ons onze service te verbeteren.",
+      "select_reason": "Selecteer een reden",
+      "reason": {
+        "customer_service": "Slechte klantenservice",
+        "low_quality": "Lage kwaliteit",
+        "missing_features": "Ontbrekende belangrijke functies",
+        "switched_service": "Ik ben overgestapt naar een andere dienst",
+        "too_complex": "Te complex in gebruik",
+        "too_expensive": "Te duur",
+        "unused": "Ik gebruik de dienst niet",
+        "other": "Overig"
+      },
       "go_back": "Wacht, ga terug!",
-      "confirm_cancel_button": "Ja, annuleren"
+      "confirm_cancel_button": "Ja, annuleren",
+      "subscription_cancel_success": "Je abonnement is succesvol geannuleerd.",
+      "subscription_cancel_error": "Er is een probleem opgetreden bij het annuleren van je abonnement. Probeer het opnieuw.",
+      "subscription_cancel_server_error": "Er is een serverfout opgetreden. Probeer het later opnieuw.",
+      "subscription": {
+        "premium": "Premium",
+        "premium_canceled": "Premium (Geannuleerd)",
+        "demo": "Demo",
+        "non_active": "Niet Actief"
+      }
     },
     "referrals": {
       "header": "Kortingscodes",

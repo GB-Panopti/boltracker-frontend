@@ -21,7 +21,8 @@ export default function BillingTab() {
   const { user } = useAppData();
 
   // State for formatted subscription details, reason, and comment
-  const [subscriptionType, setSubscriptionType] = useState<string>("non-active");
+  const [subscriptionType, setSubscriptionType] =
+    useState<string>("non-active");
   const [subscribedSince, setSubscribedSince] = useState<string>("?");
   const [billingDate, setBillingDate] = useState<string>("?");
   const [unsubscribeReason, setUnsubscribeReason] = useState<string>(""); // State for reason
@@ -39,10 +40,20 @@ export default function BillingTab() {
   useEffect(() => {
     if (user?.subscriptionDetails) {
       const subscriptionStatus = user.subscriptionDetails.subscriptionStatus;
-      const subscriptionType =
-        subscriptionStatus === "active"
-          ? "Premium"
-          : t("settings.billing.demo");
+      let subscriptionType;
+
+      if (
+        (subscriptionStatus === "active" ||
+        subscriptionStatus === "trialing") && user.subscriptionDetails.subscriptionCancelAtPeriodEnd === "false"
+      ) {
+        subscriptionType = t('settings.billing.subscription.premium');
+      } else if (
+        user.subscriptionDetails.subscriptionCancelAtPeriodEnd === "true"
+      ) {
+        subscriptionType = t('settings.billing.subscription.premium_canceled');
+      } else {
+        subscriptionType = t('settings.billing.subscription.demo');
+      }
 
       setSubscriptionType(subscriptionType);
 
@@ -61,19 +72,16 @@ export default function BillingTab() {
   }, [user, t]);
 
   async function handleCancelSubscription() {
-    const response = await LoginService.cancelSubscription(unsubscribeReason, unsubscribeComment);
+    const response = await LoginService.cancelSubscription(
+      unsubscribeReason,
+      unsubscribeComment
+    );
     if (response.status === 200) {
-      alert(
-        t("settings.billing.subscription_cancel_success")
-      );
+      alert(t("settings.billing.subscription_cancel_success"));
     } else if (response.status === 500) {
-      alert(
-        t("settings.billing.subscription_cancel_server_error")
-      );
+      alert(t("settings.billing.subscription_cancel_server_error"));
     } else {
-      alert(
-        t("settings.billing.subscription_cancel_error")
-      );
+      alert(t("settings.billing.subscription_cancel_error"));
     }
   }
 
@@ -117,10 +125,26 @@ export default function BillingTab() {
       <div className="">
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="flex mt-20 bg-red-600 text-white hover:bg-red-700">
-              <RiDoorClosedLine className="size-5 mr-1" />
-              {t("settings.billing.cancel_subscription")}
-            </Button>
+            {(() => {
+              if (user && user.subscription === 0) {
+                return (
+                  <Button
+                    className="flex mt-20 bg-red-600 text-white cursor-not-allowed"
+                    disabled
+                  >
+                    <RiDoorClosedLine className="size-5 mr-1" />
+                    {t("settings.billing.cancel_subscription")}
+                  </Button>
+                );
+              } else {
+                return (
+                  <Button className="flex mt-20 bg-red-600 text-white hover:bg-red-700">
+                    <RiDoorClosedLine className="size-5 mr-1" />
+                    {t("settings.billing.cancel_subscription")}
+                  </Button>
+                );
+              }
+            })()}
           </DialogTrigger>
           <DialogContent className="sm:max-w-lg">
             <DialogHeader>
@@ -129,10 +153,13 @@ export default function BillingTab() {
               </DialogTitle>
               <DialogDescription className="mt-1 text-sm leading-6 grid-flow-row">
                 <div>{t("settings.billing.confirm_cancel_description")}</div>
-                
+
                 {/* Dropdown for reasons */}
-                <div>
-                  <label htmlFor="unsubscribe-reason" className="block text-sm font-medium text-gray-700">
+                <div className="mt-4">
+                  <label
+                    htmlFor="unsubscribe-reason"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     {t("settings.billing.confirm_cancel_reason")}
                   </label>
                   <select
@@ -140,31 +167,54 @@ export default function BillingTab() {
                     name="unsubscribe-reason"
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     value={unsubscribeReason}
-                    onChange={(e) => setUnsubscribeReason(e.target.value)}  // Set the selected reason
+                    onChange={(e) => setUnsubscribeReason(e.target.value)} // Set the selected reason
                   >
-                    <option value="">{t("settings.billing.select_reason")}</option>
-                    <option value="customer_service">{t("settings.billing.reason.customer_service")}</option>
-                    <option value="low_quality">{t("settings.billing.reason.low_quality")}</option>
-                    <option value="missing_features">{t("settings.billing.reason.missing_features")}</option>
-                    <option value="switched_service">{t("settings.billing.reason.switched_service")}</option>
-                    <option value="too_complex">{t("settings.billing.reason.too_complex")}</option>
-                    <option value="too_expensive">{t("settings.billing.reason.too_expensive")}</option>
-                    <option value="unused">{t("settings.billing.reason.unused")}</option>
-                    <option value="other">{t("settings.billing.reason.other")}</option>
+                    <option value="">
+                      {t("settings.billing.select_reason")}
+                    </option>
+                    <option value="customer_service">
+                      {t("settings.billing.reason.customer_service")}
+                    </option>
+                    <option value="low_quality">
+                      {t("settings.billing.reason.low_quality")}
+                    </option>
+                    <option value="missing_features">
+                      {t("settings.billing.reason.missing_features")}
+                    </option>
+                    <option value="switched_service">
+                      {t("settings.billing.reason.switched_service")}
+                    </option>
+                    <option value="too_complex">
+                      {t("settings.billing.reason.too_complex")}
+                    </option>
+                    <option value="too_expensive">
+                      {t("settings.billing.reason.too_expensive")}
+                    </option>
+                    <option value="unused">
+                      {t("settings.billing.reason.unused")}
+                    </option>
+                    <option value="other">
+                      {t("settings.billing.reason.other")}
+                    </option>
                   </select>
                 </div>
 
                 {/* Input for comment */}
-                <div className="mt-4">
-                  <label htmlFor="comment" className="block text-sm font-medium text-gray-700">
+                <div className="mt-2">
+                  <label
+                    htmlFor="comment"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     {t("settings.billing.confirm_cancel_feedback")}
                   </label>
                   <Input
                     id="comment"
                     type="text"
-                    placeholder={t("settings.billing.confirm_cancel_feedback_placeholder")}
+                    placeholder={t(
+                      "settings.billing.confirm_cancel_feedback_placeholder"
+                    )}
                     value={unsubscribeComment}
-                    onChange={(e) => setUnsubscribeComment(e.target.value)}  // Set the comment
+                    onChange={(e) => setUnsubscribeComment(e.target.value)} // Set the comment
                   />
                 </div>
               </DialogDescription>

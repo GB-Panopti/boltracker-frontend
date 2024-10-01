@@ -36,6 +36,7 @@ export type User = {
   subscriptionDetails: {
     subscribedSince: string;
     subscriptionStatus: string;
+    subscriptionCancelAtPeriodEnd: string;
     billingCycleEnd: string;
   };
 };

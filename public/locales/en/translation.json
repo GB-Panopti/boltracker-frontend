@@ -58,10 +58,31 @@
       "cancel_subscription": "Cancel Subscription",
       "confirm_cancel_title": "Cancel subscription?",
       "confirm_cancel_description": "We’ll be sad to see you leave! If you cancel, your subscription will continue until the end of this billing cycle.",
-      "confirm_cancel_feedback": "Could you take a moment to share your reason for leaving?",
+      "confirm_cancel_reason": "Could you take a moment to share your reason for leaving?",
+      "confirm_cancel_feedback": "Feedback",
       "confirm_cancel_feedback_placeholder": "Your feedback helps us improve our service.",
+      "select_reason": "Select a reason",
+      "reason": {
+        "customer_service": "Poor customer service",
+        "low_quality": "Low quality",
+        "missing_features": "Missing key features",
+        "switched_service": "I switched to another service",
+        "too_complex": "Too complex to use",
+        "too_expensive": "Too expensive",
+        "unused": "I don't use the service",
+        "other": "Other"
+      },
       "go_back": "Wait, go back!",
-      "confirm_cancel_button": "Yes, Cancel"
+      "confirm_cancel_button": "Yes, Cancel",
+      "subscription_cancel_success": "Your subscription has been successfully canceled.",
+      "subscription_cancel_error": "There was an issue canceling your subscription. Please try again.",
+      "subscription_cancel_server_error": "A server error occurred. Please try again later.",
+      "subscription": {
+        "premium": "Premium",
+        "premium_canceled": "Premium (Canceled)",
+        "demo": "Demo",
+        "non_active": "Non-Active"
+      }
     },
     "referrals": {
       "header": "Referrals",
