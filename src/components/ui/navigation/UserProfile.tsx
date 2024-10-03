@@ -4,10 +4,8 @@ import { Button } from "@/components/Button";
 import { cx, focusRing } from "@/lib/utils";
 import {
   RiHome2Fill,
-  RiHome2Line,
-  RiHome3Line,
-  RiHomeSmileFill,
   RiMore2Fill,
+  RiUserSmileLine,
 } from "@remixicon/react";
 
 import { DropdownUserProfile } from "./DropdownUserProfile";
@@ -33,7 +31,7 @@ export const UserProfileDesktop = () => {
             className="flex size-8 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs text-gray-700 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
             aria-hidden="true"
           >
-            <Icon icon={RiHome3Line} />
+            <Icon icon={RiUserSmileLine} />
           </span>
           <span>{t("sidebar.account")}</span>
         </span>

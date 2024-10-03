@@ -29,11 +29,11 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import * as React from "react";
 import i18next from "i18next";
-import ModalEditPassword from "./ModalEditPassword";
 import { TourContext } from "../../../app/(main)/tutorial";
 
 import { useTranslation } from "react-i18next";
 import { useAppData } from "@/app/contexts/AppProvider";
+import { siteConfig } from "@/app/siteConfig";
 
 export type DropdownUserProfileProps = {
   children: React.ReactNode;
@@ -49,8 +49,6 @@ export function DropdownUserProfile({
   const { theme, setTheme } = useTheme();
   const { restartTour } = React.useContext(TourContext);
   const { t } = useTranslation();
-
-  const [, setHasOpenDialog] = React.useState(false);
 
   const test = () => {
     restartTour();
@@ -119,20 +117,10 @@ export function DropdownUserProfile({
               </DropdownMenuSubMenuContent>
             </DropdownMenuSubMenu>
             <DropdownMenuItem
-              onClick={(e) => {
-                e.preventDefault(); // Prevent default action to keep dropdown open
-                setHasOpenDialog(true);
-              }}
+              onClick={async () => { window.location.href = siteConfig.baseLinks.settings; }}
             >
-              <RiSettings2Line
-                className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800"
-                aria-hidden="true"
-              />
-              <ModalEditPassword
-                onSelect={() => {
-                  setHasOpenDialog(false); // Close the modal after action
-                }}
-              />
+              <RiSettings2Line className="mb-1 ml-1 mr-2 size-4 shrink-0 text-gray-800" aria-hidden="true" />
+              {t("sidebar.accountsettings")}
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
@@ -195,9 +183,9 @@ export function DropdownUserProfile({
                 // Delete the session cookie
                 const response = await loginServiceInstance.logout();
                 if (response.status === 200) {
-                  window.location.href = "/login";
+                  window.location.href = siteConfig.baseLinks.login;
                 } else {
-                  console.log("Something went wrong with login out!");
+                  throw new Error(response.statusText);
                 }
               }}
             >

@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosResponse } from "axios";
 import * as Sentry from "@sentry/nextjs";
 
 // const EDIT_PRODUCT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/feedback";
 
 class MetaService {
   sendFeedback(feedback: any): void {
-    console.log("sentrying feedback " + feedback);
     Sentry.captureFeedback({
       name: feedback.name,
       email: feedback.email,

@@ -8,26 +8,27 @@ import React, { useState } from "react";
 
 export default function ThankYouPage() {
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const [email , setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsConfirmed(e.target.checked);
   };
 
-  React.useEffect(() => { 
-      // Retrieve session_id from URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const sessionId = urlParams.get('session_id');
+  React.useEffect(() => {
+    // Retrieve session_id from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id');
 
-      if (sessionId) {
-        stripeServiceInstance.verifyPayment(sessionId).then((response) => {
-          if (response.data) {
-            setEmail(response.data);
-            console.log(response.data); 
-          }});
-      } else {
-        window.location.href = siteConfig.baseLinks.welcome;
-      }
+    if (sessionId) {
+      stripeServiceInstance.verifyPayment(sessionId).then((response) => {
+        if (response.data) {
+          setEmail(response.data);
+          console.log(response.data);
+        }
+      });
+    } else {
+      window.location.href = siteConfig.baseLinks.welcome;
+    }
   }, []);
 
   return (
@@ -51,7 +52,7 @@ export default function ThankYouPage() {
 
           {/* Feedback Encouragement */}
           <p className="mt-3 max-w-xl text-gray-200">
-            If you need help or have feedback, don't hesitate to reach out via the feedback button in your dashboard. We’re always here to assist! 💬
+            If you need help or have feedback, don't hesitate to reach out via the feedback button in your dashboard. We're always here to assist! 💬
           </p>
 
           {/* Confirmation Checkbox */}
@@ -85,7 +86,7 @@ export default function ThankYouPage() {
           </Button>
         </div>
       </div>
-    </>
-  );
+    </>
+  );
 }
 

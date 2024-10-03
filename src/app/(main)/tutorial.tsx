@@ -8,8 +8,8 @@ import { TextInput } from "@tremor/react";
 import React from "react";
 
 export const TourContext = createContext({
-  restartTour: () => {},
-  setRun: (value: boolean) => {},
+  restartTour: () => { },
+  setRun: (value: boolean) => { },
 });
 
 interface TutorialStepProps {

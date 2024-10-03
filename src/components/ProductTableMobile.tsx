@@ -63,11 +63,10 @@ export function ProductTableMobile({ selectedDates }: ProductTableProps) {
           return (
             <Accordion key={item.id} className="">
               <AccordionHeader
-                className={`hover:bg-gray-100 hover:dark:bg-dark-tremor-background-subtle ${
-                  isOpen
+                className={`hover:bg-gray-100 hover:dark:bg-dark-tremor-background-subtle ${isOpen
                     ? "bg-gray-50 dark:bg-dark-tremor-background-subtle"
                     : ""
-                }`}
+                  }`}
                 onClick={() => toggleItem(item.id)}
               >
                 <div className="flex justify-between items-center w-full">
