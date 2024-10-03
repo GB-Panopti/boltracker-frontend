@@ -7,7 +7,7 @@ import BillingTab from "../../../components/ui/settings/billingTab";
 import AccountTab from "@/components/ui/settings/accountTab";
 import ReferralsTab from "@/components/ui/settings/referralsTab";
 
-export default function SettingsgPage() {
+export default function SettingsPage() {
   const { t } = useTranslation();
 
   return (
