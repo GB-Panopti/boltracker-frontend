@@ -12,18 +12,6 @@ export const PricingSection = () => {
 
   return (
     <>
-
-
-      <div className="w-full">
-        <div className="relative pr-4 w-fit ml-6">
-          <h4 className="text-tremor-default font-medium text-lg ">
-            <a href="/">
-              <span className="absolute inset-0" aria-hidden={true} />
-              {t("pricing.return_home")}
-            </a>
-          </h4>
-        </div>   </div>
-
       <h1 className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl">
         {t("pricing.pricing_header")}
       </h1>
@@ -122,8 +110,15 @@ export const PricingSection = () => {
                 </List>
               </div>
               <Divider />
-              <Label className="mt-4" htmlFor="pricing.code" ><b>{t('pricing.referral_label')}</b></Label>
-              <Input className="mt-4" placeholder={t("pricing.referral_placeholder")} id="referral" name="referral" />
+              {/* <Label className="mt-4" htmlFor="pricing.code">
+                <b>{t("pricing.referral_label")}</b>
+              </Label>
+              <Input
+                className="mt-4"
+                placeholder={t("pricing.referral_placeholder")}
+                id="referral"
+                name="referral"
+              /> */}
               <p className="text-xs text-gray-900 mt-6 ml-2">
                 <Trans
                   i18nKey="pricing.pricing_disclaimer"
