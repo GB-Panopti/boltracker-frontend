@@ -249,7 +249,9 @@
     "footer_tagline": "Your e-commerce insights platform",
     "footer_contact": "Contact",
     "footer_rights": "All rights reserved.",
-    "footer_built_with": "Built with ❤️ by the Panopti team."
+    "footer_built_with": "Built with ❤️ by the Panopti team.",
+    "footer_privacy": "Privacy Policy",
+    "footer_terms": "Terms of Service"
   },
   "reset": {
     "no_match": "Password does not match",

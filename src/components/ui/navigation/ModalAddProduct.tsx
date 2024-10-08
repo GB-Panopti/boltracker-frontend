@@ -129,7 +129,7 @@ export function ModalAddProduct({
               {(() => {
                 if (user && user.subscription === 0) {
                   return (
-                    <Button className="w-full sm:w-fit" variant="light">
+                    <Button className="w-full sm:w-fit" variant="light" disabled>
                       <s>{t("track_product.add")}</s>
                     </Button>
                   );
