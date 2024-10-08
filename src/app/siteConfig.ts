@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Panopti",
   url: "http://localhost:3000",
-  description: "I spy with my little eye..",
+  description: "Kies Panopti voor nauwkeurige Bol.com product research zonder hoge kosten. Simpel, effectief en betaalbaar sales tracking.",
   baseLinks: {
     dashboard: "/dashboard",
     trackNew: "/trackNew",

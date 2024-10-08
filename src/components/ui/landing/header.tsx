@@ -62,9 +62,9 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ scrollFade }) => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button className="group text-gray-200 !text-lg" variant="ghost" asChild>
+        {/* <Button className="group text-gray-200 !text-lg" variant="ghost" asChild>
           <a href="/blog">{t("landing.blog")}</a>
-        </Button>
+        </Button> */}
         <Button className="group text-gray-200 !text-lg" variant="ghost" asChild>
           <a href="/pricing">{t("landing.pricing")}</a>
         </Button>
