@@ -21,7 +21,7 @@ export default function LandingPage() {
   return (
     <>
       {/* Fixed Header */}
-      <LandingHeader />
+      <LandingHeader scrollFade />
 
       <AuroraHero handleDemoLogin={handleDemoLogin} />
 
@@ -160,7 +160,7 @@ export default function LandingPage() {
 
         <div
           id="pricing"
-          className="-skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]"
+          className="-skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)] mb-40"
         >
           <div className="flex w-full flex-col items-center justify-center skew-y-3">
             <PricingSection />

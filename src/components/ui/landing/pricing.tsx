@@ -15,7 +15,7 @@ export const PricingSection = () => {
       <h1 className="mt-12 mb-8 text-5xl text-white font-semibold sm:text-7xl">
         {t("pricing.pricing_header")}
       </h1>
-      <div className=" overflow-hidden flex w-4/5 mb-20">
+      <div className=" overflow-hidden flex w-4/5 mb-4">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="p-6 !text-gray-100">
             <h3 className="font-semibold text-xl">
