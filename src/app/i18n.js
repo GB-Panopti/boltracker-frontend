@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import HttpApi from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { preload } from "react-dom";
 
 i18n
   .use(HttpApi) // load translation using http backend
@@ -10,6 +11,7 @@ i18n
   .init({
     supportedLngs: ["en", "nl"], // languages to support
     fallbackLng: "nl", // default language
+    lng: "nl", // language to use
     detection: {
       order: [
         "cookie",
@@ -25,6 +27,7 @@ i18n
     backend: {
       loadPath: "/locales/{{lng}}/translation.json", // path to your translation files
     },
+    preload: ["en", "nl"], // preload languages
     react: {
       useSuspense: false,
     },

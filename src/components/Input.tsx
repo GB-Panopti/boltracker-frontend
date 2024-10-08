@@ -44,12 +44,14 @@ const inputStyles = tv({
     enableStepper: {
       true: "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
     },
+    roundedLeftNone: { true: "rounded-l-none", },
+    roundedRightNone: { true: "rounded-r-none", },
   },
 });
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputStyles> {
+  VariantProps<typeof inputStyles> {
   inputClassName?: string;
 }
 
@@ -60,6 +62,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       inputClassName,
       hasError,
       enableStepper,
+      roundedRightNone,
+      roundedLeftNone,
       type,
       ...props
     }: InputProps,
@@ -76,7 +80,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={forwardedRef}
           type={isPassword ? typeState : type}
           className={cx(
-            inputStyles({ hasError, enableStepper }),
+            inputStyles({
+              hasError,
+              enableStepper,
+              roundedRightNone,
+              roundedLeftNone,
+            }),
             {
               "pl-8": isSearch,
               "pr-10": isPassword,
@@ -88,32 +97,20 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {isSearch && (
           <div
             className={cx(
-              // base
               "pointer-events-none absolute bottom-0 left-2 flex h-full items-center justify-center",
-              // text color
               "text-gray-400 dark:text-gray-600",
             )}
           >
-            <RiSearchLine
-              className="size-[1.125rem] shrink-0"
-              aria-hidden="true"
-            />
+            <RiSearchLine className="size-[1.125rem] shrink-0" aria-hidden="true" />
           </div>
         )}
         {isPassword && (
-          <div
-            className={cx(
-              "absolute bottom-0 right-0 flex h-full items-center justify-center px-3",
-            )}
-          >
+          <div className="absolute bottom-0 right-0 flex h-full items-center justify-center px-3">
             <button
               aria-label="Change password visibility"
               className={cx(
-                // base
                 "h-fit w-fit rounded-sm outline-none transition-all",
-                // text
                 "text-gray-400 dark:text-gray-600",
-                // hover
                 "hover:text-gray-500 hover:dark:text-gray-500",
                 focusRing,
               )}

@@ -8,8 +8,8 @@ import { TextInput } from "@tremor/react";
 import React from "react";
 
 export const TourContext = createContext({
-  restartTour: () => {},
-  setRun: (value: boolean) => {},
+  restartTour: () => { },
+  setRun: (value: boolean) => { },
 });
 
 interface TutorialStepProps {
@@ -373,7 +373,7 @@ export function TutorialProvider({ children }: TutorialProviderProps) {
   useEffect(() => {
     if (typeof document !== "undefined") {
       const shouldRunTutorial = () => {
-        return document.cookie.indexOf("tutorial=done") === -1;
+        return document.cookie.indexOf("tutorial=done") === -1 && user?.subscription === 0;
       };
 
       if (user?.username === "demo@panopti.nl") {

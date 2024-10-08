@@ -16,7 +16,7 @@ import {
   RiBox1Line,
 } from "@remixicon/react";
 import Link from "next/link";
-import ProductSelector from "@/ui/productSelector";
+import ProductSelector from "@/components/ui/navigation/ProductSelector";
 import React from "react";
 import { ModalAddProduct } from "./ModalAddProduct";
 import { WorkspacesDropdownDesktop } from "./SidebarWorkspacesDropdown";

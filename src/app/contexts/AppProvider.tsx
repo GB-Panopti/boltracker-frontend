@@ -79,7 +79,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           setStockData(stockResponse.data);
           setProducts(productResponse.data);
         } catch (error) {
-          console.error("Error fetching data:", error);
+          // console.error("Error fetching data:", error);
         }
       }
     };

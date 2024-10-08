@@ -189,14 +189,14 @@ export const WorkspacesDropdownMobile = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           className="!min-w-72"
-          // hidden={hasOpenDialog}
-          // onCloseAutoFocus={(event) => {
-          //   if (focusRef.current) {
-          //     focusRef.current.focus()
-          //     focusRef.current = null
-          //     event.preventDefault()
-          //   }
-          // }}
+        // hidden={hasOpenDialog}
+        // onCloseAutoFocus={(event) => {
+        //   if (focusRef.current) {
+        //     focusRef.current.focus()
+        //     focusRef.current = null
+        //     event.preventDefault()
+        //   }
+        // }}
         >
           <DropdownMenuGroup>
             <DropdownMenuLabel>

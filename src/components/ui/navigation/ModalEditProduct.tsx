@@ -55,7 +55,7 @@ const ModalEditProduct: React.FC<ModalProps> = ({
     try {
       const productResponse = await ProductService.getProducts();
       setProducts(productResponse.data);
-    } catch (error) {}
+    } catch (error) { error=error; }
   };
 
   async function handleProductEdit() {
@@ -66,7 +66,6 @@ const ModalEditProduct: React.FC<ModalProps> = ({
       onOpenChange(false);
       setError(null);
     } catch (error) {
-      console.error("Failed to edit product:", error);
       setError("Something went wrong. Please try again.");
     }
   }
@@ -86,7 +85,6 @@ const ModalEditProduct: React.FC<ModalProps> = ({
         setError(null);
       }
     } catch (error) {
-      console.error("Failed to delete product:", error);
       setError("Something went wrong. Please try again.");
     }
   }

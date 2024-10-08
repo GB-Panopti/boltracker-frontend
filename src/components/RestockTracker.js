@@ -1,9 +1,8 @@
-import { Card, Tracker, CategoryBar, Color } from "@tremor/react";
+import { Card, Tracker, CategoryBar } from "@tremor/react";
 import React from "react";
 import { useContext } from "react";
 import { SelectedItemContext } from "@/app/contexts/SelectedItemContext";
 import StockService from "@/services/StockService";
-import { gray, green } from "tailwindcss/colors";
 
 const data2 = [
   { color: "gb-primarylite", tooltip: "Operational" },
@@ -36,7 +35,7 @@ const data2 = [
 export function RestockTracker() {
   const [data, setData] = React.useState([]);
 
-  var [selectedItem, setSelectedItem] = useContext(SelectedItemContext);
+  var [selectedItem] = useContext(SelectedItemContext);
 
   React.useEffect(() => {
     StockService.getStock(selectedItem.id).then((response) => {

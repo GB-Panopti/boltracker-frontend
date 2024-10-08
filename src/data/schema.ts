@@ -33,4 +33,10 @@ export type ProductInfo = {
 export type User = {
   username: string;
   subscription: number;
+  subscriptionDetails: {
+    subscribedSince: string;
+    subscriptionStatus: string;
+    subscriptionCancelAtPeriodEnd: string;
+    billingCycleEnd: string;
+  };
 };
