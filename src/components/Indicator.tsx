@@ -8,6 +8,7 @@ import {
 import { Badge } from "@tremor/react";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Tooltip } from "@/components/Tooltip";
 
 export function Indicator({ id }: { id: string }) {
   const { t } = useTranslation();
@@ -19,9 +20,11 @@ export function Indicator({ id }: { id: string }) {
     new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
   ) {
     return (
+      <Tooltip side="left" content={t("indicator.new_tooltip")}>
       <Badge color="blue" icon={RiLoader2Line}>
         {t("indicator.new")}
       </Badge>
+      </Tooltip>
     );
   }
 
@@ -29,23 +32,29 @@ export function Indicator({ id }: { id: string }) {
 
   if (!data) {
     return (
+      <Tooltip side="left" content={t("indicator.error_tooltip")}>
       <Badge color="red" icon={RiErrorWarningLine}>
         {t("indicator.error")}
       </Badge>
+      </Tooltip>
     );
   }
 
   if (Array.isArray(data) && data.every((datum) => datum.stock === 500)) {
     return (
+      <Tooltip side="left" content={t("indicator.uncertain_tooltip")}>
       <Badge color="yellow" icon={RiAlertLine}>
         {t("indicator.uncertain")}
       </Badge>
+      </Tooltip>
     );
   }
 
   return (
+    <Tooltip side="left" content={t("indicator.accurate_tooltip")}>
     <Badge color="emerald" icon={RiCheckboxCircleLine}>
       {t("indicator.accurate")}
     </Badge>
+    </Tooltip>
   );
 }

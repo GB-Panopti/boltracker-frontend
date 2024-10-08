@@ -29,9 +29,9 @@ export default function LandingPage() {
         <div className="relative pt-10 pb-24 bg-gb-primary-300 skew-y-0 shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)]">
           <div className="pt-6 flex w-full flex-col items-center justify-center -skew-y-0">
             <h1 className="mb-8 mt-12 mx-5 text-5xl text-white font-semibold text-center">
-              <span className="hidden md:inline-block">🪴</span>{" "}
+              {/* <span className="hidden md:inline-block">🪴</span>{" "} */}
               {t("landing.growth_header")}{" "}
-              <span className="hidden md:inline-block">🪴</span>
+              {/* <span className="hidden md:inline-block">🪴</span> */}
             </h1>
             <div className="overflow-hidden flex flex-col lg:flex-row w-11/12 justify-around">
               <div className="pt-6 w-full lg:w-1/2 flex justify-center lg:justify-start">
@@ -160,7 +160,7 @@ export default function LandingPage() {
 
         <div
           id="pricing"
-          className="-skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)] mb-40"
+          className="-skew-y-3 bg-gb-accent-500  shadow-[0_-20px_40px_rgba(0,0,0,0.2),_0_20px_40px_rgba(0,0,0,0.2)] mb-10 pb-20"
         >
           <div className="flex w-full flex-col items-center justify-center skew-y-3">
             <PricingSection />

@@ -5,7 +5,6 @@
   "save": "Opslaan",
   "range": "Bereik",
   "send": "Verstuur",
-
   "sidebar": {
     "overview": "Overzicht",
     "tracked_products": "Gevolgde producten",
@@ -24,7 +23,6 @@
     },
     "accountsettings": "Instellingen"
   },
-
   "settings": {
     "title": "Instellingen",
     "tab_account": "Account",
@@ -106,7 +104,6 @@
       "months_subscribed": "Maanden geabonneerd"
     }
   },
-
   "track_product": {
     "title": "Volg product",
     "header": "Volg nieuw product",
@@ -118,14 +115,12 @@
     "server_error": "Er is een fout opgetreden, probeer het later opnieuw.",
     "unexpected_error": "Er is een fout opgetreden, probeer het opnieuw."
   },
-
   "password": {
     "title": "Wachtwoord Veranderen",
     "new_password": "Nieuw wachtwoord",
     "confirm_password": "Bevestig wachtwoord",
     "change_password": "Wachtwoord veranderen"
   },
-
   "overview": {
     "title": "Overzicht",
     "product": "Product",
@@ -134,7 +129,6 @@
     "rating": "Beoordeling",
     "indicator": "Indicator"
   },
-
   "stockchart": {
     "price": "Prijs",
     "total": "Totaal",
@@ -142,14 +136,16 @@
     "rating": "Sterren",
     "no_data": "Geen data"
   },
-
   "indicator": {
     "new": "Nieuw",
-    "accurate": "Accuraat",
+    "new_tooltip": "Het duurt een paar dagen voordat je betekenisvolle data ziet.",
+    "accurate": "Nauwkeurig",
+    "accurate_tooltip": "De data is nauwkeurig en actueel.",
     "uncertain": "Onzeker",
-    "error": "Fout"
+    "uncertain_tooltip": "Verkooptracking is beperkt voor producten met een extreem uitgebreid marktbereik.",
+    "error": "Fout",
+    "error_tooltip": "Het product wordt niet correct getrackt. Neem contact op met support als dit blijft gebeuren."
   },
-
   "login": {
     "header": "Log in bij Panopti",
     "email": "E-mail",
@@ -213,7 +209,8 @@
     "subscribe_cta": " Abonneer nu! ",
     "referral_placeholder": "Heb je een kortingscode? Voer het hier in!",
     "referral_label": "Kortingscode",
-    "return_home": "← Terug naar de homepage"
+    "return_home": "← Terug naar de homepage",
+    "ex_vat": "ex. btw"
   },
   "landing": {
     "pricing": "Prijzen",
@@ -246,15 +243,14 @@
     "footer_tagline": "Jouw e-commerce-platform",
     "footer_contact": "Contact",
     "footer_rights": "Alle rechten voorbehouden.",
-    "footer_built_with": "Gemaakt met ❤️ door het Panopti-team.",
-    "ex_vat": "ex. btw"
+    "footer_built_with": "Gemaakt met ❤️ door het Panopti-team."
   },
   "reset": {
     "no_match": "Wachtwoord komt niet overeen",
     "success": "Wachtwoord succesvol gereset",
     "expired": "Link is verlopen"
   },
-  "unknown" : {
+  "unknown": {
     "error": "Er is een fout opgetreden, probeer het later opnieuw.",
     "server": "Server reageert niet, probeer het later opnieuw."
   }

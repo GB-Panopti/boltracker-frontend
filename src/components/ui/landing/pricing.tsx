@@ -4,8 +4,6 @@ import { List, ListItem, Divider } from "@tremor/react";
 import { Button } from "@/components/Button";
 import { useTranslation, Trans } from "react-i18next";
 import { handleDemoLogin } from "@/lib/utils";
-import { Input } from "@/components/Input";
-import { Label } from "@/components/Label";
 
 export const PricingSection = () => {
   const { t } = useTranslation();

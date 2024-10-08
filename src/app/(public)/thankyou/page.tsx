@@ -23,7 +23,6 @@ export default function ThankYouPage() {
       stripeServiceInstance.verifyPayment(sessionId).then((response) => {
         if (response.data) {
           setEmail(response.data);
-          console.log(response.data);
         }
       });
     } else {

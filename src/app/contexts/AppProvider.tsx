@@ -52,7 +52,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     const fetchUser = async () => {
       try {
         const response = await LoginService.getUserFromSession();
-        console.log(response.data);
         setUser(response.data);
       } catch (error) {
         console.error("Error fetching user session data:", error);
@@ -79,9 +78,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           const productResponse = await ProductService.getProducts();
           setStockData(stockResponse.data);
           setProducts(productResponse.data);
-          console.log('user', user);
         } catch (error) {
-          console.error("Error fetching data:", error);
+          // console.error("Error fetching data:", error);
         }
       }
     };

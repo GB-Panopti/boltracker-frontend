@@ -143,9 +143,13 @@
 
   "indicator": {
     "new": "New",
+    "new_tooltip": "It will take a few days before you see meaningful data.",
     "accurate": "Accurate",
+    "accurate_tooltip": "Data is accurate and up-to-date.",
     "uncertain": "Uncertain",
-    "error": "Error"
+    "uncertain_tooltip": "Sales tracking is limited for products with very extensive market reach.",
+    "error": "Error",
+    "error_tooltip": "Product is not tracking correctly. Please contact support if this keeps happening."
   },
 
   "login": {
@@ -211,7 +215,8 @@
     "subscribe_cta": " Subscribe now! ",
     "referral_placeholder": "Do you have a referral code? Enter it here!",
     "referral_label": "Referral code",
-    "return_home": "← Return to homepage"
+    "return_home": "← Return to homepage",
+    "ex_vat": "ex. VAT"
   },
   "landing": {
     "pricing": "Pricing",
@@ -244,8 +249,7 @@
     "footer_tagline": "Your e-commerce insights platform",
     "footer_contact": "Contact",
     "footer_rights": "All rights reserved.",
-    "footer_built_with": "Built with ❤️ by the Panopti team.",
-    "ex_vat": "ex. VAT"
+    "footer_built_with": "Built with ❤️ by the Panopti team."
   },
   "reset": {
     "no_match": "Password does not match",

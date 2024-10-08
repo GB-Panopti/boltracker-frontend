@@ -373,7 +373,7 @@ export function TutorialProvider({ children }: TutorialProviderProps) {
   useEffect(() => {
     if (typeof document !== "undefined") {
       const shouldRunTutorial = () => {
-        return document.cookie.indexOf("tutorial=done") === -1;
+        return document.cookie.indexOf("tutorial=done") === -1 && user?.subscription === 0;
       };
 
       if (user?.username === "demo@panopti.nl") {
