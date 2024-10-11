@@ -1,4 +1,3 @@
-import { LandingHeader } from '@/components/ui/landing/header';
 import { getBlogPost, getBlogPosts } from '@/lib/blogPosts';
 import { marked } from 'marked';
 
@@ -20,14 +19,23 @@ export default function BlogPost({ params }: BlogPostProps) {
   const content = marked(post.content);
 
   return (
-    <>
-      <article className="max-w-2xl mx-auto py-8">
-        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <div className="text-gray-600 mb-4">
-        <span>{post.date}</span> • <span>{post.category}</span>
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-      </article>
-    </>
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <article className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <div className="p-8">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{post.title}</h1>
+            <div className="flex items-center text-gray-600 dark:text-gray-400 mb-6">
+              <span>{post.date}</span>
+              <span className="mx-2">•</span>
+              <span>{post.category}</span>
+            </div>
+            <div 
+              className="prose dark:prose-invert max-w-none"
+              dangerouslySetInnerHTML={{ __html: content }} 
+            />
+          </div>
+        </article>
+      </main>
+    </div>
   );
 }
