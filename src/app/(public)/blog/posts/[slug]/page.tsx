@@ -30,7 +30,7 @@ export default function BlogPost({ params }: BlogPostProps) {
               <span>{post.category}</span>
             </div>
             <div 
-              className="prose dark:prose-invert max-w-none"
+              className="prose prose-lg dark:prose-invert max-w-none"
               dangerouslySetInnerHTML={{ __html: content }} 
             />
           </div>
