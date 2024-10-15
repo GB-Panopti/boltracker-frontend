@@ -45,8 +45,8 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ scrollFade }) => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="secondary">
-              🌍
-              <span className="hidden min-[520px]:inline">
+              {i18n.language === "nl" ? "🇳🇱" : "🇺🇸"}
+              <span className="hidden min-[520px]:inline ml-1">
                 {i18n.language === "nl" ? "Nederlands" : "English"}
               </span>
             </Button>
