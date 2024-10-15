@@ -1,3 +1,5 @@
+'use client';
+
 import i18n from "@/app/i18n";
 import { siteConfig } from "@/app/siteConfig";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
