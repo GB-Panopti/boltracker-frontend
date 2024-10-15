@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
 
@@ -262,6 +263,9 @@ const config: Config = {
       ],
     ),
   ],
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+  ],
 };
 export default config;

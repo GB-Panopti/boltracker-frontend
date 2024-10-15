@@ -40,7 +40,7 @@ export function Indicator({ id }: { id: string }) {
     );
   }
 
-  if (Array.isArray(data) && data.every((datum) => datum.stock === 500)) {
+  if (Array.isArray(data) && data.some((datum) => datum.stock === 500)) {
     return (
       <Tooltip side="left" content={t("indicator.uncertain_tooltip")}>
       <Badge color="yellow" icon={RiAlertLine}>
