@@ -99,7 +99,6 @@ export const handleDemoLogin = async () => {
 };
 
 export const ReactGAEvent = (category: string, action: string, label?: string) => { 
-  console.log('ReactGAEvent', category, action, label);
   ReactGA.event({
     category: category,
     action: action,
