@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 import { useTranslation } from "react-i18next";
 import { Logo } from "../icons/Logo";
-import { handleDemoLogin } from "@/lib/utils";
+import { handleDemoLogin, ReactGAEvent } from "@/lib/utils";
 
 interface LandingHeaderProps {
   scrollFade?: boolean; // Adding scrollFade as an optional prop
@@ -68,7 +68,7 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ scrollFade }) => {
           <a href="/blog">{t("landing.blog")}</a>
         </Button> */}
         <Button className="group text-gray-200 !text-lg" variant="ghost" asChild>
-          <a href="/pricing">{t("landing.pricing")}</a>
+          <a href="/pricing" onClick={() => ReactGAEvent('pricing', 'pricing_click')}>{t("landing.pricing")}</a>
         </Button>
         <Button className="group text-gray-200 !text-lg" variant="primary" asChild>
           <a href={siteConfig.baseLinks.login}>{t("landing.signin")}</a>

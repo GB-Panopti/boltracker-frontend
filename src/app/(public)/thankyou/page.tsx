@@ -2,6 +2,7 @@
 import { siteConfig } from "@/app/siteConfig";
 import { Button } from "@/components/Button";
 import { ArrowAnimated } from "@/components/ui/icons/ArrowAnimated";
+import { ReactGAEvent } from "@/lib/utils";
 import stripeServiceInstance from "@/services/StripeService";
 import { RiHome2Line } from "@remixicon/react";
 import React, { useState } from "react";
@@ -22,10 +23,12 @@ export default function ThankYouPage() {
     if (sessionId) {
       stripeServiceInstance.verifyPayment(sessionId).then((response) => {
         if (response.data) {
+          ReactGAEvent('subscribe', 'successful_subscription', response.data);
           setEmail(response.data);
         }
       });
     } else {
+      ReactGAEvent('subscribe', 'failed_subscription');
       window.location.href = siteConfig.baseLinks.welcome;
     }
   }, []);

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import LoginService from "@/services/LoginService";
 import { TextInput } from "@tremor/react";
 import React from "react";
+import { ReactGAEvent } from "@/lib/utils";
 
 export const TourContext = createContext({
   restartTour: () => { },
@@ -92,6 +93,7 @@ export function TutorialProvider({ children }: TutorialProviderProps) {
           setError(false);
           document.cookie = "tutorial=done; max-age=31536000; path=/"; // Set the cookie for 1 year
           setRun(false); // Stop the Joyride tour
+          ReactGAEvent('demo', 'demo_email', email);
         } else {
           setError(true);
           setErrorMessage("Failed to save email. Please try again.");

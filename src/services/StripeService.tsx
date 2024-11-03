@@ -1,4 +1,5 @@
 
+import { ReactGAEvent } from '@/lib/utils';
 import axios from 'axios';
 
 const CHECKOUT_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stripe/create-checkout-session";
@@ -7,6 +8,7 @@ const VERIFY_API_URL = process.env.NEXT_PUBLIC_SERVER_HOST + "/api/stripe/verify
 
 class StripeService {
     createCheckoutSession() {
+        ReactGAEvent('pricing', 'subscribe_click');
         axios.get(CHECKOUT_API_URL, { withCredentials: true }).then(response => {
             window.location.assign(response.data);
         });

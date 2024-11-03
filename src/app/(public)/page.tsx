@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from "@/components/Accordion";
 import { Trans, useTranslation } from "react-i18next";
-import { handleDemoLogin } from "@/lib/utils";
+import { handleDemoLogin, ReactGAEvent } from "@/lib/utils";
 import { AuroraHero } from "../../components/ui/landing/hero";
 import { LandingHeader } from "@/components/ui/landing/header";
 import { LandingFooter } from "@/components/ui/landing/footer";
@@ -113,7 +113,7 @@ export default function LandingPage() {
                 collapsible
               >
                 <AccordionItem value="item-1">
-                  <AccordionTrigger className="font-bold text-xl">
+                  <AccordionTrigger className="font-bold text-xl" onClick={() => ReactGAEvent('faq', 'faq_question_1')}>
                     {t("landing.faq_question_1")}
                   </AccordionTrigger>
                   <AccordionContent className="text-md">
@@ -121,7 +121,7 @@ export default function LandingPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
-                  <AccordionTrigger className="font-bold text-xl">
+                  <AccordionTrigger className="font-bold text-xl" onClick={() => ReactGAEvent('faq', 'faq_question_2')}>
                     {t("landing.faq_question_2")}
                   </AccordionTrigger>
                   <AccordionContent className="text-md">
@@ -129,7 +129,7 @@ export default function LandingPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
-                  <AccordionTrigger className="font-bold text-xl">
+                  <AccordionTrigger className="font-bold text-xl" onClick={() => ReactGAEvent('faq', 'faq_question_3')}>
                     {t("landing.faq_question_3")}
                   </AccordionTrigger>
                   <AccordionContent className="text-md">
@@ -137,7 +137,7 @@ export default function LandingPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-4">
-                  <AccordionTrigger className="font-bold text-xl">
+                  <AccordionTrigger className="font-bold text-xl" onClick={() => ReactGAEvent('faq', 'faq_question_4')}>
                     {t("landing.faq_question_4")}
                   </AccordionTrigger>
                   <AccordionContent className="text-md">
@@ -145,7 +145,7 @@ export default function LandingPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-5">
-                  <AccordionTrigger className="font-bold text-xl">
+                  <AccordionTrigger className="font-bold text-xl" onClick={() => ReactGAEvent('faq', 'faq_question_5')}>
                     {t("landing.faq_question_5")}
                   </AccordionTrigger>
                   <AccordionContent className="text-md">

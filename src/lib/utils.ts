@@ -4,6 +4,7 @@ import { siteConfig } from "@/app/siteConfig";
 import LoginService from "@/services/LoginService";
 import clsx, { type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import ReactGA from 'react-ga4';
 
 export function cx(...args: ClassValue[]): string {
   return twMerge(clsx(...args));
@@ -81,6 +82,8 @@ export const formatters: { [key: string]: any } = {
 export const handleDemoLogin = async () => {
   const demoEmail = "demo@panopti.nl";
   const demoPassword = "password";
+  ReactGAEvent('demo', 'demo_login', demoEmail);
+
 
   try {
     // Log out the current user (if logged in) and log in with the demo credentials
@@ -89,6 +92,17 @@ export const handleDemoLogin = async () => {
 
     if (response.status === 200) {
       window.location.href = siteConfig.baseLinks.dashboard;
+    } else {
+      ReactGAEvent('demo', 'demo_login_failed', demoEmail);
     }
   } catch { }
+};
+
+export const ReactGAEvent = (category: string, action: string, label?: string) => { 
+  console.log('ReactGAEvent', category, action, label);
+  ReactGA.event({
+    category: category,
+    action: action,
+    label: label,
+  });
 };
