@@ -42,6 +42,8 @@
     "marked": "^14.1.2",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
+    "posthog-js": "^1.181.0",
+    "posthog-node": "^4.2.1",
     "react": "18.2.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "18.2.0",

@@ -6,6 +6,7 @@ import { AppProvider } from "../contexts/AppProvider";
 import * as Sentry from "@sentry/nextjs";
 import { TutorialProvider } from "./tutorial";
 import { useEffect, useState } from "react";
+import { CSPostHogProvider } from "@/components/Providers/CSPostHogProvider";
 
 export default function Layout({
   children,
@@ -23,20 +24,22 @@ export default function Layout({
 
   return (
     <Sentry.ErrorBoundary fallback={<p>ah noes</p>}>
-      <ThemeProvider defaultTheme="system" attribute="class">
-        <AppProvider>
-          <TutorialProvider>
-            <Sidebar />
-            <main className="lg:pl-72">
-              <div className="relative">
-                <div className="p-4 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10 lg:pt-7">
-                  {children}
+      <CSPostHogProvider>
+        <ThemeProvider defaultTheme="system" attribute="class">
+          <AppProvider>
+            <TutorialProvider>
+              <Sidebar />
+              <main className="lg:pl-72">
+                <div className="relative">
+                  <div className="p-4 sm:px-6 sm:pb-10 sm:pt-10 lg:px-10 lg:pt-7">
+                    {children}
+                  </div>
                 </div>
-              </div>
-            </main>
-          </TutorialProvider>
-        </AppProvider>
-      </ThemeProvider>
+              </main>
+            </TutorialProvider>
+          </AppProvider>
+        </ThemeProvider>
+      </CSPostHogProvider>
     </Sentry.ErrorBoundary>
   );
 }

@@ -9,6 +9,7 @@ import { Button } from "@/components/Button";
 import { useTranslation } from "react-i18next";
 import { Logo } from "../icons/Logo";
 import { handleDemoLogin, ReactGAEvent } from "@/lib/utils";
+import { PostHog } from "posthog-node";
 
 interface LandingHeaderProps {
   scrollFade?: boolean; // Adding scrollFade as an optional prop
@@ -17,6 +18,10 @@ interface LandingHeaderProps {
 export const LandingHeader: React.FC<LandingHeaderProps> = ({ scrollFade }) => {
   const { t } = useTranslation();
   const [headerBg, setHeaderBg] = useState("bg-transparent");
+  const [demoFlag, setDemoFlag] = useState(false);
+
+  // const featureFlagEnabled  = useFeatureFlagEnabled('demo-button-text');
+
 
   useEffect(() => {
     if (scrollFade) {
@@ -34,6 +39,19 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ scrollFade }) => {
       setHeaderBg("bg-gb-secondary-600"); 
     }
   }, [scrollFade]);
+
+  const client = new PostHog(
+    'phc_78vjbHfs1oOJkkLReWMHDSvWBN0AukqVGmqCTTh9L0h',
+    { host: 'https://eu.i.posthog.com' }
+  )
+
+  client.isFeatureEnabled('demo-button-text', 'user_id').then(res => {
+    if (res === undefined) {
+      setDemoFlag(false);
+    } else  {
+      setDemoFlag(res);
+    }
+  });
 
   return (
     <div
@@ -76,6 +94,7 @@ export const LandingHeader: React.FC<LandingHeaderProps> = ({ scrollFade }) => {
         <Button className="group !text-lg hidden md:block" variant="accent" asChild>
           <a href="#" onClick={handleDemoLogin}>
             {t("landing.demo_button")}
+            {demoFlag ? "👀" : ""}
           </a>
         </Button>
       </div>
